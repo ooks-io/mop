@@ -27,12 +27,12 @@ export const APL_Default = PresetUtils.makePresetAPLRotation('Incinerate', Defau
 export const DEFAULT_EP_PRESET = PresetUtils.makePresetEpWeights(
 	'Default',
 	Stats.fromMap({
-		[Stat.StatIntellect]: 1.27,
+		[Stat.StatIntellect]: 1.24,
 		[Stat.StatSpellPower]: 1.0,
 		[Stat.StatHitRating]: 4,
-		[Stat.StatCritRating]: 0.51,
+		[Stat.StatCritRating]: 0.63,
 		[Stat.StatHasteRating]: 2.75,
-		[Stat.StatMasteryRating]: 0.57,
+		[Stat.StatMasteryRating]: 0.62,
 	}),
 );
 

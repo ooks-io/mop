@@ -50,7 +50,7 @@ const (
 )
 
 func (war *ArmsWarrior) GetMasteryProcChance() float64 {
-	return (8 + 2.2*war.GetMasteryPoints()) / 100
+	return (2.2 * (8 + war.GetMasteryPoints())) / 100
 }
 
 func (war *ArmsWarrior) GetWarrior() *warrior.Warrior {

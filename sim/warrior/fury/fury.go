@@ -49,7 +49,7 @@ func NewFuryWarrior(character *core.Character, options *proto.Player) *FuryWarri
 }
 
 func (war *FuryWarrior) GetMasteryBonusMultiplier() float64 {
-	return (8 + 1.4*war.GetMasteryPoints()) / 100
+	return (1.4 * (8 + war.GetMasteryPoints())) / 100
 }
 
 func (war *FuryWarrior) GetWarrior() *warrior.Warrior {
