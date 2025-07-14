@@ -50,6 +50,7 @@ func (monk *Monk) registerFortifyingBrew() {
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			monk.FortifyingBrewAura.Activate(sim)
 		},
+		RelatedSelfBuff: monk.FortifyingBrewAura,
 	})
 
 	monk.AddMajorCooldown(core.MajorCooldown{

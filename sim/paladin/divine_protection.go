@@ -72,6 +72,7 @@ func (paladin *Paladin) registerDivineProtection() {
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
 			paladin.DivineProtectionAura.Activate(sim)
 		},
+		RelatedSelfBuff: paladin.DivineProtectionAura,
 	})
 
 	if paladin.Spec == proto.Spec_SpecProtectionPaladin && hasGlyphOfDivineProtection {
