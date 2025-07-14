@@ -424,32 +424,23 @@ func (value *APLValueMath) GetInnerValues() []APLValue {
 // ADD & SUB: are always the same type as the LHS, so we can just return that type.
 func (value *APLValueMath) Type() proto.APLValueType {
 	lhsType := value.lhs.Type()
+
+	if (value.op != proto.APLValueMath_OpMul) && (value.op != proto.APLValueMath_OpDiv) {
+		return lhsType
+	}
+
 	rhsType := value.rhs.Type()
 
-	switch value.op {
-	case proto.APLValueMath_OpMul:
-		if (lhsType == proto.APLValueType_ValueTypeInt || lhsType == proto.APLValueType_ValueTypeFloat) &&
-			rhsType == proto.APLValueType_ValueTypeDuration {
-			return proto.APLValueType_ValueTypeDuration
-		}
-		if lhsType == proto.APLValueType_ValueTypeDuration &&
-			(rhsType == proto.APLValueType_ValueTypeInt || rhsType == proto.APLValueType_ValueTypeFloat) {
-			return proto.APLValueType_ValueTypeDuration
-		}
-		if lhsType == proto.APLValueType_ValueTypeFloat || rhsType == proto.APLValueType_ValueTypeFloat {
-			return proto.APLValueType_ValueTypeFloat
-		}
-	case proto.APLValueMath_OpDiv:
-		if lhsType == proto.APLValueType_ValueTypeDuration &&
-			(rhsType == proto.APLValueType_ValueTypeInt || rhsType == proto.APLValueType_ValueTypeFloat) {
-			return proto.APLValueType_ValueTypeDuration
-		}
-		if lhsType == proto.APLValueType_ValueTypeDuration && rhsType == proto.APLValueType_ValueTypeDuration {
-			return proto.APLValueType_ValueTypeFloat
-		}
-		if lhsType == proto.APLValueType_ValueTypeFloat || rhsType == proto.APLValueType_ValueTypeFloat {
-			return proto.APLValueType_ValueTypeFloat
-		}
+	if (value.op == proto.APLValueMath_OpMul) && ((lhsType == proto.APLValueType_ValueTypeDuration) || (rhsType == proto.APLValueType_ValueTypeDuration)) {
+		return proto.APLValueType_ValueTypeDuration
+	}
+
+	if (value.op == proto.APLValueMath_OpDiv) && (lhsType == proto.APLValueType_ValueTypeDuration) && (rhsType == proto.APLValueType_ValueTypeDuration) {
+		return proto.APLValueType_ValueTypeFloat
+	}
+
+	if (lhsType == proto.APLValueType_ValueTypeFloat) || (rhsType == proto.APLValueType_ValueTypeFloat) {
+		return proto.APLValueType_ValueTypeFloat
 	}
 
 	return lhsType
