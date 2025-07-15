@@ -1,3 +1,6 @@
+//go:build benchapl
+// +build benchapl
+
 package core
 
 import (
