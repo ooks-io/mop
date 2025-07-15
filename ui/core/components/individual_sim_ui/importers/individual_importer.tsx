@@ -23,12 +23,25 @@ export abstract class IndividualImporter<SpecType extends Spec> extends Importer
 
 	protected async finishIndividualImport<SpecType extends Spec>(
 		simUI: IndividualSimUI<SpecType>,
-		charClass: Class,
-		race: Race,
-		equipmentSpec: EquipmentSpec,
-		talentsStr: string,
-		glyphs: Glyphs | null,
-		professions: Array<Profession>,
+		{
+			charClass,
+			race,
+			equipmentSpec,
+			talentsStr,
+			glyphs,
+			professions,
+			missingEnchants = [],
+			missingItems = [],
+		}: {
+			charClass: Class;
+			race: Race;
+			equipmentSpec: EquipmentSpec;
+			talentsStr: string;
+			glyphs: Glyphs | null;
+			professions: Profession[];
+			missingEnchants?: number[];
+			missingItems?: number[];
+		},
 	): Promise<void> {
 		if (charClass != simUI.player.getClass()) {
 			throw new Error(`Wrong Class! Expected ${simUI.player.getPlayerClass().friendlyName} but found ${classNames.get(charClass)}!`);
@@ -37,14 +50,6 @@ export abstract class IndividualImporter<SpecType extends Spec> extends Importer
 		await Database.loadLeftoversIfNecessary(equipmentSpec);
 
 		const gear = simUI.sim.db.lookupEquipmentSpec(equipmentSpec);
-
-		const expectedEnchantIds = equipmentSpec.items.map(item => item.enchant);
-		const foundEnchantIds = gear.asSpec().items.map(item => item.enchant);
-		const missingEnchants = expectedEnchantIds.filter(expectedId => expectedId != 0 && !foundEnchantIds.includes(expectedId));
-
-		const expectedItemIds = equipmentSpec.items.map(item => item.id);
-		const foundItemIds = gear.asSpec().items.map(item => item.id);
-		const missingItems = expectedItemIds.filter(expectedId => !foundItemIds.includes(expectedId));
 
 		// Now update settings using the parsed values.
 		const eventID = TypedEvent.nextEventID();

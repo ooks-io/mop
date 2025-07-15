@@ -1,12 +1,12 @@
 import { ref } from 'tsx-vanilla';
 
 import { IndividualSimUI } from '../../../individual_sim_ui';
-import { Class, EquipmentSpec, Glyphs, ItemSlot, ItemSpec, Race, Spec } from '../../../proto/common';
+import { Class, EquipmentSpec, Glyphs, ItemLevelState, ItemSlot, ItemSpec, Profession, Race, Spec } from '../../../proto/common';
 import { nameToClass, nameToRace } from '../../../proto_utils/names';
 import Toast from '../../toast';
 import { IndividualImporter } from './individual_importer';
 
-const c = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+const i = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
 
 // Taken from Wowhead
 function readBits(e: number[]): number {
@@ -28,110 +28,113 @@ function readBits(e: number[]): number {
 	return s + t;
 }
 
-// Taken from Wowhead
-function parseTalents(e: number[]): string {
-	let t = '';
-	for (let a = 0; a < 3; a++) {
-		let len = readBits(e);
-		while (len > 0) {
-			let n = '',
-				l = readBits(e);
-			while (len > 0 && n.length < 7) {
-				const digit = 7 & l;
-				l >>= 3;
-				n = `${digit}${n}`;
-				len--;
-			}
-			t += n;
-		}
-		t += '-';
-	}
-	return t.replace(/-+$/, '');
+interface WowheadGearPlannerImportJSON {
+	classId: string;
+	raceId: string;
+	genderId: number;
+	level: number;
+	specIndex: number;
+	talentString: string;
+	glyphs: number[];
+	items: {
+		slotId: number;
+		itemId: number;
+		upgradeRank?: number;
+		randomEnchantId?: number;
+		reforge?: number;
+		gemItemIds?: number[];
+		enchantIds?: number[];
+	}[];
 }
 
 // Taken from Wowhead
-function readHash(e: string): any {
-	const t: any = {};
-	const a = e.match(/^#?~(-?\d+)$/);
-	if (a) {
-		return t;
-	}
-	const n = /^([a-z-]+)\/([a-z-]+)(?:\/([a-zA-Z0-9_-]+))?$/.exec(e);
-	if (!n) return t;
-	{
-		t.class = n[1];
-	}
-	{
-		t.race = n[2];
-	}
-	let o = n[3];
-	if (!o) return t;
-	const idx = c.indexOf(o.substring(0, 1));
-	o = o.substring(1);
-	if (!o.length) return t;
-	const u: number[] = [];
-	for (let e = 0; e < o.length; e++) u.push(c.indexOf(o.substring(e, e + 1)));
-	if (idx > 1) return t;
-	{
-		const e = readBits(u) - 1;
-		if (e >= 0) t.genderId = e;
-	}
-	{
-		const e = readBits(u);
-		if (e) t.level = e;
+function readHash(e: string): WowheadGearPlannerImportJSON {
+	const t: WowheadGearPlannerImportJSON = {
+		classId: '',
+		raceId: '',
+		genderId: 0,
+		level: 0,
+		specIndex: 0,
+		talentString: '',
+		glyphs: [],
+		items: [],
+	};
+	const s = /^([a-z-]+)\/([a-z-]+)(?:\/([a-zA-Z0-9_-]+))?$/.exec(e);
+	if (!s) return t;
+
+	t.classId = s[1];
+	t.raceId = s[2];
+
+	let d = s[3];
+	if (!d) return t;
+	const c = i.indexOf(d.substring(0, 1));
+	if (((d = d.substring(1)), !d.length)) return t;
+	const f: number[] = [];
+	for (let e = 0; e < d.length; e++) f.push(i.indexOf(d.substring(e, e + 1)));
+	if (c > 4) return t;
+	if (c >= 2) {
+		const _ = readBits(f);
 	}
 	{
-		const e = parseTalents(u),
-			a = readBits(u),
-			n = u
-				.splice(0, a)
-				.map(e => c[e])
-				.join(''),
-			l = e + (a ? `_${n}` : '');
-		if ('' !== l) t.talentHash = l;
-		if (t.talentHash) {
-			const talents = parseTalentString(t.talentHash);
-			t.talents = talents.talents;
-			t.glyphs = talents.glyphs;
+		const e = readBits(f) - 1;
+		e >= 0 && (t.genderId = e);
+	}
+	{
+		const e = readBits(f);
+		e && (t.level = e);
+	}
+	{
+		c >= 4 && (t.specIndex = readBits(f));
+		const e = [parseTalentString(f)];
+		let n = readBits(f);
+		for (; n-- > 0; ) {
+			const t = readBits(f);
+			e.push(
+				f
+					.splice(0, t)
+					.map(e => i[e])
+					.join(''),
+			);
 		}
+		const [talentString, glyphs] = e;
+		t.talentString = talentString;
+		t.glyphs = parseGlyphs(glyphs);
 	}
 	{
-		let itemCount = readBits(u);
-		t.items = [];
-		while (itemCount--) {
-			const a: any = {};
-			let e: number;
-			if (idx < 1) {
-				e = u.shift()!;
-				const t = (e >> 5) & 1;
-				e &= 31;
-				if (t) e |= 64;
-			} else e = readBits(u);
-			a.slotId = readBits(u);
-			a.itemId = readBits(u);
-			if (0 != ((e >> 6) & 1)) {
-				let enchant = readBits(u);
-				const t = 1 & enchant;
-				enchant >>= 1;
-				if (t) enchant *= -1;
-				a.randomEnchantId = enchant;
-			}
-			if (0 != ((e >> 5) & 1)) a.reforge = readBits(u);
-			{
-				let gemCount = (e >> 2) & 7;
-				while (gemCount--) {
-					if (!a.gemItemIds) a.gemItemIds = [];
-					a.gemItemIds.push(readBits(u));
+		let e = readBits(f);
+		for (; e--; ) {
+			const e: any = {};
+			let n = !1,
+				s = !1,
+				r = !1,
+				l = 0,
+				a = 0;
+			switch (c) {
+				case 0: {
+					const e = f.shift();
+					(n = 0 != ((e! >> 5) & 1)), (l = (e! >> 2) & 7), (a = 3 & e!);
+					break;
+				}
+				case 1:
+				case 2: {
+					const e = readBits(f);
+					(n = 0 != ((e >> 6) & 1)), (r = 0 != ((e >> 5) & 1)), (l = (e >> 2) & 7), (a = 3 & e);
+					break;
+				}
+				default: {
+					const e = readBits(f);
+					(n = 0 != ((e >> 7) & 1)), (s = 0 != ((e >> 6) & 1)), (r = 0 != ((e >> 5) & 1)), (l = (e >> 2) & 7), (a = 3 & e);
+					break;
 				}
 			}
-			{
-				let enchantCount = e & 3;
-				while (enchantCount--) {
-					if (!a.enchantIds) a.enchantIds = [];
-					a.enchantIds.push(readBits(u));
-				}
+			if (((e.slotId = readBits(f)), (e.itemId = readBits(f)), n)) {
+				let t = readBits(f);
+				const n = 1 & t;
+				(t >>= 1), n && (t *= -1), (e.randomEnchantId = t);
 			}
-			t.items.push(a);
+			for (s && (e.upgradeRank = readBits(f)), r && (e.reforge = readBits(f)); l--; ) (e.gemItemIds ??= []).push(readBits(f));
+			for (; a--; ) (e.enchantIds ??= []).push(readBits(f));
+			(t.items ??= []).push(e);
 		}
 	}
 	return t;
@@ -139,61 +142,43 @@ function readHash(e: string): any {
 
 // Function to parse glyphs from the glyph string
 function parseGlyphs(glyphStr: string): number[] {
-	const glyphIds = Array(9).fill(0); // Nine potential glyph slots
-	const base32 = '0123456789abcdefghjkmnpqrstvwxyz'; // Base32 character set
-	let cur = 1; // we skip the first index for whatever reason
-
-	while (cur < glyphStr.length) {
-		// Get glyph slot index
-		const glyphSlotChar = glyphStr[cur];
-		const glyphSlotIndex = base32.indexOf(glyphSlotChar);
-		cur++;
-
-		if (glyphSlotIndex < 0 || glyphSlotIndex >= glyphIds.length) {
-			continue; // Skip invalid glyph slots
+	const glyphIds = Array(6).fill(0);
+	if (!glyphStr) {
+		return glyphIds;
+	}
+	const t = i.indexOf(glyphStr.substring(0, 1));
+	const s = glyphStr.substring(1);
+	if (!s.length) {
+		return glyphIds;
+	}
+	if (t !== 0) {
+		return glyphIds;
+	}
+	const a = [];
+	for (let e = 0; e < s.length; e++) {
+		a.push(i.indexOf(s.substring(e, e + 1)));
+	}
+	const l = 3 * i.length - 1;
+	while (a.length > 1) {
+		const e = readBits(a);
+		const t = readBits(a);
+		if (e > l) {
+			continue;
 		}
-
-		if (cur + 4 > glyphStr.length) {
-			break; // Not enough characters for a glyph ID
-		}
-
-		// Decode the spellId using base32 encoding (each character represents 5 bits)
-		const c1 = base32.indexOf(glyphStr[cur]);
-		const c2 = base32.indexOf(glyphStr[cur + 1]);
-		const c3 = base32.indexOf(glyphStr[cur + 2]);
-		const c4 = base32.indexOf(glyphStr[cur + 3]);
-		cur += 4;
-
-		if (c1 < 0 || c2 < 0 || c3 < 0 || c4 < 0) {
-			continue; // Invalid character in spell ID
-		}
-
-		const spellId = (c1 << 15) | (c2 << 10) | (c3 << 5) | c4;
-
-		glyphIds[glyphSlotIndex] = spellId;
+		glyphIds.push(t);
 	}
 
-	return glyphIds;
+	return [];
 }
 
-function parseTalentString(talentString: string): { talents: string; glyphs: number[] } {
-	const [talentPart, glyphPart] = talentString.split('_');
-
-	// Parse the talents
-	// Talent string is something like '001-2301-33223203120220120321'
-	// Each part separated by '-' corresponds to a talent tree
-	const talents = talentPart;
-
-	// Parse the glyphs
-	let glyphs: number[] = [];
-	if (glyphPart) {
-		glyphs = parseGlyphs(glyphPart);
-	}
-
-	return { talents, glyphs };
+function parseTalentString(e: number[]) {
+	let t = '',
+		n = readBits(e);
+	for (; 0 !== n; ) (t += '' + (3 & n)), (n >>= 2);
+	return t;
 }
 
-function parseWowheadGearLink(link: string): any {
+function parseWowheadGearLink(link: string): WowheadGearPlannerImportJSON {
 	// Extract the part after 'mop-classic/gear-planner/'
 	const match = link.match(/mop-classic\/gear-planner\/(.+)/);
 	if (!match) {
@@ -247,31 +232,56 @@ export class IndividualWowheadGearPlannerImporter<SpecType extends Spec> extends
 		if (!match) {
 			throw new Error(`Invalid WCL URL ${url}, must look like "https://www.wowhead.com/mop-classic/gear-planner/CLASS/RACE/XXXX"`);
 		}
-		console.log(url);
+		const missingItems: number[] = [];
+		const missingEnchants: number[] = [];
+		const professions: Profession[] = [];
 
 		const parsed = parseWowheadGearLink(url);
-		console.log(parsed);
 		const glyphIds = parsed.glyphs;
-
-		const charClass = nameToClass(parsed.class.replaceAll('-', ''));
+		const charClass = nameToClass(parsed.classId.replaceAll('-', ''));
 		if (charClass == Class.ClassUnknown) {
-			throw new Error('Could not parse Class: ' + parsed.class);
+			throw new Error('Could not parse Class: ' + parsed.classId);
 		}
 
-		const race = nameToRace(parsed.race.replaceAll('-', ''));
+		const converWowheadRace = (raceId: string): string => {
+			const allianceSuffix = raceId.startsWith('alliance-') ? ' (A)' : undefined;
+			const hordeSuffix = raceId.startsWith('horde-') ? ' (H)' : undefined;
+			return raceId.replaceAll('alliance', '').replaceAll('horde', '').replaceAll('-', '') + (allianceSuffix ?? hordeSuffix ?? '');
+		};
+
+		const race = nameToRace(converWowheadRace(parsed.raceId));
 		if (race == Race.RaceUnknown) {
-			throw new Error('Could not parse Race: ' + parsed.race);
+			throw new Error('Could not parse Race: ' + parsed.raceId);
 		}
 
 		const equipmentSpec = EquipmentSpec.create();
 
-		parsed.items.forEach((item: any) => {
+		parsed.items.forEach(item => {
+			const dbItem = this.simUI.sim.db.getItemById(item.itemId);
+			if (!dbItem) {
+				missingItems.push(item.itemId);
+				return;
+			}
 			const itemSpec = ItemSpec.create();
-			const slotId = item.slotId;
-			const isEnchanted = item.enchantIds?.length > 0;
 			itemSpec.id = item.itemId;
-			if (isEnchanted) {
-				itemSpec.enchant = this.simUI.sim.db.enchantSpellIdToEffectId(item.enchantIds[0]);
+			const slotId = item.slotId;
+			if (!!item.enchantIds?.length) {
+				item.enchantIds.forEach(enchantSpellId => {
+					const enchant = this.simUI.sim.db.enchantSpellIdToEnchant(enchantSpellId);
+					const isTinker = enchant?.requiredProfession === Profession.Engineering;
+					if (!enchant) {
+						missingEnchants.push(enchantSpellId);
+						return;
+					}
+					if (isTinker) {
+						itemSpec.tinker = enchant.effectId;
+						if (!professions.includes(Profession.Engineering)) {
+							professions.push(Profession.Engineering);
+						}
+					} else {
+						itemSpec.enchant = enchant.effectId;
+					}
+				});
 			}
 			if (item.gemItemIds) {
 				itemSpec.gems = item.gemItemIds;
@@ -282,6 +292,12 @@ export class IndividualWowheadGearPlannerImporter<SpecType extends Spec> extends
 			if (item.reforge) {
 				itemSpec.reforging = item.reforge;
 			}
+			if (item.upgradeRank && dbItem) {
+				// If the upgrade step does not exust assume highest upgrade step.
+				itemSpec.upgradeStep = dbItem.scalingOptions[item.upgradeRank]
+					? (item.upgradeRank as ItemLevelState)
+					: Object.keys(dbItem.scalingOptions).length - 2;
+			}
 			const itemSlotEntry = Object.entries(IndividualWowheadGearPlannerImporter.slotIDs).find(e => e[1] == slotId);
 			if (itemSlotEntry != null) {
 				equipmentSpec.items.push(itemSpec);
@@ -289,15 +305,24 @@ export class IndividualWowheadGearPlannerImporter<SpecType extends Spec> extends
 		});
 
 		const glyphs = Glyphs.create({
-			major1: this.simUI.sim.db.glyphSpellToItemId(glyphIds[3]),
-			major2: this.simUI.sim.db.glyphSpellToItemId(glyphIds[4]),
-			major3: this.simUI.sim.db.glyphSpellToItemId(glyphIds[5]),
-			minor1: this.simUI.sim.db.glyphSpellToItemId(glyphIds[6]),
-			minor2: this.simUI.sim.db.glyphSpellToItemId(glyphIds[7]),
-			minor3: this.simUI.sim.db.glyphSpellToItemId(glyphIds[8]),
+			major1: this.simUI.sim.db.glyphSpellToItemId(glyphIds[0]),
+			major2: this.simUI.sim.db.glyphSpellToItemId(glyphIds[1]),
+			major3: this.simUI.sim.db.glyphSpellToItemId(glyphIds[2]),
+			minor1: this.simUI.sim.db.glyphSpellToItemId(glyphIds[3]),
+			minor2: this.simUI.sim.db.glyphSpellToItemId(glyphIds[4]),
+			minor3: this.simUI.sim.db.glyphSpellToItemId(glyphIds[5]),
 		});
 
-		this.finishIndividualImport(this.simUI, charClass, race, equipmentSpec, parsed.talents ?? '', glyphs, []);
+		this.finishIndividualImport(this.simUI, {
+			charClass,
+			race,
+			equipmentSpec,
+			talentsStr: parsed.talentString ?? '',
+			glyphs,
+			professions,
+			missingEnchants,
+			missingItems,
+		});
 	}
 
 	static slotIDs: Record<ItemSlot, number> = {

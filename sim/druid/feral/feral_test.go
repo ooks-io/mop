@@ -3,13 +3,14 @@ package feral
 import (
 	"testing"
 
-	_ "github.com/wowsims/mop/sim/common"
+	"github.com/wowsims/mop/sim/common"
 	"github.com/wowsims/mop/sim/core"
 	"github.com/wowsims/mop/sim/core/proto"
 )
 
 func init() {
 	RegisterFeralDruid()
+	common.RegisterAllEffects()
 }
 
 var FeralItemFilter = core.ItemFilter{
@@ -25,36 +26,21 @@ var FeralItemFilter = core.ItemFilter{
 }
 
 func TestFeral(t *testing.T) {
-	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
+	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{{
 		Class:       proto.Class_ClassDruid,
 		Race:        proto.Race_RaceWorgen,
 		OtherRaces:  []proto.Race{proto.Race_RaceTroll},
-		GearSet:     core.GetGearSet("../../../ui/druid/feral/gear_sets", "p4"),
-		ItemSwapSet: core.GetItemSwapGearSet("../../../ui/druid/feral/gear_sets", "p4_item_swap"),
-
-		OtherGearSets: []core.GearSetCombo{
-			core.GetGearSet("../../../ui/druid/feral/gear_sets", "p3"),
-		},
-
-		OtherItemSwapSets: []core.ItemSwapSetCombo{
-			{Label: "no_item_swap", ItemSwap: &proto.ItemSwap{}},
-		},
+		GearSet:     core.GetGearSet("../../../ui/druid/feral/gear_sets", "preraid"),
 
 		Talents:         StandardTalents,
 		Glyphs:          StandardGlyphs,
-		OtherTalentSets: []core.TalentsCombo{{Label: "HybridTalents", Talents: HybridTalents, Glyphs: HybridGlyphs}},
 		Consumables:     FullConsumesSpec,
 		SpecOptions:     core.SpecOptionsCombo{Label: "ExternalBleed", SpecOptions: PlayerOptionsMonoCat},
 		Rotation:        core.GetAplRotation("../../../ui/druid/feral/apls", "default"),
 
-		OtherRotations: []core.RotationCombo{
-			core.GetAplRotation("../../../ui/druid/feral/apls", "monocat"),
-			core.GetAplRotation("../../../ui/druid/feral/apls", "aoe"),
-		},
-
-		StartingDistance: 25,
+		StartingDistance: 24,
 		ItemFilter:       FeralItemFilter,
-	}))
+	}}))
 }
 
 // func TestFeralApl(t *testing.T) {
@@ -101,18 +87,8 @@ func TestFeral(t *testing.T) {
 // 	core.RaidBenchmark(b, rsr)
 // }
 
-var StandardTalents = "-2320322312012121202301-020301"
+var StandardTalents = ""
 var StandardGlyphs = &proto.Glyphs{
-	Major1: int32(proto.DruidMajorGlyph_GlyphOfThorns),
-	Major2: int32(proto.DruidMajorGlyph_GlyphOfFeralCharge),
-	Major3: int32(proto.DruidMajorGlyph_GlyphOfRebirth),
-}
-
-var HybridTalents = "-2300322312310001220311-020331"
-var HybridGlyphs = &proto.Glyphs{
-	Major1: int32(proto.DruidMajorGlyph_GlyphOfFrenziedRegeneration),
-	Major2: int32(proto.DruidMajorGlyph_GlyphOfMaul),
-	Major3: int32(proto.DruidMajorGlyph_GlyphOfRebirth),
 }
 
 var PlayerOptionsMonoCat = &proto.Player_FeralDruid{
@@ -160,9 +136,8 @@ var PlayerOptionsMonoCatNoBleed = &proto.Player_FeralDruid{
 // }
 
 var FullConsumesSpec = &proto.ConsumesSpec{
-	FlaskId:     58087, // Flask of the Winds
-	FoodId:      62669, // Skewered Eel
-	PotId:       58145, // Potion of the Tol'vir
-	PrepotId:    58145, // Potion of the Tol'vir
-	ExplosiveId: 89637, // Big Daddy Explosive
+	FlaskId:     76084, // Flask of Spring Blossoms
+	FoodId:      74648, // Sea Mist Rice Noodles
+	PotId:       76089, // Virmen's Bite
+	PrepotId:    76089, // Virmen's Bite
 }

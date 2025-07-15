@@ -81,10 +81,11 @@ func (druid *Druid) registerThrashCatSpell() {
 	flatTickDamage := 0.62699997425 * druid.ClassSpellScaling // ~686
 
 	druid.ThrashCat = druid.RegisterSpell(Cat, core.SpellConfig{
-		ActionID:    core.ActionID{SpellID: 106830},
-		SpellSchool: core.SpellSchoolPhysical,
-		ProcMask:    core.ProcMaskMeleeMHSpecial,
-		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagIgnoreArmor | core.SpellFlagAPL | core.SpellFlagAoE,
+		ActionID:       core.ActionID{SpellID: 106830},
+		SpellSchool:    core.SpellSchoolPhysical,
+		ProcMask:       core.ProcMaskMeleeMHSpecial,
+		Flags:          core.SpellFlagMeleeMetrics | core.SpellFlagIgnoreArmor | core.SpellFlagAPL | core.SpellFlagAoE,
+		ClassSpellMask: DruidSpellThrashCat,
 
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{

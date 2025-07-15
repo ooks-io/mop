@@ -20,6 +20,9 @@ func TestUnholy(t *testing.T) {
 			OtherRaces: []proto.Race{proto.Race_RaceTroll, proto.Race_RaceWorgen},
 
 			GearSet: core.GetGearSet("../../../ui/death_knight/unholy/gear_sets", "p1"),
+			OtherGearSets: []core.GearSetCombo{
+				core.GetGearSet("../../../ui/death_knight/unholy/gear_sets", "prebis"),
+			},
 			Talents: "200010",
 			OtherTalentSets: []core.TalentsCombo{
 				{Label: "RoilingBlood", Talents: "100010", Glyphs: UnholyDefaultGlyphs},
@@ -32,6 +35,8 @@ func TestUnholy(t *testing.T) {
 			Consumables: FullConsumesSpec,
 			SpecOptions: core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsUnholy},
 			Rotation:    core.GetAplRotation("../../../ui/death_knight/unholy/apls", "default"),
+			Profession1: proto.Profession_Engineering,
+			Profession2: proto.Profession_Blacksmithing,
 
 			ItemFilter: ItemFilter,
 		},

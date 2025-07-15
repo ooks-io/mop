@@ -1535,6 +1535,8 @@ const idToCategoryMap: Record<number, number> = {
 	[1247275]: SPELL_ACTION_CATEGORY + 0.02, // Tigereye Brew
 	[115399]: SPELL_ACTION_CATEGORY + 0.03, // Chi Brew
 	[115288]: SPELL_ACTION_CATEGORY + 0.04, // Energizing Brew
+	[123402]: SPELL_ACTION_CATEGORY + 0.04, // Guard
+	[115295]: SPELL_ACTION_CATEGORY + 0.04, // Guard
 	[126456]: SPELL_ACTION_CATEGORY + 0.05, // Fortifying Brew
 	[123904]: SPELL_ACTION_CATEGORY + 0.06, // Invoke Xuen, the White Tiger
 	[115008]: SPELL_ACTION_CATEGORY + 0.06, // Chi Torpedo

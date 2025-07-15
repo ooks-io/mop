@@ -28,7 +28,7 @@ func (druid *Druid) registerMaulSpell() {
 			},
 		},
 
-		DamageMultiplier: 1.1 * core.TernaryFloat64(druid.AssumeBleedActive, RendAndTearDamageMultiplier, 1),
+		DamageMultiplier: 1.1,
 		CritMultiplier:   druid.DefaultCritMultiplier(),
 		ThreatMultiplier: 1,
 		FlatThreatBonus:  30,
@@ -36,20 +36,31 @@ func (druid *Druid) registerMaulSpell() {
 		MaxRange:         core.MaxMeleeRange,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			numHits := 0
+			numHits := min(maxHits, sim.Environment.ActiveTargetCount())
+			curTarget := target
+			anyLanded := false
 
-			results := spell.CalcAndDealCleaveDamageWithVariance(sim, target, maxHits, spell.OutcomeMeleeWeaponSpecialHitAndCrit, func(sim *core.Simulation, spell *core.Spell) float64 {
+			for idx := range numHits {
 				baseDamage := spell.Unit.MHWeaponDamage(sim, spell.MeleeAttackPower())
 
-				if numHits > 0 {
+				if idx > 0 {
 					baseDamage *= 0.5
 				}
 
-				numHits++
-				return baseDamage
-			})
+				if druid.AssumeBleedActive || (druid.BleedsActive[curTarget] > 0) {
+					baseDamage *= RendAndTearDamageMultiplier
+				}
 
-			if !results.AnyLanded() {
+				result := spell.CalcAndDealDamage(sim, curTarget, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
+
+				if result.Landed() {
+					anyLanded = true
+				}
+
+				curTarget = sim.Environment.NextActiveTargetUnit(curTarget)
+			}
+
+			if !anyLanded {
 				spell.IssueRefund(sim)
 			}
 		},

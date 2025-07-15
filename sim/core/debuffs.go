@@ -23,9 +23,19 @@ func applyDebuffEffects(target *Unit, targetIdx int, debuffs *proto.Debuffs, rai
 	if debuffs.WeakenedArmor {
 		aura := MakePermanent(WeakenedArmorAura(target))
 
-		aura.ApplyOnGain(func(aura *Aura, sim *Simulation) {
-			aura.SetStacks(sim, 3)
-		})
+		aura.OnReset = func(aura *Aura, sim *Simulation) {
+			// Ferals can require a global to put this up on pull.
+			pa := sim.GetConsumedPendingActionFromPool()
+			pa.NextActionAt = sim.CurrentTime + GCDMin
+			pa.Priority = ActionPriorityDOT
+
+			pa.OnAction = func(sim *Simulation) {
+				aura.Activate(sim)
+				aura.SetStacks(sim, 3)
+			}
+
+			sim.AddPendingAction(pa)
+		}
 	}
 
 	// Spell‐damage‐taken sources

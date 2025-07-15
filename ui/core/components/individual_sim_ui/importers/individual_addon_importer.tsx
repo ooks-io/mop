@@ -104,7 +104,14 @@ export class IndividualAddonImporter<SpecType extends Spec> extends IndividualIm
 		});
 		const equipmentSpec = EquipmentSpec.fromJson(gearJson);
 
-		this.finishIndividualImport(this.simUI, charClass, race, equipmentSpec, talentsStr, glyphs, professions);
+		this.finishIndividualImport(this.simUI, {
+			charClass,
+			race,
+			equipmentSpec,
+			talentsStr,
+			glyphs,
+			professions,
+		});
 	}
 }
 

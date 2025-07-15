@@ -11,6 +11,7 @@ import { StatCapType } from '../../core/proto/ui';
 import { StatCap, Stats, UnitStat } from '../../core/proto_utils/stats';
 import { defaultRaidBuffMajorDamageCooldowns } from '../../core/proto_utils/utils';
 import { Sim } from '../../core/sim';
+import * as MonkUtils from '../utils';
 import * as Presets from './presets';
 
 const SPEC_CONFIG = registerSpecConfig(Spec.SpecWindwalkerMonk, {
@@ -177,6 +178,11 @@ const getActiveEPWeight = (player: Player<Spec.SpecWindwalkerMonk>, sim: Sim): S
 export class WindwalkerMonkSimUI extends IndividualSimUI<Spec.SpecWindwalkerMonk> {
 	constructor(parentElem: HTMLElement, player: Player<Spec.SpecWindwalkerMonk>) {
 		super(parentElem, player, SPEC_CONFIG);
+
+		MonkUtils.setTalentBasedSettings(player);
+		player.talentsChangeEmitter.on(() => {
+			MonkUtils.setTalentBasedSettings(player);
+		});
 
 		player.sim.waitForInit().then(() => {
 			new ReforgeOptimizer(this, {

@@ -10,9 +10,11 @@ import (
 )
 
 func (war *ProtectionWarrior) registerUnwaveringSentinel() {
+	stamDep := war.NewDynamicMultiplyStat(stats.Stamina, 1.15)
 	core.MakePermanent(war.GetOrRegisterAura(core.Aura{
-		Label:    "Unwavering Sentinel",
-		ActionID: core.ActionID{SpellID: 29144},
+		Label:      "Unwavering Sentinel",
+		ActionID:   core.ActionID{SpellID: 29144},
+		BuildPhase: core.CharacterBuildPhaseBase,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			war.ApplyDynamicEquipScaling(sim, stats.Armor, 1.25)
 		},
@@ -20,7 +22,7 @@ func (war *ProtectionWarrior) registerUnwaveringSentinel() {
 			war.RemoveDynamicEquipScaling(sim, stats.Armor, 1.25)
 		},
 	}).AttachStatDependency(
-		war.NewDynamicMultiplyStat(stats.Stamina, 1.15),
+		stamDep,
 	).AttachAdditivePseudoStatBuff(
 		&war.PseudoStats.ReducedCritTakenChance, 0.06,
 	).AttachSpellMod(core.SpellModConfig{

@@ -282,3 +282,22 @@ var ItemSetChronomancerRegalia = core.NewItemSet(core.ItemSet{
 		},
 	},
 })
+
+// PVP S12 / S13 / S14
+var ItemSetGladiatorsRegalia = core.NewItemSet(core.ItemSet{
+	Name:                    "Gladiator's Regalia",
+	DisabledInChallengeMode: true,
+	Bonuses: map[int32]core.ApplySetBonus{
+		2: func(agent core.Agent, setBonusAura *core.Aura) {},
+		// Reduces the cooldown on Alter Time by 90 sec.
+		4: func(agent core.Agent, setBonusAura *core.Aura) {
+			setBonusAura.AttachSpellMod(core.SpellModConfig{
+				Kind:      core.SpellMod_Cooldown_Flat,
+				ClassMask: MageSpellAlterTime,
+				TimeValue: -90 * time.Second,
+			})
+
+			setBonusAura.ExposeToAPL(131619)
+		},
+	},
+})

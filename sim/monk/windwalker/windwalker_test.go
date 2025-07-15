@@ -26,7 +26,12 @@ func TestWindwalker(t *testing.T) {
 				core.GetGearSet("../../../ui/monk/windwalker/gear_sets", "p1_prebis_dw"),
 				core.GetGearSet("../../../ui/monk/windwalker/gear_sets", "p1_prebis_2h"),
 			},
-			Talents:     WindwalkerTalents,
+			Talents: WindwalkerTalents,
+			OtherTalentSets: []core.TalentsCombo{
+				{Label: "ZenSphere", Talents: ZenSphereTalent, Glyphs: WindwalkerDefaultGlyphs},
+				{Label: "ChiBurstTalent", Talents: ChiBurstTalent, Glyphs: WindwalkerDefaultGlyphs},
+				{Label: "RushingJadeWindTalent", Talents: RushingJadeWindTalent, Glyphs: WindwalkerDefaultGlyphs},
+			},
 			Glyphs:      WindwalkerDefaultGlyphs,
 			Consumables: FullConsumesSpec,
 			SpecOptions: core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsWindwalker},
@@ -38,6 +43,10 @@ func TestWindwalker(t *testing.T) {
 }
 
 var WindwalkerTalents = "213322"
+var ZenSphereTalent = "223322"
+var ChiBurstTalent = "233322"
+var RushingJadeWindTalent = "213321"
+
 var WindwalkerDefaultGlyphs = &proto.Glyphs{
 	Major1: int32(proto.MonkMajorGlyph_GlyphOfSpinningCraneKick),
 	Major2: int32(proto.MonkMajorGlyph_GlyphOfTouchOfKarma),

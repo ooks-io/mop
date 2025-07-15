@@ -271,6 +271,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestBalance-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 90551.0285
+  tps: 91891.84148
+  hps: 14043.8021
+ }
+}
+dps_results: {
  key: "TestBalance-AllItems-PhaseFingers-4697"
  value: {
   dps: 90472.82797

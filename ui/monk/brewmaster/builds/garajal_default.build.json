@@ -410,8 +410,8 @@
 	},
 	"encounter": {
 		"apiVersion": 1,
-		"duration": 300,
-		"durationVariation": 60,
+		"duration": 306,
+		"durationVariation": 15,
 		"executeProportion20": 0.2,
 		"executeProportion25": 0.25,
 		"executeProportion35": 0.35,

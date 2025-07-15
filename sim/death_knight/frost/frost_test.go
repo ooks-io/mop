@@ -29,6 +29,8 @@ func TestFrostMasterfrost(t *testing.T) {
 			Consumables:     FullConsumesSpec,
 			SpecOptions:     core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsFrost},
 			Rotation:        core.GetAplRotation("../../../ui/death_knight/frost/apls", "masterfrost"),
+			Profession1:     proto.Profession_Engineering,
+			Profession2:     proto.Profession_Blacksmithing,
 
 			ItemFilter: ItemFilterMasterfrost,
 		},
@@ -49,6 +51,8 @@ func TestFrostTwoHand(t *testing.T) {
 			Consumables:     FullConsumesSpec,
 			SpecOptions:     core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsFrost},
 			Rotation:        core.GetAplRotation("../../../ui/death_knight/frost/apls", "obliterate"),
+			Profession1:     proto.Profession_Engineering,
+			Profession2:     proto.Profession_Alchemy,
 
 			ItemFilter: ItemFilterTwoHand,
 		},

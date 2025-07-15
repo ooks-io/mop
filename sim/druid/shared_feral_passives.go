@@ -17,35 +17,11 @@ func (druid *Druid) applyRendAndTear(aura core.Aura) core.Aura {
 		return aura
 	}
 
-	affectedSpells := []*DruidSpell{druid.Maul, druid.SwipeBear, druid.SwipeCat}
-
-	aura.ApplyOnGain(func(_ *core.Aura, _ *core.Simulation) {
-		if druid.BleedsActive == 0 {
-			if druid.FerociousBite != nil {
-				druid.FerociousBite.BonusCritPercent += RendAndTearBonusCritPercent
-			}
-
-			for _, spell := range affectedSpells {
-				if spell != nil {
-					spell.DamageMultiplier *= RendAndTearDamageMultiplier
-				}
-			}
-		}
-		druid.BleedsActive++
+	aura.ApplyOnGain(func(aura *core.Aura, _ *core.Simulation) {
+		druid.BleedsActive[aura.Unit]++
 	})
-	aura.ApplyOnExpire(func(_ *core.Aura, _ *core.Simulation) {
-		druid.BleedsActive--
-		if druid.BleedsActive == 0 {
-			if druid.FerociousBite != nil {
-				druid.FerociousBite.BonusCritPercent -= RendAndTearBonusCritPercent
-			}
-
-			for _, spell := range affectedSpells {
-				if spell != nil {
-					spell.DamageMultiplier /= RendAndTearDamageMultiplier
-				}
-			}
-		}
+	aura.ApplyOnExpire(func(aura *core.Aura, _ *core.Simulation) {
+		druid.BleedsActive[aura.Unit]--
 	})
 
 	return aura
@@ -54,7 +30,8 @@ func (druid *Druid) applyRendAndTear(aura core.Aura) core.Aura {
 func (druid *Druid) ApplyPrimalFury() {
 	actionID := core.ActionID{SpellID: 16961}
 	rageMetrics := druid.NewRageMetrics(actionID)
-	rageGen := 15.0 * core.TernaryFloat64((druid.Spec == proto.Spec_SpecGuardianDruid) && druid.Talents.SoulOfTheForest, 1.3, 1)
+	const autoRageGen = 15.0
+	mangleRageGen := autoRageGen * core.TernaryFloat64((druid.Spec == proto.Spec_SpecGuardianDruid) && druid.Talents.SoulOfTheForest, 1.3, 1)
 	cpMetrics := druid.NewComboPointMetrics(actionID)
 
 	druid.RegisterAura(core.Aura{
@@ -71,11 +48,13 @@ func (druid *Druid) ApplyPrimalFury() {
 			}
 
 			if druid.InForm(Bear) {
-				if (spell == druid.MHAutoSpell) || druid.MangleBear.IsEqual(spell) {
-					druid.AddRage(sim, rageGen, rageMetrics)
+				if spell == druid.MHAutoSpell {
+					druid.AddRage(sim, autoRageGen, rageMetrics)
+				} else if druid.MangleBear.IsEqual(spell) {
+					druid.AddRage(sim, mangleRageGen, rageMetrics)
 				}
 			} else if druid.InForm(Cat) {
-				if druid.MangleCat.IsEqual(spell) || druid.Shred.IsEqual(spell) || druid.Rake.IsEqual(spell) || druid.Ravage.IsEqual(spell) {
+				if spell.Matches(DruidSpellBuilder) {
 					druid.AddComboPoints(sim, 1, cpMetrics)
 				}
 			}

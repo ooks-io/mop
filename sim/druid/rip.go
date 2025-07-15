@@ -20,10 +20,11 @@ func (druid *Druid) registerRipSpell() {
 	comboPointCoeff := resourceCoefficient * druid.ClassSpellScaling // 319.664
 
 	druid.Rip = druid.RegisterSpell(Cat, core.SpellConfig{
-		ActionID:    core.ActionID{SpellID: 1079},
-		SpellSchool: core.SpellSchoolPhysical,
-		ProcMask:    core.ProcMaskMeleeMHSpecial,
-		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagAPL,
+		ActionID:       core.ActionID{SpellID: 1079},
+		SpellSchool:    core.SpellSchoolPhysical,
+		ProcMask:       core.ProcMaskMeleeMHSpecial,
+		Flags:          core.SpellFlagMeleeMetrics | core.SpellFlagAPL,
+		ClassSpellMask: DruidSpellRip,
 
 		EnergyCost: core.EnergyCostOptions{
 			Cost:   30,

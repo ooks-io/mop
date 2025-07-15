@@ -264,7 +264,7 @@ func GenerateTalentVariationsForRows(baseTalents string, baseGlyphs *proto.Glyph
 			log.Fatalf("Invalid row index: %d, must be between 0 and 5", row)
 		}
 
-		for choice := 0; choice < 3; choice++ {
+		for choice := 1; choice <= 3; choice++ {
 			if int(baseRunes[row]-'0') == choice {
 				continue
 			}
@@ -273,9 +273,8 @@ func GenerateTalentVariationsForRows(baseTalents string, baseGlyphs *proto.Glyph
 			copy(variation, baseRunes)
 			variation[row] = rune('0' + choice)
 
-			label := fmt.Sprintf("Row%d_Talent%d", row+1, choice)
 			combinations = append(combinations, TalentsCombo{
-				Label:   label,
+				Label:   fmt.Sprintf("Row%d_Talent%d", row+1, choice),
 				Talents: string(variation),
 				Glyphs:  baseGlyphs,
 			})

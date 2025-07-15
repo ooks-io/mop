@@ -1,5 +1,5 @@
 import * as PresetUtils from '../../core/preset_utils';
-import { ConsumesSpec, Glyphs, Profession, PseudoStat, Spec, Stat } from '../../core/proto/common';
+import { ConsumesSpec, Glyphs, Profession, PseudoStat, Race, Spec, Stat } from '../../core/proto/common';
 import {
 	DruidMajorGlyph,
 	DruidMinorGlyph,
@@ -29,10 +29,10 @@ import DefaultApl from './apls/default.apl.json';
 export const APL_ROTATION_DEFAULT = PresetUtils.makePresetAPLRotation('APL List View', DefaultApl);
 
 import { Stats } from '../../core/proto_utils/stats';
-import AoeApl from './apls/aoe.apl.json';
-export const APL_ROTATION_AOE = PresetUtils.makePresetAPLRotation('APL AoE', AoeApl);
-import TendonApl from './apls/tendon.apl.json';
-export const APL_ROTATION_TENDON = PresetUtils.makePresetAPLRotation('Tendon APL', TendonApl);
+//import AoeApl from './apls/aoe.apl.json';
+//export const APL_ROTATION_AOE = PresetUtils.makePresetAPLRotation('APL AoE', AoeApl);
+//import TendonApl from './apls/tendon.apl.json';
+//export const APL_ROTATION_TENDON = PresetUtils.makePresetAPLRotation('Tendon APL', TendonApl);
 
 // Preset options for EP weights
 export const BEARWEAVE_EP_PRESET = PresetUtils.makePresetEpWeights(
@@ -111,23 +111,10 @@ export const AOE_ROTATION_DEFAULT = PresetUtils.makePresetSimpleRotation('AoE De
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/mop-classic/talent-calc and copy the numbers in the url.
 export const StandardTalents = {
-	name: 'Mono-Cat',
+	name: 'Default',
 	data: SavedTalents.create({
 		talentsString: '',
 		glyphs: Glyphs.create({
-			major3: DruidMajorGlyph.GlyphOfRebirth,
-		}),
-	}),
-};
-
-export const HybridTalents = {
-	name: 'Hybrid',
-	data: SavedTalents.create({
-		talentsString: '',
-		glyphs: Glyphs.create({
-			major1: DruidMajorGlyph.GlyphOfFrenziedRegeneration,
-			major2: DruidMajorGlyph.GlyphOfMaul,
-			major3: DruidMajorGlyph.GlyphOfRebirth,
 		}),
 	}),
 };
@@ -137,20 +124,19 @@ export const DefaultOptions = FeralDruidOptions.create({
 });
 
 export const DefaultConsumables = ConsumesSpec.create({
-	flaskId: 58087, // Flask of the Winds
-	foodId: 62669, // Skewered Eel
-	potId: 58145, // Potion of the Tol'vir
-	prepotId: 58145, // Potion of the Tol'vir
-
-	explosiveId: 89637, // Big Daddy Explosive
+	flaskId: 76084, // Flask of Spring Blossoms
+	foodId: 74648, // Sea Mist Rice Noodles
+	potId: 76089, // Virmen's Bite
+	prepotId: 76089, // Virmen's Bite
 });
 
 export const OtherDefaults = {
-	distanceFromTarget: 25,
+	distanceFromTarget: 24,
 	highHpThreshold: 0.8,
 	iterationCount: 25000,
 	profession1: Profession.Engineering,
 	profession2: Profession.ProfessionUnknown,
+	race: Race.RaceWorgen,
 };
 
 //export const PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuild('Single Target Default', {
