@@ -120,7 +120,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFrostMage, {
 	presets: {
 		epWeights: [Presets.P1_EP_PRESET],
 		// Preset rotations that the user can quickly select.
-		rotations: [Presets.ROTATION_PRESET_DEFAULT, Presets.ROTATION_PRESET_AOE],
+		rotations: [Presets.ROTATION_PRESET_DEFAULT, Presets.ROTATION_PRESET_CLEAVE, Presets.ROTATION_PRESET_AOE],
 		// Preset talents that the user can quickly select.
 		talents: [Presets.FrostDefaultTalents],
 		// Preset gear configurations that the user can quickly select.
@@ -131,6 +131,8 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFrostMage, {
 		const numTargets = player.sim.encounter.targets.length;
 		if (numTargets > 3) {
 			return Presets.ROTATION_PRESET_AOE.rotation.rotation!;
+		} else if (numTargets > 1) {
+			return Presets.ROTATION_PRESET_CLEAVE.rotation.rotation!;
 		} else {
 			return Presets.ROTATION_PRESET_DEFAULT.rotation.rotation!;
 		}
