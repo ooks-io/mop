@@ -5,6 +5,7 @@ import { SavedTalents } from '../../core/proto/ui';
 import { Stats } from '../../core/proto_utils/stats';
 import FrostApl from './apls/frost.apl.json';
 import FrostAoeApl from './apls/frost_aoe.apl.json';
+import FrostCleaveApl from './apls/frost_cleave.apl.json';
 import P1BISGear from './gear_sets/p1_bis.gear.json';
 import P1PreBISPoorGear from './gear_sets/p1_prebis_poor.gear.json';
 import P1PreBISRichGear from './gear_sets/p1_prebis_rich.gear.json';
@@ -17,8 +18,9 @@ export const P1_PREBIS_POOR = PresetUtils.makePresetGear('P1 - Pre-BIS (Budget)'
 
 export const P1_BIS = PresetUtils.makePresetGear('P1 - BIS', P1BISGear);
 
-export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Frost', FrostApl);
+export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Frost ST', FrostApl);
 export const ROTATION_PRESET_AOE = PresetUtils.makePresetAPLRotation('Frost AOE', FrostAoeApl);
+export const ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Frost Cleave', FrostCleaveApl);
 
 // Preset options for EP weights
 export const P1_EP_PRESET = PresetUtils.makePresetEpWeights(

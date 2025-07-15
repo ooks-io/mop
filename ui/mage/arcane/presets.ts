@@ -3,6 +3,7 @@ import { ConsumesSpec, Glyphs, Profession, Stat } from '../../core/proto/common'
 import { ArcaneMage_Options as MageOptions, MageMajorGlyph as MajorGlyph, MageMinorGlyph } from '../../core/proto/mage';
 import { SavedTalents } from '../../core/proto/ui';
 import { Stats } from '../../core/proto_utils/stats';
+import ArcaneCleaveApl from './apls/arcane_cleave.apl.json';
 import ArcaneApl from './apls/default.apl.json';
 import P1ArcaneBisGear from './gear_sets/p1_bis.gear.json';
 import ArcanePreBisGear from './gear_sets/prebis.gear.json';
@@ -15,7 +16,8 @@ export const P1_BIS_PRESET = PresetUtils.makePresetGear('P1 Heroic Pre-BIS', Arc
 export const PREBIS_PRESET = PresetUtils.makePresetGear('P1 BIS', P1ArcaneBisGear);
 export const RICH_PREBIS_PRESET = PresetUtils.makePresetGear('P1 Rich Pre-BIS', ArcaneRichPreBisGear);
 
-export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Arcane', ArcaneApl);
+export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Arcane ST', ArcaneApl);
+export const ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Arcane Cleave', ArcaneCleaveApl);
 
 // Preset options for EP weights
 export const P1_EP_PRESET = PresetUtils.makePresetEpWeights(

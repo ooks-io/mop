@@ -2448,8 +2448,8 @@ dps_results: {
 dps_results: {
  key: "TestFire-Settings-Troll-p1_bis-Row6_Talent1-Fire-fire-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 127965.60426
-  tps: 126016.54152
+  dps: 127929.79528
+  tps: 125978.40962
  }
 }
 dps_results: {
@@ -2658,8 +2658,8 @@ dps_results: {
 dps_results: {
  key: "TestFire-Settings-Troll-p1_prebis-Row6_Talent1-Fire-fire-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 82291.35795
-  tps: 81076.57425
+  dps: 82109.71536
+  tps: 80890.94511
  }
 }
 dps_results: {
@@ -2700,8 +2700,8 @@ dps_results: {
 dps_results: {
  key: "TestFire-Settings-Troll-p1_prebis-Row6_Talent3-Fire-fire-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 72284.42238
-  tps: 70270.84645
+  dps: 72345.98958
+  tps: 70340.64126
  }
 }
 dps_results: {
@@ -2721,8 +2721,8 @@ dps_results: {
 dps_results: {
  key: "TestFire-Settings-Troll-p1_prebis-Row6_Talent3-Fire-fire-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 47967.73549
-  tps: 47364.04975
+  dps: 47980.29127
+  tps: 47380.33988
  }
 }
 dps_results: {
@@ -2868,8 +2868,8 @@ dps_results: {
 dps_results: {
  key: "TestFire-Settings-Worgen-p1_bis-Row6_Talent1-Fire-fire-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 128799.73562
-  tps: 126936.32614
+  dps: 129014.36857
+  tps: 127137.98879
  }
 }
 dps_results: {
@@ -3092,8 +3092,8 @@ dps_results: {
 dps_results: {
  key: "TestFire-Settings-Worgen-p1_prebis-Row6_Talent1-Fire-fire-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 86233.30261
-  tps: 113879.59877
+  dps: 86230.65589
+  tps: 113954.11251
  }
 }
 dps_results: {
@@ -3134,15 +3134,15 @@ dps_results: {
 dps_results: {
  key: "TestFire-Settings-Worgen-p1_prebis-Row6_Talent3-Fire-fire-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 75087.42413
-  tps: 88774.99472
+  dps: 75137.23837
+  tps: 89065.05483
  }
 }
 dps_results: {
  key: "TestFire-Settings-Worgen-p1_prebis-Row6_Talent3-Fire-fire-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 47245.17975
-  tps: 46611.48525
+  dps: 47249.77921
+  tps: 46628.4085
  }
 }
 dps_results: {

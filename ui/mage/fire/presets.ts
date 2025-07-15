@@ -4,7 +4,7 @@ import { FireMage_Options as MageOptions, FireMage_Rotation, MageMajorGlyph as M
 import { SavedTalents } from '../../core/proto/ui';
 import { Stats, UnitStat, UnitStatPresets } from '../../core/proto_utils/stats';
 import FireApl from './apls/fire.apl.json';
-//import FireAoeApl from './apls/fire_aoe.apl.json';
+import FireCleaveApl from './apls/fire_cleave.apl.json';
 import P1FireBisGear from './gear_sets/p1_bis.gear.json';
 import P1FirePrebisGear from './gear_sets/p1_prebis.gear.json';
 
@@ -31,7 +31,9 @@ export const PREBIS_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS', P1FirePr
 // export const P1_SIMPLE_ROTATION_NO_TROLL = PresetUtils.makePresetSimpleRotation('P1 - Not Troll', Spec.SpecFireMage, P1NoTrollDefaultSimpleRotation);
 
 //export const ROTATION_PRESET_SIMPLE = PresetUtils.makePresetSimpleRotation('Simple Default', Spec.SpecFireMage, DefaultSimpleRotation);
-export const FIRE_ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('APL', FireApl);
+export const FIRE_ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Fire ST', FireApl);
+
+export const FIRE_ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Fire Cleave', FireCleaveApl);
 
 // Preset options for EP weights
 export const DEFAULT_EP_PRESET = PresetUtils.makePresetEpWeights(
@@ -55,10 +57,9 @@ export const FireTalents = {
 		glyphs: Glyphs.create({
 			major1: MajorGlyph.GlyphOfCombustion,
 			major2: MajorGlyph.GlyphOfInfernoBlast,
-			major3: MajorGlyph.GlyphOfManaGem,
+			major3: MajorGlyph.GlyphOfRapidDisplacement,
 			minor1: MinorGlyph.GlyphOfMomentum,
-			minor2: MinorGlyph.GlyphOfMirrorImage,
-			minor3: MinorGlyph.GlyphOfTheUnboundElemental
+			minor2: MinorGlyph.GlyphOfLooseMana,
 		}),
 	}),
 };
