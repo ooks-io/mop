@@ -160,7 +160,7 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 	ripDot := cat.Rip.CurDot()
 	ripDur := ripDot.RemainingDuration(sim)
 	ripRefreshTime := cat.calcBleedRefreshTime(sim, cat.Rip, ripDot, isExecutePhase, true)
-	ripNow := (curCp >= 5) && (!ripDot.IsActive() || ((sim.CurrentTime > ripRefreshTime) && (!isExecutePhase || (cat.Rip.NewSnapshotPower > cat.Rip.CurrentSnapshotPower - 0.001)))) && (fightDur > ripDot.BaseTickLength) && (!isClearcast || !anyBleedActive) && !cat.shouldDelayBleedRefreshForTf(sim, ripDot, true)
+	ripNow := (curCp >= 5) && (!ripDot.IsActive() || ((sim.CurrentTime > ripRefreshTime) && (!isExecutePhase || (cat.Rip.NewSnapshotPower > cat.Rip.CurrentSnapshotPower + 0.001)))) && (fightDur > ripDot.BaseTickLength) && (!isClearcast || !anyBleedActive) && !cat.shouldDelayBleedRefreshForTf(sim, ripDot, true)
 
 	// Roar logic
 	roarBuff := cat.SavageRoarBuff
