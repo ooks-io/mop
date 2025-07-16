@@ -171,7 +171,7 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 
 	// Bite logic
 	biteTime := core.TernaryDuration(cat.BerserkCatAura.IsActive(), rotation.BerserkBiteTime, rotation.BiteTime)
-	shouldBite := (curCp >= 5) && ripDot.IsActive() && roarBuff.IsActive() && (rotation.UseBite || isExecutePhase) && (min(ripDur, roarDur) >= biteTime) && !isClearcast
+	shouldBite := (curCp >= 5) && ripDot.IsActive() && roarBuff.IsActive() && ((rotation.UseBite && (min(ripDur, roarDur) >= biteTime)) || isExecutePhase) && !isClearcast
 	shouldEmergencyBite := isExecutePhase && ripDot.IsActive() && (ripDur < ripDot.BaseTickLength) && (curCp >= 1)
 	biteNow := shouldBite || shouldEmergencyBite
 
