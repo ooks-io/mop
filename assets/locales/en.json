@@ -109,9 +109,9 @@
 			"stamina": "Stamina",
 			"intellect": "Intellect",
 			"spirit": "Spirit",
-			"spell_hit": "Spell Hit",
-			"spell_crit": "Spell Crit",
-			"spell_haste": "Spell Haste",
+			"hit": "Hit",
+			"crit": "Crit",
+			"haste": "Haste",
 			"expertise": "Expertise",
 			"dodge": "Dodge",
 			"parry": "Parry",
@@ -133,10 +133,13 @@
 			"melee_speed_multiplier": "Melee Speed Multiplier",
 			"ranged_speed_multiplier": "Ranged Speed Multiplier",
 			"cast_speed_multiplier": "Cast Speed Multiplier",
-			"melee_haste": "Melee Haste",
-			"ranged_haste": "Ranged Haste",
+			"spell_hit": "Spell Hit",
+			"spell_crit": "Spell Crit",
+			"spell_haste": "Spell Haste",
 			"melee_hit": "Melee Hit",
-			"melee_crit": "Melee Crit"
+			"melee_crit": "Melee Crit",
+			"melee_haste": "Melee Haste",
+			"ranged_haste": "Ranged Haste"
 		}
 	},
 	"sim": {

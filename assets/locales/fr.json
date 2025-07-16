@@ -109,9 +109,9 @@
 			"stamina": "Endurance",
 			"intellect": "Intelligence",
 			"spirit": "Esprit",
-			"spell_hit": "Toucher des sorts",
-			"spell_crit": "Critique des sorts",
-			"spell_haste": "Hâte des sorts",
+			"hit": "Toucher",
+			"crit": "Critique",
+			"haste": "Hâte",
 			"expertise": "Expertise",
 			"dodge": "Esquive",
 			"parry": "Parade",
@@ -133,10 +133,13 @@
 			"melee_speed_multiplier": "Multiplicateur de vitesse de mêlée",
 			"ranged_speed_multiplier": "Multiplicateur de vitesse à distance",
 			"cast_speed_multiplier": "Multiplicateur de vitesse d'incantation",
-			"melee_haste": "Hâte de mêlée",
-			"ranged_haste": "Hâte à distance",
+			"spell_hit": "Toucher des sorts",
+			"spell_crit": "Critique des sorts",
+			"spell_haste": "Hâte des sorts",
 			"melee_hit": "Toucher de mêlée",
-			"melee_crit": "Critique de mêlée"
+			"melee_crit": "Critique de mêlée",
+			"melee_haste": "Hâte de mêlée",
+			"ranged_haste": "Hâte à distance"
 		}
 	},
 	"sim": {
