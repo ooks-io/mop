@@ -33,9 +33,9 @@ func (cat *FeralDruid) newActionCatOptimalRotationAction(config *proto.APLAction
 		rotation.RipLeeway = core.DurationFromSeconds(config.RipLeeway)
 	} else {
 		rotation.UseBite = true
-		rotation.BiteTime = time.Second * 16
-		rotation.BerserkBiteTime = time.Second * 6
-		rotation.MinRoarOffset = time.Second * 31
+		rotation.BiteTime = time.Second * 13
+		rotation.BerserkBiteTime = time.Second * 2
+		rotation.MinRoarOffset = time.Second * 37
 		rotation.RipLeeway = time.Second * 6
 	}
 
@@ -171,7 +171,7 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 
 	// Bite logic
 	biteTime := core.TernaryDuration(cat.BerserkCatAura.IsActive(), rotation.BerserkBiteTime, rotation.BiteTime)
-	shouldBite := (curCp >= 5) && ripDot.IsActive() && roarBuff.IsActive() && ((rotation.UseBite && (min(ripDur, roarDur) >= biteTime)) || isExecutePhase) && !isClearcast
+	shouldBite := (curCp >= 5) && ripDot.IsActive() && roarBuff.IsActive() && ((rotation.UseBite && (min(ripRefreshTime, roarRefreshTime) - sim.CurrentTime >= biteTime)) || isExecutePhase) && !isClearcast
 	shouldEmergencyBite := isExecutePhase && ripDot.IsActive() && (ripDur < ripDot.BaseTickLength) && (curCp >= 1)
 	biteNow := shouldBite || shouldEmergencyBite
 
