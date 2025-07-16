@@ -122,16 +122,18 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFrostMage, {
 		// Preset rotations that the user can quickly select.
 		rotations: [Presets.ROTATION_PRESET_DEFAULT, Presets.ROTATION_PRESET_CLEAVE, Presets.ROTATION_PRESET_AOE],
 		// Preset talents that the user can quickly select.
-		talents: [Presets.FrostDefaultTalents],
+		talents: [Presets.FrostDefaultTalents, Presets.FrostTalentsCleave, Presets.FrostTalentsAoE],
 		// Preset gear configurations that the user can quickly select.
 		gear: [Presets.P1_PREBIS_RICH, Presets.P1_PREBIS_POOR, Presets.P1_BIS],
+
+		builds: [Presets.P1_PRESET_BUILD_DEFAULT, Presets.P1_PRESET_BUILD_CLEAVE, Presets.P1_PRESET_BUILD_AOE],
 	},
 
 	autoRotation: (player: Player<Spec.SpecFrostMage>): APLRotation => {
 		const numTargets = player.sim.encounter.targets.length;
-		if (numTargets > 3) {
+		if (numTargets >= 5) {
 			return Presets.ROTATION_PRESET_AOE.rotation.rotation!;
-		} else if (numTargets > 1) {
+		} else if (numTargets >= 2) {
 			return Presets.ROTATION_PRESET_CLEAVE.rotation.rotation!;
 		} else {
 			return Presets.ROTATION_PRESET_DEFAULT.rotation.rotation!;
