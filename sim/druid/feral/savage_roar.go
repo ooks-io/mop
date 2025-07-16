@@ -87,8 +87,8 @@ func (cat *FeralDruid) registerSavageRoarSpell() {
 			NumberOfTicks: 4, // Placeholder, update on each cast
 			TickLength:    time.Second * 3,
 
-			OnTick: func(_ *core.Simulation, _ *core.Unit, _ *core.Dot) {
-				return
+			OnTick: func(sim *core.Simulation, _ *core.Unit, dot *core.Dot) {
+				dot.Spell.CalcAndDealPeriodicHealing(sim, &cat.Unit, 0, dot.OutcomeTick)
 			},
 		},
 
