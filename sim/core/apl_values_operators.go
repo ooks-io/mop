@@ -394,6 +394,21 @@ func (rot *APLRotation) newValueMath(config *proto.APLValueMath, uuid *proto.UUI
 		return nil
 	}
 
+	// Disallow duration * duration
+	if config.Op == proto.APLValueMath_OpMul &&
+		lhs.Type() == proto.APLValueType_ValueTypeDuration &&
+		rhs.Type() == proto.APLValueType_ValueTypeDuration {
+		rot.ValidationMessageByUUID(uuid, proto.LogLevel_Warning, "Duration * Duration is not allowed!")
+		return nil
+	}
+	// Disallow int/float divided by duration
+	if config.Op == proto.APLValueMath_OpDiv &&
+		(lhs.Type() == proto.APLValueType_ValueTypeInt || lhs.Type() == proto.APLValueType_ValueTypeFloat) &&
+		rhs.Type() == proto.APLValueType_ValueTypeDuration {
+		rot.ValidationMessageByUUID(uuid, proto.LogLevel_Warning, "Cannot divide int or float by duration!")
+		return nil
+	}
+
 	return &APLValueMath{
 		op:  config.Op,
 		lhs: lhs,
@@ -403,8 +418,32 @@ func (rot *APLRotation) newValueMath(config *proto.APLValueMath, uuid *proto.UUI
 func (value *APLValueMath) GetInnerValues() []APLValue {
 	return []APLValue{value.lhs, value.rhs}
 }
+
+// MUL: int * duration => duration, float * duration => duration, int * float => float
+// DIV: duration / int => duration, duration / float => duration, duration / duration => float
+// ADD & SUB: are always the same type as the LHS, so we can just return that type.
 func (value *APLValueMath) Type() proto.APLValueType {
-	return value.lhs.Type()
+	lhsType := value.lhs.Type()
+
+	if (value.op != proto.APLValueMath_OpMul) && (value.op != proto.APLValueMath_OpDiv) {
+		return lhsType
+	}
+
+	rhsType := value.rhs.Type()
+
+	if (value.op == proto.APLValueMath_OpMul) && ((lhsType == proto.APLValueType_ValueTypeDuration) || (rhsType == proto.APLValueType_ValueTypeDuration)) {
+		return proto.APLValueType_ValueTypeDuration
+	}
+
+	if (value.op == proto.APLValueMath_OpDiv) && (lhsType == proto.APLValueType_ValueTypeDuration) && (rhsType == proto.APLValueType_ValueTypeDuration) {
+		return proto.APLValueType_ValueTypeFloat
+	}
+
+	if (lhsType == proto.APLValueType_ValueTypeFloat) || (rhsType == proto.APLValueType_ValueTypeFloat) {
+		return proto.APLValueType_ValueTypeFloat
+	}
+
+	return lhsType
 }
 func (value *APLValueMath) GetInt(sim *Simulation) int32 {
 	switch value.op {
@@ -428,6 +467,13 @@ func (value *APLValueMath) GetFloat(sim *Simulation) float64 {
 	case proto.APLValueMath_OpMul:
 		return value.lhs.GetFloat(sim) * value.rhs.GetFloat(sim)
 	case proto.APLValueMath_OpDiv:
+		if value.lhs.Type() == proto.APLValueType_ValueTypeDuration && value.rhs.Type() == proto.APLValueType_ValueTypeDuration {
+			divisor := value.rhs.GetDuration(sim).Seconds()
+			if divisor == 0 {
+				panic("Division by zero in duration / duration")
+			}
+			return value.lhs.GetDuration(sim).Seconds() / divisor
+		}
 		return value.lhs.GetFloat(sim) / value.rhs.GetFloat(sim)
 	}
 	return 0
@@ -439,31 +485,43 @@ func (value *APLValueMath) GetDuration(sim *Simulation) time.Duration {
 	case proto.APLValueMath_OpSub:
 		return value.lhs.GetDuration(sim) - value.rhs.GetDuration(sim)
 	case proto.APLValueMath_OpMul:
-		left := value.lhs.GetDuration(sim)
-		right := value.rhs.GetDuration(sim)
-
-		switch value.lhs.Type() {
-		case proto.APLValueType_ValueTypeInt:
-			left = time.Duration(value.lhs.GetInt(sim))
-		case proto.APLValueType_ValueTypeFloat:
-			left = time.Duration(value.lhs.GetFloat(sim))
+		if value.lhs.Type() == proto.APLValueType_ValueTypeDuration {
+			left := value.lhs.GetDuration(sim)
+			switch value.rhs.Type() {
+			case proto.APLValueType_ValueTypeInt:
+				return left * time.Duration(value.rhs.GetInt(sim))
+			case proto.APLValueType_ValueTypeFloat:
+				return time.Duration(float64(left) * value.rhs.GetFloat(sim))
+			default:
+				panic("Invalid rhs type for duration multiplication")
+			}
+		} else if value.rhs.Type() == proto.APLValueType_ValueTypeDuration {
+			right := value.rhs.GetDuration(sim)
+			switch value.lhs.Type() {
+			case proto.APLValueType_ValueTypeInt:
+				return right * time.Duration(value.lhs.GetInt(sim))
+			case proto.APLValueType_ValueTypeFloat:
+				return time.Duration(float64(right) * value.lhs.GetFloat(sim))
+			default:
+				panic("Invalid lhs type for duration multiplication")
+			}
 		}
-
-		switch value.rhs.Type() {
-		case proto.APLValueType_ValueTypeInt:
-			right = time.Duration(value.rhs.GetInt(sim))
-		case proto.APLValueType_ValueTypeFloat:
-			right = time.Duration(value.rhs.GetFloat(sim))
-		}
-		return left * right
+		panic("Invalid types for duration multiplication")
 	case proto.APLValueMath_OpDiv:
-		divider := value.rhs.GetDuration(sim)
-		if value.rhs.Type() == proto.APLValueType_ValueTypeFloat {
-			divider = time.Duration(value.rhs.GetFloat(sim))
-		} else if value.rhs.Type() == proto.APLValueType_ValueTypeInt {
-			divider = time.Duration(value.rhs.GetInt(sim))
+		if value.rhs.Type() == proto.APLValueType_ValueTypeInt {
+			divisor := value.rhs.GetInt(sim)
+			if divisor == 0 {
+				panic("Division by zero in duration / int")
+			}
+			return value.lhs.GetDuration(sim) / time.Duration(divisor)
+		} else if value.rhs.Type() == proto.APLValueType_ValueTypeFloat {
+			divisor := value.rhs.GetFloat(sim)
+			if divisor == 0 {
+				panic("Division by zero in duration / float")
+			}
+			return time.Duration(float64(value.lhs.GetDuration(sim)) / divisor)
 		}
-		return value.lhs.GetDuration(sim) / divider
+		panic("Invalid rhs type for duration division")
 	}
 	return 0
 }
