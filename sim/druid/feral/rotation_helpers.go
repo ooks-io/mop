@@ -182,12 +182,12 @@ func (cat *FeralDruid) calcRoarRefreshTime(sim *core.Simulation, ripLeeway time.
 	}
 
 	// If we're not proactively offsetting the Roar, then use the standard 1
-	// tick refresh window.
+	// tick refresh window, unless there is a Rip conflict.
 	roarEnd := roarBuff.ExpiresAt()
 	standardRefreshTime := roarEnd - roarBuff.BaseTickLength
 
-	if !ripDot.IsActive() {
-		return standardRefreshTime
+	if !ripDot.IsActive() || (ripDot.ExpiresAt() < roarEnd + cat.ReactionTime) {
+		return roarEnd
 	}
 
 	// Project Rip end time assuming full Bloodletting extensions
