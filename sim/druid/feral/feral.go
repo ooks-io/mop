@@ -34,11 +34,6 @@ func NewFeralDruid(character *core.Character, options *proto.Player) *FeralDruid
 		Druid: druid.New(character, druid.Cat, selfBuffs, options.TalentsString),
 	}
 
-	// cat.SelfBuffs.InnervateTarget = &proto.UnitReference{}
-	// if feralOptions.Options.ClassOptions.InnervateTarget != nil {
-	// 	cat.SelfBuffs.InnervateTarget = feralOptions.Options.ClassOptions.InnervateTarget
-	// }
-
 	cat.AssumeBleedActive = feralOptions.Options.AssumeBleedActive
 	cat.CannotShredTarget = feralOptions.Options.CannotShredTarget
 
@@ -121,8 +116,8 @@ func (cat *FeralDruid) Initialize() {
 		}
 	}
 
-	// cat.TigersFuryAura.ApplyOnGain(snapshotHandler)
-	// cat.TigersFuryAura.ApplyOnExpire(snapshotHandler)
+	cat.TigersFuryAura.ApplyOnGain(snapshotHandler)
+	cat.TigersFuryAura.ApplyOnExpire(snapshotHandler)
 	cat.AddOnTemporaryStatsChange(func(sim *core.Simulation, buffAura *core.Aura, _ stats.Stats) {
 		snapshotHandler(buffAura, sim)
 	})
