@@ -130,7 +130,8 @@ func (cat *FeralDruid) calcBleedRefreshTime(sim *core.Simulation, bleedSpell *dr
 		expectedDamageGain += bleedSpell.NewSnapshotPower
 	}
 
-	energyEquivalent := expectedDamageGain / cat.Shred.ExpectedInitialDamage(sim, cat.CurrentTarget) * cat.Shred.DefaultCast.Cost
+	shredDpc := cat.Shred.ExpectedInitialDamage(sim, cat.CurrentTarget)
+	energyEquivalent := expectedDamageGain / shredDpc * cat.Shred.DefaultCast.Cost
 
 	// Finally, discount the effective Energy cost of the clip based on the number of clipped ticks.
 	discountedRefreshCost := core.TernaryFloat64(isRip, float64(numClippedTicks) / float64(maxTickCount), 1.0) * bleedSpell.DefaultCast.Cost
@@ -139,7 +140,11 @@ func (cat *FeralDruid) calcBleedRefreshTime(sim *core.Simulation, bleedSpell *dr
 		cat.Log(sim, "%s buff snapshot is worth %.1f Energy, discounted refresh cost is %.1f Energy.", bleedSpell.ShortName, energyEquivalent, discountedRefreshCost)
 	}
 
-	return core.TernaryDuration(energyEquivalent > discountedRefreshCost, targetClipTime, standardRefreshTime)
+	if cat.BerserkCatAura.IsActive() && (cat.BerserkCatAura.ExpiresAt() > targetClipTime + cat.ReactionTime) {
+		return core.TernaryDuration(expectedDamageGain > shredDpc, targetClipTime, standardRefreshTime)
+	} else {
+		return core.TernaryDuration(energyEquivalent > discountedRefreshCost, targetClipTime, standardRefreshTime)
+	}
 }
 
 // Determine whether Tiger's Fury will be usable soon enough for the snapshot to
