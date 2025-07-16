@@ -2,6 +2,7 @@ import { CHARACTER_LEVEL } from '../../../constants/mechanics';
 import { IndividualSimUI } from '../../../individual_sim_ui';
 import { ItemSlot, Spec } from '../../../proto/common';
 import { raceNames } from '../../../proto_utils/names';
+import { WOWHEAD_EXPANSION_ENV } from '../../../wowhead';
 import { IndividualWowheadGearPlannerImporter } from '../importers';
 import { IndividualExporter } from './individual_exporter';
 
@@ -32,140 +33,82 @@ function writeBits(value: number): number[] {
 }
 
 function writeTalents(talentStr: string): number[] {
-	const bits: number[] = [];
-	const trees = talentStr.split('-');
-
-	for (let a = 0; a < 3; a++) {
-		const tree = trees[a] || '';
-		bits.push(...writeBits(tree.length));
-
-		let l = 0;
-		while (l < tree.length) {
-			let chunk = 0;
-			let s = 0;
-			while (s < 7 && l < tree.length) {
-				const digit = parseInt(tree[l], 10);
-				chunk = (chunk << 3) | digit;
-				l++;
-				s++;
-			}
-			bits.push(...writeBits(chunk));
-		}
-	}
-
-	return bits;
+	let t = 0;
+	for (let n = talentStr.length - 1; n >= 0; n--) (t <<= 2), (t |= 3 & Math.min(4, parseInt(talentStr.substring(n, n + 1))));
+	return writeBits(t);
 }
 
 // Function to write glyphs (reverse of parseGlyphs)
 function writeGlyphs(glyphIds: number[]): string {
-	const base32 = '0123456789abcdefghjkmnpqrstvwxyz'; // Base32 character set
-	let glyphStr = '0'; // insert random 0
-
-	for (let i = 0; i < glyphIds.length; i++) {
-		const spellId = glyphIds[i];
-		if (spellId) {
-			const glyphSlotChar = base32[i];
-			const c1 = (spellId >> 15) & 31;
-			const c2 = (spellId >> 10) & 31;
-			const c3 = (spellId >> 5) & 31;
-			const c4 = spellId & 31;
-
-			if (c1 < 0 || c2 < 0 || c3 < 0 || c4 < 0) {
-				continue; // Invalid spell ID
-			}
-
-			glyphStr += glyphSlotChar + base32[c1] + base32[c2] + base32[c3] + base32[c4];
-		}
+	const e = [0];
+	Object.keys(glyphIds)
+		.sort((e, t) => Number(e) - Number(t))
+		.forEach(t => {
+			const glyphId = glyphIds[Number(t)];
+			if (!glyphId) return;
+			e.push(...writeBits(parseInt(t)));
+			e.push(...writeBits(glyphId));
+		});
+	let glyphStr = '';
+	for (let s = 0; s < e.length; s++) {
+		glyphStr += c.charAt(e[s]);
 	}
-
 	return glyphStr;
 }
 
 // Function to write the hash (reverse of readHash)
-function writeHash(data: any): string {
+function writeHash(data: WowheadGearPlannerData): string {
 	let hash = '';
 
 	// Initialize bits array
-	const bits: number[] = [];
+	const bits: number[] = [4];
 
-	// Starting character (B for gear planner)
-	const idx = 1; // Assuming idx is 1 for gear planner
+	// Write the expansion environment ID
+	bits.push(...writeBits(WOWHEAD_EXPANSION_ENV));
 
-	// Include idx in the hash (as first character)
-	hash += c[idx];
-
-	// Gender (assuming genderId is 0 or 1)
-	bits.push(0);
+	// Gender (assuming genderId is 1 or 2)
+	bits.push(1);
 
 	// Level
 	bits.push(...writeBits(data.level ?? 0));
 
+	// Spec Index
+	bits.push(data.specIndex ?? 0);
+
 	// Talents
-	const talentBits = writeTalents(data.talents.join('-'));
+	const talentBits = writeTalents(data.talents);
 	bits.push(...talentBits);
 
 	// Glyphs
-	const glyphStr = writeGlyphs(data.glyphs ?? []);
-	const glyphBytes = glyphStr.split('').map(ch => c.indexOf(ch));
-	bits.push(...writeBits(glyphBytes.length));
-	bits.push(...glyphBytes);
+	const glyphStr = [writeGlyphs(data.glyphs ?? [])];
+	bits.push(...writeBits(glyphStr.length));
+	glyphStr.forEach(e => {
+		bits.push(...writeBits(e.length));
+		bits.push(...e.split('').map(e => c.indexOf(e)));
+	});
 
 	// Items
 	const items = data.items ?? [];
 	bits.push(...writeBits(items.length));
-
-	for (const item of items) {
-		let e = 0;
-		const itemBits: number[] = [];
-
-		// Encode flags into e
-		if (item.randomEnchantId) e |= 1 << 6;
-		if (item.reforge) e |= 1 << 5;
-		const gemCount = Math.min((item.gemItemIds ?? []).length, 7);
-		e |= gemCount << 2;
-		const enchantCount = Math.min((item.enchantIds ?? []).length, 3);
-		e |= enchantCount;
-
-		// Item slot and ID
-		itemBits.push(...writeBits(item.slotId ?? 0));
-		itemBits.push(...writeBits(item.itemId ?? 0));
-
-		// Random Enchant ID
-		if (item.randomEnchantId) {
-			let enchant = item.randomEnchantId;
-			const negative = enchant < 0 ? 1 : 0;
-			if (negative) enchant *= -1;
-			enchant = (enchant << 1) | negative;
-			itemBits.push(...writeBits(enchant));
+	items.forEach(e => {
+		let t = 0;
+		const n = [];
+		if ((n.push(...writeBits(e.slotId ?? 0)), n.push(...writeBits(e.itemId ?? 0)), (t <<= 1), e.randomEnchantId)) {
+			t |= 1;
+			let s = e.randomEnchantId;
+			const r = s < 0 ? 1 : 0;
+			r && (s *= -1), (s <<= 1), (s |= r), n.push(...writeBits(s));
 		}
-
-		// Reforge
-		if (item.reforge) {
-			itemBits.push(...writeBits(item.reforge));
-		}
-
-		// Gems
-		const gems = item.gemItemIds ?? [];
-		for (let i = 0; i < gemCount; i++) {
-			itemBits.push(...writeBits(gems[i]));
-		}
-
-		// Enchants
-		const enchants = item.enchantIds ?? [];
-		for (let i = 0; i < enchantCount; i++) {
-			itemBits.push(...writeBits(enchants[i]));
-		}
-
-		// e is the item flags; add it at the start of itemBits
-		bits.push(...writeBits(e));
-		bits.push(...itemBits);
-	}
+		(t <<= 1), e.upgradeRank && ((t |= 1), n.push(...writeBits(e.upgradeRank))), (t <<= 1), e.reforge && ((t |= 1), n.push(...writeBits(e.reforge)));
+		const r: number[] = removeTrailingZeros((e.gemItemIds ?? []).slice(0, 8));
+		(t <<= 3), (t |= r.length), r.forEach(e => n.push(...writeBits(e)));
+		const l: number[] = removeTrailingZeros((e.enchantIds ?? []).slice(0, 4));
+		(t <<= 2), (t |= l.length), l.forEach(e => n.push(...writeBits(e))), bits.push(...writeBits(t)), bits.push(...n);
+	});
 
 	// Encode bits into characters
 	let hashData = '';
-	for (const bit of bits) {
-		hashData += c.charAt(bit);
-	}
+	for (let e = 0; e < bits.length; e++) hashData += c.charAt(bits[e]);
 
 	// Append the hash data to the URL
 	if (hashData) {
@@ -175,12 +118,20 @@ function writeHash(data: any): string {
 	return hash;
 }
 
+function removeTrailingZeros(arr: number[]): number[] {
+	while (arr.length > 0 && arr[arr.length - 1] === 0) {
+		arr.pop();
+	}
+	return arr;
+}
+
 export interface WowheadGearPlannerData {
 	class?: string;
 	race?: string;
 	genderId?: number;
+	specIndex?: number;
 	level: number;
-	talents: string[];
+	talents: string;
 	glyphs: number[];
 	items: WowheadItemData[];
 }
@@ -190,6 +141,7 @@ export interface WowheadItemData {
 	itemId: number;
 	randomEnchantId?: number;
 	reforge?: number;
+	upgradeRank?: number;
 	gemItemIds?: number[];
 	enchantIds?: number[];
 }
@@ -203,13 +155,20 @@ export function createWowheadGearPlannerLink(data: WowheadGearPlannerData): stri
 export class IndividualWowheadGearPlannerExporter<SpecType extends Spec> extends IndividualExporter<SpecType> {
 	constructor(parent: HTMLElement, simUI: IndividualSimUI<SpecType>) {
 		super(parent, simUI, { title: 'Wowhead Export', allowDownload: true });
+		this.getData();
 	}
 
 	getData(): string {
 		const player = this.simUI.player;
 
+		const converWowheadRace = (raceName: string): string => {
+			const alliancePrefix = raceName.endsWith('(A)') ? 'alliance-' : undefined;
+			const hordePrefix = raceName.endsWith('(H)') ? 'horde-' : undefined;
+			return (alliancePrefix ?? hordePrefix ?? '') + raceName.replaceAll(' (A)', '').replaceAll(' (H)', '').replaceAll(/\s/g, '-').toLowerCase();
+		};
+
 		const classStr = player.getPlayerClass().friendlyName.replaceAll(/\s/g, '-').toLowerCase();
-		const raceStr = raceNames.get(player.getRace())!.replaceAll(/\s/g, '-').toLowerCase();
+		const raceStr = converWowheadRace(raceNames.get(player.getRace())!);
 		const url = `https://www.wowhead.com/mop-classic/gear-planner/${classStr}/${raceStr}/`;
 
 		const addGlyph = (glyphItemId: number): number => {
@@ -222,9 +181,10 @@ export class IndividualWowheadGearPlannerExporter<SpecType extends Spec> extends
 
 		const glyphs = player.getGlyphs();
 
-		const data = {
+		const data: WowheadGearPlannerData = {
 			level: CHARACTER_LEVEL,
-			talents: player.getTalentsString().split('-'),
+			specIndex: player.getPlayerSpec().specIndex,
+			talents: player.getTalentsString(),
 			glyphs: [
 				addGlyph(glyphs.major1),
 				addGlyph(glyphs.major2),
@@ -234,7 +194,7 @@ export class IndividualWowheadGearPlannerExporter<SpecType extends Spec> extends
 				addGlyph(glyphs.minor3),
 			],
 			items: [],
-		} as WowheadGearPlannerData;
+		};
 
 		const gear = player.getGear();
 
@@ -254,8 +214,12 @@ export class IndividualWowheadGearPlannerExporter<SpecType extends Spec> extends
 				if (item._randomSuffix?.id) {
 					itemData.randomEnchantId = item._randomSuffix.id;
 				}
-				if (item._enchant) {
-					itemData.enchantIds = [item._enchant.spellId];
+				itemData.enchantIds = [];
+				if (item._enchant?.spellId) {
+					itemData.enchantIds.push(item._enchant.spellId);
+				}
+				if (item._tinker?.spellId) {
+					itemData.enchantIds.push(item._tinker.spellId);
 				}
 
 				if (ItemSlot.ItemSlotHands == itemSlot) {
@@ -269,6 +233,9 @@ export class IndividualWowheadGearPlannerExporter<SpecType extends Spec> extends
 				}
 				if (item._reforge) {
 					itemData.reforge = item._reforge.id;
+				}
+				if (item._upgrade > 0) {
+					itemData.upgradeRank = item._upgrade;
 				}
 				data.items.push(itemData);
 			});

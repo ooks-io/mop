@@ -232,8 +232,8 @@ func main() {
 	database.GenerateMissingEffectsFile()
 	database.GenerateItemEffectRandomPropPoints(instance, db)
 
-	for _, key := range slices.SortedFunc(maps.Keys(db.Enchants), func(l database.EnchantDBKey, r database.EnchantDBKey) int {
-		return int(l.EffectID) - int(r.EffectID)
+	for _, key := range slices.SortedFunc(maps.Keys(db.Enchants), func(l int32, r int32) int {
+		return int(l) - int(r)
 	}) {
 		enchant := db.Enchants[key]
 		if enchant.ItemId != 0 {
@@ -625,7 +625,7 @@ func ApplyGlobalFilters(db *database.WowDatabase) {
 		return icon.Name != "" && icon.Icon != "" && icon.Id != 0
 	})
 
-	db.Enchants = core.FilterMap(db.Enchants, func(_ database.EnchantDBKey, enchant *proto.UIEnchant) bool {
+	db.Enchants = core.FilterMap(db.Enchants, func(_ int32, enchant *proto.UIEnchant) bool {
 		// MoP no longer has head enchants, so filter them.
 		if enchant.Type == proto.ItemType_ItemTypeHead {
 			return false

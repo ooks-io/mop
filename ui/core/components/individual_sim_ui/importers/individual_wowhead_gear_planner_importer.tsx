@@ -165,10 +165,10 @@ function parseGlyphs(glyphStr: string): number[] {
 		if (e > l) {
 			continue;
 		}
-		glyphIds.push(t);
+		glyphIds[e] = t
 	}
 
-	return [];
+	return glyphIds;
 }
 
 function parseTalentString(e: number[]) {

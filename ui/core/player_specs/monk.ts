@@ -40,7 +40,7 @@ export class BrewmasterMonk extends PlayerSpec<Spec.SpecBrewmasterMonk> {
 }
 
 export class MistweaverMonk extends PlayerSpec<Spec.SpecMistweaverMonk> {
-	static specIndex = 0;
+	static specIndex = 1;
 	static specID = Spec.SpecMistweaverMonk as Spec.SpecMistweaverMonk;
 	static classID = Class.ClassMonk as Class.ClassMonk;
 	static friendlyName = 'Mistweaver';
@@ -76,7 +76,7 @@ export class MistweaverMonk extends PlayerSpec<Spec.SpecMistweaverMonk> {
 }
 
 export class WindwalkerMonk extends PlayerSpec<Spec.SpecWindwalkerMonk> {
-	static specIndex = 0;
+	static specIndex = 2;
 	static specID = Spec.SpecWindwalkerMonk as Spec.SpecWindwalkerMonk;
 	static classID = Class.ClassMonk as Class.ClassMonk;
 	static friendlyName = 'Windwalker';

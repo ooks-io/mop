@@ -319,7 +319,7 @@ func init() {
 			},
 
 			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-				aura.Unit.MultiplyMovementSpeed(sim, 1.0 / 2.5)
+				aura.Unit.MultiplyMovementSpeed(sim, 1.0/2.5)
 			},
 		})
 

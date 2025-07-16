@@ -11,7 +11,7 @@ import {
 	IndividualJsonExporter,
 	IndividualLinkExporter,
 	IndividualPawnEPExporter,
-	// IndividualWowheadGearPlannerExporter,
+	IndividualWowheadGearPlannerExporter,
 } from './components/individual_sim_ui/exporters';
 import { GearTab } from './components/individual_sim_ui/gear_tab';
 import {
@@ -493,7 +493,7 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 
 		this.simHeader.addExportLink('Link', new IndividualLinkExporter(this.rootElem, this), false);
 		this.simHeader.addExportLink('JSON', new IndividualJsonExporter(this.rootElem, this), true);
-		// this.simHeader.addExportLink('WoWHead', new IndividualWowheadGearPlannerExporter(this.rootElem, this), false, false);
+		this.simHeader.addExportLink('WoWHead', new IndividualWowheadGearPlannerExporter(this.rootElem, this), false, false);
 		// this.simHeader.addExportLink('60U Cata EP', new Individual60UEPExporter(this.rootElem, this), false);
 		this.simHeader.addExportLink('Pawn EP', new IndividualPawnEPExporter(this.rootElem, this), false);
 		this.simHeader.addExportLink('CLI', new IndividualCLIExporter(this.rootElem, this), true);
