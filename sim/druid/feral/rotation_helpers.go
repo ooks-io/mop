@@ -133,7 +133,7 @@ func (cat *FeralDruid) calcBleedRefreshTime(sim *core.Simulation, bleedSpell *dr
 	energyEquivalent := expectedDamageGain / cat.Shred.ExpectedInitialDamage(sim, cat.CurrentTarget) * cat.Shred.DefaultCast.Cost
 
 	// Finally, discount the effective Energy cost of the clip based on the number of clipped ticks.
-	discountedRefreshCost := float64(numClippedTicks) / float64(maxTickCount) * bleedSpell.DefaultCast.Cost
+	discountedRefreshCost := core.TernaryFloat64(isRip, float64(numClippedTicks) / float64(maxTickCount), 1.0) * bleedSpell.DefaultCast.Cost
 
 	if sim.Log != nil {
 		cat.Log(sim, "%s buff snapshot is worth %.1f Energy, discounted refresh cost is %.1f Energy.", bleedSpell.ShortName, energyEquivalent, discountedRefreshCost)
