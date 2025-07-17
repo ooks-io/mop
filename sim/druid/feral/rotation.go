@@ -153,6 +153,7 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 	regenRate := cat.EnergyRegenPerSecond()
 	isExecutePhase := sim.IsExecutePhase25()
 	isClearcast := cat.ClearcastingAura.IsActive()
+	isBerserk := cat.BerserkCatAura.IsActive()
 	anyBleedActive := cat.AssumeBleedActive || (cat.BleedsActive[cat.CurrentTarget] > 0)
 	fightDur := sim.GetRemainingDuration()
 
@@ -170,7 +171,7 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 	roarNow := (newRoarDur > 0) && (!roarBuff.IsActive() || (sim.CurrentTime > roarRefreshTime))
 
 	// Bite logic
-	biteTime := core.TernaryDuration(cat.BerserkCatAura.IsActive(), rotation.BerserkBiteTime, rotation.BiteTime)
+	biteTime := core.TernaryDuration(isBerserk, rotation.BerserkBiteTime, rotation.BiteTime)
 	shouldBite := (curCp >= 5) && ripDot.IsActive() && roarBuff.IsActive() && ((rotation.UseBite && (min(ripRefreshTime, roarRefreshTime) - sim.CurrentTime >= biteTime)) || isExecutePhase) && !isClearcast
 	shouldEmergencyBite := isExecutePhase && ripDot.IsActive() && (ripDur < ripDot.BaseTickLength) && (curCp >= 1)
 	biteNow := shouldBite || shouldEmergencyBite
@@ -266,15 +267,15 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 		timeToNextAction = core.DurationFromSeconds((cat.CurrentRakeCost() - curEnergy) / regenRate)
 	} else if bearWeaveNow {
 		rotation.readyToShift = true
-	} else if isClearcast && !cat.ThrashCat.CurDot().IsActive() {
+	} else if (isClearcast || isBerserk) && !cat.ThrashCat.CurDot().IsActive() {
 		cat.ThrashCat.Cast(sim, cat.CurrentTarget)
 		return
 	} else if isClearcast || !ripRefreshPending || !cat.tempSnapshotAura.IsActive() || (ripRefreshTime + cat.ReactionTime - sim.CurrentTime > core.GCDMin) {
-		fillerSpell := core.Ternary(rotation.ForceMangleFiller || ((curCp < 5) && !isClearcast && !cat.BerserkCatAura.IsActive()), cat.MangleCat, cat.Shred)
+		fillerSpell := core.Ternary(rotation.ForceMangleFiller || ((curCp < 5) && !isClearcast && !isBerserk), cat.MangleCat, cat.Shred)
 		fillerDpc := fillerSpell.ExpectedInitialDamage(sim, cat.CurrentTarget)
 		rakeDpc := cat.Rake.ExpectedInitialDamage(sim, cat.CurrentTarget)
 
-		if (fillerDpc < rakeDpc) || (!cat.BerserkCatAura.IsActive() && !isClearcast && (fillerDpc / fillerSpell.DefaultCast.Cost < rakeDpc / cat.Rake.DefaultCast.Cost)) {
+		if (fillerDpc < rakeDpc) || (!isBerserk && !isClearcast && (fillerDpc / fillerSpell.DefaultCast.Cost < rakeDpc / cat.Rake.DefaultCast.Cost)) {
 			fillerSpell = cat.Rake
 		}
 
@@ -285,7 +286,7 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 		}
 
 		fillerCost := fillerSpell.Cost.GetCurrentCost()
-		energyForCalc := core.TernaryFloat64(cat.BerserkCatAura.IsActive(), curEnergy, excessE)
+		energyForCalc := core.TernaryFloat64(isBerserk, curEnergy, excessE)
 
 		if energyForCalc >= fillerCost {
 			fillerSpell.Cast(sim, cat.CurrentTarget)
