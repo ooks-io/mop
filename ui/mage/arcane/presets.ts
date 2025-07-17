@@ -66,20 +66,6 @@ export const ArcaneTalentsCleave = {
 	}),
 };
 
-// Default buffs and debuffs
-export const DefaultRaidBuffs = RaidBuffs.create({
-	...defaultRaidBuffMajorDamageCooldowns(Class.ClassMage),
-	blessingOfKings: true,
-	leaderOfThePack: true,
-	serpentsSwiftness: true,
-	bloodlust: true,
-});
-
-export const DefaultDebuffs = Debuffs.create({
-	curseOfElements: true,
-});
-
-// Encounter presets
 export const ENCOUNTER_SINGLE_TARGET = PresetUtils.makePresetEncounter('Arcane ST', Encounter.defaultEncounterProto());
 export const ENCOUNTER_CLEAVE = PresetUtils.makePresetEncounter('Arcane Cleave (2 targets)', Encounter.defaultEncounterProto(2));
 

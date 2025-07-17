@@ -87,23 +87,9 @@ export const DefaultFireConsumables = ConsumesSpec.create({
 	prepotId: 76093, // Potion of the Jade Serpent
 });
 
-export const DefaultRaidBuffs = RaidBuffs.create({
-	...defaultRaidBuffMajorDamageCooldowns(Class.ClassMage),
-	blessingOfKings: true,
-	leaderOfThePack: true,
-	serpentsSwiftness: true,
-	bloodlust: true,
-});
-
-export const DefaultDebuffs = Debuffs.create({
-	curseOfElements: true,
-});
-
-// Encounter presets
 export const ENCOUNTER_SINGLE_TARGET = PresetUtils.makePresetEncounter('Fire ST', Encounter.defaultEncounterProto());
 export const ENCOUNTER_CLEAVE = PresetUtils.makePresetEncounter('Fire Cleave (3 targets)', Encounter.defaultEncounterProto(3));
 
-// Preset builds that combine everything
 export const P1_PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuild('Fire ST', {
 	talents: FireTalents,
 	rotation: FIRE_ROTATION_PRESET_DEFAULT,

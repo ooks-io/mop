@@ -96,19 +96,6 @@ export const DefaultFrostOptions = MageOptions.create({
 	classOptions: {},
 });
 
-export const DefaultRaidBuffs = RaidBuffs.create({
-	...defaultRaidBuffMajorDamageCooldowns(Class.ClassMage),
-	blessingOfKings: true,
-	leaderOfThePack: true,
-	serpentsSwiftness: true,
-	bloodlust: true,
-});
-
-export const DefaultDebuffs = Debuffs.create({
-	curseOfElements: true,
-});
-
-// Encounter presets
 export const ENCOUNTER_SINGLE_TARGET = PresetUtils.makePresetEncounter('Frost ST', Encounter.defaultEncounterProto());
 export const ENCOUNTER_CLEAVE = PresetUtils.makePresetEncounter('Frost Cleave', Encounter.defaultEncounterProto(2));
 export const ENCOUNTER_AOE = PresetUtils.makePresetEncounter('Frost AoE (5+)', Encounter.defaultEncounterProto(5));
