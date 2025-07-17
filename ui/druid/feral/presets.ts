@@ -115,6 +115,7 @@ export const StandardTalents = {
 	data: SavedTalents.create({
 		talentsString: '',
 		glyphs: Glyphs.create({
+			major1: 40923,
 		}),
 	}),
 };
