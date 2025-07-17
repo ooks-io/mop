@@ -173,7 +173,7 @@ func (cat *FeralDruid) shouldDelayBleedRefreshForTf(sim *core.Simulation, bleedD
 	return secondsToDump < delaySeconds
 }
 
-func (cat *FeralDruid) calcRoarRefreshTime(sim *core.Simulation, ripLeeway time.Duration, minRoarOffset time.Duration) time.Duration {
+func (cat *FeralDruid) calcRoarRefreshTime(sim *core.Simulation, ripRefreshTime time.Duration, ripLeeway time.Duration, minRoarOffset time.Duration) time.Duration {
 	roarBuff := cat.SavageRoarBuff
 	ripDot := cat.Rip.CurDot()
 
@@ -185,7 +185,7 @@ func (cat *FeralDruid) calcRoarRefreshTime(sim *core.Simulation, ripLeeway time.
 	// tick refresh window, unless there is a Rip conflict.
 	roarEnd := roarBuff.ExpiresAt()
 
-	if !ripDot.IsActive() || (ripDot.ExpiresAt() < roarEnd + cat.ReactionTime) {
+	if !ripDot.IsActive() || (ripRefreshTime < roarEnd + cat.ReactionTime) {
 		return roarEnd
 	}
 

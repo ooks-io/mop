@@ -156,18 +156,18 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 	anyBleedActive := cat.AssumeBleedActive || (cat.BleedsActive[cat.CurrentTarget] > 0)
 	fightDur := sim.GetRemainingDuration()
 
-	// Roar logic
-	roarBuff := cat.SavageRoarBuff
-	roarDur := roarBuff.RemainingDuration(sim)
-	newRoarDur := cat.SavageRoarDurationTable[curCp]
-	roarRefreshTime := cat.calcRoarRefreshTime(sim, rotation.RipLeeway, rotation.MinRoarOffset)
-	roarNow := (newRoarDur > 0) && (!roarBuff.IsActive() || (sim.CurrentTime > roarRefreshTime))
-
 	// Rip logic
 	ripDot := cat.Rip.CurDot()
 	ripDur := ripDot.RemainingDuration(sim)
+	roarBuff := cat.SavageRoarBuff
+	roarDur := roarBuff.RemainingDuration(sim)
 	ripRefreshTime := cat.calcBleedRefreshTime(sim, cat.Rip, ripDot, isExecutePhase, true)
 	ripNow := (curCp >= 5) && (!ripDot.IsActive() || ((sim.CurrentTime > ripRefreshTime) && (!isExecutePhase || (cat.Rip.NewSnapshotPower > cat.Rip.CurrentSnapshotPower + 0.001))) || (!isExecutePhase && (roarDur < rotation.RipLeeway) && (ripDot.ExpiresAt() < roarBuff.ExpiresAt() + rotation.RipLeeway))) && (fightDur > ripDot.BaseTickLength) && (!isClearcast || !anyBleedActive) && !cat.shouldDelayBleedRefreshForTf(sim, ripDot, true)
+
+	// Roar logic
+	newRoarDur := cat.SavageRoarDurationTable[curCp]
+	roarRefreshTime := cat.calcRoarRefreshTime(sim, ripRefreshTime, rotation.RipLeeway, rotation.MinRoarOffset)
+	roarNow := (newRoarDur > 0) && (!roarBuff.IsActive() || (sim.CurrentTime > roarRefreshTime))
 
 	// Bite logic
 	biteTime := core.TernaryDuration(cat.BerserkCatAura.IsActive(), rotation.BerserkBiteTime, rotation.BiteTime)
