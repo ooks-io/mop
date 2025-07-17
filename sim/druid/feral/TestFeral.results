@@ -695,6 +695,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFeral-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 12960.12238
+  tps: 9143.4683
+  hps: 1709.15645
+ }
+}
+dps_results: {
  key: "TestFeral-AllItems-EnchantWeapon-JadeSpirit-4442"
  value: {
   dps: 12342.30556

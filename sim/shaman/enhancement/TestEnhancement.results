@@ -640,6 +640,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestEnhancement-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 58641.41543
+  tps: 50599.18452
+ }
+}
+dps_results: {
  key: "TestEnhancement-AllItems-EnchantWeapon-JadeSpirit-4442"
  value: {
   dps: 57404.41312

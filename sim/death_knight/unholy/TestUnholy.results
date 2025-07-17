@@ -156,6 +156,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestUnholy-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 127238.51172
+  tps: 91597.8045
+ }
+}
+dps_results: {
  key: "TestUnholy-AllItems-EnchantWeapon-JadeSpirit-4442"
  value: {
   dps: 125927.82389

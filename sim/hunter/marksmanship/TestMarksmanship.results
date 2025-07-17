@@ -612,6 +612,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestMarksmanship-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 152541.19732
+  tps: 126947.77661
+ }
+}
+dps_results: {
  key: "TestMarksmanship-AllItems-EnchantWeapon-JadeSpirit-4442"
  value: {
   dps: 151879.24799
