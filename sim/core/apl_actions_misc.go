@@ -164,7 +164,7 @@ type APLActionActivateAllStatBuffProcAuras struct {
 	allSubactions []*APLActionActivateAura
 }
 
-func (rot *APLRotation) newActionactivateAllStatBuffProcAuras(config *proto.APLActionActivateAllStatBuffProcAuras) APLActionImpl {
+func (rot *APLRotation) newActionActivateAllStatBuffProcAuras(config *proto.APLActionActivateAllStatBuffProcAuras) APLActionImpl {
 
 	unit := rot.unit
 	character := unit.Env.Raid.GetPlayerFromUnit(unit).GetCharacter()
@@ -340,7 +340,7 @@ func (rot *APLRotation) newActionCustomRotation(config *proto.APLActionCustomRot
 	}
 }
 func (action *APLActionCustomRotation) Reset(sim *Simulation) {
-	action.lastExecutedAt = -1
+	action.lastExecutedAt = NeverExpires
 }
 func (action *APLActionCustomRotation) IsReady(sim *Simulation) bool {
 	// Prevent infinite loops by only allowing this action to be performed once at each timestamp.

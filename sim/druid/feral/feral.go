@@ -41,11 +41,6 @@ func NewFeralDruid(character *core.Character, options *proto.Player) *FeralDruid
 
 	cat.AssumeBleedActive = feralOptions.Options.AssumeBleedActive
 	cat.CannotShredTarget = feralOptions.Options.CannotShredTarget
-	// TODO: Fix this to work with the new talent system.
-	// cat.maxRipTicks = cat.MaxRipTicks()
-	// cat.primalMadnessBonus = 10.0 * float64(cat.Talents.PrimalMadness)
-	cat.maxRipTicks = 0
-	cat.primalMadnessBonus = 0
 
 	cat.EnableEnergyBar(core.EnergyBarOptions{
 		MaxComboPoints: 5,
@@ -69,22 +64,19 @@ func NewFeralDruid(character *core.Character, options *proto.Player) *FeralDruid
 type FeralDruid struct {
 	*druid.Druid
 
-	// Rotation FeralDruidRotation
+	// Aura references
+	ClearcastingAura        *core.Aura
+	PredatorySwiftnessAura  *core.Aura
+	SavageRoarBuff          *core.Dot
+	SavageRoarDurationTable [6]time.Duration
+	TigersFuryAura          *core.Aura
 
-	readyToShift       bool
-	readyToGift        bool
-	waitingForTick     bool
-	maxRipTicks        int32
-	primalMadnessBonus float64
-	berserkUsed        bool
-	bleedAura          *core.Aura
+	// Spell references
+	SavageRoar *druid.DruidSpell
+	Shred      *druid.DruidSpell
+	TigersFury *druid.DruidSpell
+
 	tempSnapshotAura   *core.Aura
-	lastShift          time.Duration
-	cachedRipEndThresh time.Duration
-	nextActionAt       time.Duration
-	usingHardcodedAPL  bool
-	// pendingPool        *PoolingActions
-	// pendingPoolWeaves  *PoolingActions
 }
 
 func (cat *FeralDruid) GetDruid() *druid.Druid {
@@ -98,9 +90,14 @@ func (cat *FeralDruid) AddRaidBuffs(raidBuffs *proto.RaidBuffs) {
 func (cat *FeralDruid) Initialize() {
 	cat.Druid.Initialize()
 	cat.RegisterFeralCatSpells()
+	cat.registerSavageRoarSpell()
+	cat.registerShredSpell()
+	cat.registerTigersFurySpell()
 	cat.ApplyPrimalFury()
 	cat.ApplyLeaderOfThePack()
 	cat.ApplyNurturingInstinct()
+	cat.applyOmenOfClarity()
+	cat.applyPredatorySwiftness()
 
 	snapshotHandler := func(aura *core.Aura, sim *core.Simulation) {
 		previousRipSnapshotPower := cat.Rip.NewSnapshotPower
@@ -133,17 +130,32 @@ func (cat *FeralDruid) Initialize() {
 
 func (cat *FeralDruid) ApplyTalents() {
 	cat.Druid.ApplyTalents()
-	cat.MultiplyStat(stats.AttackPower, 1.25) // Aggression passive
+	cat.ApplyArmorSpecializationEffect(stats.Agility, proto.ArmorType_ArmorTypeLeather, 86097)
+	cat.applyMastery()
+}
+
+func (cat *FeralDruid) applyMastery() {
+	const baseMasteryPoints = 8.0
+	const masteryModPerPoint = 0.0313 // TODO: We expect 0.03125, possibly bugged?
+	const baseMasteryMod = baseMasteryPoints * masteryModPerPoint
+
+	razorClaws := cat.AddDynamicMod(core.SpellModConfig{
+		ClassMask:  druid.DruidSpellThrashCat | druid.DruidSpellRake | druid.DruidSpellRip,
+		Kind:       core.SpellMod_DamageDone_Pct,
+		FloatValue: baseMasteryMod + masteryModPerPoint * cat.GetMasteryPoints(),
+	})
+
+	cat.AddOnMasteryStatChanged(func(_ *core.Simulation, _ float64, newMasteryRating float64) {
+		razorClaws.UpdateFloatValue(baseMasteryMod + masteryModPerPoint * core.MasteryRatingToMasteryPoints(newMasteryRating))
+	})
+
+	razorClaws.Activate()
 }
 
 func (cat *FeralDruid) Reset(sim *core.Simulation) {
 	cat.Druid.Reset(sim)
 	cat.Druid.ClearForm(sim)
 	cat.CatFormAura.Activate(sim)
-	cat.readyToShift = false
-	cat.waitingForTick = false
-	cat.berserkUsed = false
-	cat.nextActionAt = -core.NeverExpires
 
 	// Reset snapshot power values until first cast
 	cat.Rip.CurrentSnapshotPower = 0

@@ -59,14 +59,14 @@ func (hunter *Hunter) registerExplosiveTrapSpell() {
 
 				// If using this on prepull, the trap effect will go off when the fight starts
 				// instead of immediately.
-				core.StartDelayedAction(sim, core.DelayedActionOptions{
-					DoAt: 0,
+				pa := sim.GetConsumedPendingActionFromPool()
 
-					OnAction: func(sim *core.Simulation) {
-						spell.CalcAndDealAoeDamageWithVariance(sim, spell.OutcomeRangedHitAndCritNoBlock, hunter.calcExplosiveTrapImpactDamage)
-						hunter.ExplosiveTrap.AOEDot().Apply(sim)
-					},
-				})
+				pa.OnAction = func(sim *core.Simulation) {
+					spell.CalcAndDealAoeDamageWithVariance(sim, spell.OutcomeRangedHitAndCritNoBlock, hunter.calcExplosiveTrapImpactDamage)
+					hunter.ExplosiveTrap.AOEDot().Apply(sim)
+				}
+
+				sim.AddPendingAction(pa)
 			} else {
 				spell.CalcAndDealAoeDamageWithVariance(sim, spell.OutcomeRangedHitAndCritNoBlock, hunter.calcExplosiveTrapImpactDamage)
 				hunter.ExplosiveTrap.AOEDot().Apply(sim)

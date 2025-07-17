@@ -197,7 +197,9 @@ var ItemSetChronomancerRegalia = core.NewItemSet(core.ItemSet{
 				if !spell.Matches(MageSpellFrostbolt) {
 					return
 				}
-
+				if mage.BrainFreezeAura == nil {
+					return
+				}
 				mage.BrainFreezeAura.ApplyOnExpire(func(_ *core.Aura, sim *core.Simulation) {
 					if setBonusAura.IsActive() {
 						frostAura.Activate(sim)
@@ -237,7 +239,9 @@ var ItemSetChronomancerRegalia = core.NewItemSet(core.ItemSet{
 				if !spell.Matches(MageSpellFrostbolt) {
 					return
 				}
-
+				if mage.BrainFreezeAura == nil {
+					return
+				}
 				mage.BrainFreezeAura.ApplyOnExpire(func(_ *core.Aura, sim *core.Simulation) {
 					if setBonusAura.IsActive() {
 						frigidBlast.Cast(sim, mage.CurrentTarget)
@@ -275,6 +279,25 @@ var ItemSetChronomancerRegalia = core.NewItemSet(core.ItemSet{
 			})
 
 			setBonusAura.ExposeToAPL(145257)
+		},
+	},
+})
+
+// PVP S12 / S13 / S14
+var ItemSetGladiatorsRegalia = core.NewItemSet(core.ItemSet{
+	Name:                    "Gladiator's Regalia",
+	DisabledInChallengeMode: true,
+	Bonuses: map[int32]core.ApplySetBonus{
+		2: func(agent core.Agent, setBonusAura *core.Aura) {},
+		// Reduces the cooldown on Alter Time by 90 sec.
+		4: func(agent core.Agent, setBonusAura *core.Aura) {
+			setBonusAura.AttachSpellMod(core.SpellModConfig{
+				Kind:      core.SpellMod_Cooldown_Flat,
+				ClassMask: MageSpellAlterTime,
+				TimeValue: -90 * time.Second,
+			})
+
+			setBonusAura.ExposeToAPL(131619)
 		},
 	},
 })

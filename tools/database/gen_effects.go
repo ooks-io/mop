@@ -137,7 +137,7 @@ func GenerateEnchantEffects(instance *dbc.DBC, db *WowDatabase) {
 
 	for _, enchant := range instance.Enchants {
 		parsed := enchant.ToProto()
-		if _, ok := db.Enchants[EnchantToDBKey(parsed)]; !ok {
+		if _, ok := db.Enchants[parsed.EffectId]; !ok {
 			continue
 		}
 

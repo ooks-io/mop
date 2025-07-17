@@ -54,6 +54,7 @@ func (druid *Druid) registerThrashBearSpell() {
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
 			baseDamage := flatHitDamage + 0.191*spell.MeleeAttackPower()
+			anyLanded := false
 
 			for _, aoeTarget := range sim.Encounter.ActiveTargetUnits {
 				result := spell.CalcAndDealDamage(sim, aoeTarget, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
@@ -62,9 +63,11 @@ func (druid *Druid) registerThrashBearSpell() {
 					spell.Dot(aoeTarget).Apply(sim)
 					druid.WeakenedBlowsAuras.Get(aoeTarget).Activate(sim)
 
-					if sim.Proc(0.25, "Mangle CD Reset") {
+					if !anyLanded && sim.Proc(0.25, "Mangle CD Reset") {
 						druid.MangleBear.CD.Reset()
 					}
+
+					anyLanded = true
 				}
 			}
 		},
@@ -78,10 +81,11 @@ func (druid *Druid) registerThrashCatSpell() {
 	flatTickDamage := 0.62699997425 * druid.ClassSpellScaling // ~686
 
 	druid.ThrashCat = druid.RegisterSpell(Cat, core.SpellConfig{
-		ActionID:    core.ActionID{SpellID: 106830},
-		SpellSchool: core.SpellSchoolPhysical,
-		ProcMask:    core.ProcMaskMeleeMHSpecial,
-		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagIgnoreArmor | core.SpellFlagAPL | core.SpellFlagAoE,
+		ActionID:       core.ActionID{SpellID: 106830},
+		SpellSchool:    core.SpellSchoolPhysical,
+		ProcMask:       core.ProcMaskMeleeMHSpecial,
+		Flags:          core.SpellFlagMeleeMetrics | core.SpellFlagIgnoreArmor | core.SpellFlagAPL | core.SpellFlagAoE,
+		ClassSpellMask: DruidSpellThrashCat,
 
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{

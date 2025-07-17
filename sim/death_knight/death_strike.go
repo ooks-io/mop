@@ -24,13 +24,14 @@ func (dk *DeathKnight) registerDeathStrike() {
 			if result.Landed() {
 				damageTaken := result.Damage
 				damageTakenInFive += damageTaken
+				pa := sim.GetConsumedPendingActionFromPool()
+				pa.NextActionAt = sim.CurrentTime + time.Second*5
 
-				core.StartDelayedAction(sim, core.DelayedActionOptions{
-					DoAt: sim.CurrentTime + time.Second*5,
-					OnAction: func(s *core.Simulation) {
-						damageTakenInFive -= damageTaken
-					},
-				})
+				pa.OnAction = func(_ *core.Simulation) {
+					damageTakenInFive -= damageTaken
+				}
+
+				sim.AddPendingAction(pa)
 			}
 		},
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {

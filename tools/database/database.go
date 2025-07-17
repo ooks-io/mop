@@ -13,24 +13,10 @@ import (
 	googleProto "google.golang.org/protobuf/proto"
 )
 
-type EnchantDBKey struct {
-	EffectID int32
-	ItemID   int32
-	SpellID  int32
-}
-
-func EnchantToDBKey(enchant *proto.UIEnchant) EnchantDBKey {
-	return EnchantDBKey{
-		EffectID: enchant.EffectId,
-		ItemID:   enchant.ItemId,
-		SpellID:  enchant.SpellId,
-	}
-}
-
 type WowDatabase struct {
 	Items          map[int32]*proto.UIItem
 	RandomSuffixes map[int32]*proto.ItemRandomSuffix
-	Enchants       map[EnchantDBKey]*proto.UIEnchant
+	Enchants       map[int32]*proto.UIEnchant
 	Gems           map[int32]*proto.UIGem
 
 	Zones map[int32]*proto.UIZone
@@ -52,7 +38,7 @@ func NewWowDatabase() *WowDatabase {
 	return &WowDatabase{
 		Items:          make(map[int32]*proto.UIItem),
 		RandomSuffixes: make(map[int32]*proto.ItemRandomSuffix),
-		Enchants:       make(map[EnchantDBKey]*proto.UIEnchant),
+		Enchants:       make(map[int32]*proto.UIEnchant),
 		Gems:           make(map[int32]*proto.UIGem),
 		Zones:          make(map[int32]*proto.UIZone),
 		Npcs:           make(map[int32]*proto.UINPC),
@@ -115,7 +101,7 @@ func (db *WowDatabase) MergeEnchants(arr []*proto.UIEnchant) {
 }
 
 func (db *WowDatabase) MergeEnchant(src *proto.UIEnchant) {
-	key := EnchantToDBKey(src)
+	key := src.EffectId
 	if dst, ok := db.Enchants[key]; ok {
 		// googleproto.Merge concatenates lists, but we want replacement, so do them manually.
 		if src.Stats != nil {
@@ -289,9 +275,9 @@ func ReadDatabaseFromJson(jsonStr string) *WowDatabase {
 		panic(err)
 	}
 
-	enchants := make(map[EnchantDBKey]*proto.UIEnchant, len(dbProto.Enchants))
+	enchants := make(map[int32]*proto.UIEnchant, len(dbProto.Enchants))
 	for _, v := range dbProto.Enchants {
-		enchants[EnchantToDBKey(v)] = v
+		enchants[v.EffectId] = v
 	}
 
 	return &WowDatabase{

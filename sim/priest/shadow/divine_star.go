@@ -42,22 +42,24 @@ func (shadow *ShadowPriest) registerDivineStar() {
 			hit2 := 2.5 - hit1
 
 			// first hit
-			core.StartDelayedAction(sim, core.DelayedActionOptions{
-				DoAt: sim.CurrentTime + time.Second*time.Duration(hit1),
+			pa1 := sim.GetConsumedPendingActionFromPool()
+			pa1.NextActionAt = sim.CurrentTime + time.Second*time.Duration(hit1)
 
-				OnAction: func(sim *core.Simulation) {
-					spell.CalcAndDealAoeDamageWithVariance(sim, spell.OutcomeMagicHitAndCrit, shadow.rollDivineStarDamage)
-				},
-			})
+			pa1.OnAction = func(sim *core.Simulation) {
+				spell.CalcAndDealAoeDamageWithVariance(sim, spell.OutcomeMagicHitAndCrit, shadow.rollDivineStarDamage)
+			}
+
+			sim.AddPendingAction(pa1)
 
 			// second hit
-			core.StartDelayedAction(sim, core.DelayedActionOptions{
-				DoAt: sim.CurrentTime + time.Second*time.Duration(hit2),
+			pa2 := sim.GetConsumedPendingActionFromPool()
+			pa2.NextActionAt = sim.CurrentTime + time.Second*time.Duration(hit2)
 
-				OnAction: func(sim *core.Simulation) {
-					spell.CalcAndDealAoeDamageWithVariance(sim, spell.OutcomeMagicHitAndCrit, shadow.rollDivineStarDamage)
-				},
-			})
+			pa2.OnAction = func(sim *core.Simulation) {
+				spell.CalcAndDealAoeDamageWithVariance(sim, spell.OutcomeMagicHitAndCrit, shadow.rollDivineStarDamage)
+			}
+
+			sim.AddPendingAction(pa2)
 		},
 	})
 }

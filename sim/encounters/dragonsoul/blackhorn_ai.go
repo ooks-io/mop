@@ -390,15 +390,15 @@ func (ai *BlackhornAI) registerTwilightBreath() {
 			// Hacky work-around to the add AI not having access to user input parameters
 			twilightBreathSpell := ai.AddUnit.GetSpell(twilightBreathActionID)
 			twilightBreathSpell.CD.Set(core.DurationFromSeconds(sim.RandomFloat("Twilight Breath Timing") * twilightBreathSpell.CD.Duration.Seconds()))
+			pa := sim.GetConsumedPendingActionFromPool()
+			pa.NextActionAt = ai.disableAddAt - twilightBreathCastTime
+			pa.Priority = core.ActionPriorityDOT
 
-			core.StartDelayedAction(sim, core.DelayedActionOptions{
-				DoAt:     ai.disableAddAt - twilightBreathCastTime,
-				Priority: core.ActionPriorityDOT,
+			pa.OnAction = func(_ *core.Simulation) {
+				twilightBreathSpell.CD.Set(core.NeverExpires)
+			}
 
-				OnAction: func(_ *core.Simulation) {
-					twilightBreathSpell.CD.Set(core.NeverExpires)
-				},
-			})
+			sim.AddPendingAction(pa)
 		})
 	}
 }
@@ -442,14 +442,15 @@ func (ai *BlackhornAI) Reset(sim *core.Simulation) {
 	}
 
 	// Set up delayed action for disabling add swings.
-	core.StartDelayedAction(sim, core.DelayedActionOptions{
-		DoAt:     ai.disableAddAt,
-		Priority: core.ActionPriorityDOT,
+	pa := sim.GetConsumedPendingActionFromPool()
+	pa.NextActionAt = ai.disableAddAt
+	pa.Priority = core.ActionPriorityDOT
 
-		OnAction: func(sim *core.Simulation) {
-			sim.DisableTargetUnit(ai.AddUnit, true)
-		},
-	})
+	pa.OnAction = func(sim *core.Simulation) {
+		sim.DisableTargetUnit(ai.AddUnit, true)
+	}
+
+	sim.AddPendingAction(pa)
 
 	// Set up periodic action for tank swaps.
 	core.StartPeriodicAction(sim, core.PeriodicActionOptions{

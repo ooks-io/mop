@@ -425,6 +425,10 @@ func (action *APLActionCastAllStatBuffCooldowns) getEquippedSubActions() []*APLA
 }
 func (action *APLActionCastAllStatBuffCooldowns) IsReady(sim *Simulation) bool {
 	allEquippedSubactions := action.getEquippedSubActions()
+	if len(allEquippedSubactions) == 0 {
+		return false
+	}
+
 	action.readySubactions = FilterSlice(allEquippedSubactions, func(subAction *APLActionCastSpell) bool {
 		return subAction.IsReady(sim)
 	})

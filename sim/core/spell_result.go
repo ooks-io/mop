@@ -605,10 +605,10 @@ func (dot *Dot) CalcAndDealPeriodicSnapshotHealing(sim *Simulation, target *Unit
 }
 
 func (spell *Spell) WaitTravelTime(sim *Simulation, callback func(*Simulation)) {
-	StartDelayedAction(sim, DelayedActionOptions{
-		DoAt:     sim.CurrentTime + spell.TravelTime(),
-		OnAction: callback,
-	})
+	pa := sim.GetConsumedPendingActionFromPool()
+	pa.NextActionAt = sim.CurrentTime + spell.TravelTime()
+	pa.OnAction = callback
+	sim.AddPendingAction(pa)
 }
 
 // Returns the combined attacker modifiers.

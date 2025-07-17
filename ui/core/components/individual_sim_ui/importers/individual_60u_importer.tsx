@@ -80,7 +80,14 @@ export class Individual60UImporter<SpecType extends Spec> extends IndividualImpo
 
 		this.simUI.sim.db.lookupEquipmentSpec(equipmentSpec);
 
-		this.finishIndividualImport(this.simUI, charClass, race, equipmentSpec, talentsStr, null, []);
+		this.finishIndividualImport(this.simUI, {
+			charClass,
+			race,
+			equipmentSpec,
+			talentsStr,
+			glyphs: null,
+			professions: [],
+		});
 
 		if (hasRemovedRandomSuffix && modifiedItemNames.length) {
 			new Toast({

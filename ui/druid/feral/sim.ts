@@ -1,4 +1,3 @@
-import * as BuffDebuffInputs from '../../core/components/inputs/buffs_debuffs';
 import * as OtherInputs from '../../core/components/inputs/other_inputs';
 import { ReforgeOptimizer } from '../../core/components/suggest_reforges_action';
 import * as Mechanics from '../../core/constants/mechanics';
@@ -10,6 +9,7 @@ import { Cooldowns, Debuffs, Faction, IndividualBuffs, ItemSlot, PartyBuffs, Pse
 import { FeralDruid_Rotation as DruidRotation, FeralDruid_Rotation_AplType as FeralRotationType } from '../../core/proto/druid';
 import * as AplUtils from '../../core/proto_utils/apl_utils';
 import { Stats, UnitStat } from '../../core/proto_utils/stats';
+import { defaultRaidBuffMajorDamageCooldowns } from '../../core/proto_utils/utils';
 import { TypedEvent } from '../../core/typed_event';
 import * as FeralInputs from './inputs';
 import * as Presets from './presets';
@@ -64,10 +64,21 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 		// Default spec-specific settings.
 		specOptions: Presets.DefaultOptions,
 		// Default raid/party buffs settings.
-		raidBuffs: RaidBuffs.create({}),
+		raidBuffs: RaidBuffs.create({
+			...defaultRaidBuffMajorDamageCooldowns(),
+			markOfTheWild: true,
+			trueshotAura: true,
+			unholyAura: true,
+			graceOfAir: true,
+			bloodlust: true,
+		}),
 		partyBuffs: PartyBuffs.create({}),
 		individualBuffs: IndividualBuffs.create({}),
-		debuffs: Debuffs.create({}),
+		debuffs: Debuffs.create({
+			weakenedArmor: true,
+			physicalVulnerability: true,
+			lightningBreath: true,
+		}),
 	},
 
 	// IconInputs to include in the 'Player' section on the settings tab.
@@ -88,7 +99,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 			FeralInputs.CannotShredTarget,
 		],
 	},
-	itemSwapSlots: [ItemSlot.ItemSlotMainHand, ItemSlot.ItemSlotHands, ItemSlot.ItemSlotTrinket1, ItemSlot.ItemSlotTrinket2],
+	itemSwapSlots: [ItemSlot.ItemSlotMainHand, ItemSlot.ItemSlotTrinket1, ItemSlot.ItemSlotTrinket2],
 	encounterPicker: {
 		// Whether to include 'Execute Duration (%)' in the 'Encounter' section of the settings tab.
 		showExecuteProportion: true,
@@ -97,12 +108,15 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 	presets: {
 		epWeights: [Presets.BEARWEAVE_EP_PRESET, Presets.MONOCAT_EP_PRESET],
 		// Preset talents that the user can quickly select.
-		talents: [Presets.StandardTalents, Presets.HybridTalents],
+		talents: [Presets.StandardTalents],
 		rotations: [Presets.SIMPLE_ROTATION_DEFAULT, Presets.AOE_ROTATION_DEFAULT, Presets.APL_ROTATION_DEFAULT],
 		// Preset gear configurations that the user can quickly select.
 		gear: [Presets.PRERAID_PRESET, Presets.P1_PRESET, Presets.P3_PRESET, Presets.P4_PRESET],
 		itemSwaps: [Presets.P4_ITEM_SWAP_PRESET],
-		builds: [Presets.PRESET_BUILD_DEFAULT, Presets.PRESET_BUILD_TENDON],
+		builds: [
+			//Presets.PRESET_BUILD_DEFAULT,
+			//Presets.PRESET_BUILD_TENDON,
+		],
 	},
 
 	autoRotation: (_player: Player<Spec.SpecFeralDruid>): APLRotation => {

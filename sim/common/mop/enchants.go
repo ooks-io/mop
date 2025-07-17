@@ -226,7 +226,7 @@ func init() {
 			Callback: core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt,
 			Harmful:  true,
 			ActionID: core.ActionID{SpellID: 104441},
-			ICD:      time.Millisecond * 100,
+			ICD:      time.Millisecond * 250,
 			DPM: character.NewRPPMProcManager(
 				4446,
 				true,
@@ -298,5 +298,54 @@ func init() {
 					},
 				},
 			})
+	})
+
+	// Nitro Boosts
+	core.NewEnchantEffect(4223, func(agent core.Agent, _ proto.ItemLevelState) {
+		character := agent.GetCharacter()
+		if !character.HasProfession(proto.Profession_Engineering) {
+			return
+		}
+
+		actionID := core.ActionID{SpellID: 55004}
+
+		buffAura := character.RegisterAura(core.Aura{
+			Label:    "Nitro Boosts",
+			ActionID: actionID,
+			Duration: time.Second * 5,
+
+			OnGain: func(aura *core.Aura, sim *core.Simulation) {
+				aura.Unit.MultiplyMovementSpeed(sim, 2.5)
+			},
+
+			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+				aura.Unit.MultiplyMovementSpeed(sim, 1.0/2.5)
+			},
+		})
+
+		activationSpell := character.RegisterSpell(core.SpellConfig{
+			ActionID:        actionID,
+			RelatedSelfBuff: buffAura,
+
+			Cast: core.CastConfig{
+				CD: core.Cooldown{
+					Timer:    character.NewTimer(),
+					Duration: time.Minute * 3,
+				},
+			},
+
+			ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
+				spell.RelatedSelfBuff.Activate(sim)
+			},
+		})
+
+		character.AddMajorCooldown(core.MajorCooldown{
+			Spell: activationSpell,
+			Type:  core.CooldownTypeDPS,
+
+			ShouldActivate: func(_ *core.Simulation, character *core.Character) bool {
+				return character.DistanceFromTarget > core.MaxMeleeRange
+			},
+		})
 	})
 }

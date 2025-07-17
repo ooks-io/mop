@@ -14,6 +14,8 @@ import {
 	APLActionChangeTarget,
 	APLActionChannelSpell,
 	APLActionCustomRotation,
+	APLActionGuardianHotwDpsRotation,
+	APLActionGuardianHotwDpsRotation_Strategy as HotwStrategy,
 	APLActionItemSwap,
 	APLActionItemSwap_SwapSet as ItemSwapSet,
 	APLActionMove,
@@ -704,29 +706,18 @@ const actionKindFactories: { [f in NonNullable<APLActionKind>]: ActionKindConfig
 		newValue: () =>
 			APLActionCatOptimalRotationAction.create({
 				rotationType: FeralDruid_Rotation_AplType.SingleTarget,
-				maintainFaerieFire: true,
 				manualParams: true,
 				minRoarOffset: 31.0,
 				ripLeeway: 1,
-				useRake: true,
 				useBite: true,
 				biteTime: 11.0,
 				berserkBiteTime: 6.0,
-				biteDuringExecute: true,
 				allowAoeBerserk: false,
-				meleeWeave: true,
 				bearWeave: true,
 				snekWeave: true,
-				cancelPrimalMadness: false,
 			}),
 		fields: [
 			AplHelpers.rotationTypeFieldConfig('rotationType'),
-			AplHelpers.booleanFieldConfig('maintainFaerieFire', 'Maintain Faerie Fire', {
-				labelTooltip: 'Maintain Faerie Fire debuff. Overwrites any external Sunder effects specified in settings.',
-			}),
-			AplHelpers.booleanFieldConfig('meleeWeave', 'Enable leave-weaving', {
-				labelTooltip: 'Weave out of melee range for Stampede procs. Ignored for AoE rotation or if Stampede is not talented.',
-			}),
 			AplHelpers.booleanFieldConfig('bearWeave', 'Enable bear-weaving', {
 				labelTooltip: 'Weave into Bear Form while pooling Energy. Ignored for AoE rotation.',
 			}),
@@ -747,9 +738,6 @@ const actionKindFactories: { [f in NonNullable<APLActionKind>]: ActionKindConfig
 				label: 'Rip Leeway',
 				labelTooltip: 'Rip leeway when optimizing Roar clips. Ignored for AOE rotation or if not using manual advanced parameters.',
 			}),
-			AplHelpers.booleanFieldConfig('useRake', 'Use Rake', {
-				labelTooltip: 'Use Rake during rotation. Ignored for AOE rotation or if not using manual advanced parameters.',
-			}),
 			AplHelpers.booleanFieldConfig('useBite', 'Bite during rotation', {
 				labelTooltip:
 					'Use Bite during rotation rather than exclusively at end of fight. Ignored for AOE rotation or if not using manual advanced parameters.',
@@ -762,14 +750,20 @@ const actionKindFactories: { [f in NonNullable<APLActionKind>]: ActionKindConfig
 				label: 'Bite Time during Berserk',
 				labelTooltip: 'More aggressive threshold when Berserk is active.',
 			}),
-			AplHelpers.booleanFieldConfig('biteDuringExecute', 'Bite during Execute phase', {
-				labelTooltip:
-					'Bite aggressively during Execute phase. Ignored if Blood in the Water is not talented, or if not using manual advanced parameters.',
+		],
+	}),
+
+	['guardianHotwDpsRotation']: inputBuilder({
+		label: 'HotW DPS Rotation',
+		submenu: ['Guardian Druid'],
+		shortDescription: 'Executes optimized HotW DPS rotation using hardcoded algorithm.',
+		includeIf: (player: Player<any>, _isPrepull: boolean) => player.getSpec() == Spec.SpecGuardianDruid,
+		newValue: () =>
+			APLActionGuardianHotwDpsRotation.create({
+				strategy: HotwStrategy.Caster,
 			}),
-			AplHelpers.booleanFieldConfig('cancelPrimalMadness', 'Enable Primal Madness cancellation', {
-				labelTooltip:
-					'Click off Primal Madness buff when doing so will result in net Energy gains. Ignored if Primal Madness is not talented, or if not using manual advanced parameters.',
-			}),
+		fields: [
+			AplHelpers.hotwStrategyFieldConfig('strategy'),
 		],
 	}),
 };

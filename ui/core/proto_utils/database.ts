@@ -345,11 +345,11 @@ export class Database {
 		return new ItemSwapGear(gearMap);
 	}
 
-	enchantSpellIdToEffectId(enchantSpellId: number): number {
+	enchantSpellIdToEnchant(enchantSpellId: number): Enchant | undefined {
 		const enchant = Object.values(this.enchantsBySlot)
 			.flat()
 			.find(enchant => enchant.spellId == enchantSpellId);
-		return enchant ? enchant.effectId : 0;
+		return enchant;
 	}
 
 	glyphItemToSpellId(itemId: number): number {

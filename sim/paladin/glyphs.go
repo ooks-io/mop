@@ -112,15 +112,17 @@ func (paladin *Paladin) registerGlyphOfAvengingWrath() {
 			})
 		},
 
-		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			core.StartDelayedAction(sim, core.DelayedActionOptions{
-				DoAt: sim.CurrentTime + core.SpellBatchWindow,
-				OnAction: func(sim *core.Simulation) {
-					if healPA != nil {
-						healPA.Cancel(sim)
-					}
-				},
-			})
+		OnExpire: func(_ *core.Aura, sim *core.Simulation) {
+			pa := sim.GetConsumedPendingActionFromPool()
+			pa.NextActionAt = sim.CurrentTime + core.SpellBatchWindow
+
+			pa.OnAction = func(sim *core.Simulation) {
+				if healPA != nil {
+					healPA.Cancel(sim)
+				}
+			}
+
+			sim.AddPendingAction(pa)
 		},
 	})
 
@@ -548,7 +550,7 @@ func (paladin *Paladin) registerGlyphOfMassExorcism() {
 		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			spell.CalcCleaveDamageWithVariance(sim, sim.Environment.NextActiveTargetUnit(target), sim.Environment.ActiveTargetCount() - 1, spell.OutcomeMagicHitAndCrit, func(sim *core.Simulation, _ *core.Spell) float64 { 
+			spell.CalcCleaveDamageWithVariance(sim, sim.Environment.NextActiveTargetUnit(target), sim.Environment.ActiveTargetCount()-1, spell.OutcomeMagicHitAndCrit, func(sim *core.Simulation, _ *core.Spell) float64 {
 				return paladin.CalcAndRollDamageRange(sim, 6.09499979019, 0.1099999994) + 0.67699998617*spell.MeleeAttackPower()
 			})
 
@@ -612,11 +614,11 @@ func (paladin *Paladin) registerGlyphOfTemplarsVerdict() {
 		return
 	}
 
-	glyphOfTemplarVerdictAura := paladin.RegisterAura(core.Aura{
+	glyphOfTemplarVerdictAura := core.BlockPrepull(paladin.RegisterAura(core.Aura{
 		Label:    "Glyph of Templar's Verdict" + paladin.Label,
 		ActionID: core.ActionID{SpellID: 115668},
 		Duration: time.Second * 6,
-	}).AttachMultiplicativePseudoStatBuff(&paladin.PseudoStats.DamageTakenMultiplier, 0.9)
+	})).AttachMultiplicativePseudoStatBuff(&paladin.PseudoStats.DamageTakenMultiplier, 0.9)
 
 	core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
 		Name:           "Glyph of Templar's Verdict Trigger" + paladin.Label,
@@ -642,7 +644,7 @@ func (paladin *Paladin) registerGlyphOfTheAlabasterShield() {
 		FloatValue: 0.1,
 	})
 
-	alabasterShieldAura := paladin.RegisterAura(core.Aura{
+	alabasterShieldAura := core.BlockPrepull(paladin.RegisterAura(core.Aura{
 		Label:     "Alabaster Shield" + paladin.Label,
 		ActionID:  core.ActionID{SpellID: 121467},
 		Duration:  time.Second * 12,
@@ -661,7 +663,7 @@ func (paladin *Paladin) registerGlyphOfTheAlabasterShield() {
 				aura.Deactivate(sim)
 			}
 		},
-	})
+	}))
 
 	core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
 		Name:     "Glyph of the Alabaster Shield" + paladin.Label,

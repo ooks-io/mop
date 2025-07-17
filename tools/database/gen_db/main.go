@@ -72,7 +72,7 @@ func main() {
 		panic(fmt.Sprintf("Error loading DBC data %v", err))
 	}
 
-	_, err = database.LoadAndWriteRawItems(helper, "s.OverallQualityId != 7 AND NOT (s.Bonding = 2 AND ind.Description_lang IS NOT NULL and ind.Description_lang NOT LIKE '%Season%') AND s.Field_1_15_7_59706_054 = 0 AND s.OverallQualityId != 0 AND (i.ClassID = 2 OR i.ClassID = 4) AND s.Display_lang != '' AND (s.ID != 34219 AND s.Display_lang NOT LIKE '%Test%' AND s.Display_lang NOT LIKE 'QA%')", inputsDir)
+	_, err = database.LoadAndWriteRawItems(helper, "s.OverallQualityId != 7 AND s.Field_1_15_7_59706_054 = 0 AND s.OverallQualityId != 0 AND (i.ClassID = 2 OR i.ClassID = 4) AND s.Display_lang != '' AND (s.ID != 34219 AND s.Display_lang NOT LIKE '%Test%' AND s.Display_lang NOT LIKE 'QA%')", inputsDir)
 	if err != nil {
 		panic(fmt.Sprintf("Error loading DBC data %v", err))
 	}
@@ -232,8 +232,8 @@ func main() {
 	database.GenerateMissingEffectsFile()
 	database.GenerateItemEffectRandomPropPoints(instance, db)
 
-	for _, key := range slices.SortedFunc(maps.Keys(db.Enchants), func(l database.EnchantDBKey, r database.EnchantDBKey) int {
-		return int(l.EffectID) - int(r.EffectID)
+	for _, key := range slices.SortedFunc(maps.Keys(db.Enchants), func(l int32, r int32) int {
+		return int(l) - int(r)
 	}) {
 		enchant := db.Enchants[key]
 		if enchant.ItemId != 0 {
@@ -625,7 +625,7 @@ func ApplyGlobalFilters(db *database.WowDatabase) {
 		return icon.Name != "" && icon.Icon != "" && icon.Id != 0
 	})
 
-	db.Enchants = core.FilterMap(db.Enchants, func(_ database.EnchantDBKey, enchant *proto.UIEnchant) bool {
+	db.Enchants = core.FilterMap(db.Enchants, func(_ int32, enchant *proto.UIEnchant) bool {
 		// MoP no longer has head enchants, so filter them.
 		if enchant.Type == proto.ItemType_ItemTypeHead {
 			return false
@@ -1015,12 +1015,12 @@ func GetAllRotationSpellIds() map[string][]int32 {
 			Class:         proto.Class_ClassMonk,
 			Equipment:     &proto.EquipmentSpec{},
 			TalentsString: "000000",
-		}, &proto.Player_BrewmasterMonk{BrewmasterMonk: &proto.BrewmasterMonk{Options: &proto.BrewmasterMonk_Options{ClassOptions: &proto.MonkOptions{}, Stance: proto.MonkStance_SturdyOx}}}), nil, nil, nil)},
+		}, &proto.Player_BrewmasterMonk{BrewmasterMonk: &proto.BrewmasterMonk{Options: &proto.BrewmasterMonk_Options{ClassOptions: &proto.MonkOptions{}}}}), nil, nil, nil)},
 		{Name: "mistweaverMonk", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:         proto.Class_ClassMonk,
 			Equipment:     &proto.EquipmentSpec{},
 			TalentsString: "000000",
-		}, &proto.Player_MistweaverMonk{MistweaverMonk: &proto.MistweaverMonk{Options: &proto.MistweaverMonk_Options{ClassOptions: &proto.MonkOptions{}, Stance: proto.MonkStance_WiseSerpent}}}), nil, nil, nil)},
+		}, &proto.Player_MistweaverMonk{MistweaverMonk: &proto.MistweaverMonk{Options: &proto.MistweaverMonk_Options{ClassOptions: &proto.MonkOptions{}}}}), nil, nil, nil)},
 		{Name: "windwalkerMonk", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:         proto.Class_ClassMonk,
 			Equipment:     &proto.EquipmentSpec{},
