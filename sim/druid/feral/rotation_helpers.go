@@ -190,6 +190,10 @@ func (cat *FeralDruid) calcRoarRefreshTime(sim *core.Simulation, ripLeeway time.
 		return roarEnd
 	}
 
+	if cat.ComboPoints() == 0 {
+		return roarEnd
+	}
+
 	// Project Rip end time assuming full Bloodletting extensions
 	remainingExtensions := druid.RipMaxNumTicks - ripDot.BaseTickCount
 	ripEnd := ripDot.ExpiresAt() + time.Duration(remainingExtensions) * ripDot.BaseTickLength
