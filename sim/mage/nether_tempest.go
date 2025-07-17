@@ -65,7 +65,6 @@ func (mage *Mage) registerNetherTempest() {
 		ActionID:       actionID.WithTag(1),
 		SpellSchool:    core.SpellSchoolArcane,
 		ProcMask:       core.ProcMaskSpellDamage,
-		Flags:          core.SpellFlagAPL,
 		ClassSpellMask: MageSpellNetherTempestDot,
 
 		DamageMultiplier: 1,

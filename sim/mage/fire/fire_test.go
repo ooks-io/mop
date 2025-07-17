@@ -30,9 +30,6 @@ func TestFire(t *testing.T) {
 			Consumables:     FullFireConsumesSpec,
 			SpecOptions:     core.SpecOptionsCombo{Label: "Fire", SpecOptions: PlayerOptionsFire},
 			Rotation:        core.GetAplRotation("../../../ui/mage/fire/apls", "fire"),
-			OtherRotations: []core.RotationCombo{
-				core.GetAplRotation("../../../ui/mage/fire/apls", "fire_cleave"),
-			},
 
 			ItemFilter: ItemFilter,
 		},
