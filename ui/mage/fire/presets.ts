@@ -53,7 +53,7 @@ export const DEFAULT_EP_PRESET = PresetUtils.makePresetEpWeights(
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/wotlk/talent-calc and copy the numbers in the url.
 export const FireTalents = {
-	name: 'Fire',
+	name: 'Default',
 	data: SavedTalents.create({
 		talentsString: '111122',
 		glyphs: Glyphs.create({

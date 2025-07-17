@@ -41,7 +41,7 @@ export const P1_EP_PRESET = PresetUtils.makePresetEpWeights(
 // https://wowhead.com/wotlk/talent-calc and copy the numbers in the url.
 
 export const FrostDefaultTalents = {
-	name: 'Frost',
+	name: 'Default',
 	data: SavedTalents.create({
 		talentsString: '311122',
 		glyphs: Glyphs.create({
