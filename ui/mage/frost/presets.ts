@@ -19,9 +19,9 @@ export const P1_PREBIS_POOR = PresetUtils.makePresetGear('P1 - Pre-BIS (Budget)'
 
 export const P1_BIS = PresetUtils.makePresetGear('P1 - BIS', P1BISGear);
 
-export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Single Target', FrostApl);
+export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Default', FrostApl);
 export const ROTATION_PRESET_AOE = PresetUtils.makePresetAPLRotation('AOE', FrostAoeApl);
-export const ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Cleave', FrostCleaveApl);
+// export const ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Cleave', FrostCleaveApl);
 
 // Preset options for EP weights
 export const P1_EP_PRESET = PresetUtils.makePresetEpWeights(
@@ -107,7 +107,7 @@ export const P1_PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuild('Single Targe
 
 export const P1_PRESET_BUILD_CLEAVE = PresetUtils.makePresetBuild('Cleave', {
 	talents: FrostTalentsCleave,
-	rotation: ROTATION_PRESET_CLEAVE,
+	rotation: ROTATION_PRESET_DEFAULT,
 	encounter: ENCOUNTER_CLEAVE,
 });
 
