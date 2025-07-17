@@ -65,9 +65,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-AssuranceofConsequence-105472"
  value: {
-  dps: 85086.64092
-  tps: 147092.86824
-  hps: 1878.00735
+  dps: 89659.40758
+  tps: 139556.24491
+  hps: 1927.82171
  }
 }
 dps_results: {
@@ -1913,9 +1913,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-RelicofKypariZar-84075"
  value: {
-  dps: 79339.2187
-  tps: 158592.25095
-  hps: 1922.10437
+  dps: 79462.37434
+  tps: 159023.61598
+  hps: 1927.00869
  }
 }
 dps_results: {
