@@ -156,7 +156,7 @@ type APLActionActivateAllStatBuffProcAuras struct {
 	allSubactions []*APLActionActivateAura
 }
 
-func (rot *APLRotation) newActionactivateAllStatBuffProcAuras(config *proto.APLActionActivateAllStatBuffProcAuras) APLActionImpl {
+func (rot *APLRotation) newActionActivateAllStatBuffProcAuras(config *proto.APLActionActivateAllStatBuffProcAuras) APLActionImpl {
 
 	unit := rot.unit
 	character := unit.Env.Raid.GetPlayerFromUnit(unit).GetCharacter()
