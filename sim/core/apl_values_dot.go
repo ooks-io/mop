@@ -103,7 +103,8 @@ func (value *APLValueDotRemainingTime) Type() proto.APLValueType {
 	return proto.APLValueType_ValueTypeDuration
 }
 func (value *APLValueDotRemainingTime) GetDuration(sim *Simulation) time.Duration {
-	return TernaryDuration(value.dot.Get().IsActive(), value.dot.Get().RemainingDuration(sim), 0)
+	resolvedDot := value.dot.Get()
+	return TernaryDuration(resolvedDot.IsActive(), resolvedDot.RemainingDuration(sim), 0)
 }
 func (value *APLValueDotRemainingTime) String() string {
 	return fmt.Sprintf("Dot Remaining Time(%s)", value.dot.Get().Spell.ActionID)
