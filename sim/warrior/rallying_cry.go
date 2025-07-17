@@ -27,9 +27,7 @@ func (war *Warrior) registerRallyingCry() {
 		},
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
-			for _, unit := range sim.Raid.AllPlayerUnits {
-				war.RallyingCryAuras.Get(unit).Activate(sim)
-			}
+			war.RallyingCryAuras.ActivateAllPlayers(sim)
 		},
 		RelatedAuraArrays: war.RallyingCryAuras.ToMap(),
 	})

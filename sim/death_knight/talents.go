@@ -271,9 +271,7 @@ func (dk *DeathKnight) registerAntiMagicZone() {
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			for _, unit := range sim.Raid.AllUnits {
-				antiMagicZoneAuras.Get(unit).Activate(sim)
-			}
+			antiMagicZoneAuras.ActivateAll(sim)
 		},
 
 		RelatedAuraArrays: antiMagicZoneAuras.ToMap(),

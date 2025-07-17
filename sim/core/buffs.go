@@ -1047,9 +1047,7 @@ func registerRallyingCryCD(agent Agent, numRallyingCries int32) {
 			},
 
 			AddAura: func(sim *Simulation, _ *Character) {
-				for _, unit := range sim.Raid.AllPlayerUnits {
-					rallyingCryArray.Get(unit).Activate(sim)
-				}
+				rallyingCryArray.ActivateAll(sim)
 			},
 		},
 		numRallyingCries,
