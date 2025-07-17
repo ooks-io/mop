@@ -258,7 +258,7 @@ dps_results: {
  key: "TestFeral-AllItems-CraftedDreadfulGladiator'sBadgeofConquest-93419"
  value: {
   dps: 81647.29299
-  tps: 163779.68823
+  tps: 163779.78823
   hps: 1946.85509
  }
 }
@@ -274,7 +274,7 @@ dps_results: {
  key: "TestFeral-AllItems-CraftedDreadfulGladiator'sBadgeofVictory-93606"
  value: {
   dps: 79659.01498
-  tps: 161606.13432
+  tps: 161606.23432
   hps: 1918.70041
  }
 }
@@ -346,7 +346,7 @@ dps_results: {
  key: "TestFeral-AllItems-CraftedMalevolentGladiator'sBadgeofVictory-98912"
  value: {
   dps: 79924.1267
-  tps: 162855.76156
+  tps: 162855.86156
   hps: 1924.19519
  }
 }
@@ -425,8 +425,8 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-CurseofHubris-105147"
  value: {
-  dps: 81087.75256
-  tps: 168461.65615
+  dps: 81086.19401
+  tps: 168460.54958
   hps: 2139.86264
  }
 }
@@ -554,7 +554,7 @@ dps_results: {
  key: "TestFeral-AllItems-DreadfulGladiator'sBadgeofConquest-84344"
  value: {
   dps: 81647.29299
-  tps: 163779.68823
+  tps: 163779.78823
   hps: 1946.85509
  }
 }
@@ -570,7 +570,7 @@ dps_results: {
  key: "TestFeral-AllItems-DreadfulGladiator'sBadgeofVictory-84490"
  value: {
   dps: 79659.01498
-  tps: 161606.13432
+  tps: 161606.23432
   hps: 1918.70041
  }
 }
@@ -697,17 +697,17 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-EnchantWeapon-JadeSpirit-4442"
  value: {
-  dps: 84963.85646
-  tps: 166946.6106
-  hps: 1917.60983
+  dps: 85007.27287
+  tps: 167410.84991
+  hps: 1918.88108
  }
 }
 dps_results: {
  key: "TestFeral-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
-  dps: 84193.35077
-  tps: 166268.08726
-  hps: 1930.87088
+  dps: 84236.76718
+  tps: 166732.32658
+  hps: 1932.14213
  }
 }
 dps_results: {
@@ -978,7 +978,7 @@ dps_results: {
  key: "TestFeral-AllItems-GrievousGladiator'sBadgeofVictory-100500"
  value: {
   dps: 80725.5392
-  tps: 164361.40917
+  tps: 164361.50917
   hps: 1924.19519
  }
 }
@@ -986,7 +986,7 @@ dps_results: {
  key: "TestFeral-AllItems-GrievousGladiator'sBadgeofVictory-100579"
  value: {
   dps: 80725.5392
-  tps: 164361.40917
+  tps: 164361.50917
   hps: 1924.19519
  }
 }
@@ -994,7 +994,7 @@ dps_results: {
  key: "TestFeral-AllItems-GrievousGladiator'sBadgeofVictory-102833"
  value: {
   dps: 80725.5392
-  tps: 164361.40917
+  tps: 164361.50917
   hps: 1924.19519
  }
 }
@@ -1002,7 +1002,7 @@ dps_results: {
  key: "TestFeral-AllItems-GrievousGladiator'sBadgeofVictory-103314"
  value: {
   dps: 80725.5392
-  tps: 164361.40917
+  tps: 164361.50917
   hps: 1924.19519
  }
 }
@@ -1458,7 +1458,7 @@ dps_results: {
  key: "TestFeral-AllItems-MalevolentGladiator'sBadgeofVictory-84942"
  value: {
   dps: 80026.18157
-  tps: 163047.49638
+  tps: 163047.59638
   hps: 1924.19519
  }
 }
@@ -1466,7 +1466,7 @@ dps_results: {
  key: "TestFeral-AllItems-MalevolentGladiator'sBadgeofVictory-91763"
  value: {
   dps: 79924.1267
-  tps: 162855.76156
+  tps: 162855.86156
   hps: 1924.19519
  }
 }
@@ -1609,8 +1609,8 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-MistdancerIdolofRage-101113"
  value: {
-  dps: 85034.61867
-  tps: 170456.3672
+  dps: 85035.26021
+  tps: 170601.99601
   hps: 1921.42357
  }
 }
@@ -1762,7 +1762,7 @@ dps_results: {
  key: "TestFeral-AllItems-PridefulGladiator'sBadgeofVictory-102636"
  value: {
   dps: 81412.37077
-  tps: 165628.13799
+  tps: 165628.23799
   hps: 1924.19519
  }
 }
@@ -1770,7 +1770,7 @@ dps_results: {
  key: "TestFeral-AllItems-PridefulGladiator'sBadgeofVictory-103511"
  value: {
   dps: 81412.37077
-  tps: 165628.13799
+  tps: 165628.23799
   hps: 1924.19519
  }
 }
@@ -2378,7 +2378,7 @@ dps_results: {
  key: "TestFeral-AllItems-TyrannicalGladiator'sBadgeofVictory-100019"
  value: {
   dps: 80231.54352
-  tps: 163433.31858
+  tps: 163433.41858
   hps: 1924.19519
  }
 }
@@ -2386,7 +2386,7 @@ dps_results: {
  key: "TestFeral-AllItems-TyrannicalGladiator'sBadgeofVictory-91410"
  value: {
   dps: 80231.54352
-  tps: 163433.31858
+  tps: 163433.41858
   hps: 1924.19519
  }
 }
@@ -2394,7 +2394,7 @@ dps_results: {
  key: "TestFeral-AllItems-TyrannicalGladiator'sBadgeofVictory-94349"
  value: {
   dps: 80231.54352
-  tps: 163433.31858
+  tps: 163433.41858
   hps: 1924.19519
  }
 }
@@ -2402,7 +2402,7 @@ dps_results: {
  key: "TestFeral-AllItems-TyrannicalGladiator'sBadgeofVictory-99943"
  value: {
   dps: 80231.54352
-  tps: 163433.31858
+  tps: 163433.41858
   hps: 1924.19519
  }
 }
@@ -2657,9 +2657,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-Average-Default"
  value: {
-  dps: 87851.59956
-  tps: 174141.40201
-  hps: 1970.75976
+  dps: 87851.66785
+  tps: 174143.49654
+  hps: 1970.76561
  }
 }
 dps_results: {
