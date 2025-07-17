@@ -10,11 +10,12 @@ func (mage *Mage) registerNetherTempest() {
 	if !mage.Talents.NetherTempest {
 		return
 	}
+	actionID := core.ActionID{SpellID: 114923}
 	netherTempestCoefficient := 0.24 // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=114923 Field "EffetBonusCoefficient"
 	netherTempestScaling := .31      // Per https://wago.tools/db2/SpellEffect?build=5.5.0.60802&filter%5BSpellID%5D=114923 Field "Coefficient"
 
 	ntCleaveSpell := mage.RegisterSpell(core.SpellConfig{
-		ActionID:       core.ActionID{SpellID: 114954},
+		ActionID:       actionID.WithTag(2), // Real SpellID: 114954
 		SpellSchool:    core.SpellSchoolArcane,
 		ProcMask:       core.ProcMaskSpellDamage,
 		ClassSpellMask: MageSpellNetherTempestDot,
@@ -35,7 +36,7 @@ func (mage *Mage) registerNetherTempest() {
 	})
 
 	mage.NetherTempest = mage.GetOrRegisterSpell(core.SpellConfig{
-		ActionID:       core.ActionID{SpellID: 114923},
+		ActionID:       actionID,
 		SpellSchool:    core.SpellSchoolArcane,
 		ProcMask:       core.ProcMaskSpellDamage,
 		Flags:          core.SpellFlagAPL,
@@ -61,10 +62,9 @@ func (mage *Mage) registerNetherTempest() {
 	})
 
 	mage.NetherTempest.RelatedDotSpell = mage.RegisterSpell(core.SpellConfig{
-		ActionID:       core.ActionID{SpellID: 114923}.WithTag(1),
+		ActionID:       actionID.WithTag(1),
 		SpellSchool:    core.SpellSchoolArcane,
 		ProcMask:       core.ProcMaskSpellDamage,
-		Flags:          core.SpellFlagAPL,
 		ClassSpellMask: MageSpellNetherTempestDot,
 
 		DamageMultiplier: 1,

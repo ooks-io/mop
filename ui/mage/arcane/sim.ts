@@ -111,13 +111,20 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecArcaneMage, {
 		// Preset rotations that the user can quickly select.
 		rotations: [Presets.ROTATION_PRESET_DEFAULT],
 		// Preset talents that the user can quickly select.
-		talents: [Presets.ArcaneTalents],
+		talents: [Presets.ArcaneTalents, Presets.ArcaneTalentsCleave],
 		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.PREBIS_PRESET, Presets.P1_BIS_PRESET, Presets.RICH_PREBIS_PRESET],
+		gear: [Presets.PREBIS_PRESET, Presets.RICH_PREBIS_PRESET, Presets.P1_BIS_PRESET],
+
+		builds: [Presets.P1_PRESET_BUILD_DEFAULT, Presets.P1_PRESET_BUILD_CLEAVE],
 	},
 
-	autoRotation: (_: Player<Spec.SpecArcaneMage>): APLRotation => {
+	autoRotation: (player: Player<Spec.SpecArcaneMage>): APLRotation => {
+		// const numTargets = player.sim.encounter.targets.length;
+		// if (numTargets >= 2) {
+		// 	return Presets.ROTATION_PRESET_CLEAVE.rotation.rotation!;
+		// } else {
 		return Presets.ROTATION_PRESET_DEFAULT.rotation.rotation!;
+		// }
 	},
 
 	raidSimPresets: [

@@ -117,7 +117,7 @@ func (mage *Mage) registerPassives() {
 func (mage *Mage) registerSpells() {
 	mage.registerArmorSpells()
 
-	// mage.registerArcaneExplosionSpell()
+	mage.registerArcaneExplosionSpell()
 	mage.registerBlizzardSpell()
 	mage.registerConeOfColdSpell()
 	mage.registerDeepFreezeSpell()

@@ -29,6 +29,9 @@ func TestFrost(t *testing.T) {
 			Consumables:     DefaultConsumables,
 			SpecOptions:     core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsFrost},
 			Rotation:        core.GetAplRotation("../../../ui/mage/frost/apls", "frost"),
+			OtherRotations: []core.RotationCombo{
+				core.GetAplRotation("../../../ui/mage/frost/apls", "frost_aoe"),
+			},
 
 			ItemFilter: ItemFilter,
 		},
