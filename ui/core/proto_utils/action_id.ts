@@ -319,6 +319,10 @@ export class ActionId {
 				if (tag == 1) name += ' (DoT)';
 				else if (tag == 2) name += ' (Explosion)';
 				break;
+			case 'Nether Tempest':
+				if (tag == 1) name += ' (DoT)';
+				if (tag == 2) name += ' (Cleave)';
+				break;
 			case 'Evocation':
 				if (tag == 1) {
 					name += ' (1 Tick)';
@@ -1170,6 +1174,7 @@ const spellIdTooltipOverrides: Map<string, ActionIdOverride> = new Map([
 
 	// Mage - Living Bomb
 	[JSON.stringify({ spellId: 44457, tag: 2 }), { spellId: 44461 }], // Living Bomb Explosion
+	[JSON.stringify({ spellId: 114923, tag: 2 }), { spellId: 114954 }], // Nether Tempest (Cleave)
 
 	// Warlock - Immolation Aura
 	[JSON.stringify({ spellId: 104025, tag: 2 }), { spellId: 129476 }],
