@@ -307,7 +307,7 @@ func (target *Target) NextActiveTarget() *Target {
 func (target *Target) PreviousActiveTarget() *Target {
 	prevIndex := target.Index - 1
 	if prevIndex < 0 {
-		prevIndex = target.Env.TotalTargetCount()
+		prevIndex = target.Env.TotalTargetCount() - 1
 	}
 
 	prevTarget := target.Env.GetTargetByIndex(prevIndex)

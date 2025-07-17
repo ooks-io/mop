@@ -26,7 +26,8 @@ func (value *APLValueDotIsActive) Type() proto.APLValueType {
 	return proto.APLValueType_ValueTypeBool
 }
 func (value *APLValueDotIsActive) GetBool(sim *Simulation) bool {
-	return value.dot.Get() != nil && value.dot.Get().IsActive()
+	resolvedDot := value.dot.Get()
+	return resolvedDot != nil && resolvedDot.IsActive()
 }
 func (value *APLValueDotIsActive) String() string {
 	return fmt.Sprintf("Dot Is Active(%s)", value.dot.Get().Spell.ActionID)
@@ -189,7 +190,7 @@ func (value *APLValueDotTickFrequency) GetDuration(_ *Simulation) time.Duration 
 	return value.dot.Get().tickPeriod
 }
 func (value *APLValueDotTickFrequency) String() string {
-	return fmt.Sprintf("Dot Tick Frequency(%s)", value.dot.Get().tickPeriod)
+	return fmt.Sprintf("Dot Tick Frequency(%s)", value.dot.Get().Spell.ActionID)
 }
 
 type APLValueDotPercentIncrease struct {

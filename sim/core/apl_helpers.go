@@ -76,15 +76,15 @@ func (rot *APLRotation) GetTargetUnit(ref *proto.UnitReference) UnitReference {
 type AuraReference struct {
 	fixedAura *Aura
 
-	curTarget      UnitReference
-	curTargetAuras AuraArray
+	targetRef      UnitReference
+	allTargetAuras AuraArray
 }
 
 func (ar *AuraReference) Get() *Aura {
 	if ar.fixedAura != nil {
 		return ar.fixedAura
-	} else if ar.curTarget.Get() != nil {
-		return ar.curTargetAuras.Get(ar.curTarget.Get())
+	} else if ar.targetRef.Get() != nil {
+		return ar.allTargetAuras.Get(ar.targetRef.Get())
 	} else {
 		return nil
 	}
@@ -95,20 +95,21 @@ func (ar *AuraReference) String() string {
 }
 
 func newAuraReferenceHelper(sourceUnit UnitReference, auraId *proto.ActionID, auraGetter func(*Unit, ActionID) *Aura) AuraReference {
-	if sourceUnit.Get() == nil {
+	resolvedSourceUnit := sourceUnit.Get()
+	if resolvedSourceUnit == nil {
 		return AuraReference{}
 	} else if sourceUnit.fixedUnit != nil {
 		return AuraReference{
 			fixedAura: auraGetter(sourceUnit.fixedUnit, ProtoToActionID(auraId)),
 		}
 	} else {
-		auras := make([]*Aura, len(sourceUnit.Get().Env.AllUnits))
-		for _, unit := range sourceUnit.Get().Env.AllUnits {
+		auras := make([]*Aura, len(resolvedSourceUnit.Env.AllUnits))
+		for _, unit := range resolvedSourceUnit.Env.AllUnits {
 			auras[unit.UnitIndex] = auraGetter(unit, ProtoToActionID(auraId))
 		}
 		return AuraReference{
-			curTarget:      sourceUnit,
-			curTargetAuras: auras,
+			targetRef:      sourceUnit,
+			allTargetAuras: auras,
 		}
 	}
 }
@@ -124,15 +125,15 @@ func NewIcdAuraReference(sourceUnit UnitReference, auraId *proto.ActionID) AuraR
 type DotReference struct {
 	fixedDot *Dot
 
-	curTarget     UnitReference
-	curTargetDots DotArray
+	targetRef UnitReference
+	allDots   DotArray
 }
 
 func (ar *DotReference) Get() *Dot {
 	if ar.fixedDot != nil {
 		return ar.fixedDot
-	} else if ar.curTarget.Get() != nil {
-		return ar.curTargetDots.Get(ar.curTarget.Get())
+	} else if ar.targetRef.Get() != nil {
+		return ar.allDots.Get(ar.targetRef.Get())
 	} else {
 		return nil
 	}
@@ -142,46 +143,49 @@ func (ar *DotReference) String() string {
 	return ar.Get().ActionID.String()
 }
 
-func (rot *APLRotation) NewDotReference(targetUnit UnitReference, auraId *proto.ActionID) *DotReference {
-	if targetUnit.Get() == nil {
+func (rot *APLRotation) NewDotReference(targetUnitRef UnitReference, auraId *proto.ActionID) *DotReference {
+	resolvedTargetUnit := targetUnitRef.Get()
+	if resolvedTargetUnit == nil {
 		return &DotReference{}
-	} else if targetUnit.fixedUnit != nil {
+	} else if targetUnitRef.fixedUnit != nil {
 		return &DotReference{
-			fixedDot: rot.GetAPLDot(targetUnit, auraId),
+			fixedDot: rot.GetAPLDot(targetUnitRef, auraId),
 		}
 	} else {
-		dots := make([]*Dot, len(targetUnit.Get().Env.Encounter.AllTargetUnits))
-		for _, unit := range targetUnit.Get().Env.Encounter.AllTargetUnits {
+		dots := make([]*Dot, len(resolvedTargetUnit.Env.Encounter.AllTargetUnits))
+		for _, unit := range resolvedTargetUnit.Env.Encounter.AllTargetUnits {
 			dots[unit.UnitIndex] = rot.GetAPLDot(UnitReference{fixedUnit: unit}, auraId)
 		}
 
 		return &DotReference{
-			curTarget:     targetUnit,
-			curTargetDots: dots,
+			targetRef: targetUnitRef,
+			allDots:   dots,
 		}
 	}
 }
 
 func (rot *APLRotation) GetAPLAura(sourceUnit UnitReference, auraId *proto.ActionID) AuraReference {
-	if sourceUnit.Get() == nil {
+	resolvedSourceUnit := sourceUnit.Get()
+	if resolvedSourceUnit == nil {
 		return AuraReference{}
 	}
 
 	aura := NewAuraReference(sourceUnit, auraId)
 	if aura.Get() == nil {
-		rot.ValidationMessage(proto.LogLevel_Warning, "No aura found on %s for: %s", sourceUnit.Get().Label, ProtoToActionID(auraId))
+		rot.ValidationMessage(proto.LogLevel_Warning, "No aura found on %s for: %s", resolvedSourceUnit.Label, ProtoToActionID(auraId))
 	}
 	return aura
 }
 
 func (rot *APLRotation) GetAPLICDAura(sourceUnit UnitReference, auraId *proto.ActionID) AuraReference {
-	if sourceUnit.Get() == nil {
+	resolvedSourceUnit := sourceUnit.Get()
+	if resolvedSourceUnit == nil {
 		return AuraReference{}
 	}
 
 	aura := NewIcdAuraReference(sourceUnit, auraId)
 	if aura.Get() == nil {
-		rot.ValidationMessage(proto.LogLevel_Warning, "No aura found on %s for: %s", sourceUnit.Get().Label, ProtoToActionID(auraId))
+		rot.ValidationMessage(proto.LogLevel_Warning, "No aura found on %s for: %s", resolvedSourceUnit.Label, ProtoToActionID(auraId))
 	}
 	return aura
 }
