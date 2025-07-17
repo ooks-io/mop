@@ -184,7 +184,6 @@ func (cat *FeralDruid) calcRoarRefreshTime(sim *core.Simulation, ripLeeway time.
 	// If we're not proactively offsetting the Roar, then use the standard 1
 	// tick refresh window, unless there is a Rip conflict.
 	roarEnd := roarBuff.ExpiresAt()
-	standardRefreshTime := roarEnd - roarBuff.BaseTickLength
 
 	if !ripDot.IsActive() || (ripDot.ExpiresAt() < roarEnd + cat.ReactionTime) {
 		return roarEnd
@@ -193,6 +192,8 @@ func (cat *FeralDruid) calcRoarRefreshTime(sim *core.Simulation, ripLeeway time.
 	if cat.ComboPoints() == 0 {
 		return roarEnd
 	}
+
+	standardRefreshTime := core.TernaryDuration(cat.ComboPoints() < 5, roarEnd, roarEnd - roarBuff.BaseTickLength)
 
 	// Project Rip end time assuming full Bloodletting extensions
 	remainingExtensions := druid.RipMaxNumTicks - ripDot.BaseTickCount
