@@ -34,7 +34,7 @@ func (cat *FeralDruid) newActionCatOptimalRotationAction(config *proto.APLAction
 	} else {
 		rotation.UseBite = true
 		rotation.BiteTime = time.Second * 13
-		rotation.BerserkBiteTime = time.Second * 3
+		rotation.BerserkBiteTime = time.Second * 8
 		rotation.MinRoarOffset = time.Second * 37
 		rotation.RipLeeway = time.Second * 8
 	}
