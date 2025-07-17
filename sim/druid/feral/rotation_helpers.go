@@ -54,6 +54,25 @@ func (rotation *FeralDruidRotation) TryBerserk(sim *core.Simulation) {
 	waitForTf := !cat.TigersFuryAura.IsActive() && (tfCdRemain + cat.ReactionTime < simTimeRemain - cat.BerserkCatAura.Duration)
 	berserkNow := rotation.UseBerserk && cat.Berserk.IsReady(sim) && !waitForTf && !cat.ClearcastingAura.IsActive() && (cat.CurrentEnergy() > 60)
 
+	if berserkNow && (simTimeRemain / cat.Berserk.CD.Duration == 0) && !sim.IsExecutePhase25() {
+		projectedExecuteStart := core.DurationFromSeconds((1.0 - sim.Encounter.ExecuteProportion_25) * sim.Duration.Seconds())
+
+		if (sim.CurrentTime + tfCdRemain < projectedExecuteStart) && (tfCdRemain + cat.ReactionTime < simTimeRemain - cat.BerserkCatAura.Duration) {
+			allProcsReady := true
+
+			for _, aura := range rotation.itemProcAuras {
+				if !aura.IsActive() && !aura.Icd.IsReady(sim) {
+					allProcsReady = false
+					break
+				}
+			}
+
+			if !allProcsReady {
+				return
+			}
+		}
+	}
+
 	if berserkNow {
 		cat.Berserk.Cast(sim, nil)
 		cat.UpdateMajorCooldowns()

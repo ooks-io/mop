@@ -5,6 +5,7 @@ import (
 
 	"github.com/wowsims/mop/sim/core"
 	"github.com/wowsims/mop/sim/core/proto"
+	"github.com/wowsims/mop/sim/core/stats"
 )
 
 func (cat *FeralDruid) NewAPLAction(_ *core.APLRotation, config *proto.APLAction) core.APLActionImpl {
@@ -45,6 +46,9 @@ func (cat *FeralDruid) newActionCatOptimalRotationAction(config *proto.APLAction
 	rotation.pendingPoolWeaves = &PoolingActions{}
 	rotation.pendingPoolWeaves.create(2)
 
+	// Store relevant proc auras for snapshot timing.
+	rotation.itemProcAuras = cat.GetMatchingItemProcAuras([]stats.Stat{stats.Agility, stats.AttackPower, stats.MasteryRating}, time.Second * 30)
+
 	return rotation
 }
 
@@ -67,6 +71,7 @@ type FeralDruidRotation struct {
 	pendingPoolWeaves *PoolingActions
 	readyToShift      bool
 	lastShiftAt       time.Duration
+	itemProcAuras     []*core.StatBuffAura
 }
 
 func (rotation *FeralDruidRotation) Finalize(_ *core.APLRotation)                     {}
