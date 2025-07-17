@@ -30,6 +30,9 @@ func TestArcane(t *testing.T) {
 
 			SpecOptions: core.SpecOptionsCombo{Label: "Arcane", SpecOptions: PlayerOptionsArcane},
 			Rotation:    core.GetAplRotation("../../../ui/mage/arcane/apls", "default"),
+			OtherRotations: []core.RotationCombo{
+				core.GetAplRotation("../../../ui/mage/arcane/apls", "arcane_cleave"),
+			},
 
 			ItemFilter: ItemFilter,
 		},

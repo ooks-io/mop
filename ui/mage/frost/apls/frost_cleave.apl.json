@@ -1,4 +1,4 @@
- {
+{
       "type": "TypeAPL",
       "prepullActions": [
         {"action":{"castSpell":{"spellId":{"spellId":31687}}},"doAtValue":{"const":{"val":"-15s"}}},
@@ -18,6 +18,6 @@
         {"action":{"condition":{"or":{"vals":[{"not":{"val":{"dotIsActive":{"spellId":{"spellId":114923}}}}},{"cmp":{"op":"OpLe","lhs":{"dotRemainingTime":{"spellId":{"spellId":114923}}},"rhs":{"dotTickFrequency":{"spellId":{"spellId":114923}}}}}]}},"multidot":{"spellId":{"spellId":114923,"tag":1},"maxDots":5,"maxOverlap":{"const":{"val":"100ms"}}}}},
         {"action":{"condition":{"auraIsInactiveWithReactionTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":112948}}},"castSpell":{"spellId":{"spellId":112948}}}},
         {"action":{"condition":{"auraIsActiveWithReactionTime":{"auraId":{"spellId":112965}}},"castSpell":{"spellId":{"spellId":30455}}}},
-        {"action":{"channelSpell":{"spellId":{"spellId":10},"interruptIf":{"or":{"vals":[{"spellIsReady":{"spellId":{"spellId":84714}}},{"auraIsActiveWithReactionTime":{"auraId":{"spellId":112965}}},{"auraIsActiveWithReactionTime":{"auraId":{"spellId":44549}}}]}}}}}
+        {"action":{"castSpell":{"spellId":{"spellId":116}}}}
       ]
     }

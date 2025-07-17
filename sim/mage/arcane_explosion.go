@@ -6,6 +6,10 @@ import (
 
 func (mage *Mage) registerArcaneExplosionSpell() {
 
+	arcaneExplosionVariance := 0.08
+	arcaneExplosionCoefficient := 0.55
+	arcaneExplosionScaling := 0.483
+
 	mage.RegisterSpell(core.SpellConfig{
 		ActionID:       core.ActionID{SpellID: 1449},
 		SpellSchool:    core.SpellSchoolArcane,
@@ -14,7 +18,7 @@ func (mage *Mage) registerArcaneExplosionSpell() {
 		ClassSpellMask: MageSpellArcaneExplosion,
 
 		ManaCost: core.ManaCostOptions{
-			BaseCostPercent: 15,
+			BaseCostPercent: 3,
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
@@ -24,14 +28,12 @@ func (mage *Mage) registerArcaneExplosionSpell() {
 
 		DamageMultiplier: 1,
 		CritMultiplier:   mage.DefaultCritMultiplier(),
-		BonusCoefficient: 0.186,
-		ThreatMultiplier: 1 - 0.4*float64(mage.Talents.ImprovedArcaneExplosion),
+		BonusCoefficient: arcaneExplosionCoefficient,
+		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			baseDamage := 0.368 * mage.ClassSpellScaling
-			for _, aoeTarget := range sim.Encounter.TargetUnits {
-				spell.CalcAndDealDamage(sim, aoeTarget, baseDamage, spell.OutcomeMagicHitAndCrit)
-			}
+			baseDamage := mage.CalcAndRollDamageRange(sim, arcaneExplosionScaling, arcaneExplosionVariance)
+			spell.CalcAndDealAoeDamage(sim, baseDamage, spell.OutcomeMagicHitAndCrit)
 		},
 	})
 }
