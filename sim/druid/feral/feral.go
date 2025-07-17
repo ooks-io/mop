@@ -96,7 +96,6 @@ func (cat *FeralDruid) Initialize() {
 
 	snapshotHandler := func(aura *core.Aura, sim *core.Simulation) {
 		previousRipSnapshotPower := cat.Rip.NewSnapshotPower
-		previousRakeSnapshotPower := cat.Rake.NewSnapshotPower
 		cat.UpdateBleedPower(cat.Rip, sim, cat.CurrentTarget, false, true)
 		cat.UpdateBleedPower(cat.Rake, sim, cat.CurrentTarget, false, true)
 
@@ -108,10 +107,7 @@ func (cat *FeralDruid) Initialize() {
 					cat.Log(sim, "New bleed snapshot aura found: %s", aura.ActionID)
 				}
 			}
-		} else if cat.tempSnapshotAura.IsActive() {
-			cat.Rip.NewSnapshotPower = previousRipSnapshotPower
-			cat.Rake.NewSnapshotPower = previousRakeSnapshotPower
-		} else {
+		} else if !cat.tempSnapshotAura.IsActive() {
 			cat.tempSnapshotAura = nil
 		}
 	}
