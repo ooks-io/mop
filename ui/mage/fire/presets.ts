@@ -1,10 +1,12 @@
+import { Encounter } from '../../core/encounter';
 import * as PresetUtils from '../../core/preset_utils';
-import { ConsumesSpec, Debuffs, Glyphs, Profession, PseudoStat, Race, RaidBuffs, Spec, Stat } from '../../core/proto/common';
-import { FireMage_Options as MageOptions, FireMage_Rotation, MageMajorGlyph as MajorGlyph, MageMinorGlyph as MinorGlyph } from '../../core/proto/mage';
+import { Class, ConsumesSpec, Debuffs, Glyphs, Profession, PseudoStat, Race, RaidBuffs, Stat } from '../../core/proto/common';
+import { FireMage_Options as MageOptions, MageMajorGlyph as MajorGlyph, MageMinorGlyph as MinorGlyph } from '../../core/proto/mage';
 import { SavedTalents } from '../../core/proto/ui';
 import { Stats, UnitStat, UnitStatPresets } from '../../core/proto_utils/stats';
+import { defaultRaidBuffMajorDamageCooldowns } from '../../core/proto_utils/utils';
 import FireApl from './apls/fire.apl.json';
-//import FireAoeApl from './apls/fire_aoe.apl.json';
+import FireCleaveApl from './apls/fire_cleave.apl.json';
 import P1FireBisGear from './gear_sets/p1_bis.gear.json';
 import P1FirePrebisGear from './gear_sets/p1_prebis.gear.json';
 
@@ -31,7 +33,9 @@ export const PREBIS_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS', P1FirePr
 // export const P1_SIMPLE_ROTATION_NO_TROLL = PresetUtils.makePresetSimpleRotation('P1 - Not Troll', Spec.SpecFireMage, P1NoTrollDefaultSimpleRotation);
 
 //export const ROTATION_PRESET_SIMPLE = PresetUtils.makePresetSimpleRotation('Simple Default', Spec.SpecFireMage, DefaultSimpleRotation);
-export const FIRE_ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('APL', FireApl);
+export const FIRE_ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Fire ST', FireApl);
+
+export const FIRE_ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Fire Cleave', FireCleaveApl);
 
 // Preset options for EP weights
 export const DEFAULT_EP_PRESET = PresetUtils.makePresetEpWeights(
@@ -49,16 +53,25 @@ export const DEFAULT_EP_PRESET = PresetUtils.makePresetEpWeights(
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/wotlk/talent-calc and copy the numbers in the url.
 export const FireTalents = {
-	name: 'Fire',
+	name: 'Default',
 	data: SavedTalents.create({
 		talentsString: '111122',
 		glyphs: Glyphs.create({
 			major1: MajorGlyph.GlyphOfCombustion,
 			major2: MajorGlyph.GlyphOfInfernoBlast,
-			major3: MajorGlyph.GlyphOfManaGem,
+			major3: MajorGlyph.GlyphOfRapidDisplacement,
 			minor1: MinorGlyph.GlyphOfMomentum,
-			minor2: MinorGlyph.GlyphOfMirrorImage,
-			minor3: MinorGlyph.GlyphOfTheUnboundElemental
+			minor2: MinorGlyph.GlyphOfLooseMana,
+		}),
+	}),
+};
+
+export const FireTalentsCleave = {
+	name: 'Cleave',
+	data: SavedTalents.create({
+		talentsString: '111112',
+		glyphs: Glyphs.create({
+			...FireTalents.data.glyphs,
 		}),
 	}),
 };
@@ -74,10 +87,28 @@ export const DefaultFireConsumables = ConsumesSpec.create({
 	prepotId: 76093, // Potion of the Jade Serpent
 });
 
+export const ENCOUNTER_SINGLE_TARGET = PresetUtils.makePresetEncounter('Fire ST', Encounter.defaultEncounterProto());
+export const ENCOUNTER_CLEAVE = PresetUtils.makePresetEncounter('Fire Cleave (3 targets)', Encounter.defaultEncounterProto(3));
+
+export const P1_PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuild('Fire ST', {
+	talents: FireTalents,
+	rotation: FIRE_ROTATION_PRESET_DEFAULT,
+	encounter: ENCOUNTER_SINGLE_TARGET,
+	epWeights: DEFAULT_EP_PRESET,
+});
+
+export const P1_PRESET_BUILD_CLEAVE = PresetUtils.makePresetBuild('Fire Cleave (3 targets)', {
+	talents: FireTalentsCleave,
+	rotation: FIRE_ROTATION_PRESET_CLEAVE,
+	encounter: ENCOUNTER_CLEAVE,
+	epWeights: DEFAULT_EP_PRESET,
+});
+
 export const OtherDefaults = {
 	distanceFromTarget: 20,
 	profession1: Profession.Engineering,
 	profession2: Profession.Tailoring,
+	race: Race.RaceTroll,
 };
 
 export const COMBUSTION_BREAKPOINT: UnitStatPresets = {

@@ -40,6 +40,10 @@ func (mage *Mage) registerAlterTimeCD() {
 				}
 				aura.RestoreState(*state, sim)
 			} else if aura.IsActive() {
+				// Don't deactivate the currently channeling spell aura
+				if mage.IsChanneling() && mage.ChanneledDot != nil && mage.ChanneledDot.Aura == aura {
+					continue
+				}
 				aura.Deactivate(sim)
 			}
 		}
