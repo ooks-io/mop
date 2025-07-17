@@ -1,10 +1,9 @@
 import { Encounter } from '../../core/encounter';
 import * as PresetUtils from '../../core/preset_utils';
-import { Class, ConsumesSpec, Debuffs, Glyphs, Profession, Race, RaidBuffs, Stat } from '../../core/proto/common';
+import { ConsumesSpec, Glyphs, Profession, Race, Stat } from '../../core/proto/common';
 import { FrostMage_Options as MageOptions, MageMajorGlyph, MageMinorGlyph } from '../../core/proto/mage';
 import { SavedTalents } from '../../core/proto/ui';
 import { Stats } from '../../core/proto_utils/stats';
-import { defaultRaidBuffMajorDamageCooldowns } from '../../core/proto_utils/utils';
 import FrostApl from './apls/frost.apl.json';
 import FrostAoeApl from './apls/frost_aoe.apl.json';
 import FrostCleaveApl from './apls/frost_cleave.apl.json';
@@ -20,13 +19,13 @@ export const P1_PREBIS_POOR = PresetUtils.makePresetGear('P1 - Pre-BIS (Budget)'
 
 export const P1_BIS = PresetUtils.makePresetGear('P1 - BIS', P1BISGear);
 
-export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Frost ST', FrostApl);
-export const ROTATION_PRESET_AOE = PresetUtils.makePresetAPLRotation('Frost AOE', FrostAoeApl);
-export const ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Frost Cleave', FrostCleaveApl);
+export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Single Target', FrostApl);
+export const ROTATION_PRESET_AOE = PresetUtils.makePresetAPLRotation('AOE', FrostAoeApl);
+export const ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Cleave', FrostCleaveApl);
 
 // Preset options for EP weights
 export const P1_EP_PRESET = PresetUtils.makePresetEpWeights(
-	'Frost P1',
+	'P1',
 	Stats.fromMap({
 		[Stat.StatIntellect]: 1.23,
 		[Stat.StatSpellPower]: 1,
@@ -96,29 +95,26 @@ export const DefaultFrostOptions = MageOptions.create({
 	classOptions: {},
 });
 
-export const ENCOUNTER_SINGLE_TARGET = PresetUtils.makePresetEncounter('Frost ST', Encounter.defaultEncounterProto());
-export const ENCOUNTER_CLEAVE = PresetUtils.makePresetEncounter('Frost Cleave', Encounter.defaultEncounterProto(2));
-export const ENCOUNTER_AOE = PresetUtils.makePresetEncounter('Frost AoE (5+)', Encounter.defaultEncounterProto(5));
+export const ENCOUNTER_SINGLE_TARGET = PresetUtils.makePresetEncounter('Single Target', Encounter.defaultEncounterProto());
+export const ENCOUNTER_CLEAVE = PresetUtils.makePresetEncounter('Cleave', Encounter.defaultEncounterProto(2));
+export const ENCOUNTER_AOE = PresetUtils.makePresetEncounter('AoE (5+)', Encounter.defaultEncounterProto(5));
 
-export const P1_PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuild('Frost ST', {
+export const P1_PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuild('Single Target', {
 	talents: FrostDefaultTalents,
 	rotation: ROTATION_PRESET_DEFAULT,
 	encounter: ENCOUNTER_SINGLE_TARGET,
-	epWeights: P1_EP_PRESET,
 });
 
-export const P1_PRESET_BUILD_CLEAVE = PresetUtils.makePresetBuild('Frost Cleave', {
+export const P1_PRESET_BUILD_CLEAVE = PresetUtils.makePresetBuild('Cleave', {
 	talents: FrostTalentsCleave,
 	rotation: ROTATION_PRESET_CLEAVE,
 	encounter: ENCOUNTER_CLEAVE,
-	epWeights: P1_EP_PRESET,
 });
 
-export const P1_PRESET_BUILD_AOE = PresetUtils.makePresetBuild('Frost AoE (5+)', {
+export const P1_PRESET_BUILD_AOE = PresetUtils.makePresetBuild('AoE (5+)', {
 	talents: FrostTalentsAoE,
 	rotation: ROTATION_PRESET_AOE,
 	encounter: ENCOUNTER_AOE,
-	epWeights: P1_EP_PRESET,
 });
 
 export const OtherDefaults = {

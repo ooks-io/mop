@@ -1,10 +1,9 @@
 import { Encounter } from '../../core/encounter';
 import * as PresetUtils from '../../core/preset_utils';
-import { Class, ConsumesSpec, Debuffs, Glyphs, Profession, PseudoStat, Race, RaidBuffs, Stat } from '../../core/proto/common';
+import { ConsumesSpec, Glyphs, Profession, PseudoStat, Race, Stat } from '../../core/proto/common';
 import { FireMage_Options as MageOptions, MageMajorGlyph as MajorGlyph, MageMinorGlyph as MinorGlyph } from '../../core/proto/mage';
 import { SavedTalents } from '../../core/proto/ui';
 import { Stats, UnitStat, UnitStatPresets } from '../../core/proto_utils/stats';
-import { defaultRaidBuffMajorDamageCooldowns } from '../../core/proto_utils/utils';
 import FireApl from './apls/fire.apl.json';
 import FireCleaveApl from './apls/fire_cleave.apl.json';
 import P1FireBisGear from './gear_sets/p1_bis.gear.json';
@@ -33,9 +32,9 @@ export const PREBIS_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS', P1FirePr
 // export const P1_SIMPLE_ROTATION_NO_TROLL = PresetUtils.makePresetSimpleRotation('P1 - Not Troll', Spec.SpecFireMage, P1NoTrollDefaultSimpleRotation);
 
 //export const ROTATION_PRESET_SIMPLE = PresetUtils.makePresetSimpleRotation('Simple Default', Spec.SpecFireMage, DefaultSimpleRotation);
-export const FIRE_ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Fire ST', FireApl);
+export const FIRE_ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Single Target', FireApl);
 
-export const FIRE_ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Fire Cleave', FireCleaveApl);
+export const FIRE_ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Cleave', FireCleaveApl);
 
 // Preset options for EP weights
 export const DEFAULT_EP_PRESET = PresetUtils.makePresetEpWeights(
@@ -87,21 +86,19 @@ export const DefaultFireConsumables = ConsumesSpec.create({
 	prepotId: 76093, // Potion of the Jade Serpent
 });
 
-export const ENCOUNTER_SINGLE_TARGET = PresetUtils.makePresetEncounter('Fire ST', Encounter.defaultEncounterProto());
-export const ENCOUNTER_CLEAVE = PresetUtils.makePresetEncounter('Fire Cleave (3 targets)', Encounter.defaultEncounterProto(3));
+export const ENCOUNTER_SINGLE_TARGET = PresetUtils.makePresetEncounter('Single Target', Encounter.defaultEncounterProto());
+export const ENCOUNTER_CLEAVE = PresetUtils.makePresetEncounter('Cleave (3 targets)', Encounter.defaultEncounterProto(3));
 
-export const P1_PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuild('Fire ST', {
+export const P1_PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuild('Single Target', {
 	talents: FireTalents,
 	rotation: FIRE_ROTATION_PRESET_DEFAULT,
 	encounter: ENCOUNTER_SINGLE_TARGET,
-	epWeights: DEFAULT_EP_PRESET,
 });
 
-export const P1_PRESET_BUILD_CLEAVE = PresetUtils.makePresetBuild('Fire Cleave (3 targets)', {
+export const P1_PRESET_BUILD_CLEAVE = PresetUtils.makePresetBuild('Cleave (3 targets)', {
 	talents: FireTalentsCleave,
 	rotation: FIRE_ROTATION_PRESET_CLEAVE,
 	encounter: ENCOUNTER_CLEAVE,
-	epWeights: DEFAULT_EP_PRESET,
 });
 
 export const OtherDefaults = {
@@ -160,31 +157,3 @@ export const GLYPHED_COMBUSTION_BREAKPOINT: UnitStatPresets = {
 		['39-tick - Combust (Glyph)', 92.492819],
 	]),
 };
-
-// export const P1_PREBIS_PRESET_BUILD = PresetUtils.makePresetBuild('P1 - Pre-BIS (Troll)', {
-// 	race: Race.RaceTroll,
-// 	gear: PREBIS_PRESET,
-// 	rotation: P1_SIMPLE_ROTATION_DEFAULT,
-// 	epWeights: DEFAULT_EP_PRESET,
-// });
-
-// export const P1_PREBIS_PRESET_BUILD_NO_TROLL = PresetUtils.makePresetBuild('P1 - Pre-BIS (Worgen)', {
-// 	race: Race.RaceWorgen,
-// 	gear: PREBIS_PRESET,
-// 	rotation: P1_SIMPLE_ROTATION_NO_TROLL,
-// 	epWeights: DEFAULT_EP_PRESET,
-// });
-
-// export const P1_PRESET_BUILD = PresetUtils.makePresetBuild('P1 - BIS (Troll)', {
-// 	race: Race.RaceTroll,
-// 	gear: P1_BIS_PRESET,
-// 	rotation: P1_SIMPLE_ROTATION_DEFAULT,
-// 	epWeights: DEFAULT_EP_PRESET,
-// });
-
-// export const P1_PRESET_BUILD_NO_TROLL = PresetUtils.makePresetBuild('P1 - BIS (Worgen)', {
-// 	race: Race.RaceWorgen,
-// 	gear: P1_BIS_PRESET,
-// 	rotation: P1_SIMPLE_ROTATION_NO_TROLL,
-// 	epWeights: DEFAULT_EP_PRESET,
-// });
