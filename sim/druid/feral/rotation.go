@@ -156,12 +156,15 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 	isBerserk := cat.BerserkCatAura.IsActive()
 	anyBleedActive := cat.AssumeBleedActive || (cat.BleedsActive[cat.CurrentTarget] > 0)
 	fightDur := sim.GetRemainingDuration()
-
-	// Rip logic
 	ripDot := cat.Rip.CurDot()
 	ripDur := ripDot.RemainingDuration(sim)
 	roarBuff := cat.SavageRoarBuff
 	roarDur := roarBuff.RemainingDuration(sim)
+	rakeDot := cat.Rake.CurDot()
+	rakeDur := rakeDot.RemainingDuration(sim)
+	thrashDot := cat.ThrashCat.CurDot()
+
+	// Rip logic
 	ripRefreshTime := cat.calcBleedRefreshTime(sim, cat.Rip, ripDot, isExecutePhase, true)
 	ripNow := (curCp >= 5) && (!ripDot.IsActive() || ((sim.CurrentTime > ripRefreshTime) && (!isExecutePhase || (cat.Rip.NewSnapshotPower > cat.Rip.CurrentSnapshotPower + 0.001))) || (!isExecutePhase && (roarDur < rotation.RipLeeway) && (ripDot.ExpiresAt() < roarBuff.ExpiresAt() + rotation.RipLeeway))) && (fightDur > ripDot.BaseTickLength) && (!isClearcast || !anyBleedActive) && !cat.shouldDelayBleedRefreshForTf(sim, ripDot, true)
 
@@ -177,8 +180,6 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 	biteNow := shouldBite || shouldEmergencyBite
 
 	// Rake logic
-	rakeDot := cat.Rake.CurDot()
-	rakeDur := rakeDot.RemainingDuration(sim)
 	rakeRefreshTime := cat.calcBleedRefreshTime(sim, cat.Rake, rakeDot, isExecutePhase, false)
 	rakeNow := (!rakeDot.IsActive() || (sim.CurrentTime > rakeRefreshTime)) && (fightDur > rakeDot.BaseTickLength) && (!isClearcast || !rakeDot.IsActive() || (rakeDur < time.Second)) && !cat.shouldDelayBleedRefreshForTf(sim, rakeDot, false) && roarBuff.IsActive()
 
@@ -267,7 +268,7 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 		timeToNextAction = core.DurationFromSeconds((cat.CurrentRakeCost() - curEnergy) / regenRate)
 	} else if bearWeaveNow {
 		rotation.readyToShift = true
-	} else if (isClearcast || isBerserk) && !cat.ThrashCat.CurDot().IsActive() {
+	} else if (isClearcast || isBerserk) && (!thrashDot.IsActive() || (thrashDot.RemainingDuration(sim) < thrashDot.BaseTickLength)) {
 		cat.ThrashCat.Cast(sim, cat.CurrentTarget)
 		return
 	} else if isClearcast || !ripRefreshPending || !cat.tempSnapshotAura.IsActive() || (ripRefreshTime + cat.ReactionTime - sim.CurrentTime > core.GCDMin) {
