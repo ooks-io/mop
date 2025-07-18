@@ -58,5 +58,20 @@ func (druid *Druid) registerRavageSpell() {
 				spell.BonusCritPercent -= highHpCritPercentBonus
 			}
 		},
+
+		ExpectedInitialDamage: func(sim *core.Simulation, target *core.Unit, spell *core.Spell, _ bool) *core.SpellResult {
+			if sim.IsExecutePhase90() {
+				spell.BonusCritPercent += highHpCritPercentBonus
+			}
+
+			baseDamage := flatDamageBonus + spell.Unit.AutoAttacks.MH().CalculateAverageWeaponDamage(spell.MeleeAttackPower())
+			result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeExpectedMeleeWeaponSpecialHitAndCrit)
+
+			if sim.IsExecutePhase90() {
+				spell.BonusCritPercent -= highHpCritPercentBonus
+			}
+
+			return result
+		},
 	})
 }

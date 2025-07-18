@@ -21,6 +21,7 @@ func (bear *GuardianDruid) newTreant() *GuardianTreant {
 					stats.Armor:               4 * ownerStats[stats.Armor],
 					stats.AttackPower:         1.2 * ownerStats[stats.AttackPower],
 					stats.PhysicalCritPercent: ownerStats[stats.PhysicalCritPercent],
+					stats.HasteRating:         ownerStats[stats.HasteRating],
 				}
 			},
 

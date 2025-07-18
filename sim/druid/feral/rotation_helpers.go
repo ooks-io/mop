@@ -75,6 +75,11 @@ func (rotation *FeralDruidRotation) TryBerserk(sim *core.Simulation) {
 
 	if berserkNow {
 		cat.Berserk.Cast(sim, nil)
+
+		if (cat.Incarnation != nil) && cat.Incarnation.IsReady(sim) && !cat.ClearcastingAura.IsActive() && (cat.CurrentEnergy() + cat.EnergyRegenPerSecond() < 100) {
+			cat.Incarnation.Cast(sim, nil)
+		}
+
 		cat.UpdateMajorCooldowns()
 		rotation.WaitUntil(sim, sim.CurrentTime + cat.ReactionTime)
 	}
