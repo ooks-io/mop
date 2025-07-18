@@ -2657,9 +2657,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-Average-Default"
  value: {
-  dps: 87851.66785
-  tps: 174143.49654
-  hps: 1970.76561
+  dps: 87852.82516
+  tps: 174150.28691
+  hps: 1970.75363
  }
 }
 dps_results: {

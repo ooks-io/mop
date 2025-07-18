@@ -56,20 +56,20 @@ func (cat *FeralDruid) applyPredatorySwiftness() {
 			aura.Activate(sim)
 		},
 
-		OnCastComplete: func(_ *core.Aura, sim *core.Simulation, spell *core.Spell) {
+		OnApplyEffects: func(aura *core.Aura, _ *core.Simulation, _ *core.Unit, spell *core.Spell) {
 			if spell.Matches(druid.DruidSpellFinisher) {
-				cpSnapshot = cat.ComboPoints()
-
-				// SR never triggers an OnSpellHitDealt
-				// callback, so handle it here.
-				if cat.SavageRoar.IsEqual(spell) {
-					procPredatorySwiftness(sim)
-				}
+				cpSnapshot = aura.Unit.ComboPoints()
 			}
 		},
 
 		OnSpellHitDealt: func(_ *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			if spell.Matches(druid.DruidSpellFinisher) && result.Landed() {
+				procPredatorySwiftness(sim)
+			}
+		},
+
+		OnCastComplete: func(_ *core.Aura, sim *core.Simulation, spell *core.Spell) {
+			if spell.Matches(druid.DruidSpellSavageRoar) {
 				procPredatorySwiftness(sim)
 			}
 		},
