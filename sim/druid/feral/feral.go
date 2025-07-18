@@ -36,6 +36,7 @@ func NewFeralDruid(character *core.Character, options *proto.Player) *FeralDruid
 
 	cat.AssumeBleedActive = feralOptions.Options.AssumeBleedActive
 	cat.CannotShredTarget = feralOptions.Options.CannotShredTarget
+	cat.registerTreants()
 
 	cat.EnableEnergyBar(core.EnergyBarOptions{
 		MaxComboPoints: 5,
@@ -128,19 +129,19 @@ func (cat *FeralDruid) ApplyTalents() {
 	cat.applyMastery()
 }
 
-func (cat *FeralDruid) applyMastery() {
-	const baseMasteryPoints = 8.0
-	const masteryModPerPoint = 0.0313 // TODO: We expect 0.03125, possibly bugged?
-	const baseMasteryMod = baseMasteryPoints * masteryModPerPoint
+const BaseMasteryPoints = 8.0
+const MasteryModPerPoint = 0.0313 // TODO: We expect 0.03125, possibly bugged?
+const BaseMasteryMod = BaseMasteryPoints * MasteryModPerPoint
 
+func (cat *FeralDruid) applyMastery() {
 	razorClaws := cat.AddDynamicMod(core.SpellModConfig{
 		ClassMask:  druid.DruidSpellThrashCat | druid.DruidSpellRake | druid.DruidSpellRip,
 		Kind:       core.SpellMod_DamageDone_Pct,
-		FloatValue: baseMasteryMod + masteryModPerPoint * cat.GetMasteryPoints(),
+		FloatValue: BaseMasteryMod + MasteryModPerPoint * cat.GetMasteryPoints(),
 	})
 
 	cat.AddOnMasteryStatChanged(func(_ *core.Simulation, _ float64, newMasteryRating float64) {
-		razorClaws.UpdateFloatValue(baseMasteryMod + masteryModPerPoint * core.MasteryRatingToMasteryPoints(newMasteryRating))
+		razorClaws.UpdateFloatValue(BaseMasteryMod + MasteryModPerPoint * core.MasteryRatingToMasteryPoints(newMasteryRating))
 	})
 
 	razorClaws.Activate()
