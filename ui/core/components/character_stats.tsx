@@ -184,6 +184,15 @@ export class CharacterStats extends Component {
 			case Race.RaceDraenei:
 				return [true, false];
 			case Race.RaceDwarf:
+				if (
+					mh &&
+					(mh.rangedWeaponType === RangedWeaponType.RangedWeaponTypeBow ||
+						mh.rangedWeaponType === RangedWeaponType.RangedWeaponTypeCrossbow ||
+						mh.rangedWeaponType === RangedWeaponType.RangedWeaponTypeGun ||
+						mh.weaponType === WeaponType.WeaponTypeMace)
+				) {
+					return [false, true];
+				}
 			case Race.RaceTroll:
 				if (
 					mh &&
