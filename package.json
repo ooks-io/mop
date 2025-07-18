@@ -25,7 +25,7 @@
 		"type-check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@popperjs/core": "^2.11.6",
+		"@popperjs/core": "^2.11.8",
 		"@types/golang-wasm-exec": "^1.15.2",
 		"@types/pako": "^2.0.0",
 		"apexcharts": "^4.5.0",
@@ -37,7 +37,7 @@
 		"i18next-http-backend": "^3.0.2",
 		"pako": "^2.0.4",
 		"tippy.js": "^6.3.7",
-		"tsx-vanilla": "^1.0.0",
+		"tsx-vanilla": "^1.2.0",
 		"uuid": "^11.1.0",
 		"yalps": "^0.5.6"
 	},
