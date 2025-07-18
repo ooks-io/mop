@@ -1,6 +1,7 @@
 :root {
 	--player-bg: var(--bs-gray-800-alpha-50);
 }
+
 .player {
 	width: 100%;
 	height: 2.5rem;
@@ -11,6 +12,7 @@
 	overflow-x: hidden;
 	color: var(--bs-white);
 
+	/* stylelint-disable-next-line plugin/stylelint-bem-namics */
 	&:not([class*='bg-']) {
 		background: var(--player-bg);
 	}

@@ -28,6 +28,7 @@
 		.homepage-header-container {
 			display: flex;
 			padding-top: var(--section-spacer);
+
 			@include media-breakpoint-down(md) {
 				display: flex;
 			}
@@ -44,6 +45,7 @@
 				.wowsims-logo {
 					width: 6rem;
 					margin-right: var(--spacer-3);
+
 					@include media-breakpoint-down(md) {
 						width: 48px;
 					}
@@ -76,6 +78,7 @@
 		padding-top: var(--container-padding);
 		padding-bottom: var(--container-padding);
 		flex-direction: column;
+
 		@include media-breakpoint-down(md) {
 			margin-bottom: var(--spacer-3);
 		}
@@ -84,6 +87,7 @@
 			margin-bottom: var(--container-padding);
 			display: flex;
 			flex-direction: column;
+
 			@include media-breakpoint-down(md) {
 				margin-bottom: var(--spacer-3);
 			}
@@ -92,6 +96,7 @@
 				@extend .fs-4;
 				width: 75%;
 				margin: 0;
+
 				@include media-breakpoint-down(lg) {
 					width: 100%;
 				}
@@ -110,6 +115,7 @@
 			.sim-links {
 				display: flex;
 				flex-wrap: wrap;
+
 				@include media-breakpoint-down(lg) {
 					margin-bottom: 0 !important;
 				}
@@ -128,6 +134,7 @@
 				.sim-link,
 				.sim-link-dropdown {
 					width: 100%;
+
 					@include media-breakpoint-down(lg) {
 						max-width: 50%;
 						flex: 1 50%;

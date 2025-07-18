@@ -30,6 +30,7 @@
 		will-change: scroll-position;
 		height: 70vh;
 	}
+
 	.log-runner-table {
 		table-layout: fixed;
 
@@ -45,6 +46,7 @@
 				width: auto;
 			}
 		}
+
 		.log-runner-logs {
 			tr {
 				&:not(:last-child) {

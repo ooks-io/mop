@@ -5,9 +5,9 @@ import { glob } from 'glob';
 import { IncomingMessage, ServerResponse } from 'http';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
 import { ConfigEnv, defineConfig, PluginOption, UserConfigExport } from 'vite';
 import { checker } from 'vite-plugin-checker';
+import stylelint from 'vite-plugin-stylelint';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -149,14 +149,12 @@ export default defineConfig(({ command, mode }) => {
 				root: path.resolve(__dirname, 'ui'),
 				typescript: true,
 				enableBuild: true,
-				stylelint: {
-					lintCommand: 'stylelint "**/*.scss"',
-					dev: {
-						overrideConfig: {
-							configFile: path.resolve(__dirname, 'stylelint.config.js'),
-						},
-					},
-				},
+			}),
+			stylelint({
+				build: true,
+				lintOnStart: true,
+				include: ['**/*.scss'],
+				configFile: path.resolve(__dirname, 'stylelint.config.js'),
 			}),
 		],
 		esbuild: {
