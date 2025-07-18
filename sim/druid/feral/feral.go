@@ -34,11 +34,6 @@ func NewFeralDruid(character *core.Character, options *proto.Player) *FeralDruid
 		Druid: druid.New(character, druid.Cat, selfBuffs, options.TalentsString),
 	}
 
-	// cat.SelfBuffs.InnervateTarget = &proto.UnitReference{}
-	// if feralOptions.Options.ClassOptions.InnervateTarget != nil {
-	// 	cat.SelfBuffs.InnervateTarget = feralOptions.Options.ClassOptions.InnervateTarget
-	// }
-
 	cat.AssumeBleedActive = feralOptions.Options.AssumeBleedActive
 	cat.CannotShredTarget = feralOptions.Options.CannotShredTarget
 
@@ -101,7 +96,6 @@ func (cat *FeralDruid) Initialize() {
 
 	snapshotHandler := func(aura *core.Aura, sim *core.Simulation) {
 		previousRipSnapshotPower := cat.Rip.NewSnapshotPower
-		previousRakeSnapshotPower := cat.Rake.NewSnapshotPower
 		cat.UpdateBleedPower(cat.Rip, sim, cat.CurrentTarget, false, true)
 		cat.UpdateBleedPower(cat.Rake, sim, cat.CurrentTarget, false, true)
 
@@ -113,16 +107,13 @@ func (cat *FeralDruid) Initialize() {
 					cat.Log(sim, "New bleed snapshot aura found: %s", aura.ActionID)
 				}
 			}
-		} else if cat.tempSnapshotAura.IsActive() {
-			cat.Rip.NewSnapshotPower = previousRipSnapshotPower
-			cat.Rake.NewSnapshotPower = previousRakeSnapshotPower
-		} else {
+		} else if !cat.tempSnapshotAura.IsActive() {
 			cat.tempSnapshotAura = nil
 		}
 	}
 
-	// cat.TigersFuryAura.ApplyOnGain(snapshotHandler)
-	// cat.TigersFuryAura.ApplyOnExpire(snapshotHandler)
+	cat.TigersFuryAura.ApplyOnGain(snapshotHandler)
+	cat.TigersFuryAura.ApplyOnExpire(snapshotHandler)
 	cat.AddOnTemporaryStatsChange(func(sim *core.Simulation, buffAura *core.Aura, _ stats.Stats) {
 		snapshotHandler(buffAura, sim)
 	})

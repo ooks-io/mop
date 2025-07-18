@@ -70,14 +70,9 @@ func (druid *Druid) registerRakeSpell() {
 
 		ExpectedInitialDamage: func(sim *core.Simulation, target *core.Unit, spell *core.Spell, _ bool) *core.SpellResult {
 			baseDamage := flatBaseDamage + bonusCoefficientFromAP*spell.MeleeAttackPower()
-			initial := spell.CalcPeriodicDamage(sim, target, baseDamage, spell.OutcomeExpectedMagicAlwaysHit)
-
-			attackTable := spell.Unit.AttackTables[target.UnitIndex]
-			critChance := spell.PhysicalCritChance(attackTable)
-			critMod := (critChance * (spell.CritMultiplier - 1))
-			initial.Damage *= 1 + critMod
-			return initial
+			return spell.CalcPeriodicDamage(sim, target, baseDamage, spell.OutcomeExpectedMeleeWeaponSpecialHitAndCrit)
 		},
+
 		ExpectedTickDamage: func(sim *core.Simulation, target *core.Unit, spell *core.Spell, _ bool) *core.SpellResult {
 			tickBase := flatBaseDamage + bonusCoefficientFromAP*spell.MeleeAttackPower()
 			ticks := spell.CalcPeriodicDamage(sim, target, tickBase, spell.OutcomeExpectedMagicAlwaysHit)
