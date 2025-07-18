@@ -1,11 +1,16 @@
 /** @type {import('vite').UserConfig} */
 
 import fs from 'fs';
-import glob from 'glob';
+import { glob } from 'glob';
 import { IncomingMessage, ServerResponse } from 'http';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
 import { ConfigEnv, defineConfig, PluginOption, UserConfigExport } from 'vite';
 import { checker } from 'vite-plugin-checker';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export const BASE_PATH = path.resolve(__dirname, 'ui');
 export const OUT_DIR = path.join(__dirname, 'dist', 'mop');
@@ -60,7 +65,7 @@ function serveFile(res: ServerResponse<IncomingMessage>, filePath: string, isImp
 	if (fs.existsSync(filePath)) {
 		const contentType = determineContentType(filePath, isImport);
 		res.writeHead(200, { 'Content-Type': contentType });
-		
+
 		if (isImport && path.extname(filePath).toLowerCase() === '.json') {
 			// For JSON imports, serve as ES module
 			const jsonContent = fs.readFileSync(filePath, 'utf-8');
@@ -106,10 +111,7 @@ function copyLocales() {
 		name: 'copy-locales',
 		buildStart() {
 			// add locales here to enable them in the UI
-			const locales = [
-				'en.json',
-				'fr.json'
-			];
+			const locales = ['en.json', 'fr.json'];
 			const srcDir = path.resolve(__dirname, 'assets/locales');
 			const destDir = path.resolve(__dirname, 'dist/mop/assets/locales');
 			if (!fs.existsSync(destDir)) {
