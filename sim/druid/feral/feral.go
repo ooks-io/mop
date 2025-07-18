@@ -61,15 +61,17 @@ type FeralDruid struct {
 
 	// Aura references
 	ClearcastingAura        *core.Aura
+	IncarnationAura         *core.Aura
 	PredatorySwiftnessAura  *core.Aura
 	SavageRoarBuff          *core.Dot
 	SavageRoarDurationTable [6]time.Duration
 	TigersFuryAura          *core.Aura
 
 	// Spell references
-	SavageRoar *druid.DruidSpell
-	Shred      *druid.DruidSpell
-	TigersFury *druid.DruidSpell
+	Incarnation *druid.DruidSpell
+	SavageRoar  *druid.DruidSpell
+	Shred       *druid.DruidSpell
+	TigersFury  *druid.DruidSpell
 
 	tempSnapshotAura   *core.Aura
 }

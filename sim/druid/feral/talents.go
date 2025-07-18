@@ -1,12 +1,15 @@
 package feral
 
 import (
+	"time"
+
 	"github.com/wowsims/mop/sim/core"
 	"github.com/wowsims/mop/sim/druid"
 )
 
 func (cat *FeralDruid) applySpecTalents() {
 	cat.registerSoulOfTheForest()
+	cat.registerIncarnation()
 }
 
 func (cat *FeralDruid) registerSoulOfTheForest() {
@@ -49,6 +52,67 @@ func (cat *FeralDruid) registerSoulOfTheForest() {
 			if spell.Matches(druid.DruidSpellSavageRoar) {
 				procSotf(sim)
 			}
+		},
+	})
+}
+
+func (cat *FeralDruid) registerIncarnation() {
+	if !cat.Talents.Incarnation {
+		return
+	}
+
+	actionID := core.ActionID{SpellID: 102543}
+
+	var oldExtraCastCondition core.CanCastCondition
+
+	cat.IncarnationAura = cat.RegisterAura(core.Aura{
+		Label:    "Incarnation: King of the Jungle",
+		ActionID: actionID,
+		Duration: time.Second * 30,
+
+		OnGain: func(_ *core.Aura, _ *core.Simulation) {
+			oldExtraCastCondition = cat.Ravage.ExtraCastCondition
+			cat.Ravage.ExtraCastCondition = nil
+		},
+
+		OnExpire: func(_ *core.Aura, _ *core.Simulation) {
+			cat.Ravage.ExtraCastCondition = oldExtraCastCondition
+		},
+	})
+
+	cat.Incarnation = cat.RegisterSpell(druid.Any, core.SpellConfig{
+		ActionID:        actionID,
+		Flags:           core.SpellFlagAPL,
+		RelatedSelfBuff: cat.IncarnationAura,
+
+		Cast: core.CastConfig{
+			DefaultCast: core.Cast{
+				GCD: time.Second,
+			},
+
+			CD: core.Cooldown{
+				Timer:    cat.NewTimer(),
+				Duration: time.Minute * 3,
+			},
+
+			IgnoreHaste: true,
+		},
+
+		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
+			if !cat.InForm(druid.Cat) {
+				cat.CatFormAura.Activate(sim)
+			}
+
+			cat.IncarnationAura.Activate(sim)
+		},
+	})
+
+	cat.AddMajorCooldown(core.MajorCooldown{
+		Spell: cat.Incarnation.Spell,
+		Type:  core.CooldownTypeDPS,
+
+		ShouldActivate: func(sim *core.Simulation, _ *core.Character) bool {
+			return cat.BerserkCatAura.IsActive() && !cat.ClearcastingAura.IsActive() && (cat.CurrentEnergy() + cat.EnergyRegenPerSecond() < 100)
 		},
 	})
 }

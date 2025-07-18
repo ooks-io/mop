@@ -278,6 +278,11 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 		return
 	} else if isClearcast || !ripRefreshPending || !cat.tempSnapshotAura.IsActive() || (ripRefreshTime + cat.ReactionTime - sim.CurrentTime > core.GCDMin) {
 		fillerSpell := core.Ternary(rotation.ForceMangleFiller || ((curCp < 5) && !isClearcast && !isBerserk), cat.MangleCat, cat.Shred)
+
+		if cat.IncarnationAura.IsActive() {
+			fillerSpell = cat.Ravage
+		}
+
 		fillerDpc := fillerSpell.ExpectedInitialDamage(sim, cat.CurrentTarget)
 		rakeDpc := cat.Rake.ExpectedInitialDamage(sim, cat.CurrentTarget)
 
