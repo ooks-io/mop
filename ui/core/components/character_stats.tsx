@@ -75,6 +75,7 @@ export class CharacterStats extends Component {
 					UnitStat.fromStat(Stat.StatStamina),
 					UnitStat.fromStat(Stat.StatIntellect),
 					UnitStat.fromStat(Stat.StatSpirit),
+					UnitStat.fromStat(Stat.StatExpertiseRating),
 				],
 			],
 			[
@@ -96,7 +97,6 @@ export class CharacterStats extends Component {
 					UnitStat.fromPseudoStat(PseudoStat.PseudoStatRangedHastePercent),
 					UnitStat.fromPseudoStat(PseudoStat.PseudoStatPhysicalHitPercent),
 					UnitStat.fromPseudoStat(PseudoStat.PseudoStatPhysicalCritPercent),
-					UnitStat.fromStat(Stat.StatExpertiseRating),
 				],
 			],
 			[
@@ -107,12 +107,12 @@ export class CharacterStats extends Component {
 					UnitStat.fromPseudoStat(PseudoStat.PseudoStatSpellHitPercent),
 					UnitStat.fromPseudoStat(PseudoStat.PseudoStatSpellCritPercent),
 				],
-			]
+			],
 		]);
 
 		if (this.player.getPlayerSpec().isTankSpec) {
 			statGroups.get(StatGroup.Defense)!.push(UnitStat.fromStat(Stat.StatMasteryRating));
-		} else if (simUI.individualConfig.epReferenceStat === Stat.StatIntellect) {
+		} else if ([Stat.StatIntellect, Stat.StatSpellPower].includes(simUI.individualConfig.epReferenceStat)) {
 			statGroups.get(StatGroup.Spell)!.push(UnitStat.fromStat(Stat.StatMasteryRating));
 		} else {
 			statGroups.get(StatGroup.Physical)!.push(UnitStat.fromStat(Stat.StatMasteryRating));
@@ -189,8 +189,7 @@ export class CharacterStats extends Component {
 					mh &&
 					(mh.rangedWeaponType === RangedWeaponType.RangedWeaponTypeBow ||
 						mh.rangedWeaponType === RangedWeaponType.RangedWeaponTypeCrossbow ||
-						mh.rangedWeaponType === RangedWeaponType.RangedWeaponTypeGun ||
-						mh.weaponType === WeaponType.WeaponTypeMace)
+						mh.rangedWeaponType === RangedWeaponType.RangedWeaponTypeGun)
 				) {
 					return [false, true];
 				}
@@ -445,7 +444,7 @@ export class CharacterStats extends Component {
 				content: tooltipContent,
 			});
 
-			idx++
+			idx++;
 		});
 	}
 
@@ -461,7 +460,9 @@ export class CharacterStats extends Component {
 
 		const hideRootRating = rootRatingValue === null || (rootRatingValue === 0 && derivedPercentOrPointsValue !== null);
 		const rootRatingString = hideRootRating ? '' : String(Math.round(rootRatingValue));
-		const percentOrPointsSuffix = unitStat.equalsStat(Stat.StatMasteryRating) ? ` ${i18n.t('sidebar.character_stats.points_suffix')}` : i18n.t('sidebar.character_stats.percent_suffix');
+		const percentOrPointsSuffix = unitStat.equalsStat(Stat.StatMasteryRating)
+			? ` ${i18n.t('sidebar.character_stats.points_suffix')}`
+			: i18n.t('sidebar.character_stats.percent_suffix');
 		const percentOrPointsString = derivedPercentOrPointsValue === null ? '' : `${derivedPercentOrPointsValue.toFixed(2)}` + percentOrPointsSuffix;
 		const wrappedPercentOrPointsString = hideRootRating || derivedPercentOrPointsValue === null ? percentOrPointsString : ` (${percentOrPointsString})`;
 		return rootRatingString + wrappedPercentOrPointsString;
