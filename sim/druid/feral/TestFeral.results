@@ -697,9 +697,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-EnchantWeapon-ElementalForce-4443"
  value: {
-  dps: 12960.12238
-  tps: 9143.4683
-  hps: 1709.15645
+  dps: 86849.52937
+  tps: 168499.03291
+  hps: 1905.34902
  }
 }
 dps_results: {
