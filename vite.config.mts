@@ -149,6 +149,14 @@ export default defineConfig(({ command, mode }) => {
 				root: path.resolve(__dirname, 'ui'),
 				typescript: true,
 				enableBuild: true,
+				stylelint: {
+					lintCommand: 'stylelint "**/*.scss"',
+					dev: {
+						overrideConfig: {
+							configFile: path.resolve(__dirname, 'stylelint.config.js'),
+						},
+					},
+				},
 			}),
 		],
 		esbuild: {
