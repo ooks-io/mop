@@ -121,6 +121,7 @@ func (cat *FeralDruid) Initialize() {
 
 func (cat *FeralDruid) ApplyTalents() {
 	cat.Druid.ApplyTalents()
+	cat.applySpecTalents()
 	cat.ApplyArmorSpecializationEffect(stats.Agility, proto.ArmorType_ArmorTypeLeather, 86097)
 	cat.applyMastery()
 }

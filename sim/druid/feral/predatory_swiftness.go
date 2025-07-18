@@ -35,7 +35,7 @@ func (cat *FeralDruid) applyPredatorySwiftness() {
 	// Predatory Swiftness only procs off successfully landed hits, but the
 	// CPs (which we need for calculating the proc chance) have already been
 	// spent by the time OnSpellHitDealt is called, so we need to cache the
-	// CP value in an additional OnCastComplete callback.
+	// CP value in an additional OnApplyEffects callback.
 	var cpSnapshot int32
 
 	procPredatorySwiftness := func(sim *core.Simulation) {
