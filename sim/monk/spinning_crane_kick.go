@@ -134,6 +134,13 @@ func (monk *Monk) registerSpinningCraneKick() {
 		},
 
 		Dot: core.DotConfig{
+			Aura: core.Aura{
+				Label: "Spinning Crane Kick" + monk.Label,
+				OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+					monk.WaitUntil(sim, sim.CurrentTime+monk.ReactionTime)
+					monk.AutoAttacks.UpdateSwingTimers(sim)
+				},
+			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				spinningCraneKickTickSpell.Cast(sim, target)
 			},
@@ -146,7 +153,6 @@ func (monk *Monk) registerSpinningCraneKick() {
 
 			expiresAt := dot.ExpiresAt()
 			monk.AutoAttacks.DelayMeleeBy(sim, expiresAt-sim.CurrentTime)
-			monk.ExtendGCDUntil(sim, expiresAt+monk.ReactionTime)
 
 			remainingDuration := dot.RemainingDuration(sim)
 			spinningCraneKickAura.Duration = remainingDuration
