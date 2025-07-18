@@ -6,24 +6,7 @@ Hey there! 👋 This guide will help you work with translations in our WoW sim p
 
 1. Create `{lang}.json` in `assets/locales`. For example, `de.json`.
 
-2. In `vite.config.mts`, add the file to the list of locales
-
-```
-function copyLocales() {
-	return {
-		...
-		buildStart() {
-			const locales = [
-				'en.json',
-				'de.json', <---- add your new locale file
-			];
-			...
-		},
-	} satisfies PluginOption;
-}
-```
-
-3. In `\ui\i18n\config.ts`, import the locale file and add it to the resource list
+2. In `\ui\i18n\config.ts`, import the locale file and add it to the resource list
 
 ```
 import de from '../../assets/locales/de.json';
