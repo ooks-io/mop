@@ -27,24 +27,22 @@ function serveExternalAssets() {
 		configureServer(server) {
 			server.middlewares.use((req, res, next) => {
 				const url = req.url!;
-				const urlWithoutQuery = url.split('?')[0];
-				const isImport = url.includes('?import');
 
-				if (Object.keys(workerMappings).includes(urlWithoutQuery)) {
-					const targetPath = workerMappings[urlWithoutQuery as keyof typeof workerMappings];
+				if (Object.keys(workerMappings).includes(url)) {
+					const targetPath = workerMappings[url as keyof typeof workerMappings];
 					const assetsPath = path.resolve(__dirname, './dist/mop');
 					const requestedPath = path.join(assetsPath, targetPath.replace('/mop/', ''));
 
-					serveFile(res, requestedPath, isImport);
+					serveFile(res, requestedPath);
 					return;
 				}
 
 				if (url.includes('/mop/assets')) {
 					const assetsPath = path.resolve(__dirname, './assets');
-					const assetRelativePath = urlWithoutQuery.split('/mop/assets')[1];
+					const assetRelativePath = url.split('/mop/assets')[1];
 					const requestedPath = path.join(assetsPath, assetRelativePath);
 
-					serveFile(res, requestedPath, isImport);
+					serveFile(res, requestedPath);
 					return;
 				} else {
 					next();
@@ -54,18 +52,11 @@ function serveExternalAssets() {
 	} satisfies PluginOption;
 }
 
-function serveFile(res: ServerResponse<IncomingMessage>, filePath: string, isImport = false) {
+function serveFile(res: ServerResponse<IncomingMessage>, filePath: string) {
 	if (fs.existsSync(filePath)) {
-		const contentType = determineContentType(filePath, isImport);
+		const contentType = determineContentType(filePath);
 		res.writeHead(200, { 'Content-Type': contentType });
-
-		if (isImport && path.extname(filePath).toLowerCase() === '.json') {
-			// For JSON imports, serve as ES module
-			const jsonContent = fs.readFileSync(filePath, 'utf-8');
-			res.end(`export default ${jsonContent}`);
-		} else {
-			fs.createReadStream(filePath).pipe(res);
-		}
+		fs.createReadStream(filePath).pipe(res);
 	} else {
 		console.log('Not found on filesystem: ', filePath);
 		res.writeHead(404, { 'Content-Type': 'text/plain' });
@@ -73,7 +64,7 @@ function serveFile(res: ServerResponse<IncomingMessage>, filePath: string, isImp
 	}
 }
 
-function determineContentType(filePath: string, isImport = false) {
+function determineContentType(filePath: string) {
 	const extension = path.extname(filePath).toLowerCase();
 	switch (extension) {
 		case '.jpg':
@@ -91,9 +82,10 @@ function determineContentType(filePath: string, isImport = false) {
 		case '.woff2':
 			return 'font/woff2';
 		case '.json':
-			return isImport ? 'text/javascript' : 'application/json';
+			return 'application/json';
 		case '.wasm':
-			return 'application/wasm';
+			return 'application/wasm'; // Adding MIME type for WebAssembly files
+		// Add more cases as needed
 		default:
 			return 'application/octet-stream';
 	}
@@ -102,7 +94,7 @@ function determineContentType(filePath: string, isImport = false) {
 export const getBaseConfig = ({ command, mode }: ConfigEnv) =>
 	({
 		base: '/mop/',
-		root: path.join(__dirname, 'ui'),
+		root: BASE_PATH,
 		build: {
 			outDir: OUT_DIR,
 			minify: mode === 'development' ? false : 'terser',
