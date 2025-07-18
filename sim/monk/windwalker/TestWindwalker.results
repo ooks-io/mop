@@ -711,6 +711,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestWindwalker-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 155867.68761
+  tps: 145861.61706
+  hps: 7563.18567
+ }
+}
+dps_results: {
  key: "TestWindwalker-AllItems-EnchantWeapon-JadeSpirit-4442"
  value: {
   dps: 154893.41733
