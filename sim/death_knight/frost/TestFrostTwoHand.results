@@ -156,6 +156,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFrostTwoHand-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 145475.96142
+  tps: 133655.04857
+ }
+}
+dps_results: {
  key: "TestFrostTwoHand-AllItems-EnchantWeapon-JadeSpirit-4442"
  value: {
   dps: 144800.46349

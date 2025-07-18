@@ -612,6 +612,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestDestruction-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 92446.48151
+  tps: 68825.24747
+ }
+}
+dps_results: {
  key: "TestDestruction-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
   dps: 92503.85254
