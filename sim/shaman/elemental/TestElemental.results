@@ -640,6 +640,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestElemental-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 126862.02759
+  tps: 96687.30253
+ }
+}
+dps_results: {
  key: "TestElemental-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
   dps: 125762.03077

@@ -129,6 +129,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFrost-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 143370.66715
+  tps: 99558.65035
+ }
+}
+dps_results: {
  key: "TestFrost-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
   dps: 142889.05508

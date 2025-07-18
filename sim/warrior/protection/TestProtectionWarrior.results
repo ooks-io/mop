@@ -719,6 +719,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestProtectionWarrior-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 109401.42065
+  tps: 685207.66631
+  dtps: 25359.81102
+ }
+}
+dps_results: {
  key: "TestProtectionWarrior-AllItems-EnchantWeapon-JadeSpirit-4442"
  value: {
   dps: 108782.15637

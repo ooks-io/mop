@@ -135,6 +135,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestBalance-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 89400.43876
+  tps: 90806.00281
+  hps: 13813.17139
+ }
+}
+dps_results: {
  key: "TestBalance-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
   dps: 87893.39149

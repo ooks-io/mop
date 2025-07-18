@@ -175,6 +175,15 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestBlood-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 113092.365
+  tps: 687892.48258
+  dtps: 97737.07904
+  hps: 81970.79142
+ }
+}
+dps_results: {
  key: "TestBlood-AllItems-EnchantWeapon-JadeSpirit-4442"
  value: {
   dps: 112429.05179
