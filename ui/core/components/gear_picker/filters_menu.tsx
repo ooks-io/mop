@@ -72,8 +72,7 @@ export class FiltersMenu extends BaseModal {
 
 		const sourceSection = this.newSection('Source');
 		sourceSection.classList.add('filters-menu-section-bool-list');
-		const sources = Sim.ALL_SOURCES.filter(s => s != SourceFilterOption.SourceUnknown);
-		sources.forEach(source => {
+		Sim.ALL_SOURCES.forEach(source => {
 			new BooleanPicker<Sim>(sourceSection, player.sim, {
 				id: `filters-source-${source}`,
 				label: sourceNames.get(source),
@@ -94,8 +93,7 @@ export class FiltersMenu extends BaseModal {
 
 		const raidsSection = this.newSection('Raids');
 		raidsSection.classList.add('filters-menu-section-bool-list');
-		const raids = Sim.ALL_RAIDS.filter(s => s != RaidFilterOption.RaidUnknown);
-		raids.forEach(raid => {
+		Sim.ALL_RAIDS.forEach(raid => {
 			new BooleanPicker<Sim>(raidsSection, player.sim, {
 				id: `filters-raid-${raid}`,
 				label: raidNames.get(raid),

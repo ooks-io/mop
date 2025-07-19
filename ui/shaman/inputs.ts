@@ -1,13 +1,13 @@
 import { ContentBlock } from '../core/components/content_block';
-import { IndividualSimUI } from '../core/individual_sim_ui';
+import { buildIconInput } from '../core/components/icon_inputs';
 import { Input } from '../core/components/input';
 import * as InputHelpers from '../core/components/input_helpers';
+import { IndividualSimUI } from '../core/individual_sim_ui';
+import { Player } from '../core/player';
 import { ShamanImbue, ShamanShield} from '../core/proto/shaman';
 import { ActionId } from '../core/proto_utils/action_id';
 import { ShamanSpecs } from '../core/proto_utils/utils';
-import { Player } from '../core/player';
 import { EventID, TypedEvent } from '../core/typed_event';
-import { buildIconInput } from '../core/components/icon_inputs';
 
 // Configuration for class-specific UI elements on the settings tab.
 // These don't need to be in a separate file but it keeps things cleaner.

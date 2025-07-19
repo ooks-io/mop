@@ -16,7 +16,7 @@ RUN apt-get update \
 	&& go install google.golang.org/protobuf/cmd/protoc-gen-go@latest \
 	&& curl -sSfL https://raw.githubusercontent.com/cosmtrek/air/master/install.sh | sh -s -- -b $(shell go env GOPATH)/bin
 
-ENV NODE_VERSION=20.13.1
+ENV NODE_VERSION=22.17.1
 ENV NVM_DIR="/root/.nvm"
 
 # Install all Frontend dependencies

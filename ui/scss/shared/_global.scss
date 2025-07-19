@@ -1,3 +1,4 @@
+/* stylelint-disable plugin/stylelint-bem-namics */
 :root {
 	--bs-body-font-size: 14px;
 	font-size: var(--bs-body-font-size);
@@ -155,22 +156,28 @@ kbd {
 	@extend .px-gap;
 	@extend .py-gap;
 }
+
 .pl-gap {
 	padding-left: var(--gap-width);
 }
+
 .pr-gap {
 	padding-right: var(--gap-width);
 }
+
 .pt-gap {
 	padding-top: var(--gap-width);
 }
+
 .pb-gap {
 	padding-bottom: var(--gap-width);
 }
+
 .px-gap {
 	@extend .pl-gap;
 	@extend .pr-gap;
 }
+
 .py-gap {
 	@extend .pt-gap;
 	@extend .pb-gap;
@@ -181,21 +188,25 @@ kbd {
 		color: var(--bs-#{$label}) !important;
 	}
 }
+
 @each $label, $value in $resource-colors {
 	.resource-#{$label} {
 		color: var(--bs-#{$label}) !important;
 	}
 }
+
 @each $label, $value in $damage-colors {
 	.damage-#{$label} {
 		color: var(--bs-#{$label}) !important;
 	}
 }
+
 @each $label, $value in $faction-colors {
 	.faction-#{$label} {
 		color: var(--bs-#{$label}) !important;
 	}
 }
+
 @each $label, $value in $spell-school-colors {
 	.spell-school-#{$label} {
 		color: var(--bs-#{$label}) !important;

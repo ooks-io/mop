@@ -1,6 +1,6 @@
 import { Player } from '../core/player';
-import { TypedEvent } from '../core/typed_event';
 import { MonkTalents } from '../core/proto/monk';
+import { TypedEvent } from '../core/typed_event';
 
 /**
  * Sets talent-based settings for monk specs, particularly target dummies

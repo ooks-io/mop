@@ -1,18 +1,18 @@
-@import "./icon_picker";
+@import './icon_picker';
 
 .multi-icon-picker-root {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 
-  .multi-icon-picker-label {
-    margin-bottom: 0;
-  }
+	.multi-icon-picker-label {
+		margin-bottom: 0;
+	}
 
-  .dropdown-menu {
-    grid-auto-flow: column;
+	.dropdown-menu {
+		grid-auto-flow: column;
 
-    .icon-picker {
-      margin-bottom: 0;
-    }
-  }
+		.icon-picker {
+			margin-bottom: 0;
+		}
+	}
 }

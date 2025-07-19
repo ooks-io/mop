@@ -18,6 +18,7 @@
 		&:not(:last-child) {
 			border-bottom: var(--border-default);
 		}
+
 		&:nth-child(odd) {
 			.tooltip-quick-swap__anchor {
 				background-color: var(--bs-table-row-odd-bg);
@@ -61,7 +62,7 @@
 
 	@media (pointer: fine) {
 		&:hover {
-			background-color: hsla(var(--bs-table-row-even-bg-hsl), .9) !important;
+			background-color: hsla(var(--bs-table-row-even-bg-hsl), 0.9) !important;
 		}
 	}
 

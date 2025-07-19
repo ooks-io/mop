@@ -25,7 +25,7 @@ interface ClusterizeParams {
     item_height?:number;
 }
 
-let defaults = {
+const defaults = {
     rows_in_block: 50,
     blocks_in_cluster: 4,
     tag: null,
@@ -105,7 +105,7 @@ export class Clusterize {
         if(!this.content_elem.hasAttribute('tabindex'))
             this.content_elem.setAttribute('tabindex', '0');
   
-        let scroll_top = this.scroll_elem.scrollTop;
+        const scroll_top = this.scroll_elem.scrollTop;
   
         // append initial data
         this.getRowsHeight(params.rows);
@@ -136,7 +136,7 @@ export class Clusterize {
     }
 
     update() {
-        let scroll_top = this.scroll_elem.scrollTop;
+        const scroll_top = this.scroll_elem.scrollTop;
         if(this.ds.getNumberOfRows() * this.options.item_height < scroll_top) {
             this.scroll_elem.scrollTop = 0;
             this.last_cluster = 0;
@@ -146,7 +146,7 @@ export class Clusterize {
     }
 
     elementUpdate(cb: (e: Element) => void) {
-        for (let r of this.displayedRows) {
+        for (const r of this.displayedRows) {
             cb(r);
         }
     }
@@ -157,7 +157,7 @@ export class Clusterize {
 
     private scrollEv() {
         // fixes scrolling issue on Mac #3
-        let is_mac = navigator.platform.toLowerCase().indexOf('mac') + 1;
+        const is_mac = navigator.platform.toLowerCase().indexOf('mac') + 1;
         if (is_mac) {
             if (!this.pointer_events_set) 
                 this.content_elem.style.pointerEvents = 'none';
@@ -184,19 +184,19 @@ export class Clusterize {
         if(!this.options.cluster_height) {
             this.exploreEnvironment(rows, cache);
         }
-        let data = this.generate();
-        let this_cluster_rows = data.rows;
+        const data = this.generate();
+        const this_cluster_rows = data.rows;
         this.displayedRows = data.rows;
-        let this_cluster_content_changed = this.checkChanges('data', this_cluster_rows, cache);
-        let top_offset_changed = this.checkChanges('top', data.top_offset, cache);
-        let only_bottom_offset_changed = this.checkChanges('bottom', data.bottom_offset, cache);
-        let callbacks = this.options.callbacks;
-        let layout: Element[] = [];
+        const this_cluster_content_changed = this.checkChanges('data', this_cluster_rows, cache);
+        const top_offset_changed = this.checkChanges('top', data.top_offset, cache);
+        const only_bottom_offset_changed = this.checkChanges('bottom', data.bottom_offset, cache);
+        const callbacks = this.options.callbacks;
+        const layout: Element[] = [];
 
         if(this_cluster_content_changed || top_offset_changed) {
             if(data.top_offset) {
                 if (this.options.keep_parity) {
-                    let parity = this.renderExtraTag('keep-parity');
+                    const parity = this.renderExtraTag('keep-parity');
                     parity.hidden = true;
                     layout.push(parity);
                 }
@@ -216,7 +216,7 @@ export class Clusterize {
 
     // get tag name, content tag name, tag height, calc cluster height
     private exploreEnvironment(rows: Element[], cache: any) {
-        let opts = this.options;
+        const opts = this.options;
         opts.content_tag = this.content_elem.tagName.toLowerCase();
         if (!rows.length)
             return;
@@ -233,20 +233,20 @@ export class Clusterize {
     }
 
     private getRowsHeight(rows: Element[]) {
-        let opts = this.options;
-        let prev_item_height = opts.item_height;
+        const opts = this.options;
+        const prev_item_height = opts.item_height;
         opts.cluster_height = 0;
-        let nodes = this.content_elem.children;
+        const nodes = this.content_elem.children;
         if (rows.length && nodes.length) {
-            let node = nodes[Math.floor(nodes.length / 2)] as HTMLElement;
+            const node = nodes[Math.floor(nodes.length / 2)] as HTMLElement;
             opts.item_height = node.offsetHeight;
             // consider table's border-spacing
             if(opts.tag == 'tr' && getStyle('borderCollapse', this.content_elem) != 'collapse')
                 opts.item_height += parseInt(getStyle('borderSpacing', this.content_elem), 10) || 0;
             // consider margins (and margins collapsing)
             if(opts.tag != 'tr') {
-                let marginTop = parseInt(getStyle('marginTop', node), 10) || 0;
-                let marginBottom = parseInt(getStyle('marginBottom', node), 10) || 0;
+                const marginTop = parseInt(getStyle('marginTop', node), 10) || 0;
+                const marginBottom = parseInt(getStyle('marginBottom', node), 10) || 0;
                 opts.item_height += Math.max(marginTop, marginBottom);
             }
         }
@@ -258,10 +258,10 @@ export class Clusterize {
 
     // generate cluster for current scroll position
     private generate() {
-        let opts = this.options;
-        let rows_len = this.ds.getNumberOfRows();
+        const opts = this.options;
+        const rows_len = this.ds.getNumberOfRows();
         if (rows_len < opts.rows_in_block) {
-            let rows = this.ds.generateRows(0, rows_len);
+            const rows = this.ds.generateRows(0, rows_len);
             return {
                 top_offset: 0,
                 bottom_offset: 0,
@@ -289,10 +289,10 @@ export class Clusterize {
 
     // generate empty row if no data provided
     private generateEmptyRow() : Element[] {
-        let opts = this.options;
+        const opts = this.options;
         if(!opts.tag || !opts.show_no_data_row) 
             return [];
-        let empty_row = document.createElement(opts.tag);
+        const empty_row = document.createElement(opts.tag);
         let no_data_content = document.createTextNode(opts.no_data_text), td;
         empty_row.className = opts.no_data_class;
         if(opts.tag == 'tr') {
@@ -307,17 +307,17 @@ export class Clusterize {
 
     // get current cluster number
     private getClusterNum(num_rows: number) {
-        let opts = this.options;
+        const opts = this.options;
         opts.scroll_top = this.scroll_elem.scrollTop;
-        let cluster_divider = Math.max(opts.cluster_height - opts.block_height, 1);
-        let current_cluster = Math.floor(opts.scroll_top / cluster_divider);
-        let max_cluster = Math.floor((num_rows * opts.item_height) / cluster_divider);
+        const cluster_divider = Math.max(opts.cluster_height - opts.block_height, 1);
+        const current_cluster = Math.floor(opts.scroll_top / cluster_divider);
+        const max_cluster = Math.floor((num_rows * opts.item_height) / cluster_divider);
         return Math.min(current_cluster, max_cluster);
     }
 
     private renderExtraTag(class_name: string, height?: number) {
-        let tag = document.createElement(this.options.tag!);
-        let clusterize_prefix = 'clusterize-';
+        const tag = document.createElement(this.options.tag!);
+        const clusterize_prefix = 'clusterize-';
 
         tag.className = [clusterize_prefix + 'extra-row', clusterize_prefix + class_name].join(' ');
         tag.style.marginTop = '0';
@@ -327,7 +327,7 @@ export class Clusterize {
     }
 
     private checkChanges(type: string, value: any, cache: any) {
-        var changed = value != cache[type];
+        const changed = value != cache[type];
         cache[type] = value;
         return changed;
     }
