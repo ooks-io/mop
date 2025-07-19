@@ -131,8 +131,8 @@ func (shaman *Shaman) newFlametongueImbueSpell(weapon *core.Item) *core.Spell {
 		SpellSchool:      core.SpellSchoolFire,
 		ProcMask:         core.ProcMaskSpellDamageProc,
 		ClassSpellMask:   SpellMaskFlametongueWeapon,
-		Flags:            core.SpellFlagPassiveSpell,
-		DamageMultiplier: weapon.SwingSpeed / 2.6, //WIll be updated on item swap L232
+		Flags:            core.SpellFlagPassiveSpell | SpellFlagShamanSpell,
+		DamageMultiplier: weapon.SwingSpeed / 2.6, // WIll be updated on item swap L232
 		CritMultiplier:   shaman.DefaultCritMultiplier(),
 		ThreatMultiplier: 1,
 		BonusCoefficient: 0.05799999833,
@@ -263,7 +263,7 @@ func (shaman *Shaman) newFrostbrandImbueSpell() *core.Spell {
 		SpellSchool:    core.SpellSchoolFrost,
 		ClassSpellMask: SpellMaskFrostbrandWeapon,
 		ProcMask:       core.ProcMaskEmpty,
-		Flags:          core.SpellFlagPassiveSpell,
+		Flags:          core.SpellFlagPassiveSpell | SpellFlagShamanSpell,
 
 		DamageMultiplier: 1,
 		CritMultiplier:   shaman.DefaultCritMultiplier(),

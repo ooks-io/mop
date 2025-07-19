@@ -59,6 +59,7 @@ func (shaman *Shaman) NewFireElemental(isGuardian bool) *FireElemental {
 		AutoSwingMelee: true,
 	})
 	fireElemental.AutoAttacks.MHConfig().ProcMask |= core.ProcMaskSpellDamage
+	fireElemental.AutoAttacks.MHConfig().Flags |= SpellFlagShamanSpell
 	fireElemental.AutoAttacks.MHConfig().ClassSpellMask |= SpellMaskFireElementalMelee
 
 	fireElemental.OnPetEnable = fireElemental.enable(isGuardian)

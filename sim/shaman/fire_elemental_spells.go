@@ -11,6 +11,7 @@ func (fireElemental *FireElemental) registerFireBlast() {
 		ActionID:    core.ActionID{SpellID: 57984},
 		SpellSchool: core.SpellSchoolFire,
 		ProcMask:    core.ProcMaskSpellDamage,
+		Flags:       SpellFlagShamanSpell,
 
 		ManaCost: core.ManaCostOptions{
 			FlatCost: 40,
@@ -42,7 +43,7 @@ func (fireElemental *FireElemental) registerFireNova() {
 		ActionID:    core.ActionID{SpellID: 117588},
 		SpellSchool: core.SpellSchoolFire,
 		ProcMask:    core.ProcMaskSpellDamage,
-		Flags:       core.SpellFlagAoE,
+		Flags:       core.SpellFlagAoE | SpellFlagShamanSpell,
 
 		ManaCost: core.ManaCostOptions{
 			FlatCost: 30,
@@ -78,6 +79,7 @@ func (fireElemental *FireElemental) registerImmolate() {
 		ActionID:    actionID,
 		SpellSchool: core.SpellSchoolFire,
 		ProcMask:    core.ProcMaskSpellDamage,
+		Flags:       SpellFlagShamanSpell,
 
 		DamageMultiplier: 1,
 		CritMultiplier:   fireElemental.DefaultCritMultiplier(),
