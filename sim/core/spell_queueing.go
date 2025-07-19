@@ -80,7 +80,7 @@ func (spell *Spell) CanQueue(sim *Simulation, target *Unit) bool {
 		return false
 	}
 
-	if !target.IsEnabled() {
+	if target == nil || !target.IsEnabled() {
 		return false
 	}
 
