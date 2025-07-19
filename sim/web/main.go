@@ -314,12 +314,12 @@ func (s *server) runServer(useFS bool, host string, launchBrowser bool, simName 
 		if strings.HasSuffix(req.URL.Path, ".wasm") {
 			resp.Header().Set("Content-Type", "application/wasm")
 		}
-		if strings.HasSuffix(req.URL.Path, ".js") || strings.HasSuffix(req.URL.Path, ".cjs") {
+		if strings.HasSuffix(req.URL.Path, ".js") {
 			resp.Header().Set("Content-Type", "application/javascript")
 		}
 		if !useFS || (useFS && !wasm) {
-			if strings.HasSuffix(req.URL.Path, "sim_worker.cjs") {
-				req.URL.Path = strings.Replace(req.URL.Path, "sim_worker.cjs", "net_worker.cjs", 1)
+			if strings.HasSuffix(req.URL.Path, "sim_worker.js") {
+				req.URL.Path = strings.Replace(req.URL.Path, "sim_worker.js", "net_worker.js", 1)
 			}
 		}
 		fs.ServeHTTP(resp, req)
