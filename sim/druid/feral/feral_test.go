@@ -36,6 +36,7 @@ func TestFeral(t *testing.T) {
 		Glyphs:          StandardGlyphs,
 		OtherTalentSets: []core.TalentsCombo{
 			{Label: "SotF-HotW", Talents: "000101", Glyphs: StandardGlyphs},
+			{Label: "Incarn-NV", Talents: "000203", Glyphs: StandardGlyphs},
 		},
 
 		Consumables:      FullConsumesSpec,
