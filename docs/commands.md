@@ -14,9 +14,13 @@ make update-tests
 # Host a local version of the UI at http://localhost:8080. Visit it by pointing a browser to
 # http://localhost:8080/mop/YOUR_SPEC_HERE, where YOUR_SPEC_HERE is the directory under ui/ with your custom code.
 # Recompiles the entire client before launching using `make dist/mop`
+npm start
+# Or
 make host
 
 # With file-watching so the server auto-restarts and recompiles on Go or TS changes:
+npm start
+# Or
 WATCH=1 make host
 
 # Delete all generated files (.pb.go and .ts proto files, and dist/)

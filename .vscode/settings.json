@@ -29,6 +29,10 @@
 		{
 			"fileMatch": ["*.gear.json"],
 			"url": "./schemas/gear.schema.json"
+		},
+		{
+			"fileMatch": ["assets/locales/**/translation.json"],
+			"url": "./schemas/translation.schema.json"
 		}
 	],
 	"Lua.diagnostics.globals": [

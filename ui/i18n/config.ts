@@ -1,8 +1,7 @@
-import i18n from 'i18next';
+import i18n, { Resource } from 'i18next';
+import resources from 'virtual:i18next-loader';
 
 import { getLang } from './locale_service';
-import en from './locales/en.json';
-import fr from './locales/fr.json';
 
 // eslint-disable-next-line import/no-named-as-default-member
 i18n.init({
@@ -12,15 +11,10 @@ i18n.init({
 	interpolation: {
 		escapeValue: false,
 	},
-	// add locales here to enable them in the UI
-	resources: {
-		en: {
-			translation: en,
-		},
-		fr: {
-			translation: fr,
-		},
-	},
+	resources: Object.keys(resources).reduce<Resource>((acc, lang) => {
+		acc[lang] = { translation: resources[lang] };
+		return acc;
+	}, {}),
 });
 
 export default i18n;

@@ -7,6 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { ConfigEnv, defineConfig, PluginOption, UserConfigExport } from 'vite';
 import { checker } from 'vite-plugin-checker';
+import i18nextLoader from 'vite-plugin-i18next-loader';
 import stylelint from 'vite-plugin-stylelint';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -108,6 +109,7 @@ export default defineConfig(({ command, mode }) => {
 	return {
 		...baseConfig,
 		plugins: [
+			i18nextLoader({ paths: ['assets/locales'] }),
 			serveExternalAssets(),
 			checker({
 				root: path.resolve(__dirname, 'ui'),
