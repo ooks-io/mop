@@ -7,7 +7,7 @@ import (
 	"github.com/wowsims/mop/sim/core"
 )
 
-func searingTickCount(shaman *Shaman, offset float64) int32 {
+func searingTickCount(offset float64) int32 {
 	return int32(math.Ceil(40*(1.0+offset))) - 1
 }
 
@@ -16,7 +16,7 @@ func (shaman *Shaman) registerSearingTotemSpell() {
 		ActionID:       core.ActionID{SpellID: 3599},
 		SpellSchool:    core.SpellSchoolFire,
 		ProcMask:       core.ProcMaskEmpty,
-		Flags:          core.SpellFlagAPL,
+		Flags:          core.SpellFlagAPL | SpellFlagShamanSpell,
 		ClassSpellMask: SpellMaskSearingTotem,
 		ManaCost: core.ManaCostOptions{
 			BaseCostPercent: 5.9,
@@ -37,7 +37,7 @@ func (shaman *Shaman) registerSearingTotemSpell() {
 			// Actual searing totem cast in game is currently 1500 milliseconds with a slight random
 			// delay inbetween each cast so using an extra 20 milliseconds to account for the delay
 			// subtracting 1 tick so that it doesn't shoot after its actual expiration
-			NumberOfTicks: searingTickCount(shaman, 0),
+			NumberOfTicks: searingTickCount(0),
 			TickLength:    time.Millisecond * (1500 + 20),
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				baseDamage := shaman.CalcAndRollDamageRange(sim, 0.06300000101, 0.30000001192)
@@ -53,13 +53,13 @@ func (shaman *Shaman) registerSearingTotemSpell() {
 				pa := sim.GetConsumedPendingActionFromPool()
 
 				pa.OnAction = func(sim *core.Simulation) {
-					spell.Dot(sim.Encounter.ActiveTargetUnits[0]).BaseTickCount = searingTickCount(shaman, dropTime.Minutes())
+					spell.Dot(sim.Encounter.ActiveTargetUnits[0]).BaseTickCount = searingTickCount(dropTime.Minutes())
 					spell.Dot(sim.Encounter.ActiveTargetUnits[0]).Apply(sim)
 				}
 
 				sim.AddPendingAction(pa)
 			} else {
-				spell.Dot(sim.Encounter.ActiveTargetUnits[0]).BaseTickCount = searingTickCount(shaman, 0)
+				spell.Dot(sim.Encounter.ActiveTargetUnits[0]).BaseTickCount = searingTickCount(0)
 				spell.Dot(sim.Encounter.ActiveTargetUnits[0]).Apply(sim)
 			}
 			duration := 60
@@ -73,7 +73,7 @@ func (shaman *Shaman) registerMagmaTotemSpell() {
 		ActionID:       core.ActionID{SpellID: 8190},
 		SpellSchool:    core.SpellSchoolFire,
 		ProcMask:       core.ProcMaskEmpty,
-		Flags:          core.SpellFlagAoE | core.SpellFlagAPL,
+		Flags:          core.SpellFlagAoE | core.SpellFlagAPL | SpellFlagShamanSpell,
 		ClassSpellMask: SpellMaskMagmaTotem,
 		ManaCost: core.ManaCostOptions{
 			BaseCostPercent: 21.1,
