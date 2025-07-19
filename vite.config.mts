@@ -18,8 +18,8 @@ export const OUT_DIR = path.join(__dirname, 'dist', 'mop');
 
 function serveExternalAssets() {
 	const workerMappings = {
-		'/mop/sim_worker.cjs': '/mop/local_worker.cjs',
-		'/mop/net_worker.cjs': '/mop/net_worker.cjs',
+		'/mop/sim_worker.js': '/mop/local_worker.js',
+		'/mop/net_worker.js': '/mop/net_worker.js',
 		'/mop/lib.wasm': '/mop/lib.wasm',
 	};
 
