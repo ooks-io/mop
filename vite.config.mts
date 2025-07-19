@@ -120,7 +120,7 @@ export default defineConfig(({ command, mode }) => {
 				build: true,
 				lintOnStart: true,
 				include: ['**/*.scss'],
-				configFile: path.resolve(__dirname, 'stylelint.config.js'),
+				configFile: path.resolve(__dirname, 'stylelint.config.mjs'),
 			}),
 		],
 		esbuild: {

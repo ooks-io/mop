@@ -2,7 +2,7 @@
 	"name": "mop",
 	"version": "0.1.0",
 	"private": true,
-	"exports": "./ui/index.js",
+	"type": "module",
 	"engines": {
 		"node": ">=22"
 	},
