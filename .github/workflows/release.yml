@@ -43,10 +43,13 @@ jobs:
               with:
                   ref: ${{ github.event.inputs.ref }}
 
-            - name: Build 🔧
+            - name: Test Locales 💬
               run: |
                   npm run test:locales
-                  make clean && VERSION=${{ github.event.inputs.tag }} make release
+
+            - name: Build 🔧
+              run: |
+                  make dist/mop/.dirstamp
 
             - name: Test
               run: |

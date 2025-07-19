@@ -36,9 +36,12 @@ jobs:
                     exit 1
                   fi
 
-            - name: Build 🔧
+            - name: Test Locales 💬
               run: |
                   npm run test:locales
+
+            - name: Build 🔧
+              run: |
                   make dist/mop/.dirstamp
 
             - name: Test
