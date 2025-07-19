@@ -219,6 +219,9 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 	furorCap := 100.0 - 1.5 * regenRate
 	bearWeaveNow := rotation.BearWeave && cat.canBearWeave(sim, furorCap, regenRate, curEnergy, excessE, rotation.pendingPoolWeaves)
 
+	// Check Wrath-weaving conditions.
+	wrathWeaveNow := cat.HeartOfTheWildAura.IsActive() && (cat.HeartOfTheWildAura.RemainingDuration(sim) > cat.Wrath.DefaultCast.CastTime) && !isClearcast && ((curCp == 5) || (curEnergy + cat.Wrath.DefaultCast.CastTime.Seconds() * 2 * regenRate <= furorCap)) && ripDot.IsActive() && (!ripRefreshPending || (ripRefreshTime > sim.CurrentTime + cat.Wrath.DefaultCast.CastTime + core.GCDDefault)) && rakeDot.IsActive() && (!rakeRefreshPending || (rakeRefreshTime > sim.CurrentTime + cat.Wrath.DefaultCast.CastTime + core.GCDDefault))
+
 	// Main decision tree starts here.
 	var timeToNextAction time.Duration
 
@@ -242,6 +245,13 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 
 		if !rotation.readyToShift {
 			timeToNextAction = cat.ReactionTime
+		}
+	} else if !cat.CatFormAura.IsActive() {
+		if !cat.HeartOfTheWildAura.IsActive() || (cat.HeartOfTheWildAura.RemainingDuration(sim) <= cat.Wrath.DefaultCast.CastTime) || !ripDot.IsActive() || (ripRefreshPending && (ripRefreshTime <= sim.CurrentTime + cat.Wrath.DefaultCast.CastTime + core.GCDDefault)) || !rakeDot.IsActive() || (rakeRefreshPending && (rakeRefreshTime <= sim.CurrentTime + cat.Wrath.DefaultCast.CastTime + core.GCDDefault)) || ((curCp < 5) && (curEnergy + cat.Wrath.DefaultCast.CastTime.Seconds() * regenRate > furorCap)) {
+			rotation.readyToShift = true
+		} else {
+			cat.Wrath.Cast(sim, cat.CurrentTarget)
+			return
 		}
 	} else if roarNow {
 		if cat.SavageRoar.CanCast(sim, cat.CurrentTarget) {
@@ -271,6 +281,9 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 		}
 
 		timeToNextAction = core.DurationFromSeconds((cat.CurrentRakeCost() - curEnergy) / regenRate)
+	} else if wrathWeaveNow {
+		cat.Wrath.Cast(sim, cat.CurrentTarget)
+		return
 	} else if bearWeaveNow {
 		rotation.readyToShift = true
 	} else if (isClearcast || isBerserk) && (!thrashDot.IsActive() || (thrashDot.RemainingDuration(sim) < thrashDot.BaseTickLength)) {

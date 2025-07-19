@@ -4,12 +4,14 @@ import (
 	"time"
 
 	"github.com/wowsims/mop/sim/core"
+	"github.com/wowsims/mop/sim/core/stats"
 	"github.com/wowsims/mop/sim/druid"
 )
 
 func (cat *FeralDruid) applySpecTalents() {
 	cat.registerSoulOfTheForest()
 	cat.registerIncarnation()
+	cat.registerHeartOfTheWild()
 }
 
 func (cat *FeralDruid) registerSoulOfTheForest() {
@@ -113,6 +115,95 @@ func (cat *FeralDruid) registerIncarnation() {
 
 		ShouldActivate: func(sim *core.Simulation, _ *core.Character) bool {
 			return cat.BerserkCatAura.IsActive() && !cat.ClearcastingAura.IsActive() && (cat.CurrentEnergy() + cat.EnergyRegenPerSecond() < 100)
+		},
+	})
+}
+
+func (cat *FeralDruid) registerHeartOfTheWild() {
+	// Passive stat buffs handled in class-level talents code.
+	if !cat.Talents.HeartOfTheWild {
+		return
+	}
+
+	actionID := core.ActionID{SpellID: 108292}
+	healingMod, damageMod, costMod := cat.RegisterSharedFeralHotwMods()
+	bearFormDep := cat.NewDynamicMultiplyStat(stats.Agility, 1.5)
+	bearFormStatBuff := stats.Stats{
+		stats.HitRating:       7.5 * core.PhysicalHitRatingPerHitPercent,
+		stats.ExpertiseRating: 7.5 * 4 * core.ExpertisePerQuarterPercentReduction,
+	}
+
+	// TODO: Implement Bear Form armor buff, Crit immunity, and Vengeance
+
+	cat.HeartOfTheWildAura = cat.RegisterAura(core.Aura{
+		Label:    "Heart of the Wild",
+		ActionID: actionID,
+		Duration: time.Second * 45,
+
+		OnGain: func(_ *core.Aura, sim *core.Simulation) {
+			healingMod.Activate()
+			damageMod.Activate()
+			costMod.Activate()
+			cat.AddStatDynamic(sim, stats.SpellHitPercent, 15)
+
+			if cat.InForm(druid.Bear) {
+				cat.EnableDynamicStatDep(sim, bearFormDep)
+				cat.AddStatsDynamic(sim, bearFormStatBuff)
+			}
+		},
+
+		OnExpire: func(_ *core.Aura, sim *core.Simulation) {
+			healingMod.Deactivate()
+			damageMod.Deactivate()
+			costMod.Deactivate()
+			cat.AddStatDynamic(sim, stats.SpellHitPercent, -15)
+
+			if cat.InForm(druid.Bear) {
+				cat.DisableDynamicStatDep(sim, bearFormDep)
+				cat.AddStatsDynamic(sim, bearFormStatBuff.Invert())
+			}
+		},
+	})
+
+	cat.BearFormAura.ApplyOnGain(func(_ *core.Aura, sim *core.Simulation) {
+		if cat.HeartOfTheWildAura.IsActive() {
+			cat.EnableDynamicStatDep(sim, bearFormDep)
+			cat.AddStatsDynamic(sim, bearFormStatBuff)
+		}
+	})
+
+	cat.BearFormAura.ApplyOnExpire(func(_ *core.Aura, sim *core.Simulation) {
+		if cat.HeartOfTheWildAura.IsActive() {
+			cat.DisableDynamicStatDep(sim, bearFormDep)
+			cat.AddStatsDynamic(sim, bearFormStatBuff.Invert())
+		}
+	})
+
+	cat.HeartOfTheWild = cat.RegisterSpell(druid.Any, core.SpellConfig{
+		ActionID:        actionID,
+		Flags:           core.SpellFlagAPL,
+		RelatedSelfBuff: cat.HeartOfTheWildAura,
+
+		Cast: core.CastConfig{
+			CD: core.Cooldown{
+				Timer:    cat.NewTimer(),
+				Duration: time.Minute * 6,
+			},
+
+			IgnoreHaste: true,
+		},
+
+		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
+			spell.RelatedSelfBuff.Activate(sim)
+		},
+	})
+
+	cat.AddMajorCooldown(core.MajorCooldown{
+		Spell: cat.HeartOfTheWild.Spell,
+		Type:  core.CooldownTypeDPS,
+
+		ShouldActivate: func(sim *core.Simulation, _ *core.Character) bool {
+			return !cat.BerserkCatAura.IsActive() && (cat.Berserk.TimeToReady(sim) > cat.HeartOfTheWildAura.Duration) && !cat.IncarnationAura.IsActive() && !cat.ClearcastingAura.IsActive() && ((cat.ComboPoints() == 5) || (cat.CurrentEnergy() + (cat.Wrath.DefaultCast.CastTime * 2 + core.GCDDefault).Seconds() * cat.EnergyRegenPerSecond() <= 100))
 		},
 	})
 }

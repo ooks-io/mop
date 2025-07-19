@@ -32,6 +32,32 @@ func (druid *Druid) registerHeartOfTheWild() {
 	// The activation spec specific effects are implemented in individual spec packages.
 }
 
+func (druid *Druid) RegisterSharedFeralHotwMods() (*core.SpellMod, *core.SpellMod, *core.SpellMod) {
+	healingMask := DruidSpellTranquility | DruidSpellRejuvenation | DruidSpellHealingTouch | DruidSpellCenarionWard
+
+	healingMod := druid.AddDynamicMod(core.SpellModConfig{
+		ClassMask:  healingMask,
+		Kind:       core.SpellMod_DamageDone_Pct,
+		FloatValue: 1,
+	})
+
+	damageMask := DruidSpellWrath | DruidSpellMoonfire | DruidSpellMoonfireDoT | DruidSpellHurricane
+
+	damageMod := druid.AddDynamicMod(core.SpellModConfig{
+		ClassMask:  damageMask,
+		Kind:       core.SpellMod_DamageDone_Pct,
+		FloatValue: 3.2,
+	})
+
+	costMod := druid.AddDynamicMod(core.SpellModConfig{
+		ClassMask:  healingMask | damageMask,
+		Kind:       core.SpellMod_PowerCost_Pct,
+		FloatValue: -2,
+	})
+
+	return healingMod, damageMod, costMod
+}
+
 func (druid *Druid) registerNaturesVigil() {
 	if !druid.Talents.NaturesVigil {
 		return
