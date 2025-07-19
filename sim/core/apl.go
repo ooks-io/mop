@@ -353,13 +353,11 @@ func (apl *APLRotation) shouldInterruptChannel(sim *Simulation) bool {
 
 	// Allow next action to interrupt the channel, but if the action is the same action then it still needs to continue.
 	nextAction := apl.getNextAction(sim)
-	if nextAction == nil {
-		return false
-	}
-
-	if channelAction, ok := nextAction.impl.(*APLActionChannelSpell); ok && channelAction.spell == channeledDot.Spell {
-		// Newly selected action is channeling the same spell, so continue the channel unless recast is allowed.
-		return apl.allowChannelRecastOnInterrupt
+	if nextAction != nil {
+		if channelAction, ok := nextAction.impl.(*APLActionChannelSpell); ok && channelAction.spell == channeledDot.Spell {
+			// Newly selected action is channeling the same spell, so continue the channel unless recast is allowed.
+			return apl.allowChannelRecastOnInterrupt
+		}
 	}
 
 	return true
