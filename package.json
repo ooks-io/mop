@@ -23,7 +23,8 @@
 		"lint:json:fix": "npm run lint:json -- --fix",
 		"prettier": "npx prettier \"./ui/**/*.{js,jsx,ts,tsx,scss,css,json}\" --check",
 		"prettier:fix": "npm run prettier -- --write",
-		"type-check": "tsc --noEmit"
+		"type-check": "tsc --noEmit",
+		"test:locales": "npx ajv-cli validate --errors=text -s ./schemas/translation.schema.json -d \"./assets/locales/**/*.json\""
 	},
 	"dependencies": {
 		"@popperjs/core": "^2.11.8",

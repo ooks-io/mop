@@ -45,6 +45,7 @@ jobs:
 
             - name: Build 🔧
               run: |
+                  npm run test:locales
                   make clean && VERSION=${{ github.event.inputs.tag }} make release
 
             - name: Test

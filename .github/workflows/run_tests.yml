@@ -38,6 +38,7 @@ jobs:
 
             - name: Build 🔧
               run: |
+                  npm run test:locales
                   make dist/mop/.dirstamp
 
             - name: Test
