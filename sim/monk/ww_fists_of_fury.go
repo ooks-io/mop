@@ -103,6 +103,13 @@ func (monk *Monk) registerFistsOfFury() {
 		},
 
 		Dot: core.DotConfig{
+			Aura: core.Aura{
+				Label: "Fists of Fury" + monk.Label,
+				OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+					monk.WaitUntil(sim, sim.CurrentTime+monk.ReactionTime)
+					monk.AutoAttacks.UpdateSwingTimers(sim)
+				},
+			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				fistsOfFuryTickSpell.Cast(sim, target)
 			},
@@ -121,7 +128,6 @@ func (monk *Monk) registerFistsOfFury() {
 
 			expiresAt := dot.ExpiresAt()
 			monk.AutoAttacks.DelayMeleeBy(sim, expiresAt-sim.CurrentTime)
-			monk.ExtendGCDUntil(sim, expiresAt+monk.ReactionTime)
 		},
 	}))
 }
