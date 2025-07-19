@@ -59,7 +59,6 @@ func (shaman *Shaman) registerAscendanceSpell() {
 		Duration: time.Second * 15,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			if isEnh {
-				//TODO weapon swap during ascendance breaks this i think
 				originalMHSpell = shaman.AutoAttacks.MHAuto()
 				originalOHSpell = shaman.AutoAttacks.OHAuto()
 				shaman.AutoAttacks.SetMHSpell(windslashMH)
@@ -74,7 +73,7 @@ func (shaman *Shaman) registerAscendanceSpell() {
 			sim.AddPendingAction(pa)
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			//Lava Beam cast gets cancelled if ascendance fades during it
+			// Lava Beam cast gets cancelled if ascendance fades during it
 			if (shaman.Hardcast.ActionID.SpellID == 114074) && shaman.Hardcast.Expires > sim.CurrentTime {
 				shaman.CancelHardcast(sim)
 			}
@@ -82,6 +81,10 @@ func (shaman *Shaman) registerAscendanceSpell() {
 				shaman.Stormstrike.CD.Set(shaman.Stormblast.CD.ReadyAt())
 				shaman.AutoAttacks.SetMHSpell(originalMHSpell)
 				shaman.AutoAttacks.SetOHSpell(originalOHSpell)
+				// Weapon swap can set oh crit multiplier to 0 if swapped during ascendance to a Two-Handed
+				windslashOH.CritMultiplier = shaman.DefaultCritMultiplier()
+				originalOHSpell.CritMultiplier = shaman.DefaultCritMultiplier()
+
 			}
 		},
 	}).AttachSpellMod(core.SpellModConfig{

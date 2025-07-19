@@ -49,7 +49,7 @@ const buildWorkers = async () => {
 				lib: {
 					entry: { [name]: sourcePath },
 					name: `${name}.js`,
-					formats: ['cjs'],
+					formats: ['es'],
 				},
 			},
 		});

@@ -341,4 +341,5 @@ const (
 	SpellMaskShock        = SpellMaskFlameShock | SpellMaskEarthShock | SpellMaskFrostShock
 	SpellMaskTotem        = SpellMaskMagmaTotem | SpellMaskSearingTotem | SpellMaskFireElementalTotem | SpellMaskEarthElementalTotem | SpellMaskStormlashTotem
 	SpellMaskInstantSpell = SpellMaskAscendance | SpellMaskFeralSpirit | SpellMaskUnleashElements | SpellMaskBloodlust
+	SpellMaskImbue        = SpellMaskFrostbrandWeapon | SpellMaskWindfuryWeapon | SpellMaskFlametongueWeapon
 )
