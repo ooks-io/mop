@@ -23,7 +23,7 @@ import {
 import { SimSignals } from './sim_signal_manager';
 import { isDevMode, noop } from './utils';
 
-const SIM_WORKER_URL = `/${REPO_NAME}/sim_worker.js`;
+const SIM_WORKER_URL = `/${REPO_NAME}/sim_worker.cjs`;
 export type WorkerProgressCallback = (progressMetrics: ProgressMetrics) => void;
 
 /**
