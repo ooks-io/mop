@@ -11,6 +11,7 @@
 		},
 		"home": {
 			"title": "WoWSims - Mists of Pandaria",
+			"description": "A powerful simulation tool for World of Warcraft: Mists of Pandaria",
 			"welcomeDescription": "Welcome to WoWSims - Mists of Pandaria! This is a community-driven project to provide class and raid simulations for World of Warcraft® Mists of Pandaria Classic together with the leading theorycrafters and class representatives."
 		},
 		"header": {
