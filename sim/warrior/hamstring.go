@@ -23,11 +23,11 @@ func (war *Warrior) registerHamstring() {
 			DefaultCast: core.Cast{
 				NonEmpty: true,
 			},
+			IgnoreHaste: true,
 			CD: core.Cooldown{
 				Timer:    war.NewTimer(),
 				Duration: time.Second * 1,
 			},
-			IgnoreHaste: true,
 		},
 
 		ThreatMultiplier: 1,
