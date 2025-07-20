@@ -6,6 +6,7 @@ import {
 	FeralDruid_Options as FeralDruidOptions,
 	FeralDruid_Rotation as FeralDruidRotation,
 	FeralDruid_Rotation_AplType,
+	FeralDruid_Rotation_HotwStrategy,
 } from '../../core/proto/druid';
 import { SavedTalents } from '../../core/proto/ui';
 // Preset options for this spec.
@@ -84,6 +85,7 @@ export const DefaultRotation = FeralDruidRotation.create({
 	useBite: true,
 	biteTime: 13,
 	berserkBiteTime: 8,
+	hotwStrategy: FeralDruid_Rotation_HotwStrategy.Wrath,
 });
 
 export const SIMPLE_ROTATION_DEFAULT = PresetUtils.makePresetSimpleRotation('Single Target Default', Spec.SpecFeralDruid, DefaultRotation);

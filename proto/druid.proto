@@ -104,6 +104,12 @@ message FeralDruid {
 	Aoe = 1;
     }
 
+    enum HotwStrategy {
+        PassivesOnly = 0;
+        Bear = 1;
+        Wrath = 2;
+    }
+
     AplType rotation_type = 1;
     bool bear_weave = 2;
     bool snek_weave = 3;
@@ -115,6 +121,7 @@ message FeralDruid {
     double bite_time = 9;
     double berserk_bite_time = 10;
     bool use_ns = 11;
+    HotwStrategy hotw_strategy = 12;
   }
   Rotation rotation = 1;
 

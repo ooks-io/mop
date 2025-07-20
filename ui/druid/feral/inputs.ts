@@ -2,7 +2,7 @@ import * as InputHelpers from '../../core/components/input_helpers.js';
 import { Player } from '../../core/player.js';
 import { APLRotation_Type } from '../../core/proto/apl.js';
 import { Spec } from '../../core/proto/common.js';
-import { FeralDruid_Rotation_AplType as AplType } from '../../core/proto/druid.js';
+import { FeralDruid_Rotation_AplType as AplType, FeralDruid_Rotation_HotwStrategy as HotwType } from '../../core/proto/druid.js';
 import { TypedEvent } from '../../core/typed_event.js';
 
 // Configuration for spec-specific UI elements on the settings tab.
@@ -57,6 +57,17 @@ export const FeralDruidRotationConfig = {
 			label: "Use Nature's Swiftness",
 			labelTooltip: "Use Nature's Swiftness to fill gaps in Predatory Swiftness uptime",
 			showWhen: (player: Player<Spec.SpecFeralDruid>) => player.getTalents().dreamOfCenarius,
+			changeEmitter: (player: Player<Spec.SpecFeralDruid>) => TypedEvent.onAny([player.rotationChangeEmitter, player.talentsChangeEmitter]),
+		}),
+		InputHelpers.makeRotationEnumInput<Spec.SpecFeralDruid, HotwType>({
+			fieldName: 'hotwStrategy',
+			label: 'Heart of the Wild usage',
+			values: [
+				{ name: 'Passives only', value: HotwType.PassivesOnly },
+				{ name: 'Enhanced bear-weaving', value: HotwType.Bear },
+				{ name: 'Wrath-weaving', value: HotwType.Wrath },
+			],
+			showWhen: (player: Player<Spec.SpecFeralDruid>) => player.getTalents().heartOfTheWild,
 			changeEmitter: (player: Player<Spec.SpecFeralDruid>) => TypedEvent.onAny([player.rotationChangeEmitter, player.talentsChangeEmitter]),
 		}),
 		InputHelpers.makeRotationBooleanInput<Spec.SpecFeralDruid>({

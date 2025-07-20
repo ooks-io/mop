@@ -354,6 +354,7 @@ message APLActionCatOptimalRotationAction {
     double bite_time = 9;
     double berserk_bite_time = 10;
     bool use_ns = 11;
+    bool wrath_weave = 12;
 }
 
 message APLActionGuardianHotwDpsRotation {
