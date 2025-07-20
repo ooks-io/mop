@@ -88,6 +88,7 @@ const (
 	DruidSpellAstralCommunion
 	DruidSpellFerociousBite
 	DruidSpellInnervate
+	DruidSpellLacerate
 	DruidSpellMangleBear
 	DruidSpellMangleCat
 	DruidSpellMaul
@@ -103,7 +104,9 @@ const (
 	DruidSpellStarsurge
 	DruidSpellSunfire
 	DruidSpellSunfireDoT
+	DruidSpellSwipeBear
 	DruidSpellSwipeCat
+	DruidSpellThrashBear
 	DruidSpellThrashCat
 	DruidSpellWildMushroom
 	DruidSpellWildMushroomDetonate
@@ -126,6 +129,8 @@ const (
 	DruidSpellHoT                = DruidSpellRejuvenation | DruidSpellLifebloom | DruidSpellRegrowth | DruidSpellWildGrowth
 	DruidSpellInstant            = DruidSpellBarkskin | DruidSpellMoonfire | DruidSpellStarfall | DruidSpellSunfire | DruidSpellFearieFire | DruidSpellBarkskin
 	DruidSpellMangle             = DruidSpellMangleBear | DruidSpellMangleCat
+	DruidSpellThrash             = DruidSpellThrashBear | DruidSpellThrashCat
+	DruidSpellSwipe              = DruidSpellSwipeBear | DruidSpellSwipeCat
 	DruidSpellBuilder            = DruidSpellMangleCat | DruidSpellShred | DruidSpellRake | DruidSpellRavage
 	DruidSpellFinisher           = DruidSpellFerociousBite | DruidSpellRip | DruidSpellSavageRoar
 	DruidArcaneSpells            = DruidSpellMoonfire | DruidSpellMoonfireDoT | DruidSpellStarfire | DruidSpellStarsurge | DruidSpellStarfall

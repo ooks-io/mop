@@ -1,4 +1,5 @@
 import * as OtherInputs from '../../core/components/inputs/other_inputs';
+import * as BuffDebuffInputs from '../../core/components/inputs/buffs_debuffs';
 import { ReforgeOptimizer } from '../../core/components/suggest_reforges_action';
 import * as Mechanics from '../../core/constants/mechanics';
 import { IndividualSimUI, registerSpecConfig } from '../../core/individual_sim_ui';
@@ -71,6 +72,8 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 			unholyAura: true,
 			graceOfAir: true,
 			bloodlust: true,
+			arcaneBrilliance: true,
+			moonkinAura: true,
 		}),
 		partyBuffs: PartyBuffs.create({}),
 		individualBuffs: IndividualBuffs.create({}),
@@ -86,7 +89,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 	// Inputs to include in the 'Rotation' section on the settings tab.
 	rotationInputs: FeralInputs.FeralDruidRotationConfig,
 	// Buff and Debuff inputs to include/exclude, overriding the EP-based defaults.
-	includeBuffDebuffInputs: [],
+	includeBuffDebuffInputs: [BuffDebuffInputs.SpellPowerBuff, BuffDebuffInputs.SpellDamageDebuff, BuffDebuffInputs.SpellHasteBuff],
 	excludeBuffDebuffInputs: [],
 	// Inputs to include in the 'Other' section on the settings tab.
 	otherInputs: {

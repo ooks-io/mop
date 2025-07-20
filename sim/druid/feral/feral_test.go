@@ -27,17 +27,21 @@ var FeralItemFilter = core.ItemFilter{
 
 func TestFeral(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{{
-		Class:       proto.Class_ClassDruid,
-		Race:        proto.Race_RaceWorgen,
-		OtherRaces:  []proto.Race{proto.Race_RaceTroll},
-		GearSet:     core.GetGearSet("../../../ui/druid/feral/gear_sets", "preraid"),
+		Class:      proto.Class_ClassDruid,
+		Race:       proto.Race_RaceWorgen,
+		OtherRaces: []proto.Race{proto.Race_RaceTroll},
+		GearSet:    core.GetGearSet("../../../ui/druid/feral/gear_sets", "preraid"),
 
 		Talents:         StandardTalents,
 		Glyphs:          StandardGlyphs,
-		Consumables:     FullConsumesSpec,
-		SpecOptions:     core.SpecOptionsCombo{Label: "ExternalBleed", SpecOptions: PlayerOptionsMonoCat},
-		Rotation:        core.GetAplRotation("../../../ui/druid/feral/apls", "default"),
+		OtherTalentSets: []core.TalentsCombo{
+			{Label: "SotF-HotW", Talents: "000101", Glyphs: StandardGlyphs},
+			{Label: "Incarn-NV", Talents: "000203", Glyphs: StandardGlyphs},
+		},
 
+		Consumables:      FullConsumesSpec,
+		SpecOptions:      core.SpecOptionsCombo{Label: "ExternalBleed", SpecOptions: PlayerOptionsMonoCat},
+		Rotation:         core.GetAplRotation("../../../ui/druid/feral/apls", "default"),
 		StartingDistance: 24,
 		ItemFilter:       FeralItemFilter,
 	}}))
@@ -87,9 +91,10 @@ func TestFeral(t *testing.T) {
 // 	core.RaidBenchmark(b, rsr)
 // }
 
-var StandardTalents = "000300"
+var StandardTalents = "000302"
 var StandardGlyphs = &proto.Glyphs{
 	Major1: 40923,
+	Major2: 40914,
 }
 
 var PlayerOptionsMonoCat = &proto.Player_FeralDruid{

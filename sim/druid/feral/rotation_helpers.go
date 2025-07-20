@@ -107,6 +107,11 @@ func (cat *FeralDruid) calcBleedRefreshTime(sim *core.Simulation, bleedSpell *dr
 		return sim.CurrentTime - cat.ReactionTime
 	}
 
+	// DoC takes priority over other logic.
+	if cat.DreamOfCenariusAura.IsActive() && (bleedSpell.NewSnapshotPower > bleedSpell.CurrentSnapshotPower + 0.001) {
+		return sim.CurrentTime - cat.ReactionTime
+	}
+
 	// If we're not gaining a stronger snapshot, then use the standard 1
 	// tick refresh window.
 	bleedEnd := bleedDot.ExpiresAt()
@@ -174,7 +179,7 @@ func (cat *FeralDruid) calcBleedRefreshTime(sim *core.Simulation, bleedSpell *dr
 // Determine whether Tiger's Fury will be usable soon enough for the snapshot to
 // outweigh the lost Rip/Rake ticks from delaying a refresh.
 func (cat *FeralDruid) shouldDelayBleedRefreshForTf(sim *core.Simulation, bleedDot *core.Dot, isRip bool) bool {
-	if cat.TigersFuryAura.IsActive() || cat.BerserkCatAura.IsActive() {
+	if cat.TigersFuryAura.IsActive() || cat.BerserkCatAura.IsActive() || cat.DreamOfCenariusAura.IsActive() {
 		return false
 	}
 

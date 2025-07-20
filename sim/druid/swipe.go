@@ -11,10 +11,11 @@ func (druid *Druid) registerSwipeBearSpell() {
 	flatBaseDamage := 0.22499999404 * druid.ClassSpellScaling // ~246.3164
 
 	druid.SwipeBear = druid.RegisterSpell(Bear, core.SpellConfig{
-		ActionID:    core.ActionID{SpellID: 779},
-		SpellSchool: core.SpellSchoolPhysical,
-		ProcMask:    core.ProcMaskMeleeMHSpecial,
-		Flags:       core.SpellFlagAoE | core.SpellFlagMeleeMetrics | core.SpellFlagAPL,
+		ActionID:       core.ActionID{SpellID: 779},
+		SpellSchool:    core.SpellSchoolPhysical,
+		ProcMask:       core.ProcMaskMeleeMHSpecial,
+		Flags:          core.SpellFlagAoE | core.SpellFlagMeleeMetrics | core.SpellFlagAPL,
+		ClassSpellMask: DruidSpellSwipeBear,
 
 		RageCost: core.RageCostOptions{
 			Cost: core.TernaryInt32(druid.Spec == proto.Spec_SpecGuardianDruid, 0, 15),

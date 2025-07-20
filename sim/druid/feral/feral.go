@@ -62,6 +62,8 @@ type FeralDruid struct {
 
 	// Aura references
 	ClearcastingAura        *core.Aura
+	DreamOfCenariusAura     *core.Aura
+	HeartOfTheWildAura      *core.Aura
 	IncarnationAura         *core.Aura
 	PredatorySwiftnessAura  *core.Aura
 	SavageRoarBuff          *core.Dot
@@ -69,10 +71,11 @@ type FeralDruid struct {
 	TigersFuryAura          *core.Aura
 
 	// Spell references
-	Incarnation *druid.DruidSpell
-	SavageRoar  *druid.DruidSpell
-	Shred       *druid.DruidSpell
-	TigersFury  *druid.DruidSpell
+	HeartOfTheWild *druid.DruidSpell
+	Incarnation    *druid.DruidSpell
+	SavageRoar     *druid.DruidSpell
+	Shred          *druid.DruidSpell
+	TigersFury     *druid.DruidSpell
 
 	tempSnapshotAura   *core.Aura
 }
@@ -101,6 +104,7 @@ func (cat *FeralDruid) Initialize() {
 		previousRipSnapshotPower := cat.Rip.NewSnapshotPower
 		cat.UpdateBleedPower(cat.Rip, sim, cat.CurrentTarget, false, true)
 		cat.UpdateBleedPower(cat.Rake, sim, cat.CurrentTarget, false, true)
+		cat.UpdateBleedPower(cat.ThrashCat, sim, cat.CurrentTarget, false, true)
 
 		if cat.Rip.NewSnapshotPower > previousRipSnapshotPower+0.001 {
 			if !cat.tempSnapshotAura.IsActive() || (aura.ExpiresAt() < cat.tempSnapshotAura.ExpiresAt()) {
@@ -120,6 +124,11 @@ func (cat *FeralDruid) Initialize() {
 	cat.AddOnTemporaryStatsChange(func(sim *core.Simulation, buffAura *core.Aura, _ stats.Stats) {
 		snapshotHandler(buffAura, sim)
 	})
+
+	if cat.DreamOfCenariusAura != nil {
+		cat.DreamOfCenariusAura.ApplyOnGain(snapshotHandler)
+		cat.DreamOfCenariusAura.ApplyOnExpire(snapshotHandler)
+	}
 }
 
 func (cat *FeralDruid) ApplyTalents() {
