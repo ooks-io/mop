@@ -13,6 +13,6 @@
         {"action":{"autocastOtherCooldowns":{}}},
         {"action":{"condition":{"const":{"val":"false"}},"castSpell":{"spellId":{"spellId":106952}}}},
         {"action":{"condition":{"const":{"val":"false"}},"castSpell":{"spellId":{"spellId":132158}}}},
-        {"action":{"catOptimalRotationAction":{"bearWeave":true,"snekWeave":true}}}
+        {"action":{"catOptimalRotationAction":{"bearWeave":true,"snekWeave":true,"useNs":true,"wrathWeave":true}}}
       ]
 }

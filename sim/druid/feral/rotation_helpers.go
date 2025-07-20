@@ -96,7 +96,7 @@ func (rotation *FeralDruidRotation) ShiftBearCat(sim *core.Simulation) {
 		cat.CatForm.Cast(sim, nil)
 
 		// Reset swing timer with Albino Snake when advantageous
-		if cat.AutoAttacks.NextAttackAt() - sim.CurrentTime > cat.AutoAttacks.MainhandSwingSpeed() {
+		if rotation.SnekWeave && (cat.AutoAttacks.NextAttackAt() - sim.CurrentTime > cat.AutoAttacks.MainhandSwingSpeed()) {
 			cat.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime)
 		}
 	}
