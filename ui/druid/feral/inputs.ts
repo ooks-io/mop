@@ -57,7 +57,7 @@ export const FeralDruidRotationConfig = {
 			label: "Use Nature's Swiftness",
 			labelTooltip: "Use Nature's Swiftness to fill gaps in Predatory Swiftness uptime",
 			showWhen: (player: Player<Spec.SpecFeralDruid>) => player.getTalents().dreamOfCenarius,
-			changeEmitter: (player: Player<Spec.SpecFeralDruid>) => player.talentsChangeEmitter,
+			changeEmitter: (player: Player<Spec.SpecFeralDruid>) => TypedEvent.onAny([player.rotationChangeEmitter, player.talentsChangeEmitter]),
 		}),
 		InputHelpers.makeRotationBooleanInput<Spec.SpecFeralDruid>({
 			fieldName: 'allowAoeBerserk',
