@@ -141,6 +141,10 @@ func (rotation *FeralDruidRotation) Execute(sim *core.Simulation) {
 	rotation.TryTigersFury(sim)
 	rotation.TryBerserk(sim)
 
+	if rotation.UseHealingTouch && cat.NaturesSwiftness.IsReady(sim) && (cat.ComboPoints() == 5) && !cat.DreamOfCenariusAura.IsActive() {
+		cat.NaturesSwiftness.Cast(sim, &cat.Unit)
+	}
+
 	if sim.CurrentTime < rotation.nextActionAt {
 		cat.WaitUntil(sim, rotation.nextActionAt)
 	} else if rotation.readyToShift {
@@ -267,7 +271,7 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 		}
 
 		timeToNextAction = core.DurationFromSeconds((cat.CurrentSavageRoarCost() - curEnergy) / regenRate)
-	} else if rotation.UseHealingTouch && cat.PredatorySwiftnessAura.IsActive() && ((curCp >= 4) || (cat.PredatorySwiftnessAura.RemainingDuration(sim) <= time.Second)) {
+	} else if rotation.UseHealingTouch && (cat.PredatorySwiftnessAura.IsActive() || cat.NaturesSwiftness.RelatedSelfBuff.IsActive()) && ((curCp >= 4) || (cat.PredatorySwiftnessAura.RemainingDuration(sim) <= time.Second)) {
 		cat.HealingTouch.Cast(sim, &cat.Unit)
 		return
 	} else if ripNow {
