@@ -271,7 +271,7 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 		}
 
 		timeToNextAction = core.DurationFromSeconds((cat.CurrentSavageRoarCost() - curEnergy) / regenRate)
-	} else if rotation.UseHealingTouch && (cat.PredatorySwiftnessAura.IsActive() || cat.NaturesSwiftness.RelatedSelfBuff.IsActive()) && ((curCp >= 4) || (cat.PredatorySwiftnessAura.RemainingDuration(sim) <= time.Second)) {
+	} else if rotation.UseHealingTouch && (cat.PredatorySwiftnessAura.IsActive() || cat.NaturesSwiftness.RelatedSelfBuff.IsActive()) && ((curCp >= 4) || (cat.PredatorySwiftnessAura.RemainingDuration(sim) <= time.Second)) && (!isBerserk || (curCp == 5)) {
 		cat.HealingTouch.Cast(sim, &cat.Unit)
 		return
 	} else if ripNow {
