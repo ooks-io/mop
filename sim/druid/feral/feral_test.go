@@ -91,7 +91,7 @@ func TestFeral(t *testing.T) {
 // 	core.RaidBenchmark(b, rsr)
 // }
 
-var StandardTalents = "000300"
+var StandardTalents = "000302"
 var StandardGlyphs = &proto.Glyphs{
 	Major1: 40923,
 }

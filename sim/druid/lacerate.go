@@ -8,10 +8,11 @@ import (
 
 func (druid *Druid) registerLacerateSpell() {
 	druid.Lacerate = druid.RegisterSpell(Bear, core.SpellConfig{
-		ActionID:    core.ActionID{SpellID: 33745},
-		SpellSchool: core.SpellSchoolPhysical,
-		ProcMask:    core.ProcMaskMeleeMHSpecial,
-		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagAPL,
+		ActionID:       core.ActionID{SpellID: 33745},
+		SpellSchool:    core.SpellSchoolPhysical,
+		ProcMask:       core.ProcMaskMeleeMHSpecial,
+		Flags:          core.SpellFlagMeleeMetrics | core.SpellFlagAPL,
+		ClassSpellMask: DruidSpellLacerate,
 
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{

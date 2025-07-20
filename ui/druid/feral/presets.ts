@@ -113,7 +113,7 @@ export const AOE_ROTATION_DEFAULT = PresetUtils.makePresetSimpleRotation('AoE De
 export const StandardTalents = {
 	name: 'Default',
 	data: SavedTalents.create({
-		talentsString: "000300",
+		talentsString: "000302",
 		glyphs: Glyphs.create({
 			major1: 40923,
 		}),

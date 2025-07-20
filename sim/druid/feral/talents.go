@@ -12,6 +12,7 @@ func (cat *FeralDruid) applySpecTalents() {
 	cat.registerSoulOfTheForest()
 	cat.registerIncarnation()
 	cat.registerHeartOfTheWild()
+	cat.registerDreamOfCenarius()
 }
 
 func (cat *FeralDruid) registerSoulOfTheForest() {
@@ -204,6 +205,64 @@ func (cat *FeralDruid) registerHeartOfTheWild() {
 
 		ShouldActivate: func(sim *core.Simulation, _ *core.Character) bool {
 			return !cat.BerserkCatAura.IsActive() && (cat.Berserk.TimeToReady(sim) > cat.HeartOfTheWildAura.Duration) && !cat.IncarnationAura.IsActive() && !cat.ClearcastingAura.IsActive() && ((cat.ComboPoints() == 5) || (cat.CurrentEnergy() + (cat.Wrath.DefaultCast.CastTime * 2 + core.GCDDefault).Seconds() * cat.EnergyRegenPerSecond() <= 100))
+		},
+	})
+}
+
+func (cat *FeralDruid) registerDreamOfCenarius() {
+	if !cat.Talents.DreamOfCenarius {
+		return
+	}
+
+	cat.AddStaticMod(core.SpellModConfig{
+		ClassMask:  druid.DruidSpellHealingTouch,
+		Kind:       core.SpellMod_DamageDone_Pct,
+		FloatValue: 0.2,
+	})
+
+	meleeAbilityMask := druid.DruidSpellBuilder | druid.DruidSpellLacerate | druid.DruidSpellThrash | druid.DruidSpellRip | druid.DruidSpellFerociousBite | druid.DruidSpellSwipe | druid.DruidSpellMaul | druid.DruidSpellMangleBear
+
+	docMod := cat.AddDynamicMod(core.SpellModConfig{
+		ClassMask:  meleeAbilityMask,
+		Kind:       core.SpellMod_DamageDone_Pct,
+		FloatValue: 0.3,
+	})
+
+	cat.DreamOfCenariusAura = cat.RegisterAura(core.Aura{
+		Label:     "Dream of Cenarius",
+		ActionID:  core.ActionID{SpellID: 145152},
+		Duration:  time.Second * 30,
+		MaxStacks: 2,
+
+		Icd: &core.Cooldown{
+			Timer:    cat.NewTimer(),
+			Duration: time.Millisecond * 100,
+		},
+
+		OnGain: func(aura *core.Aura, sim *core.Simulation) {
+			aura.SetStacks(sim, 2)
+			docMod.Activate()
+		},
+
+		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
+			if spell.Matches(meleeAbilityMask) && aura.Icd.IsReady(sim) {
+				aura.Icd.Use(sim)
+				aura.RemoveStack(sim)
+			}
+		},
+
+		OnExpire: func(_ *core.Aura, _ *core.Simulation) {
+			docMod.Deactivate()
+		},
+	})
+
+	core.MakeProcTriggerAura(&cat.Unit, core.ProcTrigger{
+		Name:           "Dream of Cenarius Trigger",
+		Callback:       core.CallbackOnCastComplete,
+		ClassSpellMask: druid.DruidSpellHealingTouch,
+
+		Handler: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
+			cat.DreamOfCenariusAura.Activate(sim)
 		},
 	})
 }
