@@ -43,11 +43,11 @@ func (war *Warrior) registerColossusSmash() {
 			DefaultCast: core.Cast{
 				GCD: core.GCDDefault,
 			},
+			IgnoreHaste: true,
 			CD: core.Cooldown{
 				Timer:    war.NewTimer(),
 				Duration: time.Second * 20,
 			},
-			IgnoreHaste: true,
 		},
 
 		DamageMultiplier: 1.75,

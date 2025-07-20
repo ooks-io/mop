@@ -23,11 +23,11 @@ func (war *FuryWarrior) registerBloodthirst() {
 			DefaultCast: core.Cast{
 				GCD: core.GCDDefault,
 			},
+			IgnoreHaste: true,
 			CD: core.Cooldown{
 				Timer:    war.NewTimer(),
 				Duration: time.Millisecond * 4500,
 			},
-			IgnoreHaste: true,
 		},
 
 		DamageMultiplier: 0.9 * 1.2, // 2013-09-23	[Bloodthirst]'s damage has been increased by 20%.
