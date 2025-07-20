@@ -49,8 +49,8 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 		epWeights: Presets.BEARWEAVE_EP_PRESET.epWeights,
 		// Default stat caps for the Reforge Optimizer
 		statCaps: (() => {
-			const hitCap = new Stats().withPseudoStat(PseudoStat.PseudoStatPhysicalHitPercent, 8);
-			const expCap = new Stats().withStat(Stat.StatExpertiseRating, 6.5 * 4 * Mechanics.EXPERTISE_PER_QUARTER_PERCENT_REDUCTION);
+			const hitCap = new Stats().withPseudoStat(PseudoStat.PseudoStatPhysicalHitPercent, 7.5);
+			const expCap = new Stats().withStat(Stat.StatExpertiseRating, 7.5 * 4 * Mechanics.EXPERTISE_PER_QUARTER_PERCENT_REDUCTION);
 
 			return hitCap.add(expCap);
 		})(),
@@ -114,8 +114,8 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 		talents: [Presets.StandardTalents],
 		rotations: [Presets.SIMPLE_ROTATION_DEFAULT, Presets.APL_ROTATION_DEFAULT],
 		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.PRERAID_PRESET, Presets.P1_PRESET, Presets.P3_PRESET, Presets.P4_PRESET],
-		itemSwaps: [Presets.P4_ITEM_SWAP_PRESET],
+		gear: [Presets.PRERAID_PRESET],
+		itemSwaps: [],
 		builds: [
 			//Presets.PRESET_BUILD_DEFAULT,
 			//Presets.PRESET_BUILD_TENDON,
@@ -185,7 +185,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 		});
 	},
 
-	hiddenMCDs: [50334, 5229],
+	hiddenMCDs: [126734, 106737, 76089, 26297, 106952, 132158, 108292, 55004],
 
 	raidSimPresets: [
 		{
