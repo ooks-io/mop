@@ -114,7 +114,7 @@ func (rotation *FeralDruidRotation) Execute(sim *core.Simulation) {
 	}
 
 	// Off-GCD Maul check
-	if cat.BearFormAura.IsActive() && !cat.ClearcastingAura.IsActive() && cat.Maul.CanCast(sim, cat.CurrentTarget) {
+	if cat.BearFormAura.IsActive() && !cat.ClearcastingAura.IsActive() && !cat.DreamOfCenariusAura.IsActive() && cat.Maul.CanCast(sim, cat.CurrentTarget) {
 		cat.Maul.Cast(sim, cat.CurrentTarget)
 	}
 
