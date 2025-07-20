@@ -141,7 +141,7 @@ func (rotation *FeralDruidRotation) Execute(sim *core.Simulation) {
 	rotation.TryTigersFury(sim)
 	rotation.TryBerserk(sim)
 
-	if rotation.UseHealingTouch && cat.NaturesSwiftness.IsReady(sim) && (cat.ComboPoints() == 5) && !cat.DreamOfCenariusAura.IsActive() {
+	if rotation.UseHealingTouch && cat.NaturesSwiftness.IsReady(sim) && (cat.ComboPoints() == 5) && !cat.DreamOfCenariusAura.IsActive() && !cat.PredatorySwiftnessAura.IsActive() {
 		cat.NaturesSwiftness.Cast(sim, &cat.Unit)
 	}
 
