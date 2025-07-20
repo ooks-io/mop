@@ -98,6 +98,10 @@ func (spell *Spell) makeCastFunc(config CastConfig) CastSuccessFunc {
 			}
 		}
 
+		if target == nil {
+			return spell.castFailureHelper(sim, "target is not set")
+		}
+
 		if !target.IsEnabled() {
 			return spell.castFailureHelper(sim, "target disabled")
 		}
@@ -262,6 +266,10 @@ func (spell *Spell) triggerCooldown(sim *Simulation) {
 
 func (spell *Spell) makeCastFuncSimple() CastSuccessFunc {
 	return func(sim *Simulation, target *Unit) bool {
+		if target == nil {
+			return spell.castFailureHelper(sim, "target is not set")
+		}
+
 		if !target.IsEnabled() {
 			return spell.castFailureHelper(sim, "target disabled")
 		}
