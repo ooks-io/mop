@@ -94,6 +94,7 @@ func TestFeral(t *testing.T) {
 var StandardTalents = "000302"
 var StandardGlyphs = &proto.Glyphs{
 	Major1: 40923,
+	Major2: 40914,
 }
 
 var PlayerOptionsMonoCat = &proto.Player_FeralDruid{
