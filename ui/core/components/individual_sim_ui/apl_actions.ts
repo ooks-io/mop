@@ -715,6 +715,7 @@ const actionKindFactories: { [f in NonNullable<APLActionKind>]: ActionKindConfig
 				allowAoeBerserk: false,
 				bearWeave: true,
 				snekWeave: true,
+				useNs: true,
 			}),
 		fields: [
 			AplHelpers.rotationTypeFieldConfig('rotationType'),
@@ -723,6 +724,9 @@ const actionKindFactories: { [f in NonNullable<APLActionKind>]: ActionKindConfig
 			}),
 			AplHelpers.booleanFieldConfig('snekWeave', 'Use Albino Snake', {
 				labelTooltip: 'Reset swing timer at the end of bear-weaves using Albino Snake pet. Ignored if not bear-weaving.',
+			}),
+			AplHelpers.booleanFieldConfig('useNs', "Use Nature's Swiftness", {
+				labelTooltip: "Use Nature's Swiftness to fill gaps in Predatory Swiftness uptime. Ignored if Dream of Cenarius is not talented.",
 			}),
 			AplHelpers.booleanFieldConfig('allowAoeBerserk', 'Allow AoE Berserk', {
 				labelTooltip: 'Allow Berserk usage in AoE rotation. Ignored for single target rotation.',

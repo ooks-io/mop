@@ -114,6 +114,7 @@ message FeralDruid {
     bool use_bite = 8;
     double bite_time = 9;
     double berserk_bite_time = 10;
+    bool use_ns = 11;
   }
   Rotation rotation = 1;
 

@@ -76,6 +76,7 @@ export const DefaultRotation = FeralDruidRotation.create({
 	rotationType: FeralDruid_Rotation_AplType.SingleTarget,
 	bearWeave: true,
 	snekWeave: true,
+	useNs: true,
 	allowAoeBerserk: false,
 	manualParams: false,
 	minRoarOffset: 37,

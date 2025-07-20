@@ -53,6 +53,13 @@ export const FeralDruidRotationConfig = {
 			showWhen: (player: Player<Spec.SpecFeralDruid>) => player.getSimpleRotation().bearWeave,
 		}),
 		InputHelpers.makeRotationBooleanInput<Spec.SpecFeralDruid>({
+			fieldName: 'useNs',
+			label: "Use Nature's Swiftness",
+			labelTooltip: "Use Nature's Swiftness to fill gaps in Predatory Swiftness uptime",
+			showWhen: (player: Player<Spec.SpecFeralDruid>) => player.getTalents().dreamOfCenarius,
+			changeEmitter: (player: Player<Spec.SpecFeralDruid>) => player.talentsChangeEmitter,
+		}),
+		InputHelpers.makeRotationBooleanInput<Spec.SpecFeralDruid>({
 			fieldName: 'allowAoeBerserk',
 			label: 'Allow AoE Berserk',
 			labelTooltip: 'Allow Berserk usage in AoE rotation',
