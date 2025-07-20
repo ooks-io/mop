@@ -1,3 +1,6 @@
+/* stylelint-disable plugin/stylelint-bem-namics */
+$gray-800: #323232;
+
 @font-face {
 	font-family: SimDefaultFont;
 	src: url(/mop/assets/fonts/PlusJakartaSans-Regular.woff2);
@@ -8,8 +11,6 @@
 	src: url(/mop/assets/fonts/PlusJakartaSans-Bold.woff2);
 	font-weight: bold;
 }
-
-$gray-800: #323232;
 
 :root {
 	--bs-body-font-family: SimDefaultFont;
@@ -48,6 +49,7 @@ $gray-800: #323232;
 .container {
 	height: 100%;
 	display: flex;
+
 	@include media-breakpoint-down(lg) {
 		width: 100%;
 		max-width: 100%;
@@ -148,6 +150,7 @@ $gray-800: #323232;
 		border: 0;
 		box-shadow: none;
 		color: var(--bs-white);
+
 		@include media-breakpoint-down(md) {
 			position: absolute;
 			top: 0;
@@ -159,6 +162,7 @@ $gray-800: #323232;
 		display: flex;
 		align-items: center;
 		white-space: nowrap;
+
 		@include media-breakpoint-down(md) {
 			padding-bottom: var(--spacer-3);
 		}
@@ -253,6 +257,7 @@ $gray-800: #323232;
 .toast--success {
 	--icon-color: var(--bs-success);
 }
+
 .toast--error {
 	--icon-color: var(--bs-danger);
 }

@@ -10,6 +10,7 @@
 .detailed-results-manager-root {
 	display: flex;
 	flex-direction: column;
+
 	& > * {
 		min-height: 0;
 	}
@@ -35,6 +36,7 @@
 .individual-sim .single-player-only {
 	display: initial;
 }
+
 .individual-sim .all-players-only {
 	display: none;
 }
@@ -55,15 +57,13 @@
 		}
 	}
 
-	> {
-		.tab-content {
-			padding-top: var(--gap-width);
-		}
+	> .tab-content {
+		padding-top: var(--gap-width);
+	}
 
-		.tab-content > .tab-pane.dr-tab-content {
-			padding-top: 0;
-			padding-bottom: 0;
-		}
+	> .tab-content > .tab-pane.dr-tab-content {
+		padding-top: 0;
+		padding-bottom: 0;
 	}
 }
 
@@ -151,6 +151,7 @@
 	th {
 		white-space: nowrap;
 	}
+
 	td {
 		@include media-breakpoint-up(1080p) {
 			white-space: nowrap;
@@ -178,9 +179,11 @@
 	td {
 		border-left: 1px solid var(--bs-border-default);
 		border-right: 1px solid var(--bs-border-default);
+
 		&:first-child {
 			border-left: 0;
 		}
+
 		&:last-child {
 			border-right: 0;
 		}
@@ -224,6 +227,7 @@
 .metrics-table-footer td:first-child {
 	text-align: left;
 }
+
 .metrics-table-body td:not(:first-child),
 .metrics-table-footer td:not(:first-child) {
 	text-align: right;
@@ -251,6 +255,7 @@
 .parent-metric {
 	cursor: pointer;
 }
+
 .child-metric > *:first-child {
 	padding-left: 20px;
 }
@@ -258,6 +263,7 @@
 tr:not(.parent-metric) .expand-toggle {
 	display: none;
 }
+
 .parent-metric.expand .fa-caret-right,
 .parent-metric:not(.expand) .fa-caret-down {
 	display: none;
@@ -274,6 +280,7 @@ tr:not(.parent-metric) .expand-toggle {
 .metrics-total-damage {
 	flex-shrink: 0;
 }
+
 .metrics-total-percentage {
 	width: var(--total-percentage-width);
 }

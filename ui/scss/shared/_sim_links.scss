@@ -38,6 +38,7 @@
 .sim-link-dropdown {
 	.dropdown-menu {
 		background: var(--bs-black-alpha-50);
+
 		@include media-breakpoint-down(lg) {
 			position: relative !important;
 			inset: 0 !important;

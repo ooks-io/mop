@@ -1,6 +1,6 @@
 # Local Dev Installation
 
-This project has dependencies on Go >=1.23, protobuf-compiler and the corresponding Go plugins, and node >= 20.
+This project has dependencies on Go >=1.23, protobuf-compiler and the corresponding Go plugins, and node >= 22.
 
 ## Ubuntu
 Do not use apt to install any dependencies, the versions they install are all too old.
@@ -25,7 +25,7 @@ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 
 # Install node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-nvm install 20.13.1
+nvm install 22
 
 # Install the npm package dependencies using node
 npm install
@@ -65,7 +65,7 @@ If you want to develop on Windows, we recommend setting up a Ubuntu virtual mach
 If you prefer working natively:
 
 - Install [Go](https://go.dev/dl/s), [NVM Windows](https://github.com/coreybutler/nvm-windows), and [make](https://gnuwin32.sourceforge.net/packages/make.htm) (you can also install it through Chocolate).
-- Install and use Node 20+ from NVM, for example `nvm install 20 && nvm use 20`
+- Install and use Node 22+ from NVM, for example `nvm install 22 && nvm use 22`
 - Setup GO workspace following [this guide](https://www.freecodecamp.org/news/setting-up-go-programming-language-on-windows-f02c8c14e2f/)
 - Download GO dependencies [protobuf](https://github.com/protocolbuffers/protobuf/releases), [gopls](https://github.com/golang/tools/releases), [air-verse](https://github.com/air-verse/air/releases), [protobuf-go](https://github.com/protocolbuffers/protobuf-go/releases), and [staticcheck](https://github.com/dominikh/go-tools/releases). Unzip them into your GO workspace directory.
 

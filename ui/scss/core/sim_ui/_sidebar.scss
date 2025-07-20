@@ -15,10 +15,12 @@
 		padding: var(--gap-width);
 		display: flex;
 		flex-direction: column;
+
 		@include media-breakpoint-down(xxl) {
 			padding-left: calc(var(--gap-width-sm) * 2);
 			padding-right: calc(var(--gap-width-sm) * 2);
 		}
+
 		@include media-breakpoint-down(lg) {
 			padding: calc(var(--gap-width-sm) * 2) var(--gap-width-sm);
 			min-height: 0;
@@ -37,6 +39,7 @@
 			flex-direction: column;
 			align-items: center;
 			gap: var(--block-spacer);
+
 			@include media-breakpoint-down(xxl) {
 				padding: 0;
 				margin: 0;
@@ -66,6 +69,7 @@
 
 		.sim-sidebar-stats {
 			margin-top: auto;
+
 			@include media-breakpoint-down(lg) {
 				margin-top: 0;
 			}
@@ -90,9 +94,11 @@
 
 .sim-sidebar-action-button {
 	position: relative;
+
 	&.loading {
 		transition: none;
 		color: var(--bs-btn-disabled-bg);
+
 		.sim-sidebar-action-button-loading-icon {
 			display: block;
 		}

@@ -150,6 +150,7 @@
 			--bulk-gear-combo-gap-width: calc(2 * var(--gap-width)) var(--gap-width);
 			--bulk-gear-combo-column-count: 2;
 		}
+
 		@include media-breakpoint-up(xl) {
 			--bulk-gear-combo-column-count: 3;
 		}

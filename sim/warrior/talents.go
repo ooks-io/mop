@@ -65,6 +65,7 @@ func (war *Warrior) registerImpendingVictory() {
 			DefaultCast: core.Cast{
 				GCD: core.GCDDefault,
 			},
+			IgnoreHaste: true,
 			CD: core.Cooldown{
 				Timer:    war.NewTimer(),
 				Duration: time.Second * 30,
@@ -111,11 +112,11 @@ func (war *Warrior) registerDragonRoar() {
 			DefaultCast: core.Cast{
 				GCD: core.GCDDefault,
 			},
+			IgnoreHaste: true,
 			CD: core.Cooldown{
 				Timer:    war.NewTimer(),
 				Duration: time.Minute * 1,
 			},
-			IgnoreHaste: true,
 		},
 
 		DamageMultiplier: 1,
@@ -204,6 +205,7 @@ func (war *Warrior) registerBladestorm() {
 			DefaultCast: core.Cast{
 				GCD: core.GCDDefault,
 			},
+			IgnoreHaste: true,
 			CD: core.Cooldown{
 				Timer:    war.NewTimer(),
 				Duration: time.Minute * 1,

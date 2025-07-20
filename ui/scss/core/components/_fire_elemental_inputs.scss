@@ -1,14 +1,14 @@
 .fire-elemental-settings {
 	.input-root {
 		label {
-		  width: 60%;
-		  padding-right: .5rem;
+			width: 60%;
+			padding-right: 0.5rem;
 		}
-  
+
 		input:not(.form-check-input),
 		select,
 		.picker-group {
-		  min-width: 40%;
+			min-width: 40%;
 		}
-	  }
+	}
 }

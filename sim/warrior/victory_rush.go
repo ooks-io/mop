@@ -38,6 +38,7 @@ func (war *Warrior) registerVictoryRush() {
 			DefaultCast: core.Cast{
 				GCD: core.GCDDefault,
 			},
+			IgnoreHaste: true,
 		},
 
 		DamageMultiplier: 1,

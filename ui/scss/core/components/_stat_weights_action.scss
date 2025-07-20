@@ -5,6 +5,7 @@
 
 	.ep-reference-options {
 		margin-bottom: var(--block-spacer);
+
 		span {
 			font-weight: bold;
 		}
@@ -57,9 +58,11 @@
 
 				.compute-ep {
 					white-space: nowrap;
+
 					.not-tiny {
 						display: inline;
 					}
+
 					.fas {
 						display: inline;
 						vertical-align: middle;
@@ -78,6 +81,7 @@
 
 				td {
 					padding: var(--table-cell-padding);
+
 					.fas {
 						display: inline;
 					}
@@ -143,6 +147,7 @@
 		.results-ep-table-container {
 			.results-ep-table {
 				padding-right: 0;
+
 				td {
 					padding-left: 0;
 				}
@@ -158,6 +163,7 @@
 	// More compact EP table on mobile viewports
 	@include media-breakpoint-only(xs) {
 		@include compact-table;
+
 		.ep-ratios {
 			@include compact-input;
 		}
@@ -182,8 +188,10 @@
 	@include media-breakpoint-down(lg) {
 		@include compact-button;
 		@include compact-table;
+
 		.results-ep-table {
 			@include compact-input;
+
 			th[class*='type-'] {
 				text-align: center;
 			}
