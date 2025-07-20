@@ -17,6 +17,7 @@
 
 .gear-tab-columns {
 	display: flex;
+
 	@include media-breakpoint-down(xl) {
 		flex-flow: column;
 	}

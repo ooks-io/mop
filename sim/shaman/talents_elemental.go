@@ -40,7 +40,7 @@ func (shaman *Shaman) ApplyElementalTalents() {
 
 	// Elemental Fury
 	shaman.AddStaticMod(core.SpellModConfig{
-		ProcMask:          core.ProcMaskSpellDamage,
+		SpellFlag:         SpellFlagShamanSpell,
 		Kind:              core.SpellMod_CritMultiplier_Flat,
 		FloatValue:        0.5,
 		ShouldApplyToPets: true,
@@ -59,7 +59,7 @@ func (shaman *Shaman) ApplyElementalTalents() {
 		ActionID:       core.ActionID{SpellID: 88767},
 		SpellSchool:    core.SpellSchoolNature,
 		ProcMask:       core.ProcMaskSpellProc,
-		Flags:          core.SpellFlagPassiveSpell,
+		Flags:          core.SpellFlagPassiveSpell | SpellFlagShamanSpell,
 		ClassSpellMask: SpellMaskFulmination,
 		ManaCost: core.ManaCostOptions{
 			BaseCostPercent: 0,

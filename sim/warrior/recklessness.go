@@ -32,7 +32,6 @@ func (war *Warrior) registerRecklessness() {
 				Timer:    war.NewTimer(),
 				Duration: time.Minute * 3,
 			},
-
 			SharedCD: core.Cooldown{
 				Timer:    war.NewTimer(),
 				Duration: 12 * time.Second,

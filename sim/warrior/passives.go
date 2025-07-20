@@ -89,6 +89,18 @@ func (warrior *Warrior) registerDeepWounds() {
 			dot := spell.Dot(target)
 			dot.Apply(sim)
 		},
+
+		ExpectedTickDamage: func(sim *core.Simulation, target *core.Unit, spell *core.Spell, useSnapshot bool) *core.SpellResult {
+			if useSnapshot {
+				dot := spell.Dot(target)
+				return dot.CalcSnapshotDamage(sim, target, dot.OutcomeExpectedSnapshotCrit)
+			} else {
+				baseDamage := warrior.CalcScalingSpellDmg(deepWoundsCoeff)
+				baseDamage += deepWoundsBonusCoeff * spell.MeleeAttackPower()
+				return spell.CalcPeriodicDamage(sim, target, baseDamage, spell.OutcomeExpectedPhysicalCrit)
+			}
+
+		},
 	})
 
 	core.MakeProcTriggerAura(&warrior.Unit, core.ProcTrigger{

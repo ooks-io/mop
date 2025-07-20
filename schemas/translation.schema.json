@@ -1,0 +1,931 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome",
+    "definitions": {
+        "Welcome": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "landing": {
+                    "$ref": "#/definitions/Landing"
+                },
+                "common": {
+                    "$ref": "#/definitions/Common"
+                },
+                "sim": {
+                    "$ref": "#/definitions/Sim"
+                },
+                "gear": {
+                    "$ref": "#/definitions/Export"
+                },
+                "settings": {
+                    "$ref": "#/definitions/Export"
+                },
+                "talents": {
+                    "$ref": "#/definitions/Export"
+                },
+                "rotation": {
+                    "$ref": "#/definitions/Export"
+                },
+                "results": {
+                    "$ref": "#/definitions/Export"
+                },
+                "import": {
+                    "$ref": "#/definitions/Export"
+                },
+                "export": {
+                    "$ref": "#/definitions/Export"
+                },
+                "sidebar": {
+                    "$ref": "#/definitions/Sidebar"
+                }
+            },
+            "required": [
+                "common",
+                "export",
+                "gear",
+                "import",
+                "landing",
+                "results",
+                "rotation",
+                "settings",
+                "sidebar",
+                "sim",
+                "talents"
+            ],
+            "title": "Welcome"
+        },
+        "Common": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "phases": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "status": {
+                    "$ref": "#/definitions/Status"
+                },
+                "classes": {
+                    "$ref": "#/definitions/Classes"
+                },
+                "specs": {
+                    "$ref": "#/definitions/Specs"
+                },
+                "stats": {
+                    "$ref": "#/definitions/Stats"
+                }
+            },
+            "required": [
+                "classes",
+                "phases",
+                "specs",
+                "stats",
+                "status"
+            ],
+            "title": "Common"
+        },
+        "Classes": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "death_knight": {
+                    "type": "string"
+                },
+                "druid": {
+                    "type": "string"
+                },
+                "hunter": {
+                    "type": "string"
+                },
+                "mage": {
+                    "type": "string"
+                },
+                "monk": {
+                    "type": "string"
+                },
+                "paladin": {
+                    "type": "string"
+                },
+                "priest": {
+                    "type": "string"
+                },
+                "rogue": {
+                    "type": "string"
+                },
+                "shaman": {
+                    "type": "string"
+                },
+                "warlock": {
+                    "type": "string"
+                },
+                "warrior": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "death_knight",
+                "druid",
+                "hunter",
+                "mage",
+                "monk",
+                "paladin",
+                "priest",
+                "rogue",
+                "shaman",
+                "warlock",
+                "warrior"
+            ],
+            "title": "Classes"
+        },
+        "Specs": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "death_knight": {
+                    "$ref": "#/definitions/DeathKnight"
+                },
+                "druid": {
+                    "$ref": "#/definitions/Druid"
+                },
+                "hunter": {
+                    "$ref": "#/definitions/Hunter"
+                },
+                "mage": {
+                    "$ref": "#/definitions/Mage"
+                },
+                "monk": {
+                    "$ref": "#/definitions/Monk"
+                },
+                "paladin": {
+                    "$ref": "#/definitions/Paladin"
+                },
+                "priest": {
+                    "$ref": "#/definitions/Priest"
+                },
+                "rogue": {
+                    "$ref": "#/definitions/Rogue"
+                },
+                "shaman": {
+                    "$ref": "#/definitions/Shaman"
+                },
+                "warlock": {
+                    "$ref": "#/definitions/Warlock"
+                },
+                "warrior": {
+                    "$ref": "#/definitions/Warrior"
+                }
+            },
+            "required": [
+                "death_knight",
+                "druid",
+                "hunter",
+                "mage",
+                "monk",
+                "paladin",
+                "priest",
+                "rogue",
+                "shaman",
+                "warlock",
+                "warrior"
+            ],
+            "title": "Specs"
+        },
+        "DeathKnight": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "blood": {
+                    "type": "string"
+                },
+                "frost": {
+                    "type": "string"
+                },
+                "unholy": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "blood",
+                "frost",
+                "unholy"
+            ],
+            "title": "DeathKnight"
+        },
+        "Druid": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "balance": {
+                    "type": "string"
+                },
+                "feral": {
+                    "type": "string"
+                },
+                "guardian": {
+                    "type": "string"
+                },
+                "restoration": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "balance",
+                "feral",
+                "guardian",
+                "restoration"
+            ],
+            "title": "Druid"
+        },
+        "Hunter": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "beast_mastery": {
+                    "type": "string"
+                },
+                "marksmanship": {
+                    "type": "string"
+                },
+                "survival": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "beast_mastery",
+                "marksmanship",
+                "survival"
+            ],
+            "title": "Hunter"
+        },
+        "Mage": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "arcane": {
+                    "type": "string"
+                },
+                "fire": {
+                    "type": "string"
+                },
+                "frost": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "arcane",
+                "fire",
+                "frost"
+            ],
+            "title": "Mage"
+        },
+        "Monk": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "brewmaster": {
+                    "type": "string"
+                },
+                "mistweaver": {
+                    "type": "string"
+                },
+                "windwalker": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "brewmaster",
+                "mistweaver",
+                "windwalker"
+            ],
+            "title": "Monk"
+        },
+        "Paladin": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "holy": {
+                    "type": "string"
+                },
+                "protection": {
+                    "type": "string"
+                },
+                "retribution": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "holy",
+                "protection",
+                "retribution"
+            ],
+            "title": "Paladin"
+        },
+        "Priest": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "discipline": {
+                    "type": "string"
+                },
+                "holy": {
+                    "type": "string"
+                },
+                "shadow": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "discipline",
+                "holy",
+                "shadow"
+            ],
+            "title": "Priest"
+        },
+        "Rogue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "assassination": {
+                    "type": "string"
+                },
+                "combat": {
+                    "type": "string"
+                },
+                "subtlety": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "assassination",
+                "combat",
+                "subtlety"
+            ],
+            "title": "Rogue"
+        },
+        "Shaman": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "elemental": {
+                    "type": "string"
+                },
+                "enhancement": {
+                    "type": "string"
+                },
+                "restoration": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "elemental",
+                "enhancement",
+                "restoration"
+            ],
+            "title": "Shaman"
+        },
+        "Warlock": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "affliction": {
+                    "type": "string"
+                },
+                "demonology": {
+                    "type": "string"
+                },
+                "destruction": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "affliction",
+                "demonology",
+                "destruction"
+            ],
+            "title": "Warlock"
+        },
+        "Warrior": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "arms": {
+                    "type": "string"
+                },
+                "fury": {
+                    "type": "string"
+                },
+                "protection": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "arms",
+                "fury",
+                "protection"
+            ],
+            "title": "Warrior"
+        },
+        "Stats": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "strength": {
+                    "type": "string"
+                },
+                "agility": {
+                    "type": "string"
+                },
+                "stamina": {
+                    "type": "string"
+                },
+                "intellect": {
+                    "type": "string"
+                },
+                "spirit": {
+                    "type": "string"
+                },
+                "hit": {
+                    "type": "string"
+                },
+                "crit": {
+                    "type": "string"
+                },
+                "haste": {
+                    "type": "string"
+                },
+                "expertise": {
+                    "type": "string"
+                },
+                "dodge": {
+                    "type": "string"
+                },
+                "parry": {
+                    "type": "string"
+                },
+                "mastery": {
+                    "type": "string"
+                },
+                "attack_power": {
+                    "type": "string"
+                },
+                "ranged_attack_power": {
+                    "type": "string"
+                },
+                "spell_power": {
+                    "type": "string"
+                },
+                "pvp_resilience": {
+                    "type": "string"
+                },
+                "pvp_power": {
+                    "type": "string"
+                },
+                "armor": {
+                    "type": "string"
+                },
+                "bonus_armor": {
+                    "type": "string"
+                },
+                "health": {
+                    "type": "string"
+                },
+                "mana": {
+                    "type": "string"
+                },
+                "mp5": {
+                    "type": "string"
+                },
+                "main_hand_dps": {
+                    "type": "string"
+                },
+                "off_hand_dps": {
+                    "type": "string"
+                },
+                "ranged_dps": {
+                    "type": "string"
+                },
+                "block": {
+                    "type": "string"
+                },
+                "melee_speed_multiplier": {
+                    "type": "string"
+                },
+                "ranged_speed_multiplier": {
+                    "type": "string"
+                },
+                "cast_speed_multiplier": {
+                    "type": "string"
+                },
+                "spell_hit": {
+                    "type": "string"
+                },
+                "spell_crit": {
+                    "type": "string"
+                },
+                "spell_haste": {
+                    "type": "string"
+                },
+                "melee_hit": {
+                    "type": "string"
+                },
+                "melee_crit": {
+                    "type": "string"
+                },
+                "melee_haste": {
+                    "type": "string"
+                },
+                "ranged_haste": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "agility",
+                "armor",
+                "attack_power",
+                "block",
+                "bonus_armor",
+                "cast_speed_multiplier",
+                "crit",
+                "dodge",
+                "expertise",
+                "haste",
+                "health",
+                "hit",
+                "intellect",
+                "main_hand_dps",
+                "mana",
+                "mastery",
+                "melee_crit",
+                "melee_haste",
+                "melee_hit",
+                "melee_speed_multiplier",
+                "mp5",
+                "off_hand_dps",
+                "parry",
+                "pvp_power",
+                "pvp_resilience",
+                "ranged_attack_power",
+                "ranged_dps",
+                "ranged_haste",
+                "ranged_speed_multiplier",
+                "spell_crit",
+                "spell_haste",
+                "spell_hit",
+                "spell_power",
+                "spirit",
+                "stamina",
+                "strength"
+            ],
+            "title": "Stats"
+        },
+        "Status": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "unlaunched": {
+                    "type": "string"
+                },
+                "alpha": {
+                    "type": "string"
+                },
+                "beta": {
+                    "type": "string"
+                },
+                "launched": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "alpha",
+                "beta",
+                "launched",
+                "unlaunched"
+            ],
+            "title": "Status"
+        },
+        "Export": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "title"
+            ],
+            "title": "Export"
+        },
+        "Landing": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "navigation": {
+                    "$ref": "#/definitions/Navigation"
+                },
+                "simulations": {
+                    "$ref": "#/definitions/Simulations"
+                },
+                "home": {
+                    "$ref": "#/definitions/Home"
+                },
+                "header": {
+                    "$ref": "#/definitions/LandingHeader"
+                }
+            },
+            "required": [
+                "header",
+                "home",
+                "navigation",
+                "simulations"
+            ],
+            "title": "Landing"
+        },
+        "LandingHeader": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "wowsims": {
+                    "type": "string"
+                },
+                "expansion": {
+                    "type": "string"
+                },
+                "supportDevs": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "expansion",
+                "supportDevs",
+                "wowsims"
+            ],
+            "title": "LandingHeader"
+        },
+        "Home": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "welcomeDescription": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "title",
+                "welcomeDescription"
+            ],
+            "title": "Home"
+        },
+        "Navigation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "home": {
+                    "type": "string"
+                },
+                "simulations": {
+                    "type": "string"
+                },
+                "about": {
+                    "type": "string"
+                },
+                "toggle": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "about",
+                "home",
+                "simulations",
+                "toggle"
+            ],
+            "title": "Navigation"
+        },
+        "Simulations": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "full_raid": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "full_raid"
+            ],
+            "title": "Simulations"
+        },
+        "Sidebar": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "iterations": {
+                    "type": "string"
+                },
+                "buttons": {
+                    "$ref": "#/definitions/Buttons"
+                },
+                "header": {
+                    "$ref": "#/definitions/SidebarHeader"
+                },
+                "character_stats": {
+                    "$ref": "#/definitions/CharacterStats"
+                }
+            },
+            "required": [
+                "buttons",
+                "character_stats",
+                "header",
+                "iterations"
+            ],
+            "title": "Sidebar"
+        },
+        "Buttons": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "simulate": {
+                    "type": "string"
+                },
+                "stat_weights": {
+                    "type": "string"
+                },
+                "suggest_reforges": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "simulate",
+                "stat_weights",
+                "suggest_reforges"
+            ],
+            "title": "Buttons"
+        },
+        "CharacterStats": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "melee_crit_cap": {
+                    "type": "string"
+                },
+                "tooltip": {
+                    "$ref": "#/definitions/Tooltip"
+                },
+                "crit_cap": {
+                    "$ref": "#/definitions/CritCap"
+                },
+                "bonus_prefix": {
+                    "type": "string"
+                },
+                "points_suffix": {
+                    "type": "string"
+                },
+                "percent_suffix": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "bonus_prefix",
+                "crit_cap",
+                "melee_crit_cap",
+                "percent_suffix",
+                "points_suffix",
+                "title",
+                "tooltip"
+            ],
+            "title": "CharacterStats"
+        },
+        "CritCap": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "exact": {
+                    "type": "string"
+                },
+                "over_by": {
+                    "type": "string"
+                },
+                "under_by": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "exact",
+                "over_by",
+                "under_by"
+            ],
+            "title": "CritCap"
+        },
+        "Tooltip": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "base": {
+                    "type": "string"
+                },
+                "gear": {
+                    "type": "string"
+                },
+                "talents": {
+                    "type": "string"
+                },
+                "buffs": {
+                    "type": "string"
+                },
+                "consumes": {
+                    "type": "string"
+                },
+                "bonus": {
+                    "type": "string"
+                },
+                "total": {
+                    "type": "string"
+                },
+                "glancing": {
+                    "type": "string"
+                },
+                "suppression": {
+                    "type": "string"
+                },
+                "to_hit_cap": {
+                    "type": "string"
+                },
+                "to_exp_cap": {
+                    "type": "string"
+                },
+                "spec_offsets": {
+                    "type": "string"
+                },
+                "final_crit_cap": {
+                    "type": "string"
+                },
+                "can_raise_by": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "base",
+                "bonus",
+                "buffs",
+                "can_raise_by",
+                "consumes",
+                "final_crit_cap",
+                "gear",
+                "glancing",
+                "spec_offsets",
+                "suppression",
+                "talents",
+                "to_exp_cap",
+                "to_hit_cap",
+                "total"
+            ],
+            "title": "Tooltip"
+        },
+        "SidebarHeader": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "phase": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "phase",
+                "title"
+            ],
+            "title": "SidebarHeader"
+        },
+        "Sim": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "title"
+            ],
+            "title": "Sim"
+        }
+    }
+}

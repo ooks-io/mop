@@ -35,7 +35,7 @@ func (cat *FeralDruid) applyPredatorySwiftness() {
 	// Predatory Swiftness only procs off successfully landed hits, but the
 	// CPs (which we need for calculating the proc chance) have already been
 	// spent by the time OnSpellHitDealt is called, so we need to cache the
-	// CP value in an additional OnCastComplete callback.
+	// CP value in an additional OnApplyEffects callback.
 	var cpSnapshot int32
 
 	procPredatorySwiftness := func(sim *core.Simulation) {
@@ -56,20 +56,20 @@ func (cat *FeralDruid) applyPredatorySwiftness() {
 			aura.Activate(sim)
 		},
 
-		OnCastComplete: func(_ *core.Aura, sim *core.Simulation, spell *core.Spell) {
+		OnApplyEffects: func(aura *core.Aura, _ *core.Simulation, _ *core.Unit, spell *core.Spell) {
 			if spell.Matches(druid.DruidSpellFinisher) {
-				cpSnapshot = cat.ComboPoints()
-
-				// SR never triggers an OnSpellHitDealt
-				// callback, so handle it here.
-				if cat.SavageRoar.IsEqual(spell) {
-					procPredatorySwiftness(sim)
-				}
+				cpSnapshot = aura.Unit.ComboPoints()
 			}
 		},
 
 		OnSpellHitDealt: func(_ *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			if spell.Matches(druid.DruidSpellFinisher) && result.Landed() {
+				procPredatorySwiftness(sim)
+			}
+		},
+
+		OnCastComplete: func(_ *core.Aura, sim *core.Simulation, spell *core.Spell) {
+			if spell.Matches(druid.DruidSpellSavageRoar) {
 				procPredatorySwiftness(sim)
 			}
 		},

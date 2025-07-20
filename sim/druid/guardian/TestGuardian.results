@@ -769,6 +769,15 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestGuardian-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 102124.9604
+  tps: 676133.50196
+  dtps: 31152.45314
+  hps: 15369.92529
+ }
+}
+dps_results: {
  key: "TestGuardian-AllItems-EnchantWeapon-JadeSpirit-4442"
  value: {
   dps: 101367.90157
@@ -3093,55 +3102,55 @@ dps_results: {
 dps_results: {
  key: "TestGuardian-Settings-Worgen-preraid-FoN-NV-Default-default-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 2.46180863056e+06
-  tps: 1.705029609439e+07
-  dtps: 1.05088811356e+06
-  hps: 100072.32435
+  dps: 2.46098492459e+06
+  tps: 1.703830023712e+07
+  dtps: 1.04623745514e+06
+  hps: 98272.66958
  }
 }
 dps_results: {
  key: "TestGuardian-Settings-Worgen-preraid-FoN-NV-Default-default-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 115532.83721
-  tps: 780533.96536
-  dtps: 51265.67931
-  hps: 25307.8501
+  dps: 115367.8564
+  tps: 779161.18729
+  dtps: 51505.36024
+  hps: 25288.6849
  }
 }
 dps_results: {
  key: "TestGuardian-Settings-Worgen-preraid-FoN-NV-Default-default-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 112847.86456
-  tps: 717382.47732
-  dtps: 46364.93356
-  hps: 21450.33145
+  dps: 113863.4135
+  tps: 723018.96137
+  dtps: 45547.01273
+  hps: 21427.99226
  }
 }
 dps_results: {
  key: "TestGuardian-Settings-Worgen-preraid-FoN-NV-Default-default-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 1.8257135469e+06
-  tps: 1.272742222127e+07
-  dtps: 1.12513132202e+06
-  hps: 55946.00136
+  dps: 1.83550648389e+06
+  tps: 1.27957247992e+07
+  dtps: 1.12837676963e+06
+  hps: 55791.75308
  }
 }
 dps_results: {
  key: "TestGuardian-Settings-Worgen-preraid-FoN-NV-Default-default-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 96082.42972
-  tps: 658471.85547
-  dtps: 55951.5915
-  hps: 17582.15022
+  dps: 96287.67804
+  tps: 659760.43397
+  dtps: 56035.17477
+  hps: 17682.23429
  }
 }
 dps_results: {
  key: "TestGuardian-Settings-Worgen-preraid-FoN-NV-Default-default-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 87441.07053
-  tps: 593627.52529
-  dtps: 54609.80714
-  hps: 14249.73547
+  dps: 87564.83795
+  tps: 594663.02082
+  dtps: 54414.30619
+  hps: 14611.72334
  }
 }
 dps_results: {

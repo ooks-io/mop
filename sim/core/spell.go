@@ -574,7 +574,7 @@ func (spell *Spell) CanCast(sim *Simulation, target *Unit) bool {
 		return false
 	}
 
-	if !target.IsEnabled() {
+	if target == nil || !target.IsEnabled() {
 		return false
 	}
 
@@ -649,7 +649,7 @@ func (spell *Spell) CanCastDuringChannel(sim *Simulation) bool {
 		return true
 	}
 
-	return spell.Unit.ChanneledDot.ChannelCanBeInterrupted(sim)
+	return false
 }
 
 func (spell *Spell) Cast(sim *Simulation, target *Unit) bool {

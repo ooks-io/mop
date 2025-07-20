@@ -7,9 +7,18 @@
 	"javascript.preferences.importModuleSpecifierEnding": "minimal",
 	"typescript.preferences.importModuleSpecifier": "relative",
 	"typescript.preferences.importModuleSpecifierEnding": "minimal",
-	"[javascript][javascriptreact][typescript][typescriptreact][scss][html]": {
+	"[javascript][javascriptreact][typescript][typescriptreact][html]": {
 		"editor.codeActionsOnSave": {
 			"source.fixAll.eslint": "always"
+		}
+	},
+	"css.validate": false,
+	"less.validate": false,
+	"scss.validate": false,
+	"stylelint.validate": ["css", "scss"],
+	"[scss]": {
+		"editor.codeActionsOnSave": {
+			"source.fixAll.stylelint": "always"
 		}
 	},
 	"json.schemas": [
@@ -20,6 +29,10 @@
 		{
 			"fileMatch": ["*.gear.json"],
 			"url": "./schemas/gear.schema.json"
+		},
+		{
+			"fileMatch": ["assets/locales/**/translation.json"],
+			"url": "./schemas/translation.schema.json"
 		}
 	],
 	"Lua.diagnostics.globals": [

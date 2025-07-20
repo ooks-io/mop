@@ -18,6 +18,7 @@ func (shaman *Shaman) registerLightningShieldSpell() {
 		ActionID:         core.ActionID{SpellID: 26364},
 		SpellSchool:      core.SpellSchoolNature,
 		ProcMask:         core.ProcMaskEmpty,
+		Flags:            SpellFlagShamanSpell,
 		ClassSpellMask:   SpellMaskLightningShield,
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1, //fix when spirit weapons is fixed

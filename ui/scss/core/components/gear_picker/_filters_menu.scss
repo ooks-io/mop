@@ -5,6 +5,7 @@
 
 	.menu-section {
 		display: flex;
+
 		@include media-breakpoint-down(sm) {
 			display: block;
 		}

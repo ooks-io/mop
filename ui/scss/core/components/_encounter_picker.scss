@@ -52,6 +52,7 @@
 		display: grid;
 		gap: var(--block-spacer);
 		grid-template-columns: 1fr;
+
 		@include media-breakpoint-up(xl) {
 			grid-template-columns: 1fr 1fr 1fr;
 		}

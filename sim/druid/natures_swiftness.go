@@ -20,6 +20,19 @@ func (druid *Druid) registerNaturesSwiftness() {
 		Label:    "Nature's Swiftness",
 		ActionID: actionID,
 		Duration: core.NeverExpires,
+
+		OnReset: func(_ *core.Aura, _ *core.Simulation) {
+			druid.HealingTouch.FormMask = Humanoid | Moonkin
+		},
+
+		OnGain: func(_ *core.Aura, _ *core.Simulation) {
+			druid.HealingTouch.FormMask |= Cat
+		},
+
+		OnExpire: func(_ *core.Aura, _ *core.Simulation) {
+			druid.HealingTouch.FormMask ^= Cat
+		},
+
 		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
 			if !spell.Matches(DruidSpellHealingTouch) {
 				return

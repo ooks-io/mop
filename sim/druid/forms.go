@@ -1,10 +1,9 @@
 package druid
 
 import (
-	//"math"
+	"time"
 
 	"github.com/wowsims/mop/sim/core"
-	//"github.com/wowsims/mop/sim/core/proto"
 	"github.com/wowsims/mop/sim/core/stats"
 )
 
@@ -110,6 +109,7 @@ func (druid *Druid) RegisterCatFormAura() {
 				druid.AutoAttacks.EnableAutoSwing(sim)
 				druid.UpdateManaRegenRates()
 				druid.MHAutoSpell.DamageMultiplier *= 2
+				druid.HealingTouch.DefaultCast.GCD -= time.Millisecond * 500
 			}
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
@@ -126,6 +126,7 @@ func (druid *Druid) RegisterCatFormAura() {
 				druid.AutoAttacks.EnableAutoSwing(sim)
 				druid.UpdateManaRegenRates()
 				druid.MHAutoSpell.DamageMultiplier /= 2
+				druid.HealingTouch.DefaultCast.GCD += time.Millisecond * 500
 			}
 		},
 	})

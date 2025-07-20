@@ -57,7 +57,7 @@ func (shaman *Shaman) registerFlameShockSpell(shockTimer *core.Timer) {
 		ActionID:         core.ActionID{SpellID: 8050, Tag: 1},
 		SpellSchool:      core.SpellSchoolFire,
 		ProcMask:         core.ProcMaskSpellDamage,
-		Flags:            config.Flags & ^core.SpellFlagAPL & ^SpellFlagShamanSpell | core.SpellFlagPassiveSpell,
+		Flags:            config.Flags & ^core.SpellFlagAPL | core.SpellFlagPassiveSpell,
 		ClassSpellMask:   SpellMaskFlameShockDot,
 		DamageMultiplier: 1,
 		CritMultiplier:   shaman.DefaultCritMultiplier(),

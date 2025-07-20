@@ -455,6 +455,8 @@ export class ActionId {
 			case 'Lightning Bolt':
 			case 'Lava Beam':
 			case 'Lava Burst':
+			case 'Unleash Flame':
+			case 'Unleash Frost':
 				if (tag == 6) {
 					name += ' (Overload)';
 				} else if (tag == 7) {

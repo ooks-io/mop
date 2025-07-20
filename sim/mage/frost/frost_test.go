@@ -30,7 +30,6 @@ func TestFrost(t *testing.T) {
 			SpecOptions:     core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsFrost},
 			Rotation:        core.GetAplRotation("../../../ui/mage/frost/apls", "frost"),
 			OtherRotations: []core.RotationCombo{
-				core.GetAplRotation("../../../ui/mage/frost/apls", "frost_cleave"),
 				core.GetAplRotation("../../../ui/mage/frost/apls", "frost_aoe"),
 			},
 

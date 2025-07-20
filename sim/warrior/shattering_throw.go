@@ -24,11 +24,11 @@ func (war *Warrior) registerShatteringThrow() {
 			DefaultCast: core.Cast{
 				GCD: core.GCDDefault,
 			},
+			IgnoreHaste: true,
 			CD: core.Cooldown{
 				Timer:    war.NewTimer(),
 				Duration: time.Minute * 5,
 			},
-			IgnoreHaste: true,
 		},
 
 		DamageMultiplier: 1,

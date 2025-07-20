@@ -146,10 +146,12 @@ func (shaman *Shaman) ApplyEchoOfTheElements() {
 	var alreadyProcced = map[*core.Spell]bool{}
 	var lastTimestamp time.Duration
 
+	const cantProc int64 = SpellMaskTotem | SpellMaskLightningShield | SpellMaskImbue | SpellMaskFulmination | SpellMaskFlameShockDot
+
 	core.MakePermanent(shaman.GetOrRegisterAura(core.Aura{
 		Label: "Echo of The Elements Dummy",
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if !result.Landed() || spell.Flags.Matches(SpellFlagIsEcho) || !spell.Flags.Matches(SpellFlagShamanSpell) {
+			if !result.Landed() || spell.Flags.Matches(SpellFlagIsEcho) || !spell.Flags.Matches(SpellFlagShamanSpell) || spell.Matches(cantProc) {
 				return
 			}
 			if sim.CurrentTime == lastTimestamp && alreadyProcced[spell] {
@@ -173,7 +175,7 @@ func (shaman *Shaman) ApplyEchoOfTheElements() {
 					ProcMask:                 core.ProcMaskSpellProc,
 					ApplyEffects:             spell.ApplyEffects,
 					ManaCost:                 core.ManaCostOptions{},
-					CritMultiplier:           spell.Unit.Env.Raid.GetPlayerFromUnit(spell.Unit).GetCharacter().DefaultCritMultiplier(),
+					CritMultiplier:           shaman.DefaultCritMultiplier(),
 					BonusCritPercent:         spell.BonusCritPercent,
 					DamageMultiplier:         core.TernaryFloat64(spell.Tag == CastTagLightningOverload, 0.75, 1),
 					DamageMultiplierAdditive: 1,

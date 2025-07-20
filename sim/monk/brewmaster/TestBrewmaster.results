@@ -805,6 +805,15 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestBrewmaster-AllItems-EnchantWeapon-ElementalForce-4443"
+ value: {
+  dps: 117067.76341
+  tps: 660281.95137
+  dtps: 19814.88512
+  hps: 26543.90711
+ }
+}
+dps_results: {
  key: "TestBrewmaster-AllItems-EnchantWeapon-JadeSpirit-4442"
  value: {
   dps: 115992.97237

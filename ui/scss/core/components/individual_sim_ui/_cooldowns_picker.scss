@@ -15,7 +15,7 @@
 			}
 		}
 
-		&> :not(:last-child) {
+		& > :not(:last-child) {
 			margin-right: var(--spacer-2);
 		}
 

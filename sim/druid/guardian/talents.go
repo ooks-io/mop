@@ -91,29 +91,8 @@ func (bear *GuardianDruid) registerHeartOfTheWild() {
 		return
 	}
 
-	healingMask := druid.DruidSpellTranquility | druid.DruidSpellRejuvenation | druid.DruidSpellHealingTouch | druid.DruidSpellCenarionWard
-
-	healingMod := bear.AddDynamicMod(core.SpellModConfig{
-		ClassMask:  healingMask,
-		Kind:       core.SpellMod_DamageDone_Pct,
-		FloatValue: 1,
-	})
-
-	damageMask := druid.DruidSpellWrath | druid.DruidSpellMoonfire | druid.DruidSpellMoonfireDoT | druid.DruidSpellHurricane
-
-	damageMod := bear.AddDynamicMod(core.SpellModConfig{
-		ClassMask:  damageMask,
-		Kind:       core.SpellMod_DamageDone_Pct,
-		FloatValue: 3.2,
-	})
-
-	costMod := bear.AddDynamicMod(core.SpellModConfig{
-		ClassMask:  healingMask | damageMask,
-		Kind:       core.SpellMod_PowerCost_Pct,
-		FloatValue: -2,
-	})
-
 	actionID := core.ActionID{SpellID: 108293}
+	healingMod, damageMod, costMod := bear.RegisterSharedFeralHotwMods()
 	catFormDep := bear.NewDynamicMultiplyStat(stats.Agility, 2.1)
 	catFormStatBuff := stats.Stats{
 		stats.HitRating:       7.5 * core.PhysicalHitRatingPerHitPercent,

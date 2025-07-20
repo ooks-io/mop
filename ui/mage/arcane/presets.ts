@@ -17,8 +17,8 @@ export const P1_BIS_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS (Heroic)',
 export const RICH_PREBIS_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS (Rich)', ArcaneRichPreBisGear);
 export const PREBIS_PRESET = PresetUtils.makePresetGear('P1 - BIS', P1ArcaneBisGear);
 
-export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Single Target', ArcaneApl);
-export const ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Cleave', ArcaneCleaveApl);
+export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Default', ArcaneApl);
+// export const ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Cleave', ArcaneCleaveApl);
 
 // Preset options for EP weights
 export const P1_EP_PRESET = PresetUtils.makePresetEpWeights(
@@ -72,14 +72,12 @@ export const P1_PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuild('Single Targe
 	talents: ArcaneTalents,
 	rotation: ROTATION_PRESET_DEFAULT,
 	encounter: ENCOUNTER_SINGLE_TARGET,
-	epWeights: P1_EP_PRESET,
 });
 
 export const P1_PRESET_BUILD_CLEAVE = PresetUtils.makePresetBuild('Cleave (2 targets)', {
 	talents: ArcaneTalentsCleave,
-	rotation: ROTATION_PRESET_CLEAVE,
+	rotation: ROTATION_PRESET_DEFAULT,
 	encounter: ENCOUNTER_CLEAVE,
-	epWeights: P1_EP_PRESET,
 });
 
 export const DefaultArcaneOptions = MageOptions.create({

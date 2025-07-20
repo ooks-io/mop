@@ -8,28 +8,36 @@
 	.results-metric {
 		text-align: left;
 	}
+
 	.sim-sidebar & {
 		.results-sim-dps .topline-result-avg:after {
 			content: ' DPS';
 		}
+
 		.results-sim-tto .topline-result-avg:after {
 			content: ' TTO';
 		}
+
 		.results-sim-hps .topline-result-avg:after {
 			content: ' HPS';
 		}
+
 		.results-sim-tps .topline-result-avg:after {
 			content: ' TPS';
 		}
+
 		.results-sim-dtps .topline-result-avg:after {
 			content: ' DTPS';
 		}
+
 		.results-sim-tmi .topline-result-avg:after {
 			content: '% TMI';
 		}
+
 		.results-sim-cod .topline-result-avg:after {
 			content: '% Chance of Death';
 		}
+
 		.results-sim-dur .topline-result-avg:after {
 			content: ' Duration';
 		}

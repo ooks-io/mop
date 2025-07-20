@@ -1,3 +1,4 @@
+/* stylelint-disable scss/dollar-variable-first-in-block */
 @use 'sass:map';
 
 // Define and overwrite Bootstrap Variables
@@ -101,6 +102,7 @@ $custom-breakpoints: (
 
 // Borders
 $border-color: $gray-600;
+
 :root {
 	--border-default: 1px solid var(--bs-border-color);
 }
@@ -264,6 +266,7 @@ $enable-rounded: false;
 $link-color: #a5b1d6;
 $link-decoration: none;
 $link-hover-color: $white;
+
 :root {
 	--link-transition: color 0.15s ease-in-out;
 }

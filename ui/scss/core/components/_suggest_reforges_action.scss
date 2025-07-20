@@ -5,6 +5,7 @@
 		margin-bottom: 0;
 	}
 }
+
 .tippy-box[data-theme='suggest-reforges-softcaps'] {
 	max-height: 40vh;
 	overflow: auto;
@@ -48,12 +49,15 @@
 	th,
 	td {
 		padding: 0;
+
 		&:not(:first-child):not(:only-child) {
 			padding-left: calc(var(--spacer-1) / 2);
 		}
+
 		&:not(:last-child):not(:only-child) {
 			padding-right: calc(var(--spacer-1) / 2);
 		}
+
 		&:first-child:not(:only-child) {
 			padding-right: var(--spacer-2);
 		}
@@ -63,6 +67,7 @@
 		td:nth-child(2) {
 			width: 75px;
 		}
+
 		td:nth-child(3) {
 			width: 60px;
 		}
@@ -80,6 +85,7 @@
 		width: 0;
 	}
 }
+
 .reforge-optimizer-stat-cap-item-label {
 	white-space: nowrap;
 }
