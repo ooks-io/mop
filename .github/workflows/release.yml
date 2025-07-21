@@ -49,7 +49,7 @@ jobs:
 
             - name: Build 🔧
               run: |
-                  make dist/mop/.dirstamp
+                  make clean && VERSION=${{ github.event.inputs.tag }} make release
 
             - name: Test
               run: |
