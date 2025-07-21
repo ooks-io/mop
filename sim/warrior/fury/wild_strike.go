@@ -36,7 +36,7 @@ func (war *FuryWarrior) registerWildStrike() {
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			baseDamage := spell.Unit.OHNormalizedWeaponDamage(sim, spell.MeleeAttackPower())
+			baseDamage := spell.Unit.OHNormalizedWeaponDamage(sim, spell.MeleeAttackPower()) + war.CalcScalingSpellDmg(0.34999999404)
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 
 			if war.BloodsurgeAura.IsActive() && war.BloodsurgeAura.GetStacks() > 0 {
