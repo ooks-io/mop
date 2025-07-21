@@ -2,507 +2,507 @@ character_stats_results: {
  key: "TestCombat-CharacterStats-Default"
  value: {
   final_stats: 222.6
-  final_stats: 14214.5325
-  final_stats: 15094.2
+  final_stats: 14883.75
+  final_stats: 15732.2
   final_stats: 134.4
   final_stats: 161.71
   final_stats: 2552
-  final_stats: 2064
-  final_stats: 5037
+  final_stats: 2223
+  final_stats: 4908
   final_stats: 2890
   final_stats: 0
   final_stats: 0
-  final_stats: 4097
-  final_stats: 44369.9641
+  final_stats: 4355
+  final_stats: 46431.154
   final_stats: 0
   final_stats: 0
   final_stats: 0
+  final_stats: 755
+  final_stats: 16393
   final_stats: 0
-  final_stats: 16122
-  final_stats: 0
-  final_stats: 357721.8
+  final_stats: 366653.8
   final_stats: 0
   final_stats: 0
   final_stats: 7.50588
   final_stats: 16.00588
-  final_stats: 19.42563
-  final_stats: 8.44
+  final_stats: 20.22195
+  final_stats: 8.705
   final_stats: 0
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-AgilePrimalDiamond"
  value: {
-  dps: 80478.42027
-  tps: 56695.43069
+  dps: 83128.10393
+  tps: 58553.76303
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-AssuranceofConsequence-105472"
  value: {
-  dps: 110466.59073
-  tps: 77910.13512
+  dps: 114776.7732
+  tps: 80946.38309
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-AusterePrimalDiamond"
  value: {
-  dps: 78783.60131
-  tps: 55498.59966
+  dps: 81383.72367
+  tps: 57321.7698
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-BarbedAssassinBattlegear"
  value: {
-  dps: 96895.60439
-  tps: 68309.26906
+  dps: 98453.14728
+  tps: 69407.84568
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-BattlegearoftheThousandfoldBlades"
  value: {
-  dps: 85842.27892
-  tps: 60492.04689
+  dps: 87574.91025
+  tps: 61730.72318
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-BurningPrimalDiamond"
  value: {
-  dps: 79561.21641
-  tps: 56049.21176
+  dps: 82215.87535
+  tps: 57911.1386
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-CapacitivePrimalDiamond"
  value: {
-  dps: 79174.9437
-  tps: 55775.61923
+  dps: 81788.44379
+  tps: 57606.59067
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-CourageousPrimalDiamond"
  value: {
-  dps: 78783.60131
-  tps: 55498.59966
+  dps: 81383.72367
+  tps: 57321.7698
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-DelicateVialoftheSanguinaire-96895"
  value: {
-  dps: 76466.62678
-  tps: 53869.16838
+  dps: 79035.43625
+  tps: 55670.35468
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-DestructivePrimalDiamond"
  value: {
-  dps: 79314.16544
-  tps: 55872.01024
+  dps: 81926.15809
+  tps: 57704.36782
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-EffulgentPrimalDiamond"
  value: {
-  dps: 78783.60131
-  tps: 55498.59966
+  dps: 81383.72367
+  tps: 57321.7698
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-EmberPrimalDiamond"
  value: {
-  dps: 78783.60131
-  tps: 55498.59966
+  dps: 81383.72367
+  tps: 57321.7698
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-EnchantWeapon-BloodyDancingSteel-5125"
  value: {
-  dps: 80442.41775
-  tps: 56667.61027
+  dps: 83142.41491
+  tps: 58564.1636
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-EnchantWeapon-Colossus-4445"
  value: {
-  dps: 77263.04174
-  tps: 54435.48288
+  dps: 79871.45827
+  tps: 56267.42804
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-EnchantWeapon-ElementalForce-4443"
  value: {
-  dps: 77955.83802
-  tps: 54924.66896
+  dps: 80573.00632
+  tps: 56764.38066
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-EnchantWeapon-JadeSpirit-4442"
  value: {
-  dps: 77263.04174
-  tps: 54435.48288
+  dps: 79871.45827
+  tps: 56267.42804
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
-  dps: 77263.04174
-  tps: 54435.48288
+  dps: 79871.45827
+  tps: 56267.42804
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-EnchantWeapon-SpiritofConquest-5124"
  value: {
-  dps: 77263.04174
-  tps: 54435.48288
+  dps: 79871.45827
+  tps: 56267.42804
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-EnchantWeapon-Windsong-4441"
  value: {
-  dps: 77901.0873
-  tps: 54899.22936
+  dps: 80789.95681
+  tps: 56924.41735
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-EnigmaticPrimalDiamond"
  value: {
-  dps: 79314.16544
-  tps: 55872.01024
+  dps: 81926.15809
+  tps: 57704.36782
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-EternalPrimalDiamond"
  value: {
-  dps: 78783.60131
-  tps: 55498.59966
+  dps: 81383.72367
+  tps: 57321.7698
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-EvilEyeofGalakras-105491"
  value: {
-  dps: 77893.81174
-  tps: 54863.6634
+  dps: 80438.41412
+  tps: 56647.76546
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-FabledFeatherofJi-Kun-96842"
  value: {
-  dps: 77460.97019
-  tps: 54580.4031
+  dps: 80299.70684
+  tps: 56573.58847
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-Fen-Yu,FuryofXuen-102248"
  value: {
-  dps: 91867.69362
-  tps: 64749.72395
+  dps: 95266.58069
+  tps: 67146.80297
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-FleetPrimalDiamond"
  value: {
-  dps: 78837.26076
-  tps: 55534.48
+  dps: 81578.06589
+  tps: 57459.75278
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-ForlornPrimalDiamond"
  value: {
-  dps: 78783.60131
-  tps: 55498.59966
+  dps: 81383.72367
+  tps: 57321.7698
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-GazeoftheTwins-96915"
  value: {
-  dps: 81584.32273
-  tps: 57462.73695
+  dps: 84096.1767
+  tps: 59222.77017
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-Gong-Lu,StrengthofXuen-102249"
  value: {
-  dps: 86863.07479
-  tps: 61214.86853
+  dps: 90510.54643
+  tps: 63801.00579
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-Horridon'sLastGasp-96757"
  value: {
-  dps: 76466.62678
-  tps: 53869.16838
+  dps: 79035.43625
+  tps: 55670.35468
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-ImpassivePrimalDiamond"
  value: {
-  dps: 79314.16544
-  tps: 55872.01024
+  dps: 81926.15809
+  tps: 57704.36782
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-IndomitablePrimalDiamond"
  value: {
-  dps: 78783.60131
-  tps: 55498.59966
+  dps: 81383.72367
+  tps: 57321.7698
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-InscribedBagofHydra-Spawn-96828"
  value: {
-  dps: 76466.62678
-  tps: 53869.16838
+  dps: 79035.43625
+  tps: 55670.35468
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-Ji-Kun'sRisingWinds-96843"
  value: {
-  dps: 76466.62678
-  tps: 53869.16838
+  dps: 79035.43625
+  tps: 55670.35468
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-Nine-TailBattlegear"
  value: {
-  dps: 96290.24443
-  tps: 67732.04841
+  dps: 99831.84973
+  tps: 70215.68945
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-NitroBoosts-4223"
  value: {
-  dps: 80478.42027
-  tps: 56695.43069
+  dps: 83128.10393
+  tps: 58553.76303
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-PhaseFingers-4697"
  value: {
-  dps: 79758.5399
-  tps: 56185.28259
+  dps: 82967.39375
+  tps: 58454.18016
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-PowerfulPrimalDiamond"
  value: {
-  dps: 78783.60131
-  tps: 55498.59966
+  dps: 81383.72367
+  tps: 57321.7698
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-PriceofProgress-81266"
  value: {
-  dps: 76466.62678
-  tps: 53869.16838
+  dps: 79035.43625
+  tps: 55670.35468
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-Primordius'TalismanofRage-96873"
  value: {
-  dps: 81711.06042
-  tps: 57563.30758
+  dps: 84509.52639
+  tps: 59520.2291
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-Qian-Le,CourageofNiuzao-102245"
  value: {
-  dps: 85940.54574
-  tps: 60548.64236
+  dps: 89393.43091
+  tps: 62985.41894
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-Qian-Ying,FortitudeofNiuzao-102250"
  value: {
-  dps: 80391.28491
-  tps: 56632.70136
+  dps: 83748.64244
+  tps: 59004.413
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-Renataki'sSoulCharm-96741"
  value: {
-  dps: 86059.81836
-  tps: 60601.21489
+  dps: 88402.27721
+  tps: 62237.30332
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-ReverberatingPrimalDiamond"
  value: {
-  dps: 79926.96082
-  tps: 56306.51133
+  dps: 82584.12307
+  tps: 58170.18598
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-RevitalizingPrimalDiamond"
  value: {
-  dps: 79561.21641
-  tps: 56049.21176
+  dps: 82215.87535
+  tps: 57911.1386
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-SinisterPrimalDiamond"
  value: {
-  dps: 79174.9437
-  tps: 55775.61923
+  dps: 81788.44379
+  tps: 57606.59067
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-SynapseSprings(MarkII)-4898"
  value: {
-  dps: 81927.28419
-  tps: 57680.83264
+  dps: 85172.34577
+  tps: 59976.05566
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-TalismanofBloodlust-96864"
  value: {
-  dps: 85981.35812
-  tps: 60574.29362
+  dps: 89059.66251
+  tps: 62752.18278
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-TheGloamingBlade-88149"
  value: {
-  dps: 80478.42027
-  tps: 56695.43069
+  dps: 83128.10393
+  tps: 58553.76303
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-TyrannicalPrimalDiamond"
  value: {
-  dps: 78783.60131
-  tps: 55498.59966
+  dps: 81383.72367
+  tps: 57321.7698
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-UnerringVisionofLeiShen-96930"
  value: {
-  dps: 79359.35356
-  tps: 55896.76099
+  dps: 81962.53287
+  tps: 57723.06792
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-Wushoolay'sFinalChoice-96785"
  value: {
-  dps: 77460.97019
-  tps: 54580.4031
+  dps: 80299.70684
+  tps: 56573.58847
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 80530.94724
-  tps: 56732.29049
+  dps: 83528.86812
+  tps: 58850.42378
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-YaungolFireCarrier-86518"
  value: {
-  dps: 80478.42027
-  tps: 56695.43069
+  dps: 83128.10393
+  tps: 58553.76303
  }
 }
 dps_results: {
  key: "TestCombat-AllItems-ZenAlchemistStone-75274"
  value: {
-  dps: 82831.18217
-  tps: 58313.59323
+  dps: 86066.20065
+  tps: 60589.88237
  }
 }
 dps_results: {
  key: "TestCombat-Average-Default"
  value: {
-  dps: 79372.14075
-  tps: 55927.10743
+  dps: 82189.07962
+  tps: 57911.71764
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Human-preraid_combat-Combat-combat-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 80478.42027
-  tps: 56695.43069
+  dps: 83128.10393
+  tps: 58553.76303
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Human-preraid_combat-Combat-combat-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 80478.42027
-  tps: 56695.43069
+  dps: 83128.10393
+  tps: 58553.76303
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Human-preraid_combat-Combat-combat-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 103670.39437
-  tps: 71384.74152
+  dps: 107478.62303
+  tps: 73973.86856
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Human-preraid_combat-Combat-combat-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 52176.6374
-  tps: 37045.41255
+  dps: 54222.62995
+  tps: 38498.06727
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Human-preraid_combat-Combat-combat-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 52176.6374
-  tps: 37045.41255
+  dps: 54222.62995
+  tps: 38498.06727
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Human-preraid_combat-Combat-combat-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 54735.08593
-  tps: 38861.91101
+  dps: 57037.24178
+  tps: 40496.44166
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Orc-preraid_combat-Combat-combat-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 82157.45178
-  tps: 57840.23108
+  dps: 84830.9564
+  tps: 59714.88863
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Orc-preraid_combat-Combat-combat-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 82157.45178
-  tps: 57840.23108
+  dps: 84830.9564
+  tps: 59714.88863
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Orc-preraid_combat-Combat-combat-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 107034.77241
-  tps: 73536.88998
+  dps: 110884.41749
+  tps: 76152.48435
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Orc-preraid_combat-Combat-combat-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 53282.9059
-  tps: 37830.86319
+  dps: 55355.45177
+  tps: 39302.37076
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Orc-preraid_combat-Combat-combat-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 53282.9059
-  tps: 37830.86319
+  dps: 55355.45177
+  tps: 39302.37076
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Orc-preraid_combat-Combat-combat-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 56609.00226
-  tps: 40192.39161
+  dps: 58935.12451
+  tps: 41843.9384
  }
 }
 dps_results: {
  key: "TestCombat-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 74028.53325
-  tps: 52119.08145
+  dps: 76955.03925
+  tps: 54183.07275
  }
 }
