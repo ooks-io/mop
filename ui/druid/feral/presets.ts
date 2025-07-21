@@ -36,39 +36,39 @@ import { Stats } from '../../core/proto_utils/stats';
 
 // Preset options for EP weights
 export const BEARWEAVE_EP_PRESET = PresetUtils.makePresetEpWeights(
-	'Bear-Weave',
+	'DoC Bear-Weave',
 	Stats.fromMap(
 		{
-			[Stat.StatStrength]: 0.38,
+			[Stat.StatStrength]: 0.40,
 			[Stat.StatAgility]: 1.0,
-			[Stat.StatAttackPower]: 0.37,
-			[Stat.StatHitRating]: 0.36,
-			[Stat.StatExpertiseRating]: 0.36,
+			[Stat.StatAttackPower]: 0.38,
+			[Stat.StatHitRating]: 0.33,
+			[Stat.StatExpertiseRating]: 0.33,
 			[Stat.StatCritRating]: 0.32,
-			[Stat.StatHasteRating]: 0.3,
-			[Stat.StatMasteryRating]: 0.33,
+			[Stat.StatHasteRating]: 0.22,
+			[Stat.StatMasteryRating]: 0.36,
 		},
 		{
-			[PseudoStat.PseudoStatMainHandDps]: 1.54,
+			[PseudoStat.PseudoStatMainHandDps]: 0.81,
 		},
 	),
 );
 
 export const MONOCAT_EP_PRESET = PresetUtils.makePresetEpWeights(
-	'Mono-Cat',
+	'HotW Mono-Cat',
 	Stats.fromMap(
 		{
-			[Stat.StatStrength]: 0.39,
+			[Stat.StatStrength]: 0.38,
 			[Stat.StatAgility]: 1.0,
-			[Stat.StatAttackPower]: 0.37,
-			[Stat.StatHitRating]: 0.31,
-			[Stat.StatExpertiseRating]: 0.31,
-			[Stat.StatCritRating]: 0.31,
-			[Stat.StatHasteRating]: 0.3,
-			[Stat.StatMasteryRating]: 0.33,
+			[Stat.StatAttackPower]: 0.36,
+			[Stat.StatHitRating]: 0.28,
+			[Stat.StatExpertiseRating]: 0.28,
+			[Stat.StatCritRating]: 0.30,
+			[Stat.StatHasteRating]: 0.23,
+			[Stat.StatMasteryRating]: 0.35,
 		},
 		{
-			[PseudoStat.PseudoStatMainHandDps]: 1.56,
+			[PseudoStat.PseudoStatMainHandDps]: 0.76,
 		},
 	),
 );
@@ -80,11 +80,11 @@ export const DefaultRotation = FeralDruidRotation.create({
 	useNs: true,
 	allowAoeBerserk: false,
 	manualParams: false,
-	minRoarOffset: 37,
-	ripLeeway: 8,
+	minRoarOffset: 40,
+	ripLeeway: 4,
 	useBite: true,
-	biteTime: 13,
-	berserkBiteTime: 8,
+	biteTime: 11,
+	berserkBiteTime: 7,
 	hotwStrategy: FeralDruid_Rotation_HotwStrategy.Wrath,
 });
 

@@ -35,10 +35,10 @@ func (cat *FeralDruid) newActionCatOptimalRotationAction(config *proto.APLAction
 		rotation.RipLeeway = core.DurationFromSeconds(config.RipLeeway)
 	} else {
 		rotation.UseBite = true
-		rotation.BiteTime = time.Second * 13
-		rotation.BerserkBiteTime = time.Second * 8
-		rotation.MinRoarOffset = time.Second * 37
-		rotation.RipLeeway = time.Second * 8
+		rotation.BiteTime = core.TernaryDuration(rotation.UseHealingTouch, time.Second * 9, time.Second * 12)
+		rotation.BerserkBiteTime = time.Second * 7
+		rotation.MinRoarOffset = time.Second * 40
+		rotation.RipLeeway = core.TernaryDuration(rotation.UseHealingTouch, time.Second * 2, time.Second * 6)
 	}
 
 	// Pre-allocate PoolingActions
