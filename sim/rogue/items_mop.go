@@ -8,6 +8,28 @@ import (
 	"github.com/wowsims/mop/sim/core/stats"
 )
 
+var PVPSet = core.NewItemSet(core.ItemSet{
+	Name: "Gladiator's Vestments",
+	ID:   1113,
+	Bonuses: map[int32]core.ApplySetBonus{
+		2: func(agent core.Agent, setBonusAura *core.Aura) {
+			// Nothing relevant
+		},
+		4: func(agent core.Agent, setBonusAura *core.Aura) {
+			character := agent.GetCharacter()
+			metric := character.NewEnergyMetrics(core.ActionID{SpellID: 21975})
+
+			setBonusAura.ApplyOnGain(func(aura *core.Aura, sim *core.Simulation) {
+				character.UpdateMaxEnergy(sim, 30, metric)
+			})
+			setBonusAura.ApplyOnExpire(func(aura *core.Aura, sim *core.Simulation) {
+				character.UpdateMaxEnergy(sim, -30, metric)
+			})
+			setBonusAura.ExposeToAPL(21975)
+		},
+	},
+})
+
 var Tier14 = core.NewItemSet(core.ItemSet{
 	Name:                    "Battlegear of the Thousandfold Blades",
 	DisabledInChallengeMode: true,
