@@ -80,11 +80,11 @@ export const DefaultRotation = FeralDruidRotation.create({
 	useNs: true,
 	allowAoeBerserk: false,
 	manualParams: false,
-	minRoarOffset: 37,
-	ripLeeway: 8,
+	minRoarOffset: 40,
+	ripLeeway: 4,
 	useBite: true,
-	biteTime: 13,
-	berserkBiteTime: 8,
+	biteTime: 11,
+	berserkBiteTime: 7,
 	hotwStrategy: FeralDruid_Rotation_HotwStrategy.Wrath,
 });
 
