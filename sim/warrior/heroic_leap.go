@@ -23,9 +23,6 @@ func (war *Warrior) registerHeroicLeap() {
 				Timer:    war.NewTimer(),
 				Duration: time.Second * 45,
 			},
-			ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
-				war.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime+cast.CastTime)
-			},
 		},
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
