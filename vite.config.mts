@@ -131,7 +131,6 @@ export default defineConfig(({ command, mode }) => {
 		build: {
 			...baseConfig.build,
 			rollupOptions: {
-				logLevel: 'debug',
 				input: {
 					...glob.sync(path.resolve(BASE_PATH, '**/index.html').replace(/\\/g, '/')).reduce<Record<string, string>>((acc, cur) => {
 						const name = path.relative(__dirname, cur).split(path.sep).join('/');
