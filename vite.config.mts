@@ -9,6 +9,7 @@ import { ConfigEnv, defineConfig, PluginOption, UserConfigExport } from 'vite';
 import { checker } from 'vite-plugin-checker';
 import i18nextLoader from 'vite-plugin-i18next-loader';
 import stylelint from 'vite-plugin-stylelint';
+import timeReporter from 'vite-plugin-time-reporter';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -109,17 +110,18 @@ export default defineConfig(({ command, mode }) => {
 	return {
 		...baseConfig,
 		plugins: [
+			timeReporter(),
 			i18nextLoader({ paths: ['assets/locales'] }),
 			serveExternalAssets(),
 			checker({
-				root: path.resolve(__dirname, 'ui'),
+				root: BASE_PATH,
 				typescript: true,
 				enableBuild: true,
 			}),
 			stylelint({
 				build: true,
-				lintOnStart: true,
-				include: ['**/*.scss'],
+				lintInWorker: process.env.NODE_ENV === 'production',
+				include: ['ui/**/*.scss'],
 				configFile: path.resolve(__dirname, 'stylelint.config.mjs'),
 			}),
 		],
@@ -129,6 +131,7 @@ export default defineConfig(({ command, mode }) => {
 		build: {
 			...baseConfig.build,
 			rollupOptions: {
+				logLevel: 'debug',
 				input: {
 					...glob.sync(path.resolve(BASE_PATH, '**/index.html').replace(/\\/g, '/')).reduce<Record<string, string>>((acc, cur) => {
 						const name = path.relative(__dirname, cur).split(path.sep).join('/');
