@@ -9,7 +9,6 @@ import { ConfigEnv, defineConfig, PluginOption, UserConfigExport } from 'vite';
 import { checker } from 'vite-plugin-checker';
 import i18nextLoader from 'vite-plugin-i18next-loader';
 import stylelint from 'vite-plugin-stylelint';
-import timeReporter from 'vite-plugin-time-reporter';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -110,7 +109,6 @@ export default defineConfig(({ command, mode }) => {
 	return {
 		...baseConfig,
 		plugins: [
-			timeReporter(),
 			i18nextLoader({ paths: ['assets/locales'] }),
 			serveExternalAssets(),
 			checker({
