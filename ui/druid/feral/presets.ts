@@ -36,20 +36,20 @@ import { Stats } from '../../core/proto_utils/stats';
 
 // Preset options for EP weights
 export const BEARWEAVE_EP_PRESET = PresetUtils.makePresetEpWeights(
-	'Bear-Weave',
+	'DoC Bear-Weave',
 	Stats.fromMap(
 		{
-			[Stat.StatStrength]: 0.38,
+			[Stat.StatStrength]: 0.40,
 			[Stat.StatAgility]: 1.0,
-			[Stat.StatAttackPower]: 0.37,
-			[Stat.StatHitRating]: 0.36,
-			[Stat.StatExpertiseRating]: 0.36,
+			[Stat.StatAttackPower]: 0.38,
+			[Stat.StatHitRating]: 0.33,
+			[Stat.StatExpertiseRating]: 0.33,
 			[Stat.StatCritRating]: 0.32,
-			[Stat.StatHasteRating]: 0.3,
-			[Stat.StatMasteryRating]: 0.33,
+			[Stat.StatHasteRating]: 0.22,
+			[Stat.StatMasteryRating]: 0.36,
 		},
 		{
-			[PseudoStat.PseudoStatMainHandDps]: 1.54,
+			[PseudoStat.PseudoStatMainHandDps]: 0.81,
 		},
 	),
 );
