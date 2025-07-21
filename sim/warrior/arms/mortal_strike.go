@@ -34,7 +34,7 @@ func (war *ArmsWarrior) registerMortalStrike() {
 		CritMultiplier:   war.DefaultCritMultiplier(),
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			baseDamage := spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower()) + war.CalcScalingSpellDmg(1.23500001431)
+			baseDamage := war.CalcScalingSpellDmg(1.23500001431) + spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower())
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
 			if result.Landed() {
 				war.AddRage(sim, 10, rageMetrics)

@@ -56,7 +56,7 @@ func (war *Warrior) registerColossusSmash() {
 		BonusCoefficient: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			baseDamage := spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower()) + war.CalcScalingSpellDmg(1.77999997139)
+			baseDamage := war.CalcScalingSpellDmg(1.77999997139) + spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower())
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
 			if result.Landed() {
 				csAura := war.ColossusSmashAuras.Get(target)
