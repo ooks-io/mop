@@ -220,6 +220,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestSubtlety-AllItems-Gladiator'sVestments"
+ value: {
+  dps: 105030.80231
+  tps: 74046.29214
+ }
+}
+dps_results: {
  key: "TestSubtlety-AllItems-Gong-Lu,StrengthofXuen-102249"
  value: {
   dps: 94162.26888

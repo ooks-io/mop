@@ -252,6 +252,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestAssassination-AllItems-Gladiator'sVestments"
+ value: {
+  dps: 106941.39739
+  tps: 75207.80143
+ }
+}
+dps_results: {
  key: "TestAssassination-AllItems-Gong-Lu,StrengthofXuen-102249"
  value: {
   dps: 95430.94764

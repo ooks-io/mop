@@ -220,6 +220,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestCombat-AllItems-Gladiator'sVestments"
+ value: {
+  dps: 99781.01726
+  tps: 70314.65701
+ }
+}
+dps_results: {
  key: "TestCombat-AllItems-Gong-Lu,StrengthofXuen-102249"
  value: {
   dps: 90510.54643
