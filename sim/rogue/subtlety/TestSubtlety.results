@@ -192,6 +192,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestSubtlety-AllItems-FangsoftheFather"
+ value: {
+  dps: 80170.03175
+  tps: 56571.37045
+ }
+}
+dps_results: {
  key: "TestSubtlety-AllItems-Fen-Yu,FuryofXuen-102248"
  value: {
   dps: 102480.1193
@@ -224,6 +231,13 @@ dps_results: {
  value: {
   dps: 106180.40734
   tps: 74862.6412
+ }
+}
+dps_results: {
+ key: "TestSubtlety-AllItems-Golad,TwilightofAspects-77949"
+ value: {
+  dps: 78548.98121
+  tps: 55371.1748
  }
 }
 dps_results: {
