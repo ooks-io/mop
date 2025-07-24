@@ -130,11 +130,17 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 		const [prepullActions, actions] = AplUtils.standardCooldownDefaults(cooldowns);
 
 		// Rotation entries
+		const agiTrinkets = APLAction.fromJsonString(
+			`{"condition":{"or":{"vals":[{"auraIsActive":{"auraId":{"spellId":5217}}},{"cmp":{"op":"OpLt","lhs":{"remainingTime":{}},"rhs":{"const":{"val":"16s"}}}}]}},"castAllStatBuffCooldowns":{"statType1":1,"statType2":-1,"statType3":-1}}`,
+		);
 		const synapseSprings = APLAction.fromJsonString(
 			`{"condition":{"or":{"vals":[{"auraIsActive":{"auraId":{"spellId":5217}}},{"cmp":{"op":"OpLt","lhs":{"remainingTime":{}},"rhs":{"const":{"val":"11s"}}}}]}},"castSpell":{"spellId":{"spellId":126734}}}`,
 		);
+		const hasteTrinkets = APLAction.fromJsonString(
+			`{"condition":{"or":{"vals":[{"auraIsActive":{"auraId":{"spellId":5217}}},{"cmp":{"op":"OpLt","lhs":{"remainingTime":{}},"rhs":{"const":{"val":"16s"}}}}]}},"castAllStatBuffCooldowns":{"statType1":7,"statType2":-1,"statType3":-1}}`,
+		);
 		const trees = APLAction.fromJsonString(
-			`{"condition":{"or":{"vals":[{"auraIsActive":{"auraId":{"spellId":126734}}},{"cmp":{"op":"OpLt","lhs":{"remainingTime":{}},"rhs":{"const":{"val":"16s"}}}}]}},"castSpell":{"spellId":{"spellId":106737}}}`,
+			`{"condition":{"or":{"vals":[{"anyStatBuffCooldownsActive":{"statType1":1,"statType2":-1,"statType3":-1}},{"and":{"vals":[{"cmp":{"op":"OpEq","lhs":{"numStatBuffCooldowns":{"statType1":1,"statType2":-1,"statType3":-1}},"rhs":{"const":{"val":"0"}}}},{"anyTrinketStatProcsActive":{"statType1":1,"statType2":-1,"statType3":-1,"minIcdSeconds":30}}]}},{"cmp":{"op":"OpLt","lhs":{"remainingTime":{}},"rhs":{"const":{"val":"16s"}}}}]}},"castSpell":{"spellId":{"spellId":106737}}}`,
 		);
 		const potion = APLAction.fromJsonString(
 			`{"condition":{"or":{"vals":[{"and":{"vals":[{"auraIsActive":{"auraId":{"spellId":5217}}},{"cmp":{"op":"OpLt","lhs":{"remainingTime":{}},"rhs":{"math":{"op":"OpAdd","lhs":{"spellTimeToReady":{"spellId":{"spellId":106952}}},"rhs":{"const":{"val":"26s"}}}}}}]}},{"cmp":{"op":"OpLt","lhs":{"remainingTime":{}},"rhs":{"const":{"val":"26s"}}}},{"auraIsActive":{"auraId":{"spellId":106951}}}]}},"castSpell":{"spellId":{"itemId":76089}}}`,
@@ -151,7 +157,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 		const singleTarget = simple.rotationType == FeralRotationType.SingleTarget;
 		actions.push(
 			...([
+				singleTarget ? agiTrinkets : null,
 				singleTarget ? synapseSprings : null,
+				singleTarget ? hasteTrinkets : null,
 				singleTarget ? trees : null,
 				singleTarget ? potion : null,
 				singleTarget ? trollRacial : null,
