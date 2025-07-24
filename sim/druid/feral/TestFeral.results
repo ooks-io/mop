@@ -257,9 +257,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-CraftedDreadfulGladiator'sBadgeofConquest-93419"
  value: {
-  dps: 96788.71
-  tps: 170156.59336
-  hps: 7899.6786
+  dps: 97294.79747
+  tps: 166670.94444
+  hps: 7958.39041
  }
 }
 dps_results: {
@@ -329,9 +329,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-CraftedMalevolentGladiator'sBadgeofConquest-98755"
  value: {
-  dps: 97467.38161
-  tps: 172915.00419
-  hps: 7933.63731
+  dps: 98672.74203
+  tps: 168499.06263
+  hps: 8106.77682
  }
 }
 dps_results: {
@@ -553,9 +553,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-DreadfulGladiator'sBadgeofConquest-84344"
  value: {
-  dps: 96788.71
-  tps: 170156.59336
-  hps: 7899.6786
+  dps: 97294.79747
+  tps: 166670.94444
+  hps: 7958.39041
  }
 }
 dps_results: {
@@ -905,9 +905,9 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-Gerp'sPerfectArrow-87495"
  value: {
-  dps: 98650.63883
-  tps: 170136.72548
-  hps: 8362.64638
+  dps: 96564.85914
+  tps: 167085.76646
+  hps: 8192.04044
  }
 }
 dps_results: {
@@ -921,33 +921,33 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-GrievousGladiator'sBadgeofConquest-100195"
  value: {
-  dps: 101335.31295
-  tps: 177999.00244
-  hps: 8238.16564
+  dps: 101414.07658
+  tps: 174693.49492
+  hps: 8167.76897
  }
 }
 dps_results: {
  key: "TestFeral-AllItems-GrievousGladiator'sBadgeofConquest-100603"
  value: {
-  dps: 101335.31295
-  tps: 177999.00244
-  hps: 8238.16564
+  dps: 101414.07658
+  tps: 174693.49492
+  hps: 8167.76897
  }
 }
 dps_results: {
  key: "TestFeral-AllItems-GrievousGladiator'sBadgeofConquest-102856"
  value: {
-  dps: 101335.31295
-  tps: 177999.00244
-  hps: 8238.16564
+  dps: 101414.07658
+  tps: 174693.49492
+  hps: 8167.76897
  }
 }
 dps_results: {
  key: "TestFeral-AllItems-GrievousGladiator'sBadgeofConquest-103145"
  value: {
-  dps: 101335.31295
-  tps: 177999.00244
-  hps: 8238.16564
+  dps: 101414.07658
+  tps: 174693.49492
+  hps: 8167.76897
  }
 }
 dps_results: {
@@ -1433,17 +1433,17 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-MalevolentGladiator'sBadgeofConquest-84934"
  value: {
-  dps: 98004.55192
-  tps: 173790.79202
-  hps: 7979.90998
+  dps: 99066.52721
+  tps: 169202.00143
+  hps: 8119.75046
  }
 }
 dps_results: {
  key: "TestFeral-AllItems-MalevolentGladiator'sBadgeofConquest-91452"
  value: {
-  dps: 97467.38161
-  tps: 172915.00419
-  hps: 7933.63731
+  dps: 98672.74203
+  tps: 168499.06263
+  hps: 8106.77682
  }
 }
 dps_results: {
@@ -1737,17 +1737,17 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-PridefulGladiator'sBadgeofConquest-102659"
  value: {
-  dps: 103679.7016
-  tps: 184787.22758
-  hps: 8364.29298
+  dps: 104484.62829
+  tps: 179530.09983
+  hps: 8260.42926
  }
 }
 dps_results: {
  key: "TestFeral-AllItems-PridefulGladiator'sBadgeofConquest-103342"
  value: {
-  dps: 103679.7016
-  tps: 184787.22758
-  hps: 8364.29298
+  dps: 104484.62829
+  tps: 179530.09983
+  hps: 8260.42926
  }
 }
 dps_results: {
@@ -2321,33 +2321,33 @@ dps_results: {
 dps_results: {
  key: "TestFeral-AllItems-TyrannicalGladiator'sBadgeofConquest-100043"
  value: {
-  dps: 98783.70675
-  tps: 172274.48385
-  hps: 8159.07722
+  dps: 99707.53315
+  tps: 174443.2294
+  hps: 8136.82806
  }
 }
 dps_results: {
  key: "TestFeral-AllItems-TyrannicalGladiator'sBadgeofConquest-91099"
  value: {
-  dps: 98783.70675
-  tps: 172274.48385
-  hps: 8159.07722
+  dps: 99707.53315
+  tps: 174443.2294
+  hps: 8136.82806
  }
 }
 dps_results: {
  key: "TestFeral-AllItems-TyrannicalGladiator'sBadgeofConquest-94373"
  value: {
-  dps: 98783.70675
-  tps: 172274.48385
-  hps: 8159.07722
+  dps: 99707.53315
+  tps: 174443.2294
+  hps: 8136.82806
  }
 }
 dps_results: {
  key: "TestFeral-AllItems-TyrannicalGladiator'sBadgeofConquest-99772"
  value: {
-  dps: 98783.70675
-  tps: 172274.48385
-  hps: 8159.07722
+  dps: 99707.53315
+  tps: 174443.2294
+  hps: 8136.82806
  }
 }
 dps_results: {

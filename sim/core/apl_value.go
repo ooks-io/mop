@@ -236,6 +236,8 @@ func (rot *APLRotation) newAPLValue(config *proto.APLValue) APLValue {
 		value = rot.newValueNumEquippedStatProcItems(config.GetNumEquippedStatProcTrinkets(), config.Uuid)
 	case *proto.APLValue_NumStatBuffCooldowns:
 		value = rot.newValueNumStatBuffCooldowns(config.GetNumStatBuffCooldowns(), config.Uuid)
+	case *proto.APLValue_AnyStatBuffCooldownsActive:
+		value = rot.newValueAnyStatBuffCooldownsActive(config.GetAnyStatBuffCooldownsActive(), config.Uuid)
 
 	// Dots
 	case *proto.APLValue_DotIsActive:
