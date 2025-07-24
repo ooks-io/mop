@@ -778,241 +778,241 @@ dps_results: {
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-DefaultTalents-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 456844.74011
-  tps: 446873.91291
-  hps: 1197.10755
+  dps: 456213.27103
+  tps: 446087.50908
+  hps: 1210.92538
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-DefaultTalents-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 111240.69152
-  tps: 101422.1248
-  hps: 1197.10755
+  dps: 111288.36932
+  tps: 101310.03536
+  hps: 1210.92538
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-DefaultTalents-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 155167.51161
-  tps: 116970.90713
-  hps: 1426.07058
+  dps: 155018.90627
+  tps: 116221.73251
+  hps: 1423.27456
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-DefaultTalents-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 324720.28012
-  tps: 319228.4192
-  hps: 1067.76734
+  dps: 321145.7728
+  tps: 315543.08164
+  hps: 1069.51912
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-DefaultTalents-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 81957.47341
-  tps: 76453.22017
-  hps: 1067.76734
+  dps: 81717.79587
+  tps: 76107.63357
+  hps: 1069.51912
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-DefaultTalents-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 100759.60935
-  tps: 81677.72152
-  hps: 1237.81825
+  dps: 100414.21416
+  tps: 80962.74451
+  hps: 1227.13059
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RoilingBlood-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 378478.53037
-  tps: 368481.09713
-  hps: 1125.91147
+  dps: 377013.92213
+  tps: 366838.67322
+  hps: 1133.33669
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RoilingBlood-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 100176.59936
-  tps: 90303.12743
-  hps: 1125.91147
+  dps: 100056.01123
+  tps: 90037.4812
+  hps: 1133.33669
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RoilingBlood-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 159664.37371
-  tps: 120965.58644
-  hps: 1464.33791
+  dps: 158641.77958
+  tps: 119405.69793
+  hps: 1490.25219
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RoilingBlood-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 260917.472
-  tps: 255419.05392
-  hps: 1009.0186
+  dps: 260260.11146
+  tps: 254666.25692
+  hps: 1019.65917
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RoilingBlood-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 72919.32946
-  tps: 67415.17066
-  hps: 1009.0186
+  dps: 72697.45243
+  tps: 67098.41985
+  hps: 1019.65917
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RoilingBlood-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 95109.13684
-  tps: 75932.16325
-  hps: 1139.90368
+  dps: 95309.95364
+  tps: 75823.36329
+  hps: 1164.93892
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RunicCorruption-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 416717.22478
-  tps: 406719.68822
-  hps: 1221.72683
+  dps: 415546.55017
+  tps: 405388.67108
+  hps: 1235.38351
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RunicCorruption-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 108737.39562
-  tps: 98917.36396
-  hps: 1227.3821
+  dps: 108559.10649
+  tps: 98563.98627
+  hps: 1235.38351
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RunicCorruption-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 154656.39347
-  tps: 116372.88652
-  hps: 1502.60524
+  dps: 154263.79067
+  tps: 115386.49281
+  hps: 1460.90244
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RunicCorruption-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 298941.13336
-  tps: 293434.50539
-  hps: 1096.25158
+  dps: 299468.32108
+  tps: 293854.39111
+  hps: 1099.83312
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RunicCorruption-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 80193.53788
-  tps: 74668.90924
-  hps: 1096.25158
+  dps: 80388.82331
+  tps: 74774.55715
+  hps: 1103.38693
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RunicCorruption-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 99422.6142
-  tps: 80363.04164
-  hps: 1246.71958
+  dps: 99643.81556
+  tps: 80229.48561
+  hps: 1244.89964
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RunicEmpowerment-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 425855.40719
-  tps: 415866.43204
-  hps: 1233.15047
+  dps: 424627.44027
+  tps: 414460.14814
+  hps: 1251.6538
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RunicEmpowerment-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 109946.96995
-  tps: 100117.66872
-  hps: 1233.15047
+  dps: 110091.94814
+  tps: 100068.69714
+  hps: 1251.6538
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RunicEmpowerment-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 154485.89414
-  tps: 116220.02324
-  hps: 1473.76336
+  dps: 154948.10648
+  tps: 115919.27491
+  hps: 1480.2808
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RunicEmpowerment-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 305368.90515
-  tps: 299873.69187
-  hps: 1096.25158
+  dps: 304061.40479
+  tps: 298452.1568
+  hps: 1090.84198
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RunicEmpowerment-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 81267.04477
-  tps: 75759.68904
-  hps: 1096.25158
+  dps: 81041.2115
+  tps: 75420.65657
+  hps: 1090.84198
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-RunicEmpowerment-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 99149.53401
-  tps: 80026.81076
-  hps: 1220.0156
+  dps: 99328.57033
+  tps: 79846.15968
+  hps: 1280.43774
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-UnholyBlight-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 401597.47355
-  tps: 391682.85828
-  hps: 1129.68165
+  dps: 400845.05369
+  tps: 390793.8515
+  hps: 1144.73794
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-UnholyBlight-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 100081.73302
-  tps: 90310.12471
-  hps: 1129.68165
+  dps: 99838.3529
+  tps: 89942.73931
+  hps: 1144.73794
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-UnholyBlight-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 158244.56785
-  tps: 120078.01674
-  hps: 1473.76336
+  dps: 159375.97079
+  tps: 120667.94405
+  hps: 1480.2808
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-UnholyBlight-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 272029.76117
-  tps: 266524.69708
-  hps: 1010.69205
+  dps: 272579.94458
+  tps: 266964.19267
+  hps: 1010.77464
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-UnholyBlight-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 73003.37994
-  tps: 67502.12885
-  hps: 1010.69205
+  dps: 72676.67439
+  tps: 67062.2815
+  hps: 1010.77464
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Orc-prebis-UnholyBlight-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 95511.57355
-  tps: 76426.68883
-  hps: 1175.50898
+  dps: 95042.27873
+  tps: 75607.50309
+  hps: 1173.82344
  }
 }
 dps_results: {
@@ -1258,241 +1258,241 @@ dps_results: {
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-DefaultTalents-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 452290.02059
-  tps: 442343.27616
-  hps: 1212.25186
+  dps: 455439.61158
+  tps: 445335.21931
+  hps: 1214.63846
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-DefaultTalents-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 111134.48201
-  tps: 101377.0243
-  hps: 1212.25186
+  dps: 111080.16844
+  tps: 101179.13996
+  hps: 1214.63846
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-DefaultTalents-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 155049.75912
-  tps: 116796.10178
-  hps: 1463.71259
+  dps: 154377.84067
+  tps: 115444.79797
+  hps: 1452.00046
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-DefaultTalents-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 320441.37817
-  tps: 315000.93264
-  hps: 1083.74711
+  dps: 319362.68389
+  tps: 313830.37108
+  hps: 1080.138
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-DefaultTalents-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 81489.60008
-  tps: 76038.53655
-  hps: 1083.74711
+  dps: 81484.93447
+  tps: 75939.49541
+  hps: 1080.138
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-DefaultTalents-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 99154.4
-  tps: 80037.21737
-  hps: 1228.86861
+  dps: 99782.60249
+  tps: 80362.16909
+  hps: 1227.08225
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RoilingBlood-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 374174.11901
-  tps: 364215.46397
-  hps: 1134.40082
+  dps: 377188.04638
+  tps: 367061.02029
+  hps: 1148.45373
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RoilingBlood-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 99854.89268
-  tps: 90026.20305
-  hps: 1134.40082
+  dps: 100261.39789
+  tps: 90303.23358
+  hps: 1148.45373
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RoilingBlood-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 160083.06985
-  tps: 121058.58713
-  hps: 1502.54386
+  dps: 159681.06575
+  tps: 120143.50655
+  hps: 1499.59778
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RoilingBlood-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 255205.60803
-  tps: 249776.37317
-  hps: 1026.67406
+  dps: 255311.58743
+  tps: 249782.86346
+  hps: 1030.38662
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RoilingBlood-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 72718.73325
-  tps: 67287.45333
-  hps: 1026.67406
+  dps: 72654.86576
+  tps: 67119.66372
+  hps: 1030.38662
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RoilingBlood-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 95903.44166
-  tps: 76735.90841
-  hps: 1219.96763
+  dps: 95823.47652
+  tps: 76276.88405
+  hps: 1244.8506
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RunicCorruption-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 414532.30705
-  tps: 404546.84279
-  hps: 1240.52706
+  dps: 412464.58572
+  tps: 402362.77467
+  hps: 1245.51463
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RunicCorruption-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 108658.86248
-  tps: 98868.23694
-  hps: 1242.41207
+  dps: 108351.66752
+  tps: 98454.58582
+  hps: 1243.63331
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RunicCorruption-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 153631.65341
-  tps: 115224.22001
-  hps: 1483.12823
+  dps: 154091.24055
+  tps: 115131.94488
+  hps: 1499.59778
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RunicCorruption-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 294265.02433
-  tps: 288854.65475
-  hps: 1099.76887
+  dps: 293448.58566
+  tps: 287930.13293
+  hps: 1106.89713
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RunicCorruption-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 79916.93047
-  tps: 74497.94996
-  hps: 1097.98867
+  dps: 80002.90145
+  tps: 74476.93166
+  hps: 1106.89713
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RunicCorruption-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 98972.70962
-  tps: 79849.16125
-  hps: 1255.57153
+  dps: 99011.26649
+  tps: 79571.90177
+  hps: 1280.3873
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RunicEmpowerment-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 425194.4628
-  tps: 415223.43819
-  hps: 1252.06333
+  dps: 423193.53967
+  tps: 413076.09399
+  hps: 1247.72706
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RunicEmpowerment-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 110504.48865
-  tps: 100702.54799
-  hps: 1252.06333
+  dps: 110421.13575
+  tps: 100501.10348
+  hps: 1249.60838
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RunicEmpowerment-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 155380.27395
-  tps: 116946.69088
-  hps: 1483.69373
+  dps: 155467.94385
+  tps: 116495.46289
+  hps: 1490.1912
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RunicEmpowerment-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 297701.86495
-  tps: 292266.31821
-  hps: 1106.88965
+  dps: 299685.09386
+  tps: 294162.2456
+  hps: 1115.78131
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RunicEmpowerment-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 80853.04435
-  tps: 75405.67514
-  hps: 1106.88965
+  dps: 80938.65603
+  tps: 75412.12965
+  hps: 1115.78131
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-RunicEmpowerment-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 98283.29279
-  tps: 79185.34564
-  hps: 1228.86861
+  dps: 97752.59948
+  tps: 78367.95581
+  hps: 1262.61895
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-UnholyBlight-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 397152.05886
-  tps: 387285.62733
-  hps: 1146.60063
+  dps: 391590.30731
+  tps: 381592.14476
+  hps: 1153.32257
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-UnholyBlight-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 100359.57731
-  tps: 90611.27814
-  hps: 1146.60063
+  dps: 100072.87129
+  tps: 90183.46603
+  hps: 1153.32257
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-UnholyBlight-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 157924.46073
-  tps: 119597.12937
-  hps: 1483.12823
+  dps: 158149.63232
+  tps: 119260.16757
+  hps: 1452.00046
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-UnholyBlight-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 267912.78152
-  tps: 262512.33587
-  hps: 1025.00068
+  dps: 270943.85244
+  tps: 265430.05913
+  hps: 1026.83295
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-UnholyBlight-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 72827.44413
-  tps: 67435.82352
-  hps: 1025.00068
+  dps: 72949.03079
+  tps: 67445.25427
+  hps: 1026.83295
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Troll-prebis-UnholyBlight-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 96719.86634
-  tps: 77737.29655
-  hps: 1193.26471
+  dps: 96427.08284
+  tps: 77013.50064
+  hps: 1209.3139
  }
 }
 dps_results: {
@@ -1738,241 +1738,241 @@ dps_results: {
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-DefaultTalents-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 453802.37541
-  tps: 444232.86175
-  hps: 1203.053
+  dps: 453373.03004
+  tps: 443633.40846
+  hps: 1220.8468
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-DefaultTalents-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 110514.16734
-  tps: 101098.3496
-  hps: 1203.053
+  dps: 110517.74345
+  tps: 100934.95592
+  hps: 1220.8468
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-DefaultTalents-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 152306.81347
-  tps: 115758.79895
-  hps: 1426.01233
+  dps: 152147.85844
+  tps: 114978.2655
+  hps: 1443.15827
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-DefaultTalents-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 321835.71172
-  tps: 316584.35337
-  hps: 1075.27338
+  dps: 318328.91698
+  tps: 312974.71555
+  hps: 1077.01077
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-DefaultTalents-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 81438.07821
-  tps: 76174.21509
-  hps: 1075.27338
+  dps: 81091.92469
+  tps: 75730.14846
+  hps: 1077.01077
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-DefaultTalents-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 98883.70246
-  tps: 80698.66344
-  hps: 1256.63965
+  dps: 98551.68261
+  tps: 80015.90663
+  hps: 1236.49948
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RoilingBlood-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 375802.17671
-  tps: 366190.82328
-  hps: 1131.85983
+  dps: 374142.05365
+  tps: 364372.27555
+  hps: 1143.26129
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RoilingBlood-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 99339.94398
-  tps: 89847.35351
-  hps: 1131.85983
+  dps: 99211.87798
+  tps: 89597.43577
+  hps: 1143.26129
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RoilingBlood-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 156559.4476
-  tps: 119452.34224
-  hps: 1464.2781
+  dps: 155505.13055
+  tps: 117906.73027
+  hps: 1510.13316
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RoilingBlood-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 257984.17835
-  tps: 252728.30723
-  hps: 1016.52695
+  dps: 257044.77199
+  tps: 251688.27609
+  hps: 1027.15278
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RoilingBlood-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 72277.70958
-  tps: 67016.02681
-  hps: 1016.52695
+  dps: 72043.98205
+  tps: 66682.37358
+  hps: 1027.15278
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RoilingBlood-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 92958.71326
-  tps: 74691.53937
-  hps: 1158.72893
+  dps: 93406.94363
+  tps: 74810.1253
+  hps: 1174.31025
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RunicCorruption-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 414245.14329
-  tps: 404653.65554
-  hps: 1227.67127
+  dps: 413342.77159
+  tps: 403574.92566
+  hps: 1245.30392
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RunicCorruption-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 107963.6796
-  tps: 98548.25051
-  hps: 1233.32631
+  dps: 107791.74195
+  tps: 98193.52555
+  hps: 1245.30392
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RunicCorruption-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 151765.13072
-  tps: 115122.1331
-  hps: 1502.54386
+  dps: 151531.303
+  tps: 114290.0293
+  hps: 1480.78461
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RunicCorruption-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 296427.67736
-  tps: 291167.86824
-  hps: 1105.64351
+  dps: 297094.03933
+  tps: 291724.2461
+  hps: 1107.32357
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RunicCorruption-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 79577.0922
-  tps: 74300.70357
-  hps: 1105.64351
+  dps: 79834.71532
+  tps: 74468.64177
+  hps: 1110.87724
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RunicCorruption-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 97398.4869
-  tps: 79219.99601
-  hps: 1265.54063
+  dps: 97737.45931
+  tps: 79229.55305
+  hps: 1254.26783
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RunicEmpowerment-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 423420.63141
-  tps: 413829.5235
-  hps: 1239.09445
+  dps: 422225.77688
+  tps: 412451.80266
+  hps: 1261.57355
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RunicEmpowerment-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 109041.35238
-  tps: 99605.54441
-  hps: 1239.09445
+  dps: 109396.01758
+  tps: 99771.89606
+  hps: 1261.57355
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RunicEmpowerment-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 151400.85937
-  tps: 114738.31155
-  hps: 1473.70316
+  dps: 151953.7682
+  tps: 114563.20608
+  hps: 1500.16218
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RunicEmpowerment-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 302661.27134
-  tps: 297406.06441
-  hps: 1103.7565
+  dps: 301615.86267
+  tps: 296255.99217
+  hps: 1098.33279
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RunicEmpowerment-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 80587.36349
-  tps: 75319.62254
-  hps: 1103.7565
+  dps: 80391.61738
+  tps: 75020.53162
+  hps: 1098.33279
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-RunicEmpowerment-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 97234.7338
-  tps: 79033.40334
-  hps: 1238.8377
+  dps: 97467.32827
+  tps: 78893.95464
+  hps: 1289.80453
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-UnholyBlight-Basic-masterfrost-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 398346.1773
-  tps: 388826.01277
-  hps: 1135.62985
+  dps: 397749.11904
+  tps: 388083.27623
+  hps: 1154.66207
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-UnholyBlight-Basic-masterfrost-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 99298.72245
-  tps: 89913.74141
-  hps: 1135.62985
+  dps: 98930.98225
+  tps: 89414.4261
+  hps: 1154.66207
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-UnholyBlight-Basic-masterfrost-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 155132.86098
-  tps: 118534.16384
-  hps: 1473.70316
+  dps: 156132.08473
+  tps: 118993.06953
+  hps: 1500.16218
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-UnholyBlight-Basic-masterfrost-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 268535.83035
-  tps: 263275.22108
-  hps: 1018.20033
+  dps: 269338.74782
+  tps: 263964.46996
+  hps: 1018.2686
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-UnholyBlight-Basic-masterfrost-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 72359.64591
-  tps: 67102.77486
-  hps: 1018.20033
+  dps: 71977.63874
+  tps: 66604.61872
+  hps: 1018.2686
  }
 }
 dps_results: {
  key: "TestFrostMasterfrost-Settings-Worgen-prebis-UnholyBlight-Basic-masterfrost-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 93441.53443
-  tps: 75264.87578
-  hps: 1194.33283
+  dps: 92993.08076
+  tps: 74454.03025
+  hps: 1183.19443
  }
 }
 dps_results: {
