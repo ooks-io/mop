@@ -192,6 +192,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestCombat-AllItems-FangsoftheFather"
+ value: {
+  dps: 69308.89527
+  tps: 48795.43161
+ }
+}
+dps_results: {
  key: "TestCombat-AllItems-Fen-Yu,FuryofXuen-102248"
  value: {
   dps: 96781.05942
@@ -224,6 +231,13 @@ dps_results: {
  value: {
   dps: 101063.17128
   tps: 71210.61208
+ }
+}
+dps_results: {
+ key: "TestCombat-AllItems-Golad,TwilightofAspects-77949"
+ value: {
+  dps: 72774.13803
+  tps: 51242.47202
  }
 }
 dps_results: {
