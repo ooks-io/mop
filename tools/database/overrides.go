@@ -1173,6 +1173,7 @@ var EnchantDenyList = map[int32]struct{}{
 // Note: EffectId is required for all enchants, because they are
 // used by various importers/exporters
 var EnchantOverrides = []*proto.UIEnchant{
+	{EffectId: 4419, SpellId: 104395}, // Enchant Chest - Glorious Stats
 	{EffectId: 4428, SpellId: 104409}, // Enchant Boots - Blurred Speed
 	{EffectId: 4429, SpellId: 104414}, // Enchant Boots - Pandaren's Step
 	{EffectId: 4441, SpellId: 104425}, // Enchant Weapon - Windsong

@@ -4,18 +4,23 @@ import { ConsumesSpec, Glyphs, Profession, Race, Stat } from '../../core/proto/c
 import { ArcaneMage_Options as MageOptions, MageMajorGlyph as MajorGlyph, MageMinorGlyph } from '../../core/proto/mage';
 import { SavedTalents } from '../../core/proto/ui';
 import { Stats } from '../../core/proto_utils/stats';
-import ArcaneCleaveApl from './apls/arcane_cleave.apl.json';
 import ArcaneApl from './apls/default.apl.json';
-import P1ArcaneBisGear from './gear_sets/p1_bis.gear.json';
-import ArcanePreBisGear from './gear_sets/prebis.gear.json';
-import ArcaneRichPreBisGear from './gear_sets/rich_prebis.gear.json';
+import ArcaneCleaveApl from './apls/arcane_cleave.apl.json';
+import P1PreBISRealisticGear from './gear_sets/p1_prebis_realistic.gear.json';
+import P1PreBISGear from './gear_sets/p1_prebis.gear.json';
+import P1PostMSVGear from './gear_sets/p1_post_msv.gear.json';
+import P1PostHOFGear from './gear_sets/p1_post_hof.gear.json';
+import P1BISGear from './gear_sets/p1_bis.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
 // keep them in a separate file.
-export const P1_BIS_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS (Heroic)', ArcanePreBisGear);
-export const RICH_PREBIS_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS (Rich)', ArcaneRichPreBisGear);
-export const PREBIS_PRESET = PresetUtils.makePresetGear('P1 - BIS', P1ArcaneBisGear);
+export const P1_PREBIS = PresetUtils.makePresetGear('P1 - Pre-BIS', P1PreBISGear);
+export const P1_PREBIS_REALISTIC = PresetUtils.makePresetGear('P1 - Pre-BIS (Realistic)', P1PreBISRealisticGear);
+export const P1_POST_MSV = PresetUtils.makePresetGear('P1 - Post-MSV', P1PostMSVGear);
+export const P1_POST_HOF = PresetUtils.makePresetGear('P1 - Post-HoF', P1PostHOFGear);
+export const P1_BIS = PresetUtils.makePresetGear('P1 - BIS', P1BISGear);
+
 
 export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Default', ArcaneApl);
 // export const ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Cleave', ArcaneCleaveApl);
