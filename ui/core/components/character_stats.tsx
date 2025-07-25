@@ -75,7 +75,6 @@ export class CharacterStats extends Component {
 					UnitStat.fromStat(Stat.StatStamina),
 					UnitStat.fromStat(Stat.StatIntellect),
 					UnitStat.fromStat(Stat.StatSpirit),
-					UnitStat.fromStat(Stat.StatExpertiseRating),
 				],
 			],
 			[
@@ -111,10 +110,13 @@ export class CharacterStats extends Component {
 		]);
 
 		if (this.player.getPlayerSpec().isTankSpec) {
+			statGroups.get(StatGroup.Physical)!.push(UnitStat.fromStat(Stat.StatExpertiseRating));
 			statGroups.get(StatGroup.Defense)!.push(UnitStat.fromStat(Stat.StatMasteryRating));
 		} else if ([Stat.StatIntellect, Stat.StatSpellPower].includes(simUI.individualConfig.epReferenceStat)) {
+			statGroups.get(StatGroup.Spell)!.push(UnitStat.fromStat(Stat.StatExpertiseRating));
 			statGroups.get(StatGroup.Spell)!.push(UnitStat.fromStat(Stat.StatMasteryRating));
 		} else {
+			statGroups.get(StatGroup.Physical)!.push(UnitStat.fromStat(Stat.StatExpertiseRating));
 			statGroups.get(StatGroup.Physical)!.push(UnitStat.fromStat(Stat.StatMasteryRating));
 		}
 
