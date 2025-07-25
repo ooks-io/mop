@@ -112,14 +112,14 @@ export default defineConfig(({ command, mode }) => {
 			i18nextLoader({ paths: ['assets/locales'] }),
 			serveExternalAssets(),
 			checker({
-				root: path.resolve(__dirname, 'ui'),
+				root: BASE_PATH,
 				typescript: true,
 				enableBuild: true,
 			}),
 			stylelint({
 				build: true,
-				lintOnStart: true,
-				include: ['**/*.scss'],
+				lintInWorker: process.env.NODE_ENV === 'production',
+				include: ['ui/**/*.scss'],
 				configFile: path.resolve(__dirname, 'stylelint.config.mjs'),
 			}),
 		],

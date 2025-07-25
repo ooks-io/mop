@@ -10,11 +10,13 @@ export const isEqualAPLRotation = (player: Player<Spec>, rotation?: APLRotation,
 	// Ensure that the auto rotation type can be matched
 	if (clonedRotation?.type === APLRotation_Type.TypeAuto) clonedRotation.type = APLRotation_Type.TypeAPL;
 	if (clonedOtherRotation?.type === APLRotation_Type.TypeAuto) clonedOtherRotation.type = APLRotation_Type.TypeAPL;
-
 	if (clonedOtherRotation?.type === APLRotation_Type.TypeSimple && clonedOtherRotation?.simple?.specRotationJson) {
-		return player.specTypeFunctions.rotationEquals(
-			player.specTypeFunctions.rotationFromJson(JSON.parse(clonedOtherRotation.simple.specRotationJson)),
-			player.getSimpleRotation(),
+		return (
+			!!clonedRotation?.simple &&
+			player.specTypeFunctions.rotationEquals(
+				player.specTypeFunctions.rotationFromJson(JSON.parse(clonedOtherRotation.simple.specRotationJson)),
+				player.specTypeFunctions.rotationFromJson(JSON.parse(clonedRotation.simple.specRotationJson)),
+			)
 		);
 	} else {
 		return APLRotation.equals(clonedOtherRotation, clonedRotation);

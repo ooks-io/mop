@@ -35,10 +35,10 @@ func (cat *FeralDruid) newActionCatOptimalRotationAction(config *proto.APLAction
 		rotation.RipLeeway = core.DurationFromSeconds(config.RipLeeway)
 	} else {
 		rotation.UseBite = true
-		rotation.BiteTime = time.Second * 13
-		rotation.BerserkBiteTime = time.Second * 8
-		rotation.MinRoarOffset = time.Second * 37
-		rotation.RipLeeway = time.Second * 8
+		rotation.BiteTime = core.TernaryDuration(rotation.UseHealingTouch, time.Second * 9, time.Second * 12)
+		rotation.BerserkBiteTime = time.Second * 7
+		rotation.MinRoarOffset = time.Second * 40
+		rotation.RipLeeway = core.TernaryDuration(rotation.UseHealingTouch, time.Second * 2, time.Second * 6)
 	}
 
 	// Pre-allocate PoolingActions
@@ -141,7 +141,7 @@ func (rotation *FeralDruidRotation) Execute(sim *core.Simulation) {
 	rotation.TryTigersFury(sim)
 	rotation.TryBerserk(sim)
 
-	if rotation.UseHealingTouch && cat.NaturesSwiftness.IsReady(sim) && (cat.ComboPoints() == 5) && !cat.DreamOfCenariusAura.IsActive() && !cat.PredatorySwiftnessAura.IsActive() {
+	if rotation.UseHealingTouch && rotation.UseNs && cat.NaturesSwiftness.IsReady(sim) && (cat.ComboPoints() == 5) && !cat.DreamOfCenariusAura.IsActive() && !cat.PredatorySwiftnessAura.IsActive() {
 		cat.NaturesSwiftness.Cast(sim, &cat.Unit)
 	}
 
@@ -231,7 +231,7 @@ func (rotation *FeralDruidRotation) PickSingleTargetGCDAction(sim *core.Simulati
 	bearWeaveNow := rotation.BearWeave && cat.canBearWeave(sim, furorCap, regenRate, curEnergy, excessE, rotation.pendingPoolWeaves)
 
 	// Check Wrath-weaving conditions.
-	wrathWeaveNow := cat.HeartOfTheWildAura.IsActive() && (cat.HeartOfTheWildAura.RemainingDuration(sim) > cat.Wrath.DefaultCast.CastTime) && !isClearcast && ((curCp == 5) || (curEnergy + cat.Wrath.DefaultCast.CastTime.Seconds() * 2 * regenRate <= furorCap)) && ripDot.IsActive() && (!ripRefreshPending || (ripRefreshTime > sim.CurrentTime + cat.Wrath.DefaultCast.CastTime + core.GCDDefault)) && rakeDot.IsActive() && (!rakeRefreshPending || (rakeRefreshTime > sim.CurrentTime + cat.Wrath.DefaultCast.CastTime + core.GCDDefault))
+	wrathWeaveNow := rotation.WrathWeave && cat.HeartOfTheWildAura.IsActive() && (cat.HeartOfTheWildAura.RemainingDuration(sim) > cat.Wrath.DefaultCast.CastTime) && !isClearcast && ((curCp == 5) || (curEnergy + cat.Wrath.DefaultCast.CastTime.Seconds() * 2 * regenRate <= furorCap)) && ripDot.IsActive() && (!ripRefreshPending || (ripRefreshTime > sim.CurrentTime + cat.Wrath.DefaultCast.CastTime + core.GCDDefault)) && rakeDot.IsActive() && (!rakeRefreshPending || (rakeRefreshTime > sim.CurrentTime + cat.Wrath.DefaultCast.CastTime + core.GCDDefault))
 
 	// Main decision tree starts here.
 	var timeToNextAction time.Duration
