@@ -140,7 +140,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecSubtletyRogue, {
 			defaultFactionRaces: {
 				[Faction.Unknown]: Race.RaceUnknown,
 				[Faction.Alliance]: Race.RaceHuman,
-				[Faction.Horde]: Race.RaceOrc,
+				[Faction.Horde]: Race.RaceTroll,
 			},
 			defaultGear: {
 				[Faction.Unknown]: {},

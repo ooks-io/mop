@@ -418,98 +418,98 @@ dps_results: {
 dps_results: {
  key: "TestCombat-Average-Default"
  value: {
-  dps: 84616.60209
-  tps: 59635.00888
+  dps: 86734.26613
+  tps: 61096.30237
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Human-preraid_combat-Combat-combat-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 85764.38295
-  tps: 60427.61309
+  dps: 87992.44614
+  tps: 61965.42696
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Human-preraid_combat-Combat-combat-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 85764.38295
-  tps: 60427.61309
+  dps: 87992.44614
+  tps: 61965.42696
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Human-preraid_combat-Combat-combat-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 111636.805
-  tps: 76936.63754
+  dps: 114807.92068
+  tps: 78967.57471
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Human-preraid_combat-Combat-combat-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 55904.90549
-  tps: 39692.4829
+  dps: 57299.06007
+  tps: 40682.33265
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Human-preraid_combat-Combat-combat-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 55904.90549
-  tps: 39692.4829
+  dps: 57299.06007
+  tps: 40682.33265
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Human-preraid_combat-Combat-combat-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 58208.23639
-  tps: 41327.84784
+  dps: 59556.89362
+  tps: 42285.39447
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Orc-preraid_combat-Combat-combat-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 87466.11213
-  tps: 61588.84436
+  dps: 89720.04369
+  tps: 63145.02477
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Orc-preraid_combat-Combat-combat-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 87466.11213
-  tps: 61588.84436
+  dps: 89720.04369
+  tps: 63145.02477
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Orc-preraid_combat-Combat-combat-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 115059.57379
-  tps: 79131.82113
+  dps: 118292.95673
+  tps: 81206.96806
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Orc-preraid_combat-Combat-combat-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 57020.46988
-  tps: 40484.53362
+  dps: 58425.31757
+  tps: 41481.97547
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Orc-preraid_combat-Combat-combat-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 57020.46988
-  tps: 40484.53362
+  dps: 58425.31757
+  tps: 41481.97547
  }
 }
 dps_results: {
  key: "TestCombat-Settings-Orc-preraid_combat-Combat-combat-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 60104.10997
-  tps: 42673.91808
+  dps: 61468.16197
+  tps: 43642.395
  }
 }
 dps_results: {
  key: "TestCombat-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 78674.16354
-  tps: 55384.65531
+  dps: 80560.572
+  tps: 56678.73912
  }
 }
