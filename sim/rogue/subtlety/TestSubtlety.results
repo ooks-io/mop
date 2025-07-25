@@ -397,92 +397,92 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-Average-Default"
  value: {
-  dps: 83359.17119
-  tps: 58764.54427
+  dps: 85684.8131
+  tps: 60375.37531
  }
 }
 dps_results: {
  key: "TestSubtlety-Settings-Human-preraid_subtlety-Subtlety-subtlety-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 83581.27341
-  tps: 58937.20339
+  dps: 85920.49966
+  tps: 60555.51335
  }
 }
 dps_results: {
  key: "TestSubtlety-Settings-Human-preraid_subtlety-Subtlety-subtlety-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 83581.27341
-  tps: 58937.20339
+  dps: 85920.49966
+  tps: 60555.51335
  }
 }
 dps_results: {
  key: "TestSubtlety-Settings-Human-preraid_subtlety-Subtlety-subtlety-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 118173.40537
-  tps: 81875.61416
+  dps: 121395.72988
+  tps: 83950.76114
  }
 }
 dps_results: {
  key: "TestSubtlety-Settings-Human-preraid_subtlety-Subtlety-subtlety-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 55116.30395
-  tps: 39132.5758
+  dps: 56381.32977
+  tps: 40030.74414
  }
 }
 dps_results: {
  key: "TestSubtlety-Settings-Human-preraid_subtlety-Subtlety-subtlety-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 55116.30395
-  tps: 39132.5758
+  dps: 56381.32977
+  tps: 40030.74414
  }
 }
 dps_results: {
  key: "TestSubtlety-Settings-Human-preraid_subtlety-Subtlety-subtlety-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 62787.98373
-  tps: 44579.46845
+  dps: 63823.34045
+  tps: 45314.57172
  }
 }
 dps_results: {
  key: "TestSubtlety-Settings-Orc-preraid_subtlety-Subtlety-subtlety-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 84849.21875
-  tps: 59805.73365
+  dps: 87173.8753
+  tps: 61413.42609
  }
 }
 dps_results: {
  key: "TestSubtlety-Settings-Orc-preraid_subtlety-Subtlety-subtlety-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 84849.21875
-  tps: 59805.73365
+  dps: 87173.8753
+  tps: 61413.42609
  }
 }
 dps_results: {
  key: "TestSubtlety-Settings-Orc-preraid_subtlety-Subtlety-subtlety-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 120944.34924
-  tps: 83684.42968
+  dps: 124194.87214
+  tps: 85778.23237
  }
 }
 dps_results: {
  key: "TestSubtlety-Settings-Orc-preraid_subtlety-Subtlety-subtlety-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 55863.11557
-  tps: 39662.81206
+  dps: 57157.52596
+  tps: 40581.84343
  }
 }
 dps_results: {
  key: "TestSubtlety-Settings-Orc-preraid_subtlety-Subtlety-subtlety-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 55863.11557
-  tps: 39662.81206
+  dps: 57157.52596
+  tps: 40581.84343
  }
 }
 dps_results: {
  key: "TestSubtlety-Settings-Orc-preraid_subtlety-Subtlety-subtlety-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 64068.67559
-  tps: 45488.75967
+  dps: 65135.68966
+  tps: 46246.33966
  }
 }
 dps_results: {
