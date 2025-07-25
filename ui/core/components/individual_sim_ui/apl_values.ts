@@ -3,6 +3,7 @@ import {
 	APLValue,
 	APLValueAllTrinketStatProcsActive,
 	APLValueAnd,
+	APLValueAnyStatBuffCooldownsActive,
 	APLValueAnyTrinketStatProcsActive,
 	APLValueAuraICDIsReadyWithReactionTime,
 	APLValueAuraInternalCooldown,
@@ -1312,6 +1313,26 @@ const valueKindFactories: { [f in ValidAPLValueKind]: ValueKindConfig<APLValueIm
 				statType3: -1,
 			}),
 		fields: [AplHelpers.statTypeFieldConfig('statType1'), AplHelpers.statTypeFieldConfig('statType2'), AplHelpers.statTypeFieldConfig('statType3')],
+	}),
+	anyStatBuffCooldownsActive: inputBuilder({
+		label: 'Any Stat Buff Cooldowns Active',
+		submenu: ['Aura Sets'],
+		shortDescription: '<b>True</b> if any registered Major Cooldowns that buff the specified stat type(s) are currently active, otherwise <b>False</b>.',
+		fullDescription: `
+		<p>For stacking buffs, this condition also checks that the buff has been stacked to its maximum possible strength after the cooldown is activated.</p>
+		<p>Both manually casted cooldowns as well as cooldowns controlled by "Cast All Stat Buff Cooldowns" and "Autocast Other Cooldowns" actions are checked.</p>
+		`,
+		newValue: () =>
+			APLValueAnyStatBuffCooldownsActive.create({
+				statType1: -1,
+				statType2: -1,
+				statType3: -1,
+			}),
+		fields: [
+			AplHelpers.statTypeFieldConfig('statType1'),
+			AplHelpers.statTypeFieldConfig('statType2'),
+			AplHelpers.statTypeFieldConfig('statType3'),
+		],
 	}),
 
 	// DoT

@@ -224,6 +224,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestAssassination-AllItems-FangsoftheFather"
+ value: {
+  dps: 80280.06902
+  tps: 56472.92413
+ }
+}
+dps_results: {
  key: "TestAssassination-AllItems-Fen-Yu,FuryofXuen-102248"
  value: {
   dps: 104211.15215
@@ -256,6 +263,13 @@ dps_results: {
  value: {
   dps: 108401.5158
   tps: 76239.97602
+ }
+}
+dps_results: {
+ key: "TestAssassination-AllItems-Golad,TwilightofAspects-77949"
+ value: {
+  dps: 80352.89485
+  tps: 56480.72515
  }
 }
 dps_results: {

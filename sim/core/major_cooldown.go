@@ -331,6 +331,18 @@ func (mcdm *majorCooldownManager) GetMatchingStatBuffSpells(statTypesToMatch []s
 	return matchingSpells
 }
 
+func (mcdm *majorCooldownManager) GetMatchingStatBuffCooldownAuras(statTypesToMatch []stats.Stat) []*StatBuffAura {
+	matchingAuras := make([]*StatBuffAura, 0, len(mcdm.initialMajorCooldowns))
+
+	for _, mcd := range mcdm.initialMajorCooldowns {
+		if mcd.BuffAura.BuffsMatchingStat(statTypesToMatch) && (mcd.Spell.DefaultCast.EffectiveTime() == 0) {
+			matchingAuras = append(matchingAuras, mcd.BuffAura)
+		}
+	}
+
+	return matchingAuras
+}
+
 func (mcdm *majorCooldownManager) getFirstReadyMCD(sim *Simulation) *MajorCooldown {
 	if sim.CurrentTime < mcdm.minReady {
 		return nil
