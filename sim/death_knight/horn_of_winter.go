@@ -40,9 +40,7 @@ func (dk *DeathKnight) registerHornOfWinter() {
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			for _, unit := range sim.Raid.AllPlayerUnits {
-				hornArray.Get(unit).Activate(sim)
-			}
+			hornArray.ActivateAllPlayers(sim)
 
 			dk.AddRunicPower(sim, 10, rpMetrics)
 		},

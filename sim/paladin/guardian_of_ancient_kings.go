@@ -74,6 +74,7 @@ func (paladin *Paladin) registerHolyGuardian(duration time.Duration) {
 			paladin.AncientGuardian.Enable(sim, paladin.AncientGuardian)
 			paladin.AncientGuardian.CancelGCDTimer(sim)
 		},
+		RelatedSelfBuff: paladin.GoakAura,
 	})
 
 	paladin.AddMajorCooldown(core.MajorCooldown{
@@ -122,6 +123,7 @@ func (paladin *Paladin) registerProtectionGuardian(duration time.Duration) {
 		ApplyEffects: func(sim *core.Simulation, unit *core.Unit, spell *core.Spell) {
 			paladin.GoakAura.Activate(sim)
 		},
+		RelatedSelfBuff: paladin.GoakAura,
 	})
 
 	paladin.AddDefensiveCooldownAura(paladin.GoakAura)
