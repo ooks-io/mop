@@ -39,6 +39,7 @@ func (druid *Druid) registerSurvivalInstinctsCD() {
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
 			druid.SurvivalInstinctsAura.Activate(sim)
 		},
+		RelatedSelfBuff: druid.SurvivalInstinctsAura,
 	})
 
 	druid.AddMajorCooldown(core.MajorCooldown{

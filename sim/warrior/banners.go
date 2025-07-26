@@ -69,6 +69,7 @@ func (war *Warrior) registerDemoralizingBanner() {
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
 			war.DemoralizingBannerAuras.ActivateAll(sim)
 		},
+		RelatedAuraArrays: war.DemoralizingBannerAuras.ToMap(),
 	})
 
 	war.AddMajorCooldown(core.MajorCooldown{

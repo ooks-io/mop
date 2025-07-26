@@ -553,7 +553,9 @@ type externalConsecutiveCDApproximation struct {
 	ShouldActivate CooldownActivationCondition
 
 	// Applies the buff.
-	AddAura CooldownActivation
+	AddAura           CooldownActivation
+	RelatedSelfBuff   *Aura             // Used to attach the aura to the generic spell
+	RelatedAuraArrays LabeledAuraArrays // Used to attach the aura to the generic spell
 }
 
 // numSources is the number of other players assigned to apply the buff to this player.
@@ -606,6 +608,8 @@ func registerExternalConsecutiveCDApproximation(agent Agent, config externalCons
 				sharedTimer.Set(sim.CurrentTime + externalTimers[nextExternalIndex].TimeToReady(sim))
 			}
 		},
+		RelatedSelfBuff:   config.RelatedSelfBuff,
+		RelatedAuraArrays: config.RelatedAuraArrays,
 	})
 
 	character.AddMajorCooldown(MajorCooldown{
@@ -712,6 +716,7 @@ func registerTricksOfTheTradeCD(agent Agent) {
 			ActionID:         ActionID{SpellID: 57933, Tag: -1},
 			AuraTag:          TricksOfTheTradeAuraTag,
 			CooldownPriority: CooldownPriorityDefault,
+			RelatedSelfBuff:  tricksAura,
 			AuraDuration:     tricksAura.Duration,
 			AuraCD:           effectiveCD,
 			Type:             CooldownTypeDPS,
@@ -758,6 +763,7 @@ func registerUnholyFrenzyCD(agent Agent, numUnholyFrenzy int32) {
 			ActionID:         ActionID{SpellID: 49016, Tag: -1},
 			AuraTag:          UnholyFrenzyAuraTag,
 			CooldownPriority: CooldownPriorityDefault,
+			RelatedSelfBuff:  ufAura,
 			AuraDuration:     UnholyFrenzyDuration,
 			AuraCD:           UnholyFrenzyCD,
 			Type:             CooldownTypeDPS,
@@ -819,6 +825,7 @@ func registerDevotionAuraCD(agent Agent, numDevotionAuras int32) {
 			ActionID:         DevotionAuraActionID.WithTag(-1),
 			AuraTag:          DevotionAuraTag,
 			CooldownPriority: CooldownPriorityLow,
+			RelatedSelfBuff:  devAura,
 			AuraDuration:     DevotionAuraDuration,
 			AuraCD:           DevotionAuraCD,
 			Type:             CooldownTypeSurvival,
@@ -887,6 +894,7 @@ func registerVigilanceCD(agent Agent, numWarriors int32) {
 			ActionID:         ActionID{SpellID: VigilanceSpellID, Tag: -1},
 			AuraTag:          VigilanceAuraTag,
 			CooldownPriority: CooldownPriorityLow,
+			RelatedSelfBuff:  buffAura,
 			AuraDuration:     VigilanceDuration,
 			AuraCD:           VigilanceCD,
 			Type:             CooldownTypeSurvival,
@@ -930,6 +938,7 @@ func registerPainSuppressionCD(agent Agent, numPainSuppressions int32) {
 			ActionID:         ActionID{SpellID: 33206, Tag: -1},
 			AuraTag:          PainSuppressionAuraTag,
 			CooldownPriority: CooldownPriorityDefault,
+			RelatedSelfBuff:  psAura,
 			AuraDuration:     PainSuppressionDuration,
 			AuraCD:           PainSuppressionCD,
 			Type:             CooldownTypeSurvival,
@@ -983,6 +992,7 @@ func registerGuardianSpiritCD(agent Agent, numGuardianSpirits int32) {
 			ActionID:         ActionID{SpellID: 47788, Tag: -1},
 			AuraTag:          GuardianSpiritAuraTag,
 			CooldownPriority: CooldownPriorityLow,
+			RelatedSelfBuff:  gsAura,
 			AuraDuration:     GuardianSpiritDuration,
 			AuraCD:           GuardianSpiritCD,
 			Type:             CooldownTypeSurvival,
@@ -1019,51 +1029,54 @@ func registerRallyingCryCD(agent Agent, numRallyingCries int32) {
 		return
 	}
 
-	buffAura := RallyingCryAura(agent.GetCharacter(), -1)
+	rallyingCryArray := RallyingCryAuraArray(&agent.GetCharacter().Unit, -1)
 
 	registerExternalConsecutiveCDApproximation(
 		agent,
 		externalConsecutiveCDApproximation{
-			ActionID:         RallyingCryActionID.WithTag(-1),
-			AuraTag:          RallyingCryAuraTag,
-			CooldownPriority: CooldownPriorityLow,
-			AuraDuration:     RallyingCryDuration,
-			AuraCD:           RallyingCryCD,
-			Type:             CooldownTypeSurvival,
+			ActionID:          RallyingCryActionID.WithTag(-1),
+			AuraTag:           RallyingCryAuraTag,
+			CooldownPriority:  CooldownPriorityLow,
+			RelatedAuraArrays: rallyingCryArray.ToMap(),
+			AuraDuration:      RallyingCryDuration,
+			AuraCD:            RallyingCryCD,
+			Type:              CooldownTypeSurvival,
 
 			ShouldActivate: func(_ *Simulation, _ *Character) bool {
 				return true
 			},
 
 			AddAura: func(sim *Simulation, _ *Character) {
-				buffAura.Activate(sim)
+				rallyingCryArray.ActivateAll(sim)
 			},
 		},
 		numRallyingCries,
 	)
 }
 
-func RallyingCryAura(character *Character, actionTag int32) *Aura {
+func RallyingCryAuraArray(unit *Unit, actionTag int32) AuraArray {
 	actionID := RallyingCryActionID.WithTag(actionTag)
-	healthMetrics := character.NewHealthMetrics(actionID)
 
-	var bonusHealth float64
+	return unit.NewAllyAuraArray(func(allyUnit *Unit) *Aura {
+		healthMetrics := allyUnit.NewHealthMetrics(actionID)
+		var bonusHealth float64
+		return allyUnit.GetOrRegisterAura(Aura{
+			Label:    "RallyingCry-" + actionID.String(),
+			Tag:      RallyingCryAuraTag,
+			ActionID: actionID,
+			Duration: RallyingCryDuration,
 
-	return character.GetOrRegisterAura(Aura{
-		Label:    "RallyingCry-" + actionID.String(),
-		Tag:      RallyingCryAuraTag,
-		ActionID: actionID,
-		Duration: RallyingCryDuration,
+			OnGain: func(_ *Aura, sim *Simulation) {
+				bonusHealth = allyUnit.MaxHealth() * 0.2
+				allyUnit.UpdateMaxHealth(sim, bonusHealth, healthMetrics)
+			},
 
-		OnGain: func(_ *Aura, sim *Simulation) {
-			bonusHealth = character.MaxHealth() * 0.2
-			character.UpdateMaxHealth(sim, bonusHealth, healthMetrics)
-		},
-
-		OnExpire: func(_ *Aura, sim *Simulation) {
-			character.UpdateMaxHealth(sim, -bonusHealth, healthMetrics)
-		},
+			OnExpire: func(_ *Aura, sim *Simulation) {
+				allyUnit.UpdateMaxHealth(sim, -bonusHealth, healthMetrics)
+			},
+		})
 	})
+
 }
 
 const ShatteringThrowCD = time.Minute * 5
@@ -1081,6 +1094,7 @@ func registerShatteringThrowCD(agent Agent, numShatteringThrows int32) {
 			ActionID:         ActionID{SpellID: 1249459, Tag: -1},
 			AuraTag:          ShatteringThrowAuraTag,
 			CooldownPriority: CooldownPriorityDefault,
+			RelatedSelfBuff:  stAura,
 			AuraDuration:     ShatteringThrowDuration,
 			AuraCD:           ShatteringThrowCD,
 			Type:             CooldownTypeDPS,
@@ -1114,6 +1128,7 @@ func registerSkullBannerCD(agent Agent, numSkullBanners int32) {
 			ActionID:         SkullBannerActionID.WithTag(-1),
 			AuraTag:          SkullBannerAuraTag,
 			CooldownPriority: CooldownPriorityDefault,
+			RelatedSelfBuff:  sbAura,
 			AuraDuration:     SkullBannerDuration,
 			AuraCD:           SkullBannerCD,
 			Type:             CooldownTypeDPS,
@@ -1165,6 +1180,7 @@ func registerManaTideTotemCD(agent Agent, numManaTideTotems int32) {
 			ActionID:         ManaTideTotemActionID.WithTag(-1),
 			AuraTag:          ManaTideTotemAuraTag,
 			CooldownPriority: CooldownPriorityDefault,
+			RelatedSelfBuff:  mttAura,
 			AuraDuration:     ManaTideTotemDuration,
 			AuraCD:           ManaTideTotemCD,
 			Type:             CooldownTypeMana,
@@ -1207,6 +1223,7 @@ func registerStormLashCD(agent Agent, numStormLashes int32) {
 			ActionID:         ActionID{SpellID: 120668, Tag: -1},
 			AuraTag:          StormLashAuraTag,
 			CooldownPriority: CooldownPriorityDefault,
+			RelatedSelfBuff:  sbAura,
 			AuraDuration:     StormLashDuration,
 			AuraCD:           StormLashCD,
 			Type:             CooldownTypeDPS,

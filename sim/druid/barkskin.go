@@ -42,6 +42,7 @@ func (druid *Druid) registerBarkskinCD() {
 			druid.BarkskinAura.Activate(sim)
 			druid.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime)
 		},
+		RelatedSelfBuff: druid.BarkskinAura,
 	})
 
 	druid.AddMajorCooldown(core.MajorCooldown{

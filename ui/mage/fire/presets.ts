@@ -6,15 +6,19 @@ import { SavedTalents } from '../../core/proto/ui';
 import { Stats, UnitStat, UnitStatPresets } from '../../core/proto_utils/stats';
 import FireApl from './apls/fire.apl.json';
 import FireCleaveApl from './apls/fire_cleave.apl.json';
-import P1FireBisGear from './gear_sets/p1_bis.gear.json';
-import P1FirePrebisGear from './gear_sets/p1_prebis.gear.json';
+import P1PreBISGear from './gear_sets/p1_prebis.gear.json';
+import P1PostMSVGear from './gear_sets/p1_post_msv.gear.json';
+import P1PostHOFGear from './gear_sets/p1_post_hof.gear.json';
+import P1BISGear from './gear_sets/p1_bis.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
 // keep them in a separate file.
+export const P1_PREBIS = PresetUtils.makePresetGear('P1 - Pre-BIS', P1PreBISGear);
+export const P1_POST_MSV = PresetUtils.makePresetGear('P1 - Post-MSV', P1PostMSVGear);
+export const P1_POST_HOF = PresetUtils.makePresetGear('P1 - Post-HoF', P1PostHOFGear);
+export const P1_BIS = PresetUtils.makePresetGear('P1 - BIS', P1BISGear);
 
-export const P1_BIS_PRESET = PresetUtils.makePresetGear('P1 - BIS', P1FireBisGear);
-export const PREBIS_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS', P1FirePrebisGear);
 
 // export const P1TrollDefaultSimpleRotation = FireMage_Rotation.create({
 // 	combustThreshold: 515000,

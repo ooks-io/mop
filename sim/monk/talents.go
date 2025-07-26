@@ -804,6 +804,7 @@ func (monk *Monk) registerDampenHarm() {
 			monk.DampenHarmAura.Activate(sim)
 			monk.DampenHarmAura.SetStacks(sim, 3)
 		},
+		RelatedSelfBuff: monk.DampenHarmAura,
 	})
 
 	monk.AddMajorCooldown(core.MajorCooldown{

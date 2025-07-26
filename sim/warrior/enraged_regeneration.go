@@ -46,6 +46,7 @@ func (war *Warrior) registerEnragedRegeneration() {
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
 			aura.Activate(sim)
 		},
+		RelatedSelfBuff: aura,
 	})
 
 	war.AddMajorCooldown(core.MajorCooldown{

@@ -48,6 +48,7 @@ func (druid *Druid) registerMightOfUrsocCD() {
 
 			druid.MightOfUrsocAura.Activate(sim)
 		},
+		RelatedSelfBuff: druid.MightOfUrsocAura,
 	})
 
 	druid.AddMajorCooldown(core.MajorCooldown{
