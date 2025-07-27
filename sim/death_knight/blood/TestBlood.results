@@ -69,10 +69,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-BattleplateofCyclopeanDread"
  value: {
-  dps: 120546.64094
-  tps: 728988.67017
-  dtps: 92160.41319
-  hps: 79540.19473
+  dps: 120783.95913
+  tps: 734104.38798
+  dtps: 92214.14533
+  hps: 79779.75681
  }
 }
 dps_results: {
@@ -258,10 +258,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-Fen-Yu,FuryofXuen-102248"
  value: {
-  dps: 122354.22573
-  tps: 745499.06598
-  dtps: 96249.99664
-  hps: 88831.78912
+  dps: 122514.65987
+  tps: 747864.14883
+  dtps: 96142.17238
+  hps: 88791.09778
  }
 }
 dps_results: {
@@ -294,10 +294,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-Gong-Lu,StrengthofXuen-102249"
  value: {
-  dps: 125614.0785
-  tps: 767183.18833
-  dtps: 93443.03605
-  hps: 87555.06341
+  dps: 125844.1524
+  tps: 768499.91751
+  dtps: 93562.7894
+  hps: 87778.18631
  }
 }
 dps_results: {
@@ -366,10 +366,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-PlateofCyclopeanDread"
  value: {
-  dps: 120267.31866
-  tps: 727201.09336
-  dtps: 86983.72011
-  hps: 79634.59937
+  dps: 120261.03797
+  tps: 727190.11959
+  dtps: 86998.05246
+  hps: 79684.51968
  }
 }
 dps_results: {
@@ -384,10 +384,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-PlateoftheLostCatacomb"
  value: {
-  dps: 116367.62053
-  tps: 709859.29533
-  dtps: 95437.5967
-  hps: 77262.87285
+  dps: 116386.60594
+  tps: 710028.05376
+  dtps: 95447.26453
+  hps: 77152.45263
  }
 }
 dps_results: {
@@ -465,10 +465,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-RuneofCinderglacier-3369"
  value: {
-  dps: 115541.93749
-  tps: 703948.84188
-  dtps: 97771.40702
-  hps: 82268.09085
+  dps: 114403.74129
+  tps: 697064.23025
+  dtps: 97748.17076
+  hps: 82198.03062
  }
 }
 dps_results: {
@@ -591,10 +591,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 116611.57818
-  tps: 710078.32375
-  dtps: 96194.58692
-  hps: 89209.31389
+  dps: 116696.00672
+  tps: 710069.6405
+  dtps: 96213.85721
+  hps: 89183.69661
  }
 }
 dps_results: {
@@ -618,10 +618,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-Settings-Orc-p1-Basic-defensive-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 1.03153967584e+06
-  tps: 6.38519293452e+06
-  dtps: 1.92131034775e+06
-  hps: 561429.23175
+  dps: 3.23858782641e+06
+  tps: 2.046248772374e+07
+  dtps: 1.92196899309e+06
+  hps: 569649.67021
  }
 }
 dps_results: {
@@ -645,10 +645,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-Settings-Orc-p1-Basic-defensive-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 803836.41714
-  tps: 4.98873138211e+06
-  dtps: 2.1579334074e+06
-  hps: 577742.01437
+  dps: 2.57469030352e+06
+  tps: 1.622912813882e+07
+  dtps: 1.95693212797e+06
+  hps: 535211.56048
  }
 }
 dps_results: {
@@ -672,26 +672,26 @@ dps_results: {
 dps_results: {
  key: "TestBlood-Settings-Worgen-p1-Basic-defensive-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 1.03343399166e+06
-  tps: 6.37925526351e+06
-  dtps: 1.92006243554e+06
-  hps: 565523.93833
+  dps: 3.24646876995e+06
+  tps: 2.063090425008e+07
+  dtps: 1.92130004501e+06
+  hps: 566404.04443
  }
 }
 dps_results: {
  key: "TestBlood-Settings-Worgen-p1-Basic-defensive-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 119564.29116
-  tps: 727562.44196
-  dtps: 95098.60516
-  hps: 83886.45869
+  dps: 119651.86517
+  tps: 728343.25189
+  dtps: 95159.07088
+  hps: 84561.27981
  }
 }
 dps_results: {
  key: "TestBlood-Settings-Worgen-p1-Basic-defensive-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 133973.97804
-  tps: 766713.32681
+  dps: 133936.48059
+  tps: 766673.00323
   dtps: 94389.50802
   hps: 100848.46855
  }
@@ -699,28 +699,28 @@ dps_results: {
 dps_results: {
  key: "TestBlood-Settings-Worgen-p1-Basic-defensive-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 801295.57936
-  tps: 4.97231983379e+06
-  dtps: 2.15868380505e+06
-  hps: 577061.46792
+  dps: 2.56999362634e+06
+  tps: 1.629139509072e+07
+  dtps: 1.95537766445e+06
+  hps: 538797.74168
  }
 }
 dps_results: {
  key: "TestBlood-Settings-Worgen-p1-Basic-defensive-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 98911.50066
-  tps: 608214.12671
-  dtps: 96384.82249
-  hps: 73370.20005
+  dps: 99036.92578
+  tps: 608410.36512
+  dtps: 96554.45147
+  hps: 73202.36543
  }
 }
 dps_results: {
  key: "TestBlood-Settings-Worgen-p1-Basic-defensive-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 99407.199
-  tps: 589598.55165
+  dps: 99286.1492
+  tps: 588898.58207
   dtps: 95785.73884
-  hps: 81897.30242
+  hps: 81891.14027
  }
 }
 dps_results: {
