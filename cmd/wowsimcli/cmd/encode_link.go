@@ -61,8 +61,15 @@ func encodeLink(jsonFile string) error {
 			return fmt.Errorf("no player data found in raid structure")
 		}
 
-		// use the original request as-is for encoding
-		settings = raidRequest
+		// convert to IndividualSimSettings for proper encoding
+		individualSettings := &proto.IndividualSimSettings{
+			Player:    raidRequest.Raid.Parties[0].Players[0],
+			Settings:  &proto.SimSettings{Iterations: raidRequest.SimOptions.Iterations},
+			Encounter: raidRequest.Encounter,
+			RaidBuffs: raidRequest.Raid.Buffs,
+			Debuffs:   raidRequest.Raid.Debuffs,
+		}
+		settings = individualSettings
 	} else {
 		// it's a raid sim
 		raidSettings := &proto.RaidSimSettings{}
