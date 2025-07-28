@@ -31,9 +31,6 @@ func (shaman *Shaman) registerBloodlustCD() {
 			PercentModifier: 1,
 		},
 		Cast: core.CastConfig{
-			DefaultCast: core.Cast{
-				GCD: core.GCDDefault,
-			},
 			CD: core.Cooldown{
 				Timer:    shaman.NewTimer(),
 				Duration: core.BloodlustCD,
