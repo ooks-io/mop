@@ -156,6 +156,7 @@ const (
 	PriestSpellCircleOfHealing
 	PriestSpellDevouringPlague
 	PriestSpellDevouringPlagueDoT
+	PriestSpellDevouringPlagueHeal
 	PriestSpellDesperatePrayer
 	PriestSpellDispersion
 	PriestSpellDivineAegis
