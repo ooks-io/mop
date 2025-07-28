@@ -12,15 +12,15 @@ import P1BIS2HGear from './gear_sets/p1_bis_2h.gear.json';
 import P1BISDWGear from './gear_sets/p1_bis_dw.gear.json';
 import P1BISTierless2HGear from './gear_sets/p1_bis_tierless_2h.gear.json';
 import P1BISTierlessDWGear from './gear_sets/p1_bis_tierless_dw.gear.json';
-import P1PreBISPoorGear from './gear_sets/p1_prebis_poor.gear.json';
-import P1PreBISRichGear from './gear_sets/p1_prebis_rich.gear.json';
+import P1PreBISRealisticGear from './gear_sets/p1_prebis_realistic.gear.json';
+import P1PreBISGear from './gear_sets/p1_prebis.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
 // keep them in a separate file.
 
-export const P1_PREBIS_RICH_GEAR_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS (Rich)', P1PreBISRichGear);
-export const P1_PREBIS_POOR_GEAR_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS (Budget)', P1PreBISPoorGear);
+export const P1_PREBIS_GEAR_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS', P1PreBISGear);
+export const P1_PREBIS_REALISTIC_GEAR_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS (Realistic)', P1PreBISRealisticGear);
 
 export const P1_BIS_DW_GEAR_PRESET = PresetUtils.makePresetGear('P1 - BIS DW', P1BISDWGear);
 export const P1_BIS_2H_GEAR_PRESET = PresetUtils.makePresetGear('P1 - BIS 2H', P1BIS2HGear);
