@@ -12,6 +12,7 @@ import { DEFAULT_CASTER_GEM_STATS, StatCap, Stats, UnitStat } from '../../core/p
 import { DefaultDebuffs, DefaultRaidBuffs, MAGE_BREAKPOINTS } from '../presets';
 import * as ArcaneInputs from './inputs';
 import * as Presets from './presets';
+import * as MageInputs from '../inputs';
 
 const hasteBreakpoints = MAGE_BREAKPOINTS.presets;
 
@@ -90,7 +91,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecArcaneMage, {
 	},
 
 	// IconInputs to include in the 'Player' section on the settings tab.
-	playerIconInputs: [],
+	playerIconInputs: [
+		MageInputs.MageArmorInputs()
+	],
 	// Inputs to include in the 'Rotation' section on the settings tab.
 	rotationInputs: ArcaneInputs.MageRotationConfig,
 	// Buff and Debuff inputs to include/exclude, overriding the EP-based defaults.

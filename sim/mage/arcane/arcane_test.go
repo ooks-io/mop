@@ -62,7 +62,9 @@ var ArcaneGlyphs = &proto.Glyphs{
 var PlayerOptionsArcane = &proto.Player_ArcaneMage{
 	ArcaneMage: &proto.ArcaneMage{
 		Options: &proto.ArcaneMage_Options{
-			ClassOptions: &proto.MageOptions{},
+			ClassOptions: &proto.MageOptions{
+				DefaultMageArmor: proto.MageArmor_MageArmorFrostArmor,
+			},
 		},
 	},
 }

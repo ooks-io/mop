@@ -12,6 +12,7 @@ import { DEFAULT_CASTER_GEM_STATS, StatCap, Stats, UnitStat } from '../../core/p
 import { formatToNumber } from '../../core/utils';
 import { DefaultDebuffs, DefaultRaidBuffs } from '../presets';
 import * as Presets from './presets';
+import * as MageInputs from '../inputs';
 
 const combustBreakpoints = Presets.COMBUSTION_BREAKPOINT.presets;
 const glyphedCombustBreakpoints = Presets.GLYPHED_COMBUSTION_BREAKPOINT.presets;
@@ -115,7 +116,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFireMage, {
 	},
 
 	// IconInputs to include in the 'Player' section on the settings tab.
-	playerIconInputs: [],
+	playerIconInputs: [
+		MageInputs.MageArmorInputs()
+	],
 	// Inputs to include in the 'Rotation' section on the settings tab.
 	// rotationInputs: FireInputs.MageRotationConfig,
 	// Buff and Debuff inputs to include/exclude, overriding the EP-based defaults.
