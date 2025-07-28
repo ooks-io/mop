@@ -30,29 +30,45 @@ func encodeLink(jsonFile string) error {
 		return fmt.Errorf("failed to read JSON file %q: %w", jsonFile, err)
 	}
 
-	// try to determine sim type by checking if it's a raid or individual sim
+	// check the "type" field to determine sim type and URL path
 	var settings goproto.Message
 	var urlPath string
 	baseUrl := "https://www.wowsims.com/mop"
 
-	// first try individual sim
-	individualSettings := &proto.IndividualSimSettings{}
-	err = protojson.UnmarshalOptions{DiscardUnknown: true}.Unmarshal(data, individualSettings)
-	if err == nil && individualSettings.Player != nil {
-		// it's an individual sim
-		settings = individualSettings
-		classStr, specStr := getClassAndSpecFromPlayer(individualSettings.Player)
-		if classStr != "" && specStr != "" {
-			urlPath = fmt.Sprintf("/%s/%s/", classStr, specStr)
-		} else {
-			urlPath = "/individual/" // fallback
+	// check if it's an individual sim by looking for "SimTypeIndividual"
+	if bytes.Contains(data, []byte(`"SimTypeIndividual"`)) {
+		// it's an individual sim - parse as RaidSimRequest to extract player info for URL
+		raidRequest := &proto.RaidSimRequest{}
+		err = protojson.UnmarshalOptions{DiscardUnknown: true}.Unmarshal(data, raidRequest)
+		if err != nil {
+			return fmt.Errorf("failed to unmarshal JSON as raid request: %w", err)
 		}
+
+		// extract the first player from the raid structure to determine URL path
+		if raidRequest.Raid != nil && len(raidRequest.Raid.Parties) > 0 && len(raidRequest.Raid.Parties[0].Players) > 0 {
+			player := raidRequest.Raid.Parties[0].Players[0]
+			if player.Spec != nil {
+				classStr, specStr := getClassAndSpecFromPlayer(player)
+				if classStr != "" && specStr != "" {
+					urlPath = fmt.Sprintf("/%s/%s/", classStr, specStr)
+				} else {
+					return fmt.Errorf("could not determine class/spec from player data")
+				}
+			} else {
+				return fmt.Errorf("no spec data found for player")
+			}
+		} else {
+			return fmt.Errorf("no player data found in raid structure")
+		}
+
+		// use the original request as-is for encoding
+		settings = raidRequest
 	} else {
-		// try raid sim
+		// it's a raid sim
 		raidSettings := &proto.RaidSimSettings{}
 		err = protojson.UnmarshalOptions{DiscardUnknown: true}.Unmarshal(data, raidSettings)
 		if err != nil {
-			return fmt.Errorf("failed to unmarshal JSON as either individual or raid sim: %w", err)
+			return fmt.Errorf("failed to unmarshal JSON as raid sim: %w", err)
 		}
 		settings = raidSettings
 		urlPath = "/raid/"
