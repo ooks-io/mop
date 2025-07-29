@@ -17,6 +17,7 @@ const DpDotCoeff = 0.131
 
 func (shadow *ShadowPriest) registerDevouringPlagueSpell() {
 	actionID := core.ActionID{SpellID: 2944, Tag: 0}
+
 	shadow.DevouringPlague = shadow.RegisterSpell(core.SpellConfig{
 		ActionID:                 actionID,
 		SpellSchool:              core.SpellSchoolShadow,
@@ -55,6 +56,22 @@ func (shadow *ShadowPriest) registerDevouringPlagueSpell() {
 		},
 	})
 
+	devouringPlagueHeal := shadow.RegisterSpell(core.SpellConfig{
+		ActionID:       actionID.WithTag(2), // Real SpellID: 127626
+		SpellSchool:    core.SpellSchoolShadow,
+		ProcMask:       core.ProcMaskSpellHealing,
+		Flags:          core.SpellFlagHelpful | core.SpellFlagPassiveSpell,
+		ClassSpellMask: priest.PriestSpellDevouringPlagueHeal,
+
+		DamageMultiplier: 1,
+		CritMultiplier:   shadow.DefaultCritMultiplier(),
+		ThreatMultiplier: 1,
+
+		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			spell.CalcAndDealPeriodicHealing(sim, target, shadow.MaxHealth()*0.01, spell.OutcomeHealing)
+		},
+	})
+
 	shadow.DevouringPlague.RelatedDotSpell = shadow.RegisterSpell(core.SpellConfig{
 		ActionID:                 actionID.WithTag(1),
 		SpellSchool:              core.SpellSchoolShadow,
@@ -81,6 +98,7 @@ func (shadow *ShadowPriest) registerDevouringPlagueSpell() {
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeSnapshotCrit)
+				devouringPlagueHeal.Cast(sim, &shadow.Unit)
 			},
 		},
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
