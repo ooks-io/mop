@@ -1,7 +1,7 @@
 import { Encounter } from '../../core/encounter';
 import * as PresetUtils from '../../core/preset_utils';
 import { ConsumesSpec, Glyphs, Profession, PseudoStat, Race, Stat } from '../../core/proto/common';
-import { FireMage_Options as MageOptions, MageMajorGlyph as MajorGlyph, MageMinorGlyph as MinorGlyph } from '../../core/proto/mage';
+import { MageArmor, FireMage_Options as MageOptions, MageMajorGlyph as MajorGlyph, MageMinorGlyph as MinorGlyph } from '../../core/proto/mage';
 import { SavedTalents } from '../../core/proto/ui';
 import { Stats, UnitStat, UnitStatPresets } from '../../core/proto_utils/stats';
 import FireApl from './apls/fire.apl.json';
@@ -80,7 +80,9 @@ export const FireTalentsCleave = {
 };
 
 export const DefaultFireOptions = MageOptions.create({
-	classOptions: {},
+	classOptions: {
+		defaultMageArmor: MageArmor.MageArmorMoltenArmor,
+	},
 });
 
 export const DefaultFireConsumables = ConsumesSpec.create({

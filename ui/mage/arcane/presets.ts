@@ -1,7 +1,7 @@
 import { Encounter } from '../../core/encounter';
 import * as PresetUtils from '../../core/preset_utils';
 import { ConsumesSpec, Glyphs, Profession, Race, Stat } from '../../core/proto/common';
-import { ArcaneMage_Options as MageOptions, MageMajorGlyph as MajorGlyph, MageMinorGlyph } from '../../core/proto/mage';
+import { ArcaneMage_Options as MageOptions, MageMajorGlyph as MajorGlyph, MageMinorGlyph, MageArmor } from '../../core/proto/mage';
 import { SavedTalents } from '../../core/proto/ui';
 import { Stats } from '../../core/proto_utils/stats';
 import ArcaneApl from './apls/default.apl.json';
@@ -20,7 +20,6 @@ export const P1_PREBIS_REALISTIC = PresetUtils.makePresetGear('P1 - Pre-BIS (Rea
 export const P1_POST_MSV = PresetUtils.makePresetGear('P1 - Post-MSV', P1PostMSVGear);
 export const P1_POST_HOF = PresetUtils.makePresetGear('P1 - Post-HoF', P1PostHOFGear);
 export const P1_BIS = PresetUtils.makePresetGear('P1 - BIS', P1BISGear);
-
 
 export const ROTATION_PRESET_DEFAULT = PresetUtils.makePresetAPLRotation('Default', ArcaneApl);
 // export const ROTATION_PRESET_CLEAVE = PresetUtils.makePresetAPLRotation('Cleave', ArcaneCleaveApl);
@@ -86,7 +85,9 @@ export const P1_PRESET_BUILD_CLEAVE = PresetUtils.makePresetBuild('Cleave (2 tar
 });
 
 export const DefaultArcaneOptions = MageOptions.create({
-	classOptions: {},
+	classOptions: {
+		defaultMageArmor: MageArmor.MageArmorFrostArmor,
+	},
 });
 export const DefaultConsumables = ConsumesSpec.create({
 	flaskId: 76085, // Flask of the Warm Sun

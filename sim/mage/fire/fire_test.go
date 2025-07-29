@@ -45,7 +45,9 @@ var FireGlyphs = &proto.Glyphs{
 var PlayerOptionsFire = &proto.Player_FireMage{
 	FireMage: &proto.FireMage{
 		Options: &proto.FireMage_Options{
-			ClassOptions: &proto.MageOptions{},
+			ClassOptions: &proto.MageOptions{
+				DefaultMageArmor: proto.MageArmor_MageArmorMoltenArmor,
+			},
 		},
 	},
 }
