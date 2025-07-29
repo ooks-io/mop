@@ -14,7 +14,7 @@ func (war *ArmsWarrior) registerSlam() {
 		ActionID:       actionID.WithTag(1), // Real SpellID: 146361
 		SpellSchool:    core.SpellSchoolPhysical,
 		ProcMask:       core.ProcMaskEmpty,
-		Flags:          core.SpellFlagMeleeMetrics | core.SpellFlagIgnoreAttackerModifiers | core.SpellFlagNoOnCastComplete,
+		Flags:          core.SpellFlagIgnoreArmor | core.SpellFlagIgnoreModifiers | core.SpellFlagMeleeMetrics | core.SpellFlagPassiveSpell | core.SpellFlagNoOnCastComplete,
 		ClassSpellMask: warrior.SpellMaskSweepingSlam,
 		MinRange:       2,
 
