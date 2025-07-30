@@ -41,10 +41,11 @@ func (war *Warrior) applyMajorGlyphs() {
 		actionID := core.ActionID{SpellID: 58384}
 		rageMetrics := war.NewRageMetrics(actionID)
 		core.MakeProcTriggerAura(&war.Unit, core.ProcTrigger{
-			Name:           "Glyph of Sweeping Strikes",
-			ActionID:       actionID,
-			ClassSpellMask: SpellMaskSweepingStrikesHit,
-			Callback:       core.CallbackOnSpellHitDealt,
+			Name:            "Glyph of Sweeping Strikes",
+			ActionID:        actionID,
+			MetricsActionID: actionID,
+			ClassSpellMask:  SpellMaskSweepingStrikesHit,
+			Callback:        core.CallbackOnSpellHitDealt,
 			Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 				war.AddRage(sim, 1, rageMetrics)
 			},
@@ -52,17 +53,19 @@ func (war *Warrior) applyMajorGlyphs() {
 	}
 
 	if war.HasMajorGlyph(proto.WarriorMajorGlyph_GlyphOfResonatingPower) {
-		war.AddStaticMod(core.SpellModConfig{
+		core.MakePermanent(war.RegisterAura(core.Aura{
+			Label:    "Glyph of Resonating Power",
+			ActionID: core.ActionID{SpellID: 58356},
+			Duration: core.NeverExpires,
+		}).AttachSpellMod(core.SpellModConfig{
 			ClassMask:  SpellMaskThunderClap,
 			Kind:       core.SpellMod_DamageDone_Pct,
 			FloatValue: 0.5,
-		})
-
-		war.AddStaticMod(core.SpellModConfig{
+		}).AttachSpellMod(core.SpellModConfig{
 			ClassMask: SpellMaskThunderClap,
 			Kind:      core.SpellMod_Cooldown_Flat,
 			TimeValue: 3 * time.Second,
-		})
+		}))
 	}
 
 	if war.HasMajorGlyph(proto.WarriorMajorGlyph_GlyphOfIncite) {
