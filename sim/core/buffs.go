@@ -1149,7 +1149,14 @@ func SkullBannerAura(character *Character, actionTag int32) *Aura {
 		Tag:      SkullBannerAuraTag,
 		ActionID: SkullBannerActionID.WithTag(actionTag),
 		Duration: SkullBannerDuration,
-	}).AttachMultiplicativePseudoStatBuff(&character.PseudoStats.CritDamageMultiplier, 1.2)
+
+		OnGain: func(_ *Aura, sim *Simulation) {
+			character.PseudoStats.CritDamageMultiplier *= 1.2
+		},
+		OnExpire: func(_ *Aura, sim *Simulation) {
+			character.PseudoStats.CritDamageMultiplier /= 1.2
+		},
+	})
 }
 
 var ManaTideTotemActionID = ActionID{SpellID: 16190}

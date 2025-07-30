@@ -1,7 +1,6 @@
  {
       "type": "TypeAPL",
       "prepullActions": [
-        {"action":{"castSpell":{"spellId":{"spellId":7302}}},"doAtValue":{"const":{"val":"-15s"}}},
         {"action":{"castSpell":{"spellId":{"spellId":116011}}},"doAtValue":{"const":{"val":"-5s"}}}
       ],
       "priorityList": [

@@ -47,7 +47,9 @@ var FrostDefaultGlyphs = &proto.Glyphs{
 var PlayerOptionsFrost = &proto.Player_FrostMage{
 	FrostMage: &proto.FrostMage{
 		Options: &proto.FrostMage_Options{
-			ClassOptions: &proto.MageOptions{},
+			ClassOptions: &proto.MageOptions{
+				DefaultMageArmor: proto.MageArmor_MageArmorFrostArmor,
+			},
 		},
 	},
 }
