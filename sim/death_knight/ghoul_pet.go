@@ -86,7 +86,7 @@ func (dk *DeathKnight) SetupGhoul(ghoulPet *GhoulPet, scalingCoef float64) {
 		AutoSwingMelee: true,
 	})
 
-	ghoulPet.Unit.EnableFocusBar(100, 10.0, false, nil)
+	ghoulPet.Unit.EnableFocusBar(100, 10.0, false, nil, true)
 
 	dk.AddPet(ghoulPet)
 }

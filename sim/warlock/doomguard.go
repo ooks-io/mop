@@ -12,7 +12,7 @@ func (warlock *Warlock) registerSummonDoomguard(timer *core.Timer) {
 	summonDoomguardAura := warlock.RegisterAura(core.Aura{
 		Label:    "Summon Doomguard",
 		ActionID: core.ActionID{SpellID: 18540},
-		Duration: 60 * time.Second,
+		Duration: 62 * time.Second,
 	})
 
 	warlock.RegisterSpell(core.SpellConfig{
@@ -68,8 +68,9 @@ func (warlock *Warlock) NewDoomguardPet() *DoomguardPet {
 
 	pet.Class = proto.Class_ClassWarlock
 	pet.EnableEnergyBar(core.EnergyBarOptions{
-		MaxEnergy: 100,
-		UnitClass: proto.Class_ClassWarlock,
+		MaxEnergy:             100,
+		UnitClass:             proto.Class_ClassWarlock,
+		HasHasteRatingScaling: false,
 	})
 
 	warlock.AddPet(pet)
