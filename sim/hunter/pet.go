@@ -164,7 +164,7 @@ func (hunter *Hunter) NewHunterPet() *HunterPet {
 			WHFocusIncreaseMod.Deactivate()
 			WHDamageMod.Deactivate()
 		}
-	})
+	}, true)
 
 	hp.EnableAutoAttacks(hp, core.AutoAttackOptions{
 		MainHand: core.Weapon{

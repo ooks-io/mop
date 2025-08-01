@@ -39,9 +39,10 @@ func NewFeralDruid(character *core.Character, options *proto.Player) *FeralDruid
 	cat.registerTreants()
 
 	cat.EnableEnergyBar(core.EnergyBarOptions{
-		MaxComboPoints: 5,
-		MaxEnergy:      100.0,
-		UnitClass:      proto.Class_ClassDruid,
+		MaxComboPoints:        5,
+		MaxEnergy:             100.0,
+		UnitClass:             proto.Class_ClassDruid,
+		HasHasteRatingScaling: true,
 	})
 	cat.EnableRageBar(core.RageBarOptions{BaseRageMultiplier: 2.5})
 
@@ -77,7 +78,7 @@ type FeralDruid struct {
 	Shred          *druid.DruidSpell
 	TigersFury     *druid.DruidSpell
 
-	tempSnapshotAura   *core.Aura
+	tempSnapshotAura *core.Aura
 }
 
 func (cat *FeralDruid) GetDruid() *druid.Druid {
@@ -146,11 +147,11 @@ func (cat *FeralDruid) applyMastery() {
 	razorClaws := cat.AddDynamicMod(core.SpellModConfig{
 		ClassMask:  druid.DruidSpellThrashCat | druid.DruidSpellRake | druid.DruidSpellRip,
 		Kind:       core.SpellMod_DamageDone_Pct,
-		FloatValue: BaseMasteryMod + MasteryModPerPoint * cat.GetMasteryPoints(),
+		FloatValue: BaseMasteryMod + MasteryModPerPoint*cat.GetMasteryPoints(),
 	})
 
 	cat.AddOnMasteryStatChanged(func(_ *core.Simulation, _ float64, newMasteryRating float64) {
-		razorClaws.UpdateFloatValue(BaseMasteryMod + MasteryModPerPoint * core.MasteryRatingToMasteryPoints(newMasteryRating))
+		razorClaws.UpdateFloatValue(BaseMasteryMod + MasteryModPerPoint*core.MasteryRatingToMasteryPoints(newMasteryRating))
 	})
 
 	razorClaws.Activate()

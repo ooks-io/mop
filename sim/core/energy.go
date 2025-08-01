@@ -32,12 +32,14 @@ type energyBar struct {
 	ownerClass              proto.Class
 	comboPointsResourceName string // "chi" or "combo points"
 	hasNoRegen              bool   // some units have an energy bar but do not require regen ticks
+	hasHasteRatingScaling   bool
 }
 type EnergyBarOptions struct {
-	MaxComboPoints int32
-	MaxEnergy      float64
-	UnitClass      proto.Class
-	HasNoRegen     bool
+	MaxComboPoints        int32
+	MaxEnergy             float64
+	UnitClass             proto.Class
+	HasNoRegen            bool
+	HasHasteRatingScaling bool
 }
 
 func (unit *Unit) EnableEnergyBar(options EnergyBarOptions) {
@@ -57,6 +59,7 @@ func (unit *Unit) EnableEnergyBar(options EnergyBarOptions) {
 		ownerClass:              options.UnitClass,
 		comboPointsResourceName: Ternary(options.UnitClass == proto.Class_ClassMonk, "chi", "combo points"),
 		hasNoRegen:              options.HasNoRegen,
+		hasHasteRatingScaling:   options.HasHasteRatingScaling,
 	}
 
 }
@@ -177,6 +180,10 @@ func (eb *energyBar) processDynamicHasteRatingChange(sim *Simulation) {
 		return
 	}
 
+	if !eb.hasHasteRatingScaling {
+		return
+	}
+
 	eb.ResetEnergyTick(sim)
 	eb.hasteRatingMultiplier = 1.0 + eb.unit.GetStat(stats.HasteRating)/(100*HasteRatingPerHastePercent)
 }
@@ -259,7 +266,12 @@ func (eb *energyBar) reset(sim *Simulation) {
 	eb.currentEnergy = eb.maxEnergy
 	eb.comboPoints = 0
 
-	eb.hasteRatingMultiplier = 1.0 + eb.unit.GetStat(stats.HasteRating)/(100*HasteRatingPerHastePercent)
+	if eb.hasHasteRatingScaling {
+		eb.hasteRatingMultiplier = 1.0 + eb.unit.GetStat(stats.HasteRating)/(100*HasteRatingPerHastePercent)
+	} else {
+		eb.hasteRatingMultiplier = 1
+	}
+
 	eb.energyRegenMultiplier = 1.0
 
 	if eb.unit.Type != PetUnit {
