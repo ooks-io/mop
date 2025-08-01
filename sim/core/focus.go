@@ -13,12 +13,13 @@ type OnFocusGain func(*Simulation, float64)
 type focusBar struct {
 	unit *Unit
 
-	maxFocus           float64
-	currentFocus       float64
-	baseFocusPerSecond float64
-	focusTickDuration  time.Duration
-	nextFocusTick      time.Duration
-	isPlayer           bool
+	maxFocus              float64
+	currentFocus          float64
+	baseFocusPerSecond    float64
+	focusTickDuration     time.Duration
+	nextFocusTick         time.Duration
+	isPlayer              bool
+	hasHasteRatingScaling bool // Whether the haste rating affects the regen
 
 	// These two terms are multiplied together to scale the total Focus regen from ticks.
 	focusRegenMultiplier  float64
@@ -30,7 +31,7 @@ type focusBar struct {
 	OnFocusGain OnFocusGain
 }
 
-func (unit *Unit) EnableFocusBar(maxFocus float64, baseFocusPerSecond float64, isPlayer bool, onFocusGain OnFocusGain) {
+func (unit *Unit) EnableFocusBar(maxFocus float64, baseFocusPerSecond float64, isPlayer bool, onFocusGain OnFocusGain, hasHasteRatingScaling bool) {
 	unit.SetCurrentPowerBar(FocusBar)
 
 	unit.focusBar = focusBar{
@@ -44,6 +45,7 @@ func (unit *Unit) EnableFocusBar(maxFocus float64, baseFocusPerSecond float64, i
 		regenMetrics:          unit.NewFocusMetrics(ActionID{OtherID: proto.OtherAction_OtherActionFocusRegen}),
 		focusRefundMetrics:    unit.NewFocusMetrics(ActionID{OtherID: proto.OtherAction_OtherActionRefund}),
 		OnFocusGain:           onFocusGain,
+		hasHasteRatingScaling: hasHasteRatingScaling,
 	}
 }
 
@@ -145,6 +147,10 @@ func (fb *focusBar) processDynamicHasteRatingChange(sim *Simulation) {
 		return
 	}
 
+	if !fb.hasHasteRatingScaling {
+		return
+	}
+
 	fb.ResetFocusTick(sim)
 	fb.hasteRatingMultiplier = 1.0 + fb.unit.GetStat(stats.HasteRating)/(100*HasteRatingPerHastePercent)
 }
@@ -164,8 +170,13 @@ func (fb *focusBar) reset(sim *Simulation) {
 	}
 
 	fb.currentFocus = fb.maxFocus
-	fb.hasteRatingMultiplier = 1.0 + fb.unit.GetStat(stats.HasteRating)/(100*HasteRatingPerHastePercent)
 	fb.focusRegenMultiplier = 1.0
+
+	if fb.hasHasteRatingScaling {
+		fb.hasteRatingMultiplier = 1.0 + fb.unit.GetStat(stats.HasteRating)/(100*HasteRatingPerHastePercent)
+	} else {
+		fb.hasteRatingMultiplier = 1.0
+	}
 
 	if fb.unit.Type != PetUnit {
 		fb.enable(sim, sim.Environment.PrepullStartTime())
