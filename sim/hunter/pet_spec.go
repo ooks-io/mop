@@ -3,7 +3,6 @@ package hunter
 import (
 	"github.com/wowsims/mop/sim/core"
 	"github.com/wowsims/mop/sim/core/proto"
-	"github.com/wowsims/mop/sim/core/stats"
 )
 
 func (hp *HunterPet) ApplySpikedCollar() {
@@ -11,12 +10,15 @@ func (hp *HunterPet) ApplySpikedCollar() {
 		return
 	}
 
-	critDep := hp.NewDynamicMultiplyStat(stats.PhysicalCritPercent, 1.1)
-
 	basicAttackDamageMod := hp.AddDynamicMod(core.SpellModConfig{
 		Kind:       core.SpellMod_DamageDone_Pct,
 		ClassMask:  HunterPetFocusDump,
 		FloatValue: 0.1,
+	})
+
+	critMod := hp.AddDynamicMod(core.SpellModConfig{
+		Kind:       core.SpellMod_BonusCrit_Percent,
+		FloatValue: 10,
 	})
 
 	core.MakePermanent(hp.RegisterAura(core.Aura{
@@ -25,12 +27,12 @@ func (hp *HunterPet) ApplySpikedCollar() {
 		Duration: core.NeverExpires,
 
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			aura.Unit.EnableDynamicStatDep(sim, critDep)
+			critMod.Activate()
 			basicAttackDamageMod.Activate()
 			hp.MultiplyMeleeSpeed(sim, 1.1)
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			aura.Unit.DisableDynamicStatDep(sim, critDep)
+			critMod.Deactivate()
 			basicAttackDamageMod.Deactivate()
 			hp.MultiplyMeleeSpeed(sim, 1/1.1)
 		},
