@@ -194,8 +194,8 @@ dps_results: {
 dps_results: {
  key: "TestSubtlety-AllItems-FangsoftheFather"
  value: {
-  dps: 95530.41749
-  tps: 67408.93647
+  dps: 91265.33769
+  tps: 64383.11201
  }
 }
 dps_results: {
