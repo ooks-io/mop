@@ -226,8 +226,8 @@ dps_results: {
 dps_results: {
  key: "TestAssassination-AllItems-FangsoftheFather"
  value: {
-  dps: 89905.91656
-  tps: 63211.56977
+  dps: 86107.29069
+  tps: 60518.77929
  }
 }
 dps_results: {

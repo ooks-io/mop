@@ -281,7 +281,7 @@ var FangsOfTheFather = core.NewItemSet(core.ItemSet{
 					Duration:  time.Second * 30,
 					MaxStacks: 50,
 				},
-				BonusPerStack: stats.Stats{stats.Agility: 57},
+				BonusPerStack: stats.Stats{stats.Agility: 17},
 			})
 
 			wingsProc := character.GetOrRegisterAura(core.Aura{
