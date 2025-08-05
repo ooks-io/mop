@@ -259,9 +259,10 @@ func NewMonk(character *core.Character, options *proto.MonkOptions, talents stri
 	monk.XuenPet = monk.NewXuen()
 
 	monk.EnableEnergyBar(core.EnergyBarOptions{
-		MaxComboPoints: 4,
-		MaxEnergy:      100.0,
-		UnitClass:      proto.Class_ClassMonk,
+		MaxComboPoints:        4,
+		MaxEnergy:             100.0,
+		UnitClass:             proto.Class_ClassMonk,
+		HasHasteRatingScaling: true,
 	})
 
 	monk.EnableAutoAttacks(monk, core.AutoAttackOptions{

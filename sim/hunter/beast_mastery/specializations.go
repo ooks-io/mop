@@ -186,12 +186,12 @@ func (bmHunter *BeastMasteryHunter) applyBeastCleave() {
 	})
 
 	beastCleaveAura := core.MakeProcTriggerAura(&bmHunter.Pet.Unit, core.ProcTrigger{
-		Name:     "Beast Cleave",
-		ActionID: actionID,
-		Duration: time.Second * 4,
-		Callback: core.CallbackOnSpellHitDealt,
-		ProcMask: core.ProcMaskMelee,
-		Outcome:  core.OutcomeLanded,
+		Name:            "Beast Cleave",
+		MetricsActionID: core.ActionID{SpellID: 118455},
+		Duration:        time.Second * 4,
+		Callback:        core.CallbackOnSpellHitDealt,
+		ProcMask:        core.ProcMaskMelee,
+		Outcome:         core.OutcomeLanded,
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			if bmHunter.Env.ActiveTargetCount() < 2 || result.Damage <= 0 || spell.Matches(hunter.HunterPetBeastCleaveHit) {
 				return

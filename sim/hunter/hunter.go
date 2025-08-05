@@ -60,7 +60,7 @@ func NewHunter(character *core.Character, options *proto.Player, hunterOptions *
 	focusPerSecond := 4.0
 
 	kindredSpritsBonusFocus := core.TernaryFloat64(hunter.Spec == proto.Spec_SpecBeastMasteryHunter, 20, 0)
-	hunter.EnableFocusBar(100+kindredSpritsBonusFocus, focusPerSecond, true, nil)
+	hunter.EnableFocusBar(100+kindredSpritsBonusFocus, focusPerSecond, true, nil, true)
 
 	hunter.PseudoStats.CanParry = true
 

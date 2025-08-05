@@ -36,9 +36,10 @@ func NewGuardianDruid(character *core.Character, options *proto.Player) *Guardia
 	bear.registerTreants()
 
 	bear.EnableEnergyBar(core.EnergyBarOptions{
-		MaxComboPoints: 5,
-		MaxEnergy:      100,
-		UnitClass:      proto.Class_ClassDruid,
+		MaxComboPoints:        5,
+		MaxEnergy:             100,
+		UnitClass:             proto.Class_ClassDruid,
+		HasHasteRatingScaling: true,
 	})
 	bear.EnableRageBar(core.RageBarOptions{
 		BaseRageMultiplier: 2.5,

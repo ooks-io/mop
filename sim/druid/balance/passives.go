@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/wowsims/mop/sim/core"
+	"github.com/wowsims/mop/sim/core/proto"
 	"github.com/wowsims/mop/sim/core/stats"
 	"github.com/wowsims/mop/sim/druid"
 )
@@ -25,7 +26,7 @@ func (moonkin *BalanceDruid) RegisterBalancePassives() {
 func (moonkin *BalanceDruid) registerMoonkinForm() {
 	moonkin.AddStaticMod(core.SpellModConfig{
 		School:     core.SpellSchoolArcane | core.SpellSchoolNature,
-		FloatValue: 0.2 + 0.1, // 2025-07-01 - Moonkin Form's damage increase to Nature and Arcane raised to 30% (was 20%).
+		FloatValue: 0.25,
 		Kind:       core.SpellMod_DamageDone_Pct,
 	})
 
@@ -149,7 +150,9 @@ func (moonkin *BalanceDruid) registerOwlkinFrenzy() {
 
 func (moonkin *BalanceDruid) registerKillerInstinct() {}
 
-func (moonkin *BalanceDruid) registerLeatherSpecialization() {}
+func (moonkin *BalanceDruid) registerLeatherSpecialization() {
+	moonkin.ApplyArmorSpecializationEffect(stats.Intellect, proto.ArmorType_ArmorTypeLeather, 86093)
+}
 
 func (moonkin *BalanceDruid) registerNaturalInsight() {
 	moonkin.MultiplyStat(stats.Mana, 5)

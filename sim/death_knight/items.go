@@ -25,7 +25,7 @@ var ItemSetBattlegearOfTheLostCatacomb = core.NewItemSet(core.ItemSet{
 				Kind:       core.SpellMod_DamageDone_Pct,
 				ClassMask:  DeathKnightSpellFrostStrike | DeathKnightSpellObliterate | DeathKnightSpellScourgeStrike,
 				FloatValue: 0.04,
-			})
+			}).ExposeToAPL(123077)
 		},
 		4: func(agent core.Agent, setBonusAura *core.Aura) {
 			// Your Pillar of Frost ability grants 5% additional Strength, and your Unholy Frenzy ability grants 10% additional haste.
@@ -35,7 +35,7 @@ var ItemSetBattlegearOfTheLostCatacomb = core.NewItemSet(core.ItemSet{
 			}
 
 			// Handled in sim/core/buffs.go and sim/death_knight/frost/pillar_of_frost.go
-			dk.T14Dps4pc = setBonusAura
+			dk.T14Dps4pc = setBonusAura.ExposeToAPL(123078)
 		},
 	},
 })
@@ -57,7 +57,7 @@ var ItemSetPlateOfTheLostCatacomb = core.NewItemSet(core.ItemSet{
 				Kind:      core.SpellMod_Cooldown_Flat,
 				ClassMask: DeathKnightSpellVampiricBlood,
 				TimeValue: time.Second * -20,
-			})
+			}).ExposeToAPL(123079)
 		},
 		4: func(agent core.Agent, setBonusAura *core.Aura) {
 			// Increases the healing received from your Death Strike by 10%.
@@ -65,7 +65,7 @@ var ItemSetPlateOfTheLostCatacomb = core.NewItemSet(core.ItemSet{
 
 			setBonusAura.AttachMultiplicativePseudoStatBuff(
 				&dk.deathStrikeHealingMultiplier, 1.1,
-			)
+			).ExposeToAPL(123080)
 		},
 	},
 })
@@ -114,7 +114,7 @@ var ItemSetBattleplateOfTheAllConsumingMaw = core.NewItemSet(core.ItemSet{
 				Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 					risenZandalariSpell.Cast(sim, result.Target)
 				},
-			})
+			}).ExposeToAPL(138343)
 		},
 		4: func(agent core.Agent, setBonusAura *core.Aura) {
 			// Your Soul Reaper ability now deals additional Shadow damage to targets below 45% instead of below 35%.
@@ -152,7 +152,7 @@ var ItemSetPlateOfTheAllConsumingMaw = core.NewItemSet(core.ItemSet{
 				Kind:       core.SpellMod_PowerCost_Pct,
 				ClassMask:  DeathKnightSpellRuneTap,
 				FloatValue: -2.0,
-			})
+			}).ExposeToAPL(138195)
 		},
 		4: func(agent core.Agent, setBonusAura *core.Aura) {
 			// Your Bone Shield ability grants you 15 Runic Power each time one of its charges is consumed.
@@ -160,6 +160,8 @@ var ItemSetPlateOfTheAllConsumingMaw = core.NewItemSet(core.ItemSet{
 			if dk.Spec != proto.Spec_SpecBloodDeathKnight {
 				return
 			}
+
+			setBonusAura.ExposeToAPL(138197)
 
 			rpMetrics := dk.NewRunicPowerMetrics(core.ActionID{SpellID: 138214})
 
@@ -234,12 +236,17 @@ var ItemSetBattleplateOfCyclopeanDread = core.NewItemSet(core.ItemSet{
 					deathShroudAura.Activate(sim)
 					deathShroudAura.AddStack(sim)
 				},
-			})
+			}).ExposeToAPL(144899)
 		},
 		4: func(agent core.Agent, setBonusAura *core.Aura) {
 			// Death Coil increases the duration of Dark Transformation by 2.0 sec per cast.
 			// Special attacks while Pillar of Frost is active will impale your target with an icy spike.
 			dk := agent.(DeathKnightAgent).GetDeathKnight()
+			if dk.Spec == proto.Spec_SpecBloodDeathKnight {
+				return
+			}
+
+			setBonusAura.ExposeToAPL(144907)
 
 			if dk.Spec == proto.Spec_SpecUnholyDeathKnight {
 				setBonusAura.AttachProcTrigger(core.ProcTrigger{
@@ -344,7 +351,7 @@ var ItemSetPlateOfCyclopeanDread = core.NewItemSet(core.ItemSet{
 					boneWallDriver.Activate(sim)
 					boneWallDriver.AddStack(sim)
 				},
-			})
+			}).ExposeToAPL(144934)
 		},
 		4: func(agent core.Agent, setBonusAura *core.Aura) {
 			// Dancing Rune Weapon will reactivate all Frost and Unholy runes and convert them to Death runes.
@@ -362,7 +369,7 @@ var ItemSetPlateOfCyclopeanDread = core.NewItemSet(core.ItemSet{
 				Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 					dk.RegenAllFrostAndUnholyRunesAsDeath(sim, deathRuneMetrics)
 				},
-			})
+			}).ExposeToAPL(144950)
 		},
 	},
 })

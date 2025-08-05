@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/wowsims/mop/sim/core"
+	"github.com/wowsims/mop/sim/core/proto"
 	"github.com/wowsims/mop/sim/core/stats"
 )
 
@@ -12,9 +13,10 @@ func (mage *Mage) registerArmorSpells() {
 	mageArmorEffectCategory := "MageArmors"
 
 	moltenArmor := mage.RegisterAura(core.Aura{
-		Label:    "Molten Armor",
-		ActionID: core.ActionID{SpellID: 30482},
-		Duration: core.NeverExpires,
+		Label:      "Molten Armor",
+		ActionID:   core.ActionID{SpellID: 30482},
+		Duration:   core.NeverExpires,
+		BuildPhase: core.Ternary(mage.Options.DefaultMageArmor == proto.MageArmor_MageArmorMoltenArmor, core.CharacterBuildPhaseBuffs, core.CharacterBuildPhaseNone),
 	}).AttachStatBuff(stats.SpellCritPercent, 5)
 
 	moltenArmor.NewExclusiveEffect(mageArmorEffectCategory, true, core.ExclusiveEffect{})
@@ -41,9 +43,10 @@ func (mage *Mage) registerArmorSpells() {
 	})
 
 	mageArmor := mage.RegisterAura(core.Aura{
-		ActionID: core.ActionID{SpellID: 6117},
-		Label:    "Mage Armor",
-		Duration: core.NeverExpires,
+		ActionID:   core.ActionID{SpellID: 6117},
+		Label:      "Mage Armor",
+		Duration:   core.NeverExpires,
+		BuildPhase: core.Ternary(mage.Options.DefaultMageArmor == proto.MageArmor_MageArmorMageArmor, core.CharacterBuildPhaseBuffs, core.CharacterBuildPhaseNone),
 	}).AttachStatBuff(stats.MasteryRating, 3000.0)
 
 	mageArmor.NewExclusiveEffect(mageArmorEffectCategory, true, core.ExclusiveEffect{})
@@ -70,9 +73,10 @@ func (mage *Mage) registerArmorSpells() {
 	})
 
 	frostArmor := mage.RegisterAura(core.Aura{
-		ActionID: core.ActionID{SpellID: 7302},
-		Label:    "Frost Armor",
-		Duration: core.NeverExpires,
+		ActionID:   core.ActionID{SpellID: 7302},
+		Label:      "Frost Armor",
+		Duration:   core.NeverExpires,
+		BuildPhase: core.Ternary(mage.Options.DefaultMageArmor == proto.MageArmor_MageArmorFrostArmor, core.CharacterBuildPhaseBuffs, core.CharacterBuildPhaseNone),
 	}).AttachMultiplyCastSpeed(1.07)
 
 	frostArmor.NewExclusiveEffect(mageArmorEffectCategory, true, core.ExclusiveEffect{})
@@ -97,4 +101,13 @@ func (mage *Mage) registerArmorSpells() {
 			frostArmor.Activate(sim)
 		},
 	})
+
+	switch mage.Options.DefaultMageArmor {
+	case proto.MageArmor_MageArmorFrostArmor:
+		core.MakePermanent(frostArmor)
+	case proto.MageArmor_MageArmorMageArmor:
+		core.MakePermanent(mageArmor)
+	case proto.MageArmor_MageArmorMoltenArmor:
+		core.MakePermanent(moltenArmor)
+	}
 }

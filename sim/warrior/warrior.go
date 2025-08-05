@@ -122,13 +122,13 @@ type Warrior struct {
 	BerserkerRageAura   *core.Aura
 	ShieldBlockAura     *core.Aura
 	LastStandAura       *core.Aura
-	RallyingCryAura     *core.Aura
 	VictoryRushAura     *core.Aura
 	ShieldBarrierAura   *core.DamageAbsorptionAura
 
 	SkullBannerAura         *core.Aura
 	DemoralizingBannerAuras core.AuraArray
 
+	RallyingCryAuras       core.AuraArray
 	DemoralizingShoutAuras core.AuraArray
 	SunderArmorAuras       core.AuraArray
 	ThunderClapAuras       core.AuraArray

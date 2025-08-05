@@ -110,8 +110,8 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecSurvivalHunter, {
 		gear: [Presets.PRERAID_PRESET_GEAR, Presets.PRERAID_CELESTIAL_PRESET_GEAR, Presets.P1_PRESET_GEAR],
 	},
 
-	autoRotation: (_: Player<Spec.SpecSurvivalHunter>): APLRotation => {
-		return Presets.ROTATION_PRESET_SV.rotation.rotation!;
+	autoRotation: (player: Player<Spec.SpecSurvivalHunter>): APLRotation => {
+		return player.sim.encounter.targets.length >= 3 ? Presets.ROTATION_PRESET_AOE.rotation.rotation! : Presets.ROTATION_PRESET_SV.rotation.rotation!;
 	},
 
 	raidSimPresets: [

@@ -47,7 +47,7 @@ func (mmHunter *MarksmanshipHunter) getAimedShotSpell(spellID int32, isMasterMar
 			Cost: 50,
 		},
 		Cast:             normalCast,
-		DamageMultiplier: 4.95,
+		DamageMultiplier: 4.725,
 		CritMultiplier:   mmHunter.DefaultCritMultiplier(),
 		ThreatMultiplier: 1,
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {

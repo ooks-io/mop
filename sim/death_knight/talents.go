@@ -54,21 +54,28 @@ func (dk *DeathKnight) registerRoilingBlood() {
 	}
 
 	core.MakeProcTriggerAura(&dk.Unit, core.ProcTrigger{
-		Name:           "Roiling Blood" + dk.Label,
-		ActionID:       core.ActionID{SpellID: 108170},
-		Callback:       core.CallbackOnSpellHitDealt,
-		ClassSpellMask: DeathKnightSpellBloodBoil,
-		Outcome:        core.OutcomeLanded,
-		ICD:            core.SpellBatchWindow,
+		Name:            "Roiling Blood" + dk.Label,
+		MetricsActionID: core.ActionID{SpellID: 108170},
+		Callback:        core.CallbackOnSpellHitDealt,
+		ClassSpellMask:  DeathKnightSpellBloodBoil,
+		Outcome:         core.OutcomeLanded,
+		ICD:             core.SpellBatchWindow,
 
 		ExtraCondition: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) bool {
 			return dk.DiseasesAreActive(result.Target)
 		},
 
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			dk.PestilenceSpell.Cost.PercentModifier -= 100
+			costModifier := dk.PestilenceSpell.Cost.PercentModifier
+			gcd := dk.PestilenceSpell.DefaultCast.GCD
+
+			dk.PestilenceSpell.Cost.PercentModifier = 0
+			dk.PestilenceSpell.DefaultCast.GCD = 0
+
 			dk.PestilenceSpell.Cast(sim, result.Target)
-			dk.PestilenceSpell.Cost.PercentModifier += 100
+
+			dk.PestilenceSpell.DefaultCast.GCD = gcd
+			dk.PestilenceSpell.Cost.PercentModifier = costModifier
 		},
 	})
 }
@@ -271,9 +278,7 @@ func (dk *DeathKnight) registerAntiMagicZone() {
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			for _, unit := range sim.Raid.AllUnits {
-				antiMagicZoneAuras.Get(unit).Activate(sim)
-			}
+			antiMagicZoneAuras.ActivateAll(sim)
 		},
 
 		RelatedAuraArrays: antiMagicZoneAuras.ToMap(),

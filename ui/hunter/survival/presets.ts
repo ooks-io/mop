@@ -53,19 +53,19 @@ export const PRERAID_PRESET = PresetUtils.makePresetBuild('Pre-raid', {
 	gear: PRERAID_PRESET_GEAR,
 	epWeights: P1_EP_PRESET,
 	talents: DefaultTalents,
-	rotationType: APLRotationType.TypeAPL,
+	rotationType: APLRotationType.TypeAuto,
 });
 export const PRERAID_PRESET_CELESTIAL = PresetUtils.makePresetBuild('Pre-raid (Celestial)', {
 	gear: PRERAID_CELESTIAL_PRESET_GEAR,
 	epWeights: P1_EP_PRESET,
 	talents: DefaultTalents,
-	rotationType: APLRotationType.TypeAPL,
+	rotationType: APLRotationType.TypeAuto,
 });
 export const P1_PRESET = PresetUtils.makePresetBuild('P1', {
 	gear: P1_PRESET_GEAR,
 	epWeights: P1_EP_PRESET as PresetUtils.PresetEpWeights,
 	talents: DefaultTalents,
-	rotationType: APLRotationType.TypeAPL,
+	rotationType: APLRotationType.TypeAuto,
 });
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/wotlk/talent-calc and copy the numbers in the url.
@@ -75,6 +75,7 @@ export const SVDefaultOptions = HunterOptions.create({
 		useHuntersMark: true,
 		petType: PetType.Wolf,
 		petUptime: 1,
+		glaiveTossSuccess: 0.8,
 	},
 });
 
@@ -90,5 +91,4 @@ export const OtherDefaults = {
 	iterationCount: 25000,
 	profession1: Profession.Engineering,
 	profession2: Profession.Leatherworking,
-	GlaiveTossChance: 80,
 };

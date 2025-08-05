@@ -16,7 +16,7 @@ func (monk *Monk) registerStormEarthAndFire() {
 	}
 
 	var sefTarget *core.Unit
-	damageMultiplier := []float64{1, 0.70, 0.55}
+	damageMultiplier := []float64{1, 0.70 - 0.1, 0.55 - 0.1} // 2025-07-21 - Storm, Earth, and Fire damage multiplier reduced by 10%
 
 	sefAura := monk.RegisterAura(core.Aura{
 		Label:     "Storm, Earth, and Fire",

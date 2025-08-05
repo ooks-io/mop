@@ -21,7 +21,7 @@ func TestArcane(t *testing.T) {
 
 			GearSet: core.GetGearSet("../../../ui/mage/arcane/gear_sets", "p1_bis"),
 			OtherGearSets: []core.GearSetCombo{
-				core.GetGearSet("../../../ui/mage/arcane/gear_sets", "prebis"),
+				core.GetGearSet("../../../ui/mage/arcane/gear_sets", "p1_prebis"),
 			},
 			Talents:         ArcaneTalents,
 			OtherTalentSets: core.GenerateTalentVariationsForRows(ArcaneTalents, ArcaneGlyphs, []int{4, 5}),
@@ -62,7 +62,9 @@ var ArcaneGlyphs = &proto.Glyphs{
 var PlayerOptionsArcane = &proto.Player_ArcaneMage{
 	ArcaneMage: &proto.ArcaneMage{
 		Options: &proto.ArcaneMage_Options{
-			ClassOptions: &proto.MageOptions{},
+			ClassOptions: &proto.MageOptions{
+				DefaultMageArmor: proto.MageArmor_MageArmorFrostArmor,
+			},
 		},
 	},
 }

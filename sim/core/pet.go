@@ -271,14 +271,18 @@ func (pet *Pet) Enable(sim *Simulation, petAgent PetAgent) {
 		// make sure to reset it to refresh focus
 		pet.focusBar.reset(sim)
 		pet.focusBar.enable(sim, sim.CurrentTime)
-		pet.focusBar.focusRegenMultiplier *= pet.Owner.PseudoStats.AttackSpeedMultiplier
+		if pet.hasResourceRegenInheritance {
+			pet.focusBar.focusRegenMultiplier *= pet.Owner.PseudoStats.AttackSpeedMultiplier
+		}
 	}
 
 	if pet.HasEnergyBar() {
 		// make sure to reset it to refresh energy
 		pet.energyBar.reset(sim)
 		pet.energyBar.enable(sim, sim.CurrentTime)
-		pet.energyBar.energyRegenMultiplier *= pet.Owner.PseudoStats.AttackSpeedMultiplier
+		if pet.hasResourceRegenInheritance {
+			pet.energyBar.energyRegenMultiplier *= pet.Owner.PseudoStats.AttackSpeedMultiplier
+		}
 	}
 }
 
@@ -313,7 +317,7 @@ func (pet *Pet) enableDynamicMeleeSpeed(sim *Simulation) {
 		panic("Pet already present in dynamic melee speed pet list!")
 	}
 
-	if math.Abs(pet.inheritedMeleeSpeedMultiplier - 1) > 1e-14 {
+	if math.Abs(pet.inheritedMeleeSpeedMultiplier-1) > 1e-14 {
 		panic(fmt.Sprintf("Pet melee speed multiplier was not reset properly! Current inherited value = %.17f", pet.inheritedMeleeSpeedMultiplier))
 	}
 
@@ -338,7 +342,7 @@ func (pet *Pet) resetDynamicMeleeSpeed(sim *Simulation) {
 		panic("Pet not present in dynamic melee speed pet list!")
 	}
 
-	pet.dynamicMeleeSpeedInheritance(sim, 1 / pet.inheritedMeleeSpeedMultiplier)
+	pet.dynamicMeleeSpeedInheritance(sim, 1/pet.inheritedMeleeSpeedMultiplier)
 	pet.dynamicMeleeSpeedInheritance = nil
 }
 
@@ -347,7 +351,7 @@ func (pet *Pet) enableDynamicCastSpeed(sim *Simulation) {
 		panic("Pet already present in dynamic cast speed pet list!")
 	}
 
-	if math.Abs(pet.inheritedCastSpeedMultiplier - 1) > 1e-14 {
+	if math.Abs(pet.inheritedCastSpeedMultiplier-1) > 1e-14 {
 		panic(fmt.Sprintf("Pet cast speed multiplier was not reset properly! Current inherited value = %.17f", pet.inheritedCastSpeedMultiplier))
 	}
 
@@ -371,7 +375,7 @@ func (pet *Pet) resetDynamicCastSpeed(sim *Simulation) {
 		panic("Pet not present in dynamic cast speed pet list!")
 	}
 
-	pet.dynamicCastSpeedInheritance(sim, 1 / pet.inheritedCastSpeedMultiplier)
+	pet.dynamicCastSpeedInheritance(sim, 1/pet.inheritedCastSpeedMultiplier)
 	pet.dynamicCastSpeedInheritance = nil
 }
 

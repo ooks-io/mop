@@ -4,7 +4,7 @@ character_stats_results: {
   final_stats: 194.25
   final_stats: 185.85
   final_stats: 15944.5
-  final_stats: 15315.3
+  final_stats: 16081.065
   final_stats: 4680
   final_stats: 5553
   final_stats: 950
@@ -15,7 +15,7 @@ character_stats_results: {
   final_stats: 5246
   final_stats: 499.675
   final_stats: 0
-  final_stats: 23229.03
+  final_stats: 24071.3715
   final_stats: 0
   final_stats: 0
   final_stats: 9733.2
@@ -26,1607 +26,1607 @@ character_stats_results: {
   final_stats: 16.33235
   final_stats: 16.33235
   final_stats: 14.21089
-  final_stats: 14.47813
+  final_stats: 14.78037
   final_stats: 0
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-AgilePrimalDiamond"
  value: {
-  dps: 89713.82595
-  tps: 91062.60752
-  hps: 13985.61384
+  dps: 89796.95448
+  tps: 91145.14155
+  hps: 13692.67411
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-AssuranceofConsequence-105472"
  value: {
-  dps: 87113.45226
-  tps: 88479.39662
-  hps: 13801.39341
+  dps: 86810.35389
+  tps: 88181.04926
+  hps: 13503.68871
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-AusterePrimalDiamond"
  value: {
-  dps: 89159.16229
-  tps: 90513.53153
-  hps: 14020.56865
+  dps: 89221.12747
+  tps: 90575.30186
+  hps: 13722.44888
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-BurningPrimalDiamond"
  value: {
-  dps: 90551.0285
-  tps: 91891.84148
-  hps: 14043.8021
+  dps: 90738.48936
+  tps: 92084.18346
+  hps: 13689.1069
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-CapacitivePrimalDiamond"
  value: {
-  dps: 89782.04096
-  tps: 91136.80324
-  hps: 14042.00434
+  dps: 89608.08565
+  tps: 90953.32004
+  hps: 13656.28796
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-CourageousPrimalDiamond"
  value: {
-  dps: 90666.33706
-  tps: 92007.14688
-  hps: 14057.81052
+  dps: 90629.65769
+  tps: 91974.26193
+  hps: 13682.33504
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-DelicateVialoftheSanguinaire-96895"
  value: {
-  dps: 87113.45226
-  tps: 88479.39662
-  hps: 13801.39341
+  dps: 86810.35389
+  tps: 88181.04926
+  hps: 13503.68871
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-DestructivePrimalDiamond"
  value: {
-  dps: 90093.2851
-  tps: 91444.63238
-  hps: 14037.82867
+  dps: 89917.69804
+  tps: 91260.33288
+  hps: 13589.19316
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-EffulgentPrimalDiamond"
  value: {
-  dps: 89159.16229
-  tps: 90513.53153
-  hps: 14020.56865
+  dps: 89221.12747
+  tps: 90575.30186
+  hps: 13722.44888
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-EmberPrimalDiamond"
  value: {
-  dps: 89989.54105
-  tps: 91335.98895
-  hps: 13991.28706
+  dps: 90151.9001
+  tps: 91503.63266
+  hps: 13635.2301
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-EnchantWeapon-BloodyDancingSteel-5125"
  value: {
-  dps: 87893.39149
-  tps: 89291.95953
-  hps: 13772.02306
+  dps: 87793.20836
+  tps: 89194.66195
+  hps: 13478.74343
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-EnchantWeapon-Colossus-4445"
  value: {
-  dps: 87893.39149
-  tps: 89291.95953
-  hps: 13772.02306
+  dps: 87793.20836
+  tps: 89194.66195
+  hps: 13478.74343
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-EnchantWeapon-DancingSteel-4444"
  value: {
-  dps: 87893.39149
-  tps: 89291.95953
-  hps: 13772.02306
+  dps: 87793.20836
+  tps: 89194.66195
+  hps: 13478.74343
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-EnchantWeapon-ElementalForce-4443"
  value: {
-  dps: 89400.43876
-  tps: 90806.00281
-  hps: 13813.17139
+  dps: 89546.13332
+  tps: 90925.6875
+  hps: 13533.15762
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
-  dps: 87893.39149
-  tps: 89291.95953
-  hps: 13772.02306
+  dps: 87793.20836
+  tps: 89194.66195
+  hps: 13478.74343
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-EnchantWeapon-SpiritofConquest-5124"
  value: {
-  dps: 87893.39149
-  tps: 89291.95953
-  hps: 13772.02306
+  dps: 87793.20836
+  tps: 89194.66195
+  hps: 13478.74343
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-EnchantWeapon-Windsong-4441"
  value: {
-  dps: 91349.36974
-  tps: 92758.08621
-  hps: 13920.15336
+  dps: 91119.50739
+  tps: 92525.90157
+  hps: 13564.54312
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-EnigmaticPrimalDiamond"
  value: {
-  dps: 90093.2851
-  tps: 91444.63238
-  hps: 14037.82867
+  dps: 89917.69804
+  tps: 91260.33288
+  hps: 13589.19316
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-EternalPrimalDiamond"
  value: {
-  dps: 89159.16229
-  tps: 90513.53153
-  hps: 13933.50468
+  dps: 89221.12747
+  tps: 90575.30186
+  hps: 13638.68342
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-EvilEyeofGalakras-105491"
  value: {
-  dps: 87113.45226
-  tps: 88479.39662
-  hps: 13801.39341
+  dps: 86810.35389
+  tps: 88181.04926
+  hps: 13503.68871
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-FabledFeatherofJi-Kun-96842"
  value: {
-  dps: 87113.45226
-  tps: 88479.39662
-  hps: 13801.39341
+  dps: 86810.35389
+  tps: 88181.04926
+  hps: 13503.68871
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-Fen-Yu,FuryofXuen-102248"
  value: {
-  dps: 91084.98523
-  tps: 92487.10118
-  hps: 14478.7036
+  dps: 90455.21941
+  tps: 91880.26769
+  hps: 14132.97608
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-FleetPrimalDiamond"
  value: {
-  dps: 89762.13187
-  tps: 91116.50111
-  hps: 13986.70192
+  dps: 89829.56868
+  tps: 91183.74306
+  hps: 13690.8567
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-ForlornPrimalDiamond"
  value: {
-  dps: 89989.54105
-  tps: 91335.98895
-  hps: 13991.28706
+  dps: 90151.9001
+  tps: 91503.63266
+  hps: 13635.2301
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-GazeoftheTwins-96915"
  value: {
-  dps: 89599.19256
-  tps: 90972.15805
-  hps: 13992.51738
+  dps: 89574.39013
+  tps: 90943.14993
+  hps: 13797.72398
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-Gong-Lu,StrengthofXuen-102249"
  value: {
-  dps: 91084.98523
-  tps: 92487.10118
-  hps: 14478.7036
+  dps: 90455.21941
+  tps: 91880.26769
+  hps: 14132.97608
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-Horridon'sLastGasp-96757"
  value: {
-  dps: 94763.69991
-  tps: 96078.42918
-  hps: 14288.39533
+  dps: 94502.9442
+  tps: 95803.73673
+  hps: 14014.14284
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-ImpassivePrimalDiamond"
  value: {
-  dps: 90093.2851
-  tps: 91444.63238
-  hps: 14037.82867
+  dps: 89917.69804
+  tps: 91260.33288
+  hps: 13589.19316
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-IndomitablePrimalDiamond"
  value: {
-  dps: 89159.16229
-  tps: 90513.53153
-  hps: 14020.56865
+  dps: 89221.12747
+  tps: 90575.30186
+  hps: 13722.44888
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-InscribedBagofHydra-Spawn-96828"
  value: {
-  dps: 87113.45226
-  tps: 88476.60934
-  hps: 13801.39341
+  dps: 86810.35389
+  tps: 88178.19314
+  hps: 13503.68871
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-Ji-Kun'sRisingWinds-96843"
  value: {
-  dps: 87113.45226
-  tps: 88479.39662
-  hps: 13801.39341
+  dps: 86810.35389
+  tps: 88181.04926
+  hps: 13503.68871
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-NitroBoosts-4223"
  value: {
-  dps: 90551.0285
-  tps: 91891.84148
-  hps: 14043.8021
+  dps: 90738.48936
+  tps: 92084.18346
+  hps: 13689.1069
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-PhaseFingers-4697"
  value: {
-  dps: 90472.82797
-  tps: 91885.02619
-  hps: 13942.22105
+  dps: 90910.10178
+  tps: 92324.91451
+  hps: 13686.68287
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-PowerfulPrimalDiamond"
  value: {
-  dps: 89159.16229
-  tps: 90513.53153
-  hps: 14020.56865
+  dps: 89221.12747
+  tps: 90575.30186
+  hps: 13722.44888
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-PriceofProgress-81266"
  value: {
-  dps: 90551.0285
-  tps: 91891.84148
-  hps: 14043.8021
+  dps: 90738.48936
+  tps: 92084.18346
+  hps: 13689.1069
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-Primordius'TalismanofRage-96873"
  value: {
-  dps: 90466.52564
-  tps: 91856.94406
-  hps: 14094.87043
+  dps: 90353.46676
+  tps: 91755.3756
+  hps: 13724.31701
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-Qian-Le,CourageofNiuzao-102245"
  value: {
-  dps: 89638.89395
-  tps: 91081.90538
-  hps: 14533.3981
+  dps: 89321.01565
+  tps: 90758.5007
+  hps: 14245.98595
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-Qian-Ying,FortitudeofNiuzao-102250"
  value: {
-  dps: 87708.44284
-  tps: 89136.75008
-  hps: 14532.65889
+  dps: 87506.07354
+  tps: 88924.21485
+  hps: 14175.42992
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-RegaliaoftheEternalBlossom"
  value: {
-  dps: 96269.60362
-  tps: 97796.49717
-  hps: 15503.20616
+  dps: 95247.24667
+  tps: 96771.07258
+  hps: 15273.24137
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-RegaliaoftheHauntedForest"
  value: {
-  dps: 105443.862
-  tps: 106861.50792
-  hps: 16610.40327
+  dps: 104858.34638
+  tps: 106261.92909
+  hps: 16118.72358
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-RegaliaoftheShatteredVale"
  value: {
-  dps: 103939.40236
-  tps: 105494.51204
-  hps: 17367.35282
+  dps: 104899.18169
+  tps: 106463.85717
+  hps: 16952.42367
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-Renataki'sSoulCharm-96741"
  value: {
-  dps: 87113.45226
-  tps: 88479.39662
-  hps: 13801.39341
+  dps: 86810.35389
+  tps: 88181.04926
+  hps: 13503.68871
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-ReverberatingPrimalDiamond"
  value: {
-  dps: 89713.82595
-  tps: 91062.60752
-  hps: 13985.61384
+  dps: 89796.95448
+  tps: 91145.14155
+  hps: 13692.67411
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-RevitalizingPrimalDiamond"
  value: {
-  dps: 89713.82595
-  tps: 91061.90915
-  hps: 13985.61384
+  dps: 89796.95448
+  tps: 91144.42593
+  hps: 13692.67411
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-SinisterPrimalDiamond"
  value: {
-  dps: 89782.04096
-  tps: 91136.80324
-  hps: 14042.00434
+  dps: 89608.08565
+  tps: 90953.32004
+  hps: 13656.28796
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-SynapseSprings(MarkII)-4898"
  value: {
-  dps: 92260.49766
-  tps: 93669.13589
-  hps: 14091.71004
+  dps: 92508.65195
+  tps: 93922.36468
+  hps: 13800.87805
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-TalismanofBloodlust-96864"
  value: {
-  dps: 90979.25464
-  tps: 92467.84
-  hps: 14172.68116
+  dps: 90252.4351
+  tps: 91729.34238
+  hps: 13848.78147
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-TheGloamingBlade-88149"
  value: {
-  dps: 90551.0285
-  tps: 91891.84148
-  hps: 14043.8021
+  dps: 90738.48936
+  tps: 92084.18346
+  hps: 13689.1069
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-TyrannicalPrimalDiamond"
  value: {
-  dps: 89159.16229
-  tps: 90513.53153
-  hps: 13933.50468
+  dps: 89221.12747
+  tps: 90575.30186
+  hps: 13638.68342
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-UnerringVisionofLeiShen-96930"
  value: {
-  dps: 97659.14159
-  tps: 99015.64337
-  hps: 14504.77437
+  dps: 97625.13257
+  tps: 99005.3296
+  hps: 14173.04642
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-Wushoolay'sFinalChoice-96785"
  value: {
-  dps: 98946.81925
-  tps: 100078.72457
-  hps: 14635.83245
+  dps: 98361.68432
+  tps: 99467.76929
+  hps: 14242.63415
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-Xing-Ho,BreathofYu'lon-102246"
  value: {
-  dps: 118809.67637
-  tps: 120174.11596
-  hps: 15146.28009
+  dps: 119216.5305
+  tps: 120579.01759
+  hps: 14696.89374
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-YaungolFireCarrier-86518"
  value: {
-  dps: 90551.0285
-  tps: 91891.84148
-  hps: 14043.8021
+  dps: 90738.48936
+  tps: 92084.18346
+  hps: 13689.1069
  }
 }
 dps_results: {
  key: "TestBalance-AllItems-ZenAlchemistStone-75274"
  value: {
-  dps: 93706.27434
-  tps: 94910.99396
-  hps: 14306.64312
+  dps: 93686.43637
+  tps: 94891.43136
+  hps: 13956.49456
  }
 }
 dps_results: {
  key: "TestBalance-Average-Default"
  value: {
-  dps: 91536.70442
-  tps: 92875.26317
-  hps: 14156.52991
+  dps: 91477.03325
+  tps: 92814.20406
+  hps: 13824.41064
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 120886.64806
-  tps: 148820.11605
-  hps: 7933.53251
+  dps: 120852.14072
+  tps: 148826.8635
+  hps: 7661.43527
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 88753.90935
-  tps: 90063.41297
-  hps: 14006.53319
+  dps: 88634.9238
+  tps: 89940.9759
+  hps: 13713.94489
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-DefaultTalents-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 126758.27888
-  tps: 124828.99697
-  hps: 18132.9308
+  dps: 126764.98105
+  tps: 124794.09159
+  hps: 17833.81989
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 69578.44348
-  tps: 91133.10729
-  hps: 6671.88672
+  dps: 70272.8029
+  tps: 92821.1172
+  hps: 6527.0119
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 55810.29681
-  tps: 57946.945
-  hps: 11886.97728
+  dps: 55699.57845
+  tps: 57841.20917
+  hps: 11600.42652
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-DefaultTalents-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 66267.71548
-  tps: 68025.33143
-  hps: 13896.42945
+  dps: 66003.98633
+  tps: 67764.3649
+  hps: 13595.77081
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 11980.51342
-  tps: 16468.99742
-  hps: 17168.78699
+  dps: 11959.03908
+  tps: 16447.6413
+  hps: 16860.95753
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 88154.36206
-  tps: 81932.74502
-  hps: 6233.56069
+  dps: 88577.856
+  tps: 82066.51427
+  hps: 6000.34648
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 124451.9971
-  tps: 108199.51636
-  hps: 7650.94953
+  dps: 124841.9363
+  tps: 108050.17655
+  hps: 7398.62794
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 8823.47383
-  tps: 13823.47383
-  hps: 14041.38319
+  dps: 8804.30991
+  tps: 13804.30991
+  hps: 13724.78461
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 57111.21569
-  tps: 53710.33202
-  hps: 5674.61006
+  dps: 57054.37529
+  tps: 53495.01532
+  hps: 5457.92195
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-FoN + HotW-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 61189.16561
-  tps: 56329.10214
-  hps: 6849.00238
+  dps: 61253.34768
+  tps: 56200.24436
+  hps: 6614.32015
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 31999.22221
-  tps: 32810.63087
-  hps: 11464.84796
+  dps: 32229.32013
+  tps: 33037.64015
+  hps: 11206.76948
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 87178.36769
-  tps: 88305.10771
-  hps: 6749.67846
+  dps: 87389.97825
+  tps: 88506.37025
+  hps: 6521.35891
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-Incarnation + NV-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 128855.84731
-  tps: 125951.8474
-  hps: 8977.69795
+  dps: 128977.74301
+  tps: 126025.20305
+  hps: 8688.44969
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 29855.17753
-  tps: 34479.74134
-  hps: 8807.45398
+  dps: 29954.63945
+  tps: 34611.65375
+  hps: 8396.96582
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 54654.20802
-  tps: 56710.12121
-  hps: 6098.94663
+  dps: 54358.16744
+  tps: 56414.17315
+  hps: 5894.3744
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-Incarnation + NV-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 64821.5378
-  tps: 66944.32875
-  hps: 7951.30507
+  dps: 64504.83042
+  tps: 66630.25899
+  hps: 7679.97022
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 219895.72592
-  tps: 261762.01725
-  hps: 9905.55493
+  dps: 217333.6626
+  tps: 259286.21811
+  hps: 9502.34339
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 139746.64312
-  tps: 141028.59812
-  hps: 19431.89189
+  dps: 139141.14361
+  tps: 140410.10226
+  hps: 18911.5392
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-DefaultTalents-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 202716.02146
-  tps: 198791.32148
-  hps: 23277.48723
+  dps: 202381.40971
+  tps: 198422.25299
+  hps: 22785.69373
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 140694.50926
-  tps: 178926.91632
-  hps: 8633.72961
+  dps: 142051.30605
+  tps: 180832.43994
+  hps: 8375.87034
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 91134.61939
-  tps: 93578.77474
-  hps: 16110.20825
+  dps: 90774.95767
+  tps: 93217.59937
+  hps: 15767.95598
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-DefaultTalents-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 105982.56301
-  tps: 108407.58978
-  hps: 19363.5765
+  dps: 105373.55791
+  tps: 107800.11638
+  hps: 18702.85974
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 22002.5319
-  tps: 26326.40486
-  hps: 22054.30822
+  dps: 21577.69346
+  tps: 25903.19335
+  hps: 21687.6368
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 136220.35828
-  tps: 127298.96081
-  hps: 7750.91605
+  dps: 137160.11761
+  tps: 127860.38823
+  hps: 7446.60199
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 187715.57003
-  tps: 164617.72623
-  hps: 9478.3457
+  dps: 188179.58238
+  tps: 164293.67292
+  hps: 9174.307
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 14935.78158
-  tps: 19935.78158
-  hps: 18085.24113
+  dps: 14879.21016
+  tps: 19879.21016
+  hps: 17706.59259
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 90309.83559
-  tps: 85613.15956
-  hps: 7055.48614
+  dps: 89937.61356
+  tps: 85099.97087
+  hps: 6776.65904
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-FoN + HotW-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 102514.18923
-  tps: 94477.71174
-  hps: 8580.13757
+  dps: 102678.16655
+  tps: 94330.77431
+  hps: 8272.36971
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 41580.73262
-  tps: 40570.87719
-  hps: 14603.23465
+  dps: 42354.08239
+  tps: 41334.15557
+  hps: 14301.12345
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 137071.27745
-  tps: 137940.63964
-  hps: 8512.93288
+  dps: 136228.10145
+  tps: 137108.87298
+  hps: 8196.47558
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-Incarnation + NV-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 200083.98594
-  tps: 194929.62185
-  hps: 11186.46991
+  dps: 199527.33252
+  tps: 194314.5652
+  hps: 10815.44171
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 105840.60965
-  tps: 143035.51671
-  hps: 16399.49561
+  dps: 108343.20636
+  tps: 146588.54025
+  hps: 16328.46495
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 88106.10374
-  tps: 90424.01409
-  hps: 7627.97994
+  dps: 87671.20402
+  tps: 90000.76571
+  hps: 7305.98335
  }
 }
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-Incarnation + NV-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 107251.51314
-  tps: 109401.01491
-  hps: 9942.25317
+  dps: 106953.87667
+  tps: 109099.66014
+  hps: 9611.95947
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 120562.69397
-  tps: 148204.34846
-  hps: 8056.41884
+  dps: 120505.63978
+  tps: 148491.94913
+  hps: 7776.16027
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 88711.20746
-  tps: 90020.84882
-  hps: 14116.61915
+  dps: 88619.64291
+  tps: 89925.83535
+  hps: 13836.13227
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-DefaultTalents-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 126737.53674
-  tps: 124808.94354
-  hps: 18273.78076
+  dps: 126743.94711
+  tps: 124773.75931
+  hps: 17968.89598
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 69960.15071
-  tps: 91994.37709
-  hps: 6853.96149
+  dps: 70259.39213
+  tps: 92807.66807
+  hps: 6639.16074
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 55800.00247
-  tps: 57936.64878
-  hps: 12011.95902
+  dps: 55684.951
+  tps: 57826.77979
+  hps: 11715.45958
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-DefaultTalents-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 66255.56283
-  tps: 68013.16943
-  hps: 14036.51577
+  dps: 65991.67728
+  tps: 67752.04626
+  hps: 13730.41573
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 11978.34504
-  tps: 16466.90944
-  hps: 17262.75333
+  dps: 11956.84504
+  tps: 16445.52842
+  hps: 16951.22974
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 88139.24362
-  tps: 81918.81179
-  hps: 6346.5648
+  dps: 88562.4516
+  tps: 82052.35786
+  hps: 6108.96647
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 124431.8241
-  tps: 108181.87716
-  hps: 7764.72269
+  dps: 124821.4307
+  tps: 108032.31956
+  hps: 7508.01371
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 8821.78169
-  tps: 13821.78169
-  hps: 14135.6411
+  dps: 8802.59497
+  tps: 13802.59497
+  hps: 13815.35453
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 57100.70324
-  tps: 53700.61097
-  hps: 5784.62573
+  dps: 57043.70532
+  tps: 53485.1788
+  hps: 5563.61951
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-FoN + HotW-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 61177.99515
-  tps: 56318.93105
-  hps: 6961.58518
+  dps: 61241.98227
+  tps: 56189.93005
+  hps: 6722.56419
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 31992.33838
-  tps: 32803.84617
-  hps: 11565.3978
+  dps: 32223.8464
+  tps: 33032.26575
+  hps: 11303.33941
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 87166.0919
-  tps: 88293.0905
-  hps: 6872.38084
+  dps: 87374.9067
+  tps: 88491.46024
+  hps: 6639.78462
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-Incarnation + NV-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 128834.74863
-  tps: 125931.5416
-  hps: 9113.25607
+  dps: 128956.33108
+  tps: 126004.59874
+  hps: 8818.7794
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 29849.59693
-  tps: 34474.12331
-  hps: 8910.27039
+  dps: 29944.83556
+  tps: 34601.8115
+  hps: 8495.78799
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 54644.12761
-  tps: 56700.03893
-  hps: 6218.93106
+  dps: 54347.9634
+  tps: 56403.9672
+  hps: 6009.9005
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-Incarnation + NV-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 64809.63813
-  tps: 66932.41972
-  hps: 8086.6271
+  dps: 64492.80359
+  tps: 66618.22258
+  hps: 7810.07729
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 219865.22387
-  tps: 261731.66995
-  hps: 10026.34826
+  dps: 217118.1704
+  tps: 259038.68266
+  hps: 9601.90353
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 139625.33069
-  tps: 140907.3523
-  hps: 19556.046
+  dps: 139121.59798
+  tps: 140390.72636
+  hps: 19032.93875
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-DefaultTalents-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 202581.83266
-  tps: 198656.29072
-  hps: 23409.16532
+  dps: 202353.97895
+  tps: 198395.67082
+  hps: 22916.3441
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 140673.57678
-  tps: 178905.94067
-  hps: 8750.81737
+  dps: 142029.83093
+  tps: 180810.92058
+  hps: 8489.17471
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 91121.22428
-  tps: 93565.37747
-  hps: 16233.42831
+  dps: 90761.36634
+  tps: 93204.00582
+  hps: 15886.42829
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-DefaultTalents-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 105967.08139
-  tps: 108392.09736
-  hps: 19499.92332
+  dps: 105357.89917
+  tps: 107784.44658
+  hps: 18833.58958
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 21999.24965
-  tps: 26323.21188
-  hps: 22148.09471
+  dps: 21571.80921
+  tps: 25897.39923
+  hps: 21777.72322
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 136201.2156
-  tps: 127281.17877
-  hps: 7862.74404
+  dps: 137344.49896
+  tps: 128039.41086
+  hps: 7553.88285
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 187690.38768
-  tps: 164595.56212
-  hps: 9591.93791
+  dps: 188015.16564
+  tps: 164131.90648
+  hps: 9283.69288
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 14933.44915
-  tps: 19933.44915
-  hps: 18179.35143
+  dps: 14876.84619
+  tps: 19876.84619
+  hps: 17797.01072
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 90236.77788
-  tps: 85538.68915
-  hps: 7166.16158
+  dps: 89899.11152
+  tps: 85057.50361
+  hps: 6882.82701
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-FoN + HotW-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 102479.49581
-  tps: 94444.24462
-  hps: 8690.8325
+  dps: 102662.8209
+  tps: 94316.72263
+  hps: 8378.5208
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 41575.04639
-  tps: 40565.36694
-  hps: 14702.82881
+  dps: 42346.46159
+  tps: 41326.71311
+  hps: 14396.838
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 137024.02802
-  tps: 137893.59185
-  hps: 8634.83394
+  dps: 136180.92475
+  tps: 137061.08186
+  hps: 8319.66094
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-Incarnation + NV-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 200057.34902
-  tps: 194903.9932
-  hps: 11321.00675
+  dps: 199500.39215
+  tps: 194288.65269
+  hps: 10944.61451
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 105824.60788
-  tps: 143019.47177
-  hps: 16511.04418
+  dps: 108326.53811
+  tps: 146571.82776
+  hps: 16436.01856
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 88093.13217
-  tps: 90411.04037
-  hps: 7746.454
+  dps: 87658.06039
+  tps: 89987.61987
+  hps: 7419.90916
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-Incarnation + NV-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 107235.83247
-  tps: 109385.32344
-  hps: 10073.61721
+  dps: 106937.94767
+  tps: 109083.72008
+  hps: 9738.28965
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 123981.24582
-  tps: 151559.43281
-  hps: 7894.01758
+  dps: 124406.10808
+  tps: 152840.45074
+  hps: 7650.45514
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 90551.0285
-  tps: 91891.84148
-  hps: 14043.8021
+  dps: 90738.48936
+  tps: 92084.18346
+  hps: 13689.1069
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-DefaultTalents-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 132527.81511
-  tps: 130626.03003
-  hps: 17751.88735
+  dps: 132492.41996
+  tps: 130552.41549
+  hps: 17492.90678
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 72033.93106
-  tps: 95159.78469
-  hps: 6695.54982
+  dps: 72251.1403
+  tps: 94753.64417
+  hps: 6494.56125
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 56930.96312
-  tps: 59095.0408
-  hps: 11973.64381
+  dps: 56726.70811
+  tps: 58891.51831
+  hps: 11652.83478
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-DefaultTalents-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 69545.96817
-  tps: 71329.53158
-  hps: 13891.42985
+  dps: 69332.7752
+  tps: 71186.20117
+  hps: 13564.70937
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 11978.34504
-  tps: 16466.90944
-  hps: 17167.21017
+  dps: 11956.84504
+  tps: 16445.52842
+  hps: 16859.36132
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 90700.51324
-  tps: 84279.719
-  hps: 6210.41223
+  dps: 91271.60925
+  tps: 84541.33194
+  hps: 5972.53302
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 130041.56381
-  tps: 113845.40538
-  hps: 7641.08508
+  dps: 130297.8797
+  tps: 113574.54674
+  hps: 7389.13139
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 8821.78169
-  tps: 13821.78169
-  hps: 14040.11723
+  dps: 8802.59497
+  tps: 13802.59497
+  hps: 13723.50465
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 58045.30148
-  tps: 54594.91609
-  hps: 5664.4256
+  dps: 58002.71511
+  tps: 54369.17027
+  hps: 5456.4916
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-FoN + HotW-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 64548.744
-  tps: 59474.26138
-  hps: 6798.08008
+  dps: 64544.94204
+  tps: 59253.68236
+  hps: 6565.34775
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 31992.33838
-  tps: 32803.87868
-  hps: 11464.04316
+  dps: 32223.8464
+  tps: 33032.29906
+  hps: 11205.95406
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 88948.28904
-  tps: 90108.50426
-  hps: 6831.84061
+  dps: 89140.72294
+  tps: 90288.96314
+  hps: 6552.54525
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-Incarnation + NV-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 135805.57196
-  tps: 132986.89806
-  hps: 9118.83684
+  dps: 135725.0503
+  tps: 132863.42629
+  hps: 8837.75785
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 29910.55491
-  tps: 34562.30854
-  hps: 8807.91716
+  dps: 29990.5563
+  tps: 34398.66017
+  hps: 8400.53659
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 55952.90741
-  tps: 58022.30009
-  hps: 6114.43988
+  dps: 55711.0237
+  tps: 57786.9389
+  hps: 5860.12689
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-Incarnation + NV-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 67794.54107
-  tps: 69974.85447
-  hps: 7995.44857
+  dps: 67233.89475
+  tps: 69429.79572
+  hps: 7724.80967
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 221270.18783
-  tps: 263366.56836
-  hps: 9940.44754
+  dps: 220943.6013
+  tps: 263763.34885
+  hps: 9499.84463
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 143973.3081
-  tps: 145265.47143
-  hps: 19508.15205
+  dps: 143157.24338
+  tps: 144471.11852
+  hps: 18896.18558
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-DefaultTalents-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 209967.93303
-  tps: 206132.97471
-  hps: 22890.87336
+  dps: 210379.13424
+  tps: 206513.78494
+  hps: 22580.31898
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 144553.44319
-  tps: 183820.1365
-  hps: 8661.72845
+  dps: 143366.89448
+  tps: 182301.11428
+  hps: 8357.63814
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 93030.69928
-  tps: 95514.30895
-  hps: 16028.40369
+  dps: 92701.58503
+  tps: 95184.84102
+  hps: 15623.58191
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-DefaultTalents-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 111443.69418
-  tps: 113953.64251
-  hps: 19170.74441
+  dps: 110838.75087
+  tps: 113346.18082
+  hps: 18761.97803
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 21999.24965
-  tps: 26323.21188
-  hps: 22052.55155
+  dps: 21571.80921
+  tps: 25897.39923
+  hps: 21685.8548
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 139268.34344
-  tps: 130244.1062
-  hps: 7729.45192
+  dps: 139910.23582
+  tps: 130693.51096
+  hps: 7455.70594
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 195552.12247
-  tps: 172427.34091
-  hps: 9418.61683
+  dps: 197492.16169
+  tps: 173646.67919
+  hps: 9139.74454
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 14933.44915
-  tps: 19933.44915
-  hps: 18083.82756
+  dps: 14876.84619
+  tps: 19876.84619
+  hps: 17705.16085
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 91433.64264
-  tps: 86783.84188
-  hps: 7055.44472
+  dps: 91743.17175
+  tps: 86919.58253
+  hps: 6795.33251
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-FoN + HotW-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 105672.03231
-  tps: 97762.87349
-  hps: 8562.23602
+  dps: 105684.59661
+  tps: 97469.87288
+  hps: 8272.16062
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 41575.04639
-  tps: 40565.40137
-  hps: 14602.33004
+  dps: 42346.46159
+  tps: 41326.7484
+  hps: 14300.20457
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 139196.14797
-  tps: 140143.31353
-  hps: 8500.02823
+  dps: 139461.23119
+  tps: 140384.52007
+  hps: 8179.97143
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-Incarnation + NV-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 205943.47857
-  tps: 200767.48136
-  hps: 11209.17054
+  dps: 205525.78022
+  tps: 200292.42459
+  hps: 10766.21965
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 105781.63103
-  tps: 143016.32434
-  hps: 16412.90853
+  dps: 108450.07052
+  tps: 146731.49033
+  hps: 16341.6487
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 89559.72941
-  tps: 91912.46407
-  hps: 7678.20574
+  dps: 88864.58005
+  tps: 91224.68604
+  hps: 7368.64586
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-Incarnation + NV-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 112068.47969
-  tps: 114292.27802
-  hps: 10050.34097
+  dps: 111372.47929
+  tps: 113595.55924
+  hps: 9694.75172
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 121863.77079
-  tps: 150005.51392
-  hps: 7902.81244
+  dps: 122389.80576
+  tps: 150762.58867
+  hps: 7707.99636
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 89554.89573
-  tps: 90873.8469
-  hps: 14065.9689
+  dps: 89332.09411
+  tps: 90650.01714
+  hps: 13787.11753
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-DefaultTalents-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 127169.282
-  tps: 125167.28787
-  hps: 18432.83405
+  dps: 126570.35189
+  tps: 124574.04203
+  hps: 18293.60075
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 71149.85951
-  tps: 93380.66765
-  hps: 6697.59114
+  dps: 71392.84955
+  tps: 94714.40927
+  hps: 6581.03379
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 56425.72833
-  tps: 58570.32374
-  hps: 11984.78735
+  dps: 56283.96716
+  tps: 58426.32014
+  hps: 11660.14723
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-DefaultTalents-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 67086.92978
-  tps: 68848.10681
-  hps: 13972.95944
+  dps: 66661.57038
+  tps: 68422.46031
+  hps: 13618.76794
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 12073.28036
-  tps: 16561.84475
-  hps: 17322.61066
+  dps: 12080.88535
+  tps: 16562.67554
+  hps: 17037.78945
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 89264.76042
-  tps: 82904.58219
-  hps: 6223.88759
+  dps: 89522.77482
+  tps: 82934.06318
+  hps: 5994.74515
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 125477.87704
-  tps: 109053.17397
-  hps: 7650.71033
+  dps: 125991.23483
+  tps: 109014.6713
+  hps: 7398.38645
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 8929.51997
-  tps: 13929.51997
-  hps: 14092.20385
+  dps: 8892.67088
+  tps: 13892.67088
+  hps: 13774.95365
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 57624.48466
-  tps: 54132.01751
-  hps: 5673.12429
+  dps: 57401.13085
+  tps: 53753.13631
+  hps: 5453.70356
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-FoN + HotW-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 62206.16048
-  tps: 57305.19381
-  hps: 6848.82246
+  dps: 62206.26694
+  tps: 57098.3511
+  hps: 6614.1385
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 32842.13087
-  tps: 34265.85825
-  hps: 11546.39279
+  dps: 29478.19603
+  tps: 29275.26177
+  hps: 11075.61219
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 87784.34368
-  tps: 88898.60269
-  hps: 6748.29096
+  dps: 87678.10252
+  tps: 88789.74811
+  hps: 6566.61298
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-Incarnation + NV-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 130000.44479
-  tps: 127002.5148
-  hps: 8970.09506
+  dps: 129320.11239
+  tps: 126329.96535
+  hps: 8707.8562
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 30285.06221
-  tps: 34831.57035
-  hps: 8921.03297
+  dps: 33822.87551
+  tps: 40366.23523
+  hps: 8872.76458
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 55253.39485
-  tps: 57305.07526
-  hps: 6106.46503
+  dps: 55132.93981
+  tps: 57190.01279
+  hps: 5880.97114
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-Incarnation + NV-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 65785.8167
-  tps: 67911.71873
-  hps: 7955.27873
+  dps: 65468.89617
+  tps: 67589.5111
+  hps: 7683.90882
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 220659.06756
-  tps: 262767.36514
-  hps: 9839.89196
+  dps: 221057.6795
+  tps: 264417.56728
+  hps: 9482.26928
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-DefaultTalents-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 140843.06951
-  tps: 142131.89786
-  hps: 19590.06751
+  dps: 140607.03338
+  tps: 141925.28417
+  hps: 19407.92113
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-DefaultTalents-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 204846.14758
-  tps: 200874.11431
-  hps: 23406.56025
+  dps: 203101.74622
+  tps: 199196.75019
+  hps: 22938.18028
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 142362.7601
-  tps: 181956.01227
-  hps: 8597.96822
+  dps: 142727.87196
+  tps: 182270.95208
+  hps: 8323.51317
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-DefaultTalents-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 92650.09667
-  tps: 95091.19928
-  hps: 16074.28586
+  dps: 91820.0046
+  tps: 94264.43861
+  hps: 15580.37429
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-DefaultTalents-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 107683.57716
-  tps: 110109.4902
-  hps: 19035.25198
+  dps: 106969.45944
+  tps: 109395.02947
+  hps: 18549.62227
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 22224.18609
-  tps: 26548.14832
-  hps: 22254.53709
+  dps: 21780.32261
+  tps: 26105.91263
+  hps: 21849.94444
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 138717.86608
-  tps: 129700.08999
-  hps: 7755.62738
+  dps: 139550.72117
+  tps: 130257.89705
+  hps: 7467.14627
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 189593.99146
-  tps: 166148.61877
-  hps: 9501.90237
+  dps: 190893.72185
+  tps: 166841.24627
+  hps: 9196.94615
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 15077.86802
-  tps: 20077.86802
-  hps: 18154.98463
+  dps: 15011.2995
+  tps: 20011.2995
+  hps: 17760.07491
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-FoN + HotW-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 90960.60362
-  tps: 86274.88181
-  hps: 7058.98361
+  dps: 91233.62936
+  tps: 86334.34316
+  hps: 6780.02001
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-FoN + HotW-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 104013.26148
-  tps: 95926.57541
-  hps: 8553.38879
+  dps: 104107.63858
+  tps: 95695.12407
+  hps: 8255.14673
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 42565.34594
-  tps: 41544.39976
-  hps: 14650.00713
+  dps: 42712.68352
+  tps: 41682.25491
+  hps: 14351.10291
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-Incarnation + NV-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 138126.64726
-  tps: 138989.0217
-  hps: 8456.7566
+  dps: 138278.96129
+  tps: 139156.8327
+  hps: 8241.16394
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-Incarnation + NV-Default-standard-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 202770.21296
-  tps: 197433.18516
-  hps: 11162.4819
+  dps: 203077.65883
+  tps: 197832.14088
+  hps: 10848.59633
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 112900.47889
-  tps: 152657.63106
-  hps: 16349.18311
+  dps: 112047.22404
+  tps: 151755.50416
+  hps: 16269.17097
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-Incarnation + NV-Default-standard-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 88983.05707
-  tps: 91309.06468
-  hps: 7569.67265
+  dps: 88254.61969
+  tps: 90583.5037
+  hps: 7289.17504
  }
 }
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-Incarnation + NV-Default-standard-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 108597.1698
-  tps: 110748.38284
-  hps: 9943.90541
+  dps: 108064.32737
+  tps: 110214.7224
+  hps: 9638.17692
  }
 }
 dps_results: {
  key: "TestBalance-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 90551.0285
-  tps: 91891.84148
-  hps: 14043.8021
+  dps: 90738.48936
+  tps: 92084.18346
+  hps: 13689.1069
  }
 }

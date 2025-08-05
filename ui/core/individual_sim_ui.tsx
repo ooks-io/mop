@@ -282,11 +282,11 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 			updateOn: this.player.gearChangeEmitter,
 			getContent: () => {
 				const jcGems = this.player.getGear().getJCGems(this.player.isBlacksmithing());
-				if (jcGems.length <= 3) {
+				if (jcGems.length <= 2) {
 					return '';
 				}
 
-				return `Only 3 Jewelcrafting Gems are allowed, but ${jcGems.length} are equipped.`;
+				return `Only 2 Jewelcrafting Gems are allowed, but ${jcGems.length} are equipped.`;
 			},
 		});
 		this.addWarning({

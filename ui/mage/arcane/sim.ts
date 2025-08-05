@@ -12,6 +12,7 @@ import { DEFAULT_CASTER_GEM_STATS, StatCap, Stats, UnitStat } from '../../core/p
 import { DefaultDebuffs, DefaultRaidBuffs, MAGE_BREAKPOINTS } from '../presets';
 import * as ArcaneInputs from './inputs';
 import * as Presets from './presets';
+import * as MageInputs from '../inputs';
 
 const hasteBreakpoints = MAGE_BREAKPOINTS.presets;
 
@@ -42,7 +43,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecArcaneMage, {
 
 	defaults: {
 		// Default equipped gear.
-		gear: Presets.P1_BIS_PRESET.gear,
+		gear: Presets.P1_PREBIS.gear,
 		// Default EP weights for sorting gear in the gear picker.
 		epWeights: Presets.P1_EP_PRESET.epWeights,
 		// Default stat caps for the Reforge Optimizer
@@ -90,7 +91,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecArcaneMage, {
 	},
 
 	// IconInputs to include in the 'Player' section on the settings tab.
-	playerIconInputs: [],
+	playerIconInputs: [
+		MageInputs.MageArmorInputs()
+	],
 	// Inputs to include in the 'Rotation' section on the settings tab.
 	rotationInputs: ArcaneInputs.MageRotationConfig,
 	// Buff and Debuff inputs to include/exclude, overriding the EP-based defaults.
@@ -113,7 +116,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecArcaneMage, {
 		// Preset talents that the user can quickly select.
 		talents: [Presets.ArcaneTalents, Presets.ArcaneTalentsCleave],
 		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.PREBIS_PRESET, Presets.RICH_PREBIS_PRESET, Presets.P1_BIS_PRESET],
+		gear: [Presets.P1_PREBIS, Presets.P1_PREBIS_REALISTIC, Presets.P1_POST_MSV, Presets.P1_POST_HOF, Presets.P1_BIS],
 
 		builds: [Presets.P1_PRESET_BUILD_DEFAULT, Presets.P1_PRESET_BUILD_CLEAVE],
 	},
@@ -142,10 +145,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecArcaneMage, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.P1_BIS_PRESET.gear,
+					1: Presets.P1_PREBIS.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.P1_BIS_PRESET.gear,
+					1: Presets.P1_PREBIS.gear,
 				},
 			},
 		},

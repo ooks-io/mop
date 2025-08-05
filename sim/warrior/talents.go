@@ -338,6 +338,7 @@ func (war *Warrior) registerBloodbath() {
 	shared.RegisterIgniteEffect(&war.Unit, shared.IgniteConfig{
 		ActionID:       dotActionID,
 		ClassSpellMask: SpellMaskBloodbathDot,
+		SpellSchool:    core.SpellSchoolPhysical,
 		DotAuraLabel:   "Bloodbath Dot",
 		DotAuraTag:     "BloodbathDot",
 		TickLength:     1 * time.Second,

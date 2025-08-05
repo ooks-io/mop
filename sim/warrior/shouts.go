@@ -33,11 +33,7 @@ func (warrior *Warrior) MakeShoutSpellHelper(actionID core.ActionID, spellMask i
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
 			warrior.AddRage(sim, rageGen, shoutMetrics)
-			for _, aura := range allyAuras {
-				if aura != nil {
-					aura.Activate(sim)
-				}
-			}
+			allyAuras.ActivateAllPlayers(sim)
 		},
 
 		RelatedAuraArrays: allyAuras.ToMap(),

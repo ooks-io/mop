@@ -21,7 +21,7 @@ func TestFrost(t *testing.T) {
 
 			GearSet: core.GetGearSet("../../../ui/mage/frost/gear_sets", "p1_bis"),
 			OtherGearSets: []core.GearSetCombo{
-				core.GetGearSet("../../../ui/mage/frost/gear_sets", "p1_prebis_rich"),
+				core.GetGearSet("../../../ui/mage/frost/gear_sets", "p1_prebis"),
 			},
 			Talents:         FrostTalents,
 			OtherTalentSets: core.GenerateTalentVariationsForRows(FrostTalents, FrostDefaultGlyphs, []int{4, 5}),
@@ -47,7 +47,9 @@ var FrostDefaultGlyphs = &proto.Glyphs{
 var PlayerOptionsFrost = &proto.Player_FrostMage{
 	FrostMage: &proto.FrostMage{
 		Options: &proto.FrostMage_Options{
-			ClassOptions: &proto.MageOptions{},
+			ClassOptions: &proto.MageOptions{
+				DefaultMageArmor: proto.MageArmor_MageArmorFrostArmor,
+			},
 		},
 	},
 }

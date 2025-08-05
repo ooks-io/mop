@@ -22,4 +22,5 @@ export const GlaiveTossChance = <SpecType extends HunterSpecs>() =>
 		fieldName: 'glaiveTossSuccess',
 		label: 'Glaive Toss Success %',
 		labelTooltip: 'The chance that Glaive Toss hits secondary targets in percentages.',
+		percent: true,
 	});

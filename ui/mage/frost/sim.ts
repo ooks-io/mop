@@ -11,6 +11,7 @@ import { DEFAULT_CASTER_GEM_STATS, StatCap, Stats, UnitStat } from '../../core/p
 import { DefaultDebuffs, DefaultRaidBuffs, MAGE_BREAKPOINTS } from '../presets';
 import * as FrostInputs from './inputs';
 import * as Presets from './presets';
+import * as MageInputs from '../inputs';
 
 const hasteBreakpoints = MAGE_BREAKPOINTS.presets;
 
@@ -42,7 +43,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFrostMage, {
 
 	defaults: {
 		// Default equipped gear.
-		gear: Presets.P1_BIS.gear,
+		gear: Presets.P1_PREBIS.gear,
 		// Default EP weights for sorting gear in the gear picker.
 		epWeights: Presets.P1_EP_PRESET.epWeights,
 		statCaps: (() => {
@@ -50,26 +51,26 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFrostMage, {
 		})(),
 		// Default soft caps for the Reforge optimizer
 		softCapBreakpoints: (() => {
-			const hasteSoftCapConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatSpellHastePercent, {
-				breakpoints: [
-					hasteBreakpoints.get('13-tick - Nether Tempest')!,
-					hasteBreakpoints.get('5-tick - Living Bomb')!,
-					hasteBreakpoints.get('14-tick - Nether Tempest')!,
-					hasteBreakpoints.get('15-tick - Nether Tempest')!,
-					hasteBreakpoints.get('16-tick - Nether Tempest')!,
-					hasteBreakpoints.get('17-tick - Nether Tempest')!,
-					hasteBreakpoints.get('6-tick - Living Bomb')!,
-					hasteBreakpoints.get('18-tick - Nether Tempest')!,
-					hasteBreakpoints.get('19-tick - Nether Tempest')!,
-					hasteBreakpoints.get('7-tick - Living Bomb')!,
-					hasteBreakpoints.get('20-tick - Nether Tempest')!,
-					hasteBreakpoints.get('8-tick - Living Bomb')!,
-					hasteBreakpoints.get('21-tick - Nether Tempest')!,
-					hasteBreakpoints.get('22-tick - Nether Tempest')!,
-				],
-				capType: StatCapType.TypeThreshold,
-				postCapEPs: [0.45 * Mechanics.HASTE_RATING_PER_HASTE_PERCENT],
-			});
+			// const hasteSoftCapConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatSpellHastePercent, {
+			// 	breakpoints: [
+			// 		hasteBreakpoints.get('13-tick - Nether Tempest')!,
+			// 		hasteBreakpoints.get('5-tick - Living Bomb')!,
+			// 		hasteBreakpoints.get('14-tick - Nether Tempest')!,
+			// 		hasteBreakpoints.get('15-tick - Nether Tempest')!,
+			// 		hasteBreakpoints.get('16-tick - Nether Tempest')!,
+			// 		hasteBreakpoints.get('17-tick - Nether Tempest')!,
+			// 		hasteBreakpoints.get('6-tick - Living Bomb')!,
+			// 		hasteBreakpoints.get('18-tick - Nether Tempest')!,
+			// 		hasteBreakpoints.get('19-tick - Nether Tempest')!,
+			// 		hasteBreakpoints.get('7-tick - Living Bomb')!,
+			// 		hasteBreakpoints.get('20-tick - Nether Tempest')!,
+			// 		hasteBreakpoints.get('8-tick - Living Bomb')!,
+			// 		hasteBreakpoints.get('21-tick - Nether Tempest')!,
+			// 		hasteBreakpoints.get('22-tick - Nether Tempest')!,
+			// 	],
+			// 	capType: StatCapType.TypeThreshold,
+			// 	postCapEPs: [0.45 * Mechanics.HASTE_RATING_PER_HASTE_PERCENT],
+			// });
 
 			const critSoftCapConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatSpellCritPercent, {
 				breakpoints: [25],
@@ -77,7 +78,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFrostMage, {
 				postCapEPs: [0.42 * Mechanics.CRIT_RATING_PER_CRIT_PERCENT],
 			});
 
-			return [critSoftCapConfig, hasteSoftCapConfig];
+			return [critSoftCapConfig];
 		})(),
 		// Default consumes settings.
 		consumables: Presets.DefaultConsumables,
@@ -94,7 +95,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFrostMage, {
 	},
 
 	// IconInputs to include in the 'Player' section on the settings tab.
-	playerIconInputs: [],
+	playerIconInputs: [
+		MageInputs.MageArmorInputs()
+	],
 	// Inputs to include in the 'Rotation' section on the settings tab.
 	rotationInputs: FrostInputs.MageRotationConfig,
 	// Buff and Debuff inputs to include/exclude, overriding the EP-based defaults.
@@ -124,7 +127,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFrostMage, {
 		// Preset talents that the user can quickly select.
 		talents: [Presets.FrostDefaultTalents, Presets.FrostTalentsCleave, Presets.FrostTalentsAoE],
 		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.P1_PREBIS_RICH, Presets.P1_PREBIS_POOR, Presets.P1_BIS],
+		gear: [Presets.P1_PREBIS, Presets.P1_PREBIS_REALISTIC, Presets.P1_POST_MSV, Presets.P1_POST_HOF, Presets.P1_BIS],
 
 		builds: [Presets.P1_PRESET_BUILD_DEFAULT, Presets.P1_PRESET_BUILD_CLEAVE, Presets.P1_PRESET_BUILD_AOE],
 	},
@@ -155,10 +158,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFrostMage, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.P1_PREBIS_RICH.gear,
+					1: Presets.P1_PREBIS.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.P1_PREBIS_RICH.gear,
+					1: Presets.P1_PREBIS.gear,
 				},
 			},
 		},

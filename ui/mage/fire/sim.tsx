@@ -12,6 +12,7 @@ import { DEFAULT_CASTER_GEM_STATS, StatCap, Stats, UnitStat } from '../../core/p
 import { formatToNumber } from '../../core/utils';
 import { DefaultDebuffs, DefaultRaidBuffs } from '../presets';
 import * as Presets from './presets';
+import * as MageInputs from '../inputs';
 
 const combustBreakpoints = Presets.COMBUSTION_BREAKPOINT.presets;
 const glyphedCombustBreakpoints = Presets.GLYPHED_COMBUSTION_BREAKPOINT.presets;
@@ -79,7 +80,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFireMage, {
 
 	defaults: {
 		// Default equipped gear.
-		gear: Presets.P1_BIS_PRESET.gear,
+		gear: Presets.P1_PREBIS.gear,
 		// Default EP weights for sorting gear in the gear picker.
 		epWeights: Presets.DEFAULT_EP_PRESET.epWeights,
 		// Default stat caps for the Reforge Optimizer
@@ -87,15 +88,15 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFireMage, {
 			return new Stats().withPseudoStat(PseudoStat.PseudoStatSpellHitPercent, 15);
 		})(),
 		// Default soft caps for the Reforge optimizer
-		softCapBreakpoints: (() => {
-			const hasteSoftCapConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatSpellHastePercent, {
-				breakpoints: relevantCombustionBreakpoints,
-				capType: StatCapType.TypeThreshold,
-				postCapEPs: [0.61 * Mechanics.HASTE_RATING_PER_HASTE_PERCENT],
-			});
+		// softCapBreakpoints: (() => {
+		// 	const hasteSoftCapConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatSpellHastePercent, {
+		// 		breakpoints: relevantCombustionBreakpoints,
+		// 		capType: StatCapType.TypeThreshold,
+		// 		postCapEPs: [0.61 * Mechanics.HASTE_RATING_PER_HASTE_PERCENT],
+		// 	});
 
-			return [hasteSoftCapConfig];
-		})(),
+		// 	return [hasteSoftCapConfig];
+		// })(),
 		// Default consumes settings.
 		consumables: Presets.DefaultFireConsumables,
 		// Default rotation settings.
@@ -115,7 +116,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFireMage, {
 	},
 
 	// IconInputs to include in the 'Player' section on the settings tab.
-	playerIconInputs: [],
+	playerIconInputs: [
+		MageInputs.MageArmorInputs()
+	],
 	// Inputs to include in the 'Rotation' section on the settings tab.
 	// rotationInputs: FireInputs.MageRotationConfig,
 	// Buff and Debuff inputs to include/exclude, overriding the EP-based defaults.
@@ -138,7 +141,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFireMage, {
 		// Preset talents that the user can quickly select.
 		talents: [Presets.FireTalents, Presets.FireTalentsCleave],
 		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.PREBIS_PRESET, Presets.P1_BIS_PRESET],
+		gear: [Presets.P1_PREBIS, Presets.P1_POST_MSV, Presets.P1_POST_HOF, Presets.P1_BIS],
 
 		builds: [Presets.P1_PRESET_BUILD_DEFAULT, Presets.P1_PRESET_BUILD_CLEAVE],
 	},
@@ -227,12 +230,12 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFireMage, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.P1_BIS_PRESET.gear,
-					2: Presets.PREBIS_PRESET.gear,
+					1: Presets.P1_PREBIS.gear,
+					2: Presets.P1_BIS.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.P1_BIS_PRESET.gear,
-					2: Presets.PREBIS_PRESET.gear,
+					1: Presets.P1_PREBIS.gear,
+					2: Presets.P1_BIS.gear,
 				},
 			},
 		},

@@ -77,7 +77,7 @@ export class Sim {
 	private showHealingMetrics = false;
 	private showExperimental = false;
 	private wasmConcurrency = 0;
-	private showQuickSwap = false;
+	private showQuickSwap = true;
 	private showEPValues = false;
 	private useCustomEPValues = false;
 	private useSoftCapBreakpoints = true;
@@ -875,6 +875,7 @@ export class Sim {
 				showDamageMetrics: !isHealingSim,
 				showThreatMetrics: isTankSim,
 				showHealingMetrics: isHealingSim,
+				showQuickSwap: true,
 				language: this.getLanguage(), // Don't change language.
 				filters: Sim.defaultFilters(),
 				showEpValues: false,
