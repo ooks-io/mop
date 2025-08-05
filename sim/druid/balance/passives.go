@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/wowsims/mop/sim/core"
+	"github.com/wowsims/mop/sim/core/proto"
 	"github.com/wowsims/mop/sim/core/stats"
 	"github.com/wowsims/mop/sim/druid"
 )
@@ -149,7 +150,9 @@ func (moonkin *BalanceDruid) registerOwlkinFrenzy() {
 
 func (moonkin *BalanceDruid) registerKillerInstinct() {}
 
-func (moonkin *BalanceDruid) registerLeatherSpecialization() {}
+func (moonkin *BalanceDruid) registerLeatherSpecialization() {
+	moonkin.ApplyArmorSpecializationEffect(stats.Intellect, proto.ArmorType_ArmorTypeLeather, 86093)
+}
 
 func (moonkin *BalanceDruid) registerNaturalInsight() {
 	moonkin.MultiplyStat(stats.Mana, 5)
