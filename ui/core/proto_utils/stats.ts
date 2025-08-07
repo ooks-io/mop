@@ -488,6 +488,18 @@ export class Stats {
 		);
 	}
 
+	getBuffedStats(): Map<Stat, number> {
+		const buffedStats = new Map<Stat, number>();
+
+		for (const [statIdx, statValue] of this.stats.entries()) {
+			if (statValue > 0) {
+				buffedStats.set(statIdx, statValue);
+			}
+		}
+
+		return buffedStats;
+	}
+
 	asProtoArray(): Array<number> {
 		return this.stats.slice();
 	}
@@ -647,6 +659,20 @@ export function pseudoStatIsCapped(pseudoStat: PseudoStat, hardCaps: Stats, soft
 
 	for (const config of softCaps) {
 		if (config.unitStat.equalsPseudoStat(pseudoStat)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+export function statIsCapped(stat: Stat, hardCaps: Stats, softCaps: StatCap[]): boolean {
+	if (hardCaps.getStat(stat) != 0) {
+		return true;
+	}
+
+	for (const config of softCaps) {
+		if (config.unitStat.equalsStat(stat)) {
 			return true;
 		}
 	}
