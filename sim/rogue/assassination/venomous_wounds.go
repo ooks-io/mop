@@ -19,7 +19,7 @@ func (sinRogue *AssassinationRogue) registerVenomousWounds() {
 
 		OnPeriodicDamageDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			// If the target has both Rupture and Garrote, Garrote cannot trigger VW
-			if spell == sinRogue.Garrote && result.Target.HasActiveAura("Rupture") {
+			if spell == sinRogue.Garrote && sinRogue.Rupture.Dot(result.Target).IsActive() {
 				return
 			}
 

@@ -10,18 +10,26 @@ import (
 // Struct for handling unit references, to account for values that can
 // change dynamically (e.g. CurrentTarget).
 type UnitReference struct {
-	fixedUnit       *Unit
-	curTargetSource *Unit
+	Type               proto.UnitReference_Type
+	fixedUnit          *Unit
+	targetLookupSource *Unit
 }
 
 func (ur UnitReference) Get() *Unit {
 	if ur.fixedUnit != nil {
 		return ur.fixedUnit
-	} else if ur.curTargetSource != nil {
-		return ur.curTargetSource.CurrentTarget
-	} else {
-		return nil
+	} else if ur.targetLookupSource != nil {
+		switch ur.Type {
+		case proto.UnitReference_PreviousTarget:
+			return ur.targetLookupSource.Env.PreviousActiveTargetUnit(ur.targetLookupSource.CurrentTarget)
+		case proto.UnitReference_CurrentTarget:
+			return ur.targetLookupSource.CurrentTarget
+		case proto.UnitReference_NextTarget:
+			return ur.targetLookupSource.Env.NextActiveTargetUnit(ur.targetLookupSource.CurrentTarget)
+		}
 	}
+
+	return nil
 }
 
 func (ur *UnitReference) String() string {
@@ -29,13 +37,18 @@ func (ur *UnitReference) String() string {
 }
 
 func NewUnitReference(ref *proto.UnitReference, contextUnit *Unit) UnitReference {
-	if ref == nil || ref.Type == proto.UnitReference_Unknown {
+	switch {
+	case ref == nil,
+		ref.Type == proto.UnitReference_Unknown:
 		return UnitReference{}
-	} else if ref.Type == proto.UnitReference_CurrentTarget {
+	case ref.Type == proto.UnitReference_PreviousTarget,
+		ref.Type == proto.UnitReference_CurrentTarget,
+		ref.Type == proto.UnitReference_NextTarget:
 		return UnitReference{
-			curTargetSource: contextUnit,
+			Type:               ref.Type,
+			targetLookupSource: contextUnit,
 		}
-	} else {
+	default:
 		return UnitReference{
 			fixedUnit: contextUnit.GetUnit(ref),
 		}
@@ -63,15 +76,15 @@ func (rot *APLRotation) GetTargetUnit(ref *proto.UnitReference) UnitReference {
 type AuraReference struct {
 	fixedAura *Aura
 
-	curTargetSource *Unit
-	curTargetAuras  AuraArray
+	targetRef      UnitReference
+	allTargetAuras AuraArray
 }
 
 func (ar *AuraReference) Get() *Aura {
 	if ar.fixedAura != nil {
 		return ar.fixedAura
-	} else if ar.curTargetSource != nil {
-		return ar.curTargetAuras.Get(ar.curTargetSource.CurrentTarget)
+	} else if ar.targetRef.Get() != nil {
+		return ar.allTargetAuras.Get(ar.targetRef.Get())
 	} else {
 		return nil
 	}
@@ -82,50 +95,97 @@ func (ar *AuraReference) String() string {
 }
 
 func newAuraReferenceHelper(sourceUnit UnitReference, auraId *proto.ActionID, auraGetter func(*Unit, ActionID) *Aura) AuraReference {
-	if sourceUnit.Get() == nil {
+	resolvedSourceUnit := sourceUnit.Get()
+	if resolvedSourceUnit == nil {
 		return AuraReference{}
 	} else if sourceUnit.fixedUnit != nil {
 		return AuraReference{
 			fixedAura: auraGetter(sourceUnit.fixedUnit, ProtoToActionID(auraId)),
 		}
 	} else {
-		auras := make([]*Aura, len(sourceUnit.Get().Env.AllUnits))
-		for _, unit := range sourceUnit.Get().Env.AllUnits {
+		auras := make([]*Aura, len(resolvedSourceUnit.Env.AllUnits))
+		for _, unit := range resolvedSourceUnit.Env.AllUnits {
 			auras[unit.UnitIndex] = auraGetter(unit, ProtoToActionID(auraId))
 		}
 		return AuraReference{
-			curTargetSource: sourceUnit.curTargetSource,
-			curTargetAuras:  auras,
+			targetRef:      sourceUnit,
+			allTargetAuras: auras,
 		}
 	}
 }
+
 func NewAuraReference(sourceUnit UnitReference, auraId *proto.ActionID) AuraReference {
 	return newAuraReferenceHelper(sourceUnit, auraId, func(unit *Unit, actionID ActionID) *Aura { return unit.GetAuraByID(actionID) })
 }
+
 func NewIcdAuraReference(sourceUnit UnitReference, auraId *proto.ActionID) AuraReference {
 	return newAuraReferenceHelper(sourceUnit, auraId, func(unit *Unit, actionID ActionID) *Aura { return unit.GetIcdAuraByID(actionID) })
 }
 
+type DotReference struct {
+	fixedDot *Dot
+
+	targetRef UnitReference
+	allDots   DotArray
+}
+
+func (ar *DotReference) Get() *Dot {
+	if ar.fixedDot != nil {
+		return ar.fixedDot
+	} else if ar.targetRef.Get() != nil {
+		return ar.allDots.Get(ar.targetRef.Get())
+	} else {
+		return nil
+	}
+}
+
+func (ar *DotReference) String() string {
+	return ar.Get().ActionID.String()
+}
+
+func (rot *APLRotation) NewDotReference(targetUnitRef UnitReference, auraId *proto.ActionID) *DotReference {
+	resolvedTargetUnit := targetUnitRef.Get()
+	if resolvedTargetUnit == nil {
+		return &DotReference{}
+	} else if targetUnitRef.fixedUnit != nil {
+		return &DotReference{
+			fixedDot: rot.GetAPLDot(targetUnitRef, auraId),
+		}
+	} else {
+		dots := make([]*Dot, len(resolvedTargetUnit.Env.Encounter.AllTargetUnits))
+		for _, unit := range resolvedTargetUnit.Env.Encounter.AllTargetUnits {
+			dots[unit.UnitIndex] = rot.GetAPLDot(UnitReference{fixedUnit: unit}, auraId)
+		}
+
+		return &DotReference{
+			targetRef: targetUnitRef,
+			allDots:   dots,
+		}
+	}
+}
+
 func (rot *APLRotation) GetAPLAura(sourceUnit UnitReference, auraId *proto.ActionID) AuraReference {
-	if sourceUnit.Get() == nil {
+	resolvedSourceUnit := sourceUnit.Get()
+	if resolvedSourceUnit == nil {
 		return AuraReference{}
 	}
 
 	aura := NewAuraReference(sourceUnit, auraId)
 	if aura.Get() == nil {
-		rot.ValidationMessage(proto.LogLevel_Warning, "No aura found on %s for: %s", sourceUnit.Get().Label, ProtoToActionID(auraId))
+		rot.ValidationMessage(proto.LogLevel_Warning, "No aura found on %s for: %s", resolvedSourceUnit.Label, ProtoToActionID(auraId))
 	}
 	return aura
 }
 
 func (rot *APLRotation) GetAPLICDAura(sourceUnit UnitReference, auraId *proto.ActionID) AuraReference {
-	if sourceUnit.Get() == nil {
+	resolvedSourceUnit := sourceUnit.Get()
+	if resolvedSourceUnit == nil {
 		return AuraReference{}
 	}
 
 	aura := NewIcdAuraReference(sourceUnit, auraId)
 	if aura.Get() == nil {
-		rot.ValidationMessage(proto.LogLevel_Warning, "No aura found on %s for: %s", sourceUnit.Get().Label, ProtoToActionID(auraId))
+		rot.ValidationMessage(proto.LogLevel_Warning, "No aura found on %s for: %s", resolvedSourceUnit.Label, ProtoToActionID(auraId))
 	}
 	return aura
 }
