@@ -4,7 +4,6 @@ import (
 	"time"
 
 	"github.com/wowsims/mop/sim/core"
-	"github.com/wowsims/mop/sim/core/stats"
 	"github.com/wowsims/mop/sim/warrior"
 )
 
@@ -21,7 +20,7 @@ func (war *ProtectionWarrior) registerShieldBlock() {
 		ActionID: actionId,
 		Duration: time.Second * 6,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			war.AddStatDynamic(sim, stats.BlockPercent, 100)
+			war.PseudoStats.BaseBlockChance += 100
 
 			avoidance := war.GetTotalAvoidanceChance(atkTable)
 			if avoidance > core.CombatTableCoverageCap {
@@ -32,7 +31,8 @@ func (war *ProtectionWarrior) registerShieldBlock() {
 			}
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			war.AddStatDynamic(sim, stats.BlockPercent, -100)
+			war.PseudoStats.BaseBlockChance -= 100
+
 			if extraAvoidance > 0.0 {
 				war.CriticalBlockChance[1] -= extraAvoidance
 			}
