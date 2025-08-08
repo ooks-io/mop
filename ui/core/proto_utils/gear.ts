@@ -319,15 +319,20 @@ export class Gear extends BaseGear {
 		}
 	}
 
-	withoutGems(): Gear {
+	withoutGems(canDualWield2H: boolean, ignoreSlots?: Map<ItemSlot, boolean>, ignoreMeta?: boolean): Gear {
 		let curGear: Gear = this;
+		const metaGem = this.getMetaGem();
 
 		for (const slot of this.getItemSlots()) {
 			const item = this.getEquippedItem(slot);
 
-			if (item) {
-				curGear = curGear.withEquippedItem(slot, item.removeAllGems(), true);
+			if (item && !ignoreSlots?.get(slot)) {
+				curGear = curGear.withEquippedItem(slot, item.removeAllGems(), canDualWield2H);
 			}
+		}
+
+		if (ignoreMeta) {
+			return curGear.withMetaGem(metaGem);
 		}
 
 		return curGear;
