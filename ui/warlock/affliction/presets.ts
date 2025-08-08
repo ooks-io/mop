@@ -45,6 +45,7 @@ export const AfflictionTalents = {
 		talentsString: '231211',
 		glyphs: Glyphs.create({
 			major1: MajorGlyph.GlyphOfUnstableAffliction,
+			major2: MajorGlyph.GlyphOfSiphonLife,
 			minor3: MinorGlyph.GlyphOfUnendingBreath,
 		}),
 	}),
