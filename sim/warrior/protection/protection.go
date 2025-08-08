@@ -45,8 +45,8 @@ func NewProtectionWarrior(character *core.Character, options *proto.Player) *Pro
 	return war
 }
 
-func (war *ProtectionWarrior) CalculateMasteryBlockChance(masteryRating float64) float64 {
-	return 0.5 * (8.0 + core.MasteryRatingToMasteryPoints(masteryRating))
+func (war *ProtectionWarrior) CalculateMasteryBlockChance(masteryRating float64, includeBasePoints bool) float64 {
+	return 0.5 * (core.Ternary(includeBasePoints, 8.0, 0) + core.MasteryRatingToMasteryPoints(masteryRating))
 }
 
 func (war *ProtectionWarrior) CalculateMasteryCriticalBlockChance() float64 {
@@ -110,10 +110,10 @@ func (war *ProtectionWarrior) registerMastery() {
 	}
 
 	war.CriticalBlockChance[0] = war.CalculateMasteryCriticalBlockChance()
-	war.AddStat(stats.BlockPercent, war.CalculateMasteryBlockChance(war.GetStat(stats.MasteryRating)))
+	war.AddStat(stats.BlockPercent, war.CalculateMasteryBlockChance(war.GetStat(stats.MasteryRating), true))
 
 	war.AddOnMasteryStatChanged(func(sim *core.Simulation, oldMasteryRating float64, newMasteryRating float64) {
-		masteryBlockStat := war.CalculateMasteryBlockChance(newMasteryRating - oldMasteryRating)
+		masteryBlockStat := war.CalculateMasteryBlockChance(newMasteryRating-oldMasteryRating, false)
 		war.AddStatDynamic(sim, stats.BlockPercent, masteryBlockStat)
 		war.CriticalBlockChance[0] = war.CalculateMasteryCriticalBlockChance()
 	})
