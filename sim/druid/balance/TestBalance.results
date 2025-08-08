@@ -161,9 +161,9 @@ dps_results: {
 dps_results: {
  key: "TestBalance-AllItems-EnchantWeapon-Windsong-4441"
  value: {
-  dps: 91119.50739
-  tps: 92525.90157
-  hps: 13564.54312
+  dps: 89569.34693
+  tps: 90975.74111
+  hps: 13485.92407
  }
 }
 dps_results: {
