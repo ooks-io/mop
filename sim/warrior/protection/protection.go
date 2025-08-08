@@ -97,6 +97,10 @@ func (war *ProtectionWarrior) registerMastery() {
 				Duration: time.Second * 3,
 			},
 		},
+		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			war.EnrageAura.Deactivate(sim)
+			war.EnrageAura.Activate(sim)
+		},
 	})
 
 	war.Blockhandler = func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
