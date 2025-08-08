@@ -57,7 +57,7 @@ export const StandardTalents = {
 	data: SavedTalents.create({
 		talentsString: '233332',
 		glyphs: Glyphs.create({
-			major1: WarriorMajorGlyph.GlyphOfIncite,
+			major1: WarriorMajorGlyph.GlyphOfHeavyRepercussions,
 			major2: WarriorMajorGlyph.GlyphOfUnendingRage,
 			major3: WarriorMajorGlyph.GlyphOfHoldTheLine,
 		}),
