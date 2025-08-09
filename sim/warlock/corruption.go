@@ -41,6 +41,10 @@ func (warlock *Warlock) RegisterCorruption(callback WarlockSpellCastedCallback) 
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				resultSlice[0] = dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeSnapshotCrit)
 				callback(resultSlice, dot.Spell, sim)
+
+				if warlock.SiphonLife != nil {
+					warlock.SiphonLife.Cast(sim, &warlock.Unit)
+				}
 			},
 		},
 

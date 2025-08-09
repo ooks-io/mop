@@ -5,20 +5,37 @@ import (
 	"github.com/wowsims/mop/sim/core/proto"
 )
 
-func (warlock *Warlock) registerEternalResolve() {
-	if !warlock.HasMajorGlyph(proto.WarlockMajorGlyph_GlyphOfEternalResolve) {
-		return
+func (warlock *Warlock) registerGlyphs() {
+
+	if warlock.HasMajorGlyph(proto.WarlockMajorGlyph_GlyphOfSiphonLife) {
+		warlock.SiphonLife = warlock.RegisterSpell(core.SpellConfig{
+			ActionID:       core.ActionID{SpellID: 63106},
+			SpellSchool:    core.SpellSchoolShadow,
+			ProcMask:       core.ProcMaskSpellHealing,
+			Flags:          core.SpellFlagHelpful | core.SpellFlagPassiveSpell,
+			ClassSpellMask: WarlockSpellSiphonLife,
+
+			DamageMultiplier: 1,
+			CritMultiplier:   warlock.DefaultCritMultiplier(),
+			ThreatMultiplier: 1,
+
+			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+				spell.CalcAndDealPeriodicHealing(sim, target, warlock.MaxHealth()*0.005, spell.OutcomeHealing)
+			},
+		})
 	}
 
-	warlock.AddStaticMod(core.SpellModConfig{
-		ClassMask:  WarlockSpellAgony | WarlockSpellCorruption | WarlockSpellUnstableAffliction | WarlockSpellDoom,
-		Kind:       core.SpellMod_DotBaseDuration_Pct,
-		FloatValue: 0.5,
-	})
+	if warlock.HasMajorGlyph(proto.WarlockMajorGlyph_GlyphOfEternalResolve) {
+		warlock.AddStaticMod(core.SpellModConfig{
+			ClassMask:  WarlockSpellAgony | WarlockSpellCorruption | WarlockSpellUnstableAffliction | WarlockSpellDoom,
+			Kind:       core.SpellMod_DotBaseDuration_Pct,
+			FloatValue: 0.5,
+		})
 
-	warlock.AddStaticMod(core.SpellModConfig{
-		ClassMask:  WarlockSpellAgony | WarlockSpellCorruption | WarlockSpellUnstableAffliction | WarlockSpellDoom,
-		Kind:       core.SpellMod_DotDamageDone_Pct,
-		FloatValue: -0.2,
-	})
+		warlock.AddStaticMod(core.SpellModConfig{
+			ClassMask:  WarlockSpellAgony | WarlockSpellCorruption | WarlockSpellUnstableAffliction | WarlockSpellDoom,
+			Kind:       core.SpellMod_DotDamageDone_Pct,
+			FloatValue: -0.2,
+		})
+	}
 }

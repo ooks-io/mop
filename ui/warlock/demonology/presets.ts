@@ -44,7 +44,7 @@ export const DemonologyTalentsDefaultP1 = {
 		talentsString: '231221',
 		glyphs: Glyphs.create({
 			major1: MajorGlyph.GlyphOfSoulstone,
-			major2: MajorGlyph.GlyphOfLifeTap,
+			major2: MajorGlyph.GlyphOfSiphonLife,
 			major3: MajorGlyph.GlyphOfImpSwarm,
 			minor3: MinorGlyph.GlyphOfUnendingBreath,
 		}),

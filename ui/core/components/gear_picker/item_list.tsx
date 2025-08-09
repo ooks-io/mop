@@ -793,10 +793,11 @@ export default class ItemList<T extends ItemListType> {
 	}
 
 	private bindToggleCompare(element: Element) {
-		const toggleCompare = () => element.classList[!this.player.sim.getShowExperimental() ? 'add' : 'remove']('hide');
-		toggleCompare();
-		this.player.sim.showExperimentalChangeEmitter.on(() => {
-			toggleCompare();
-		});
+		// TODO: Disabled for now until Batch Sim is fixed
+		// const toggleCompare = () => element.classList[!this.player.sim.getShowExperimental() ? 'add' : 'remove']('hide');
+		// toggleCompare();
+		// this.player.sim.showExperimentalChangeEmitter.on(() => {
+		// 	toggleCompare();
+		// });
 	}
 }

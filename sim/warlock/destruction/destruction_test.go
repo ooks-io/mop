@@ -49,12 +49,14 @@ func TestDestruction(t *testing.T) {
 
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
-			Class:            proto.Class_ClassWarlock,
-			Race:             proto.Race_RaceOrc,
-			OtherRaces:       []proto.Race{proto.Race_RaceTroll, proto.Race_RaceGoblin, proto.Race_RaceHuman},
-			GearSet:          core.GetGearSet("../../../ui/warlock/destruction/gear_sets", "p1-prebis"),
-			Talents:          "221211",
-			Glyphs:           &proto.Glyphs{},
+			Class:      proto.Class_ClassWarlock,
+			Race:       proto.Race_RaceOrc,
+			OtherRaces: []proto.Race{proto.Race_RaceTroll, proto.Race_RaceGoblin, proto.Race_RaceHuman},
+			GearSet:    core.GetGearSet("../../../ui/warlock/destruction/gear_sets", "p1-prebis"),
+			Talents:    "221211",
+			Glyphs: &proto.Glyphs{
+				Major1: int32(proto.WarlockMajorGlyph_GlyphOfSiphonLife),
+			},
 			Consumables:      fullConsumesSpec,
 			SpecOptions:      core.SpecOptionsCombo{Label: "Destruction Warlock", SpecOptions: defaultDestructionWarlock},
 			OtherSpecOptions: []core.SpecOptionsCombo{},

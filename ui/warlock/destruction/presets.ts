@@ -42,7 +42,9 @@ export const DestructionTalents = {
 	name: 'Destruction',
 	data: SavedTalents.create({
 		talentsString: '221211',
-		glyphs: Glyphs.create({}),
+		glyphs: Glyphs.create({
+			major1: MajorGlyph.GlyphOfSiphonLife,
+		}),
 	}),
 };
 

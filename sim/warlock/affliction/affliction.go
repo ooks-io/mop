@@ -89,7 +89,7 @@ func (affliction *AfflictionWarlock) Initialize() {
 	affliction.registerSeed()
 	affliction.registerSoulSwap()
 
-	affliction.registerGlpyhs()
+	affliction.registerGlyphs()
 }
 
 func (affliction *AfflictionWarlock) ApplyTalents() {
