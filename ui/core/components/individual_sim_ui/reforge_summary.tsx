@@ -20,6 +20,8 @@ export class ReforgeSummary extends Component {
 
 	constructor(parent: HTMLElement, simUI: IndividualSimUI<any>, player: Player<any>) {
 		super(parent, 'summary-table-root');
+		this.rootElem.classList.add('hide');
+
 		this.simUI = simUI;
 		this.player = player;
 

@@ -22,6 +22,8 @@ export class GemSummary extends Component {
 
 	constructor(parent: HTMLElement, simUI: SimUI, player: Player<any>) {
 		super(parent, 'summary-table-root');
+		this.rootElem.classList.add('hide');
+
 		this.simUI = simUI;
 		this.player = player;
 

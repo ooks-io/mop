@@ -1,3 +1,4 @@
+import { ref } from 'tsx-vanilla';
 import { REPO_NAME } from '../constants/other';
 import { IndividualSimUI } from '../individual_sim_ui';
 import { DetailedResultsUpdate, SimRun, SimRunData } from '../proto/ui';
@@ -382,26 +383,39 @@ export class EmbeddedDetailedResults extends DetailedResults {
 	private tabWindow: Window | null = null;
 
 	constructor(parent: HTMLElement, simUI: SimUI, simResultsManager: RaidSimResultsManager) {
-		super(parent, simUI, simUI.cssScheme);
+		super(parent, simUI, simUI.config.cssScheme);
 
-		const newTabBtn = (
+		const newTabButtonRef = ref<HTMLButtonElement>();
+		const simButtonRef = ref<HTMLButtonElement>();
+
+		this.rootElem.prepend(
 			<div className="detailed-results-controls-div">
-				<button className="detailed-results-new-tab-button btn btn-primary">View in Separate Tab</button>
-				<button className="detailed-results-1-iteration-button btn btn-primary">Sim 1 Iteration</button>
+				<button
+					className="detailed-results-new-tab-button btn btn-primary"
+					ref={newTabButtonRef}
+					disabled={simUI.disabled}
+				>
+					View in Separate Tab
+				</button>
+				<button
+					className="detailed-results-1-iteration-button btn btn-primary"
+					ref={simButtonRef}
+					disabled={simUI.disabled}
+				>
+					Sim 1 Iteration
+				</button>
 			</div>
 		);
 
-		this.rootElem.prepend(newTabBtn);
-
 		const url = new URL(`${window.location.protocol}//${window.location.host}/${REPO_NAME}/detailed_results/index.html`);
-		url.searchParams.append('cssClass', simUI.cssClass);
+		url.searchParams.append('cssClass', simUI.config.cssClass);
 
 		if (simUI.isIndividualSim()) {
 			url.searchParams.append('isIndividualSim', '');
 			this.rootElem.classList.add('individual-sim');
 		}
 
-		const newTabButton = this.rootElem.querySelector('.detailed-results-new-tab-button');
+		const newTabButton = newTabButtonRef.value!;
 		newTabButton?.addEventListener('click', () => {
 			if (this.tabWindow == null || this.tabWindow.closed) {
 				this.tabWindow = window.open(url.href, 'Detailed Results');
@@ -415,7 +429,7 @@ export class EmbeddedDetailedResults extends DetailedResults {
 			}
 		});
 
-		const simButton = this.rootElem.querySelector('.detailed-results-1-iteration-button');
+		const simButton = simButtonRef.value!;
 		simButton?.addEventListener('click', () => {
 			(window.opener || window.parent)!.postMessage('runOnce', '*');
 		});
