@@ -10,12 +10,13 @@ import { ActionMetrics, SimResult, SimResultFilter } from '../proto_utils/sim_re
 import { RequestTypes } from '../sim_signal_manager';
 import { SimUI } from '../sim_ui';
 import { EventID, TypedEvent } from '../typed_event';
-import { formatDeltaTextElem, formatToNumber, formatToPercent, sum } from '../utils';
+import { formatDeltaTextElem, formatToNumber, formatToPercent, isDevMode, sum } from '../utils';
 
 export function addRaidSimAction(simUI: SimUI): RaidSimResultsManager {
 	const resultsViewer = simUI.resultsViewer;
 	let isRunning = false;
 	let waitAbort = false;
+
 	simUI.addAction(i18n.t('sidebar.buttons.simulate'), 'dps-action', async ev => {
 		const button = ev.target as HTMLButtonElement;
 		button.disabled = true;
@@ -175,7 +176,7 @@ export class RaidSimResultsManager {
 				{RaidSimResultsManager.makeToplineResultsContent(simResult, undefined, { asList: true })}
 				<div className="results-sim-reference">
 					<button className="results-sim-set-reference">
-						<i className={`fa fa-map-pin fa-lg text-${this.simUI.cssScheme} me-2`} />
+						<i className={`fa fa-map-pin fa-lg text-${this.simUI.config.cssScheme} me-2`} />
 						Save as Reference
 					</button>
 					<div className="results-sim-reference-bar">

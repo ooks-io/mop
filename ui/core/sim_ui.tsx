@@ -22,6 +22,7 @@ import { Sim, SimError } from './sim.js';
 import { RequestTypes } from './sim_signal_manager.js';
 import { EventID, TypedEvent } from './typed_event.js';
 import { WorkerProgressCallback } from './worker_pool';
+import { isDevMode } from './utils';
 
 const URLMAXLEN = 2048;
 const globalKnownIssues: Array<string> = [];
@@ -47,8 +48,8 @@ export interface SimUIConfig {
 // Shared UI for all individual sims and the raid sim.
 export abstract class SimUI extends Component {
 	readonly sim: Sim;
-	readonly cssClass: string;
-	readonly cssScheme: string;
+	readonly config: SimUIConfig;
+	readonly disabled: boolean;
 	readonly isWithinRaidSim: boolean;
 
 	// Emits when anything from the sim, raid, or encounter changes.
@@ -66,31 +67,31 @@ export abstract class SimUI extends Component {
 	constructor(parentElem: HTMLElement, sim: Sim, config: SimUIConfig) {
 		super(parentElem, 'sim-ui');
 		this.sim = sim;
-		this.cssClass = config.cssClass;
-		this.cssScheme = config.cssScheme;
+		this.config = config;
+		this.disabled = !isDevMode() && config.simStatus.status === LaunchStatus.Unlaunched
 		this.isWithinRaidSim = this.rootElem.closest('.within-raid-sim') != null;
 
 		const container = (
 			<>
 				<div className="sim-root">
-					<div className="sim-bg"></div>
+					<div className="sim-bg" />
 					{config.noticeText ? (
 						<div className="notices-banner alert border-bottom mb-0 text-center within-raid-sim-hide">{config.noticeText}</div>
 					) : null}
 					<div className="sim-container">
 						<aside className="sim-sidebar">
-							<div className="sim-title"></div>
+							<div className="sim-title" />
 							<div className="sim-sidebar-content">
-								<div className="sim-sidebar-actions within-raid-sim-hide"></div>
-								<div className="sim-sidebar-results within-raid-sim-hide"></div>
-								<div className="sim-sidebar-stats"></div>
-								<div className="sim-sidebar-socials"></div>
+								<div className="sim-sidebar-actions within-raid-sim-hide" />
+								<div className="sim-sidebar-results within-raid-sim-hide" />
+								<div className="sim-sidebar-stats" />
+								<div className="sim-sidebar-socials" />
 							</div>
 						</aside>
-						<div className="sim-content container-fluid"></div>
+						<div className="sim-content container-fluid" />
 					</div>
 				</div>
-				<div className="sim-toast-container p-3 bottom-0 right-0" id="toastContainer"></div>
+				<div className="sim-toast-container p-3 bottom-0 right-0" id="toastContainer" />
 			</>
 		);
 
@@ -102,7 +103,7 @@ export abstract class SimUI extends Component {
 		this.simMain.classList.add('sim-main', 'tab-content');
 		this.simContentContainer.appendChild(this.simMain);
 
-		this.rootElem.classList.add(this.cssClass);
+		this.rootElem.classList.add(this.config.cssClass);
 
 		if (!this.isWithinRaidSim) {
 			this.rootElem.classList.add('not-within-raid-sim');
@@ -197,6 +198,27 @@ export abstract class SimUI extends Component {
 				}
 			});
 		}
+
+		if (this.disabled) {
+			resultsViewerElem.appendChild(
+				<div className="sim-ui-unlaunched-container d-flex flex-column align-items-center text-center mt-auto mb-auto ms-auto me-auto">
+					<i className="fas fa-ban fa-3x mb-2" />
+					<h6>This sim is currently not supported.</h6>
+					<p>
+						Want to contribute?
+						<br />
+						Make sure to join our <a href="https://discord.gg/p3DgvmnDCS" target="_blank">Discord</a>!
+					</p>
+					{this.config.spec?.isHealingSpec && (
+						<p>
+							Looking for healing simulations?
+							<br />
+							Check out <a href="https://questionablyepic.com/live/">QE Live</a>!
+						</p>
+					)}
+				</div>
+			)
+		}
 	}
 
 	addNoticeForLocalSim() {
@@ -204,17 +226,20 @@ export abstract class SimUI extends Component {
 	}
 
 	addAction(label: string, cssClass: string, onClick: (event: MouseEvent) => void): HTMLButtonElement {
-		const buttonRef = ref<HTMLButtonElement>();
-		this.simActionsContainer.appendChild(
-			<button ref={buttonRef} className={clsx('sim-sidebar-action-button btn btn-primary w-100', cssClass)} onclick={onClick}>
+		const button = this.simActionsContainer.appendChild(
+			<button
+				className={clsx('sim-sidebar-action-button btn btn-primary w-100', cssClass)}
+				onclick={onClick}
+				disabled={this.disabled}
+			>
 				{label}
 				<span className="sim-sidebar-action-button-loading-icon">
 					<i className="fas fa-spinner fa-spin"></i>
 				</span>
-			</button>,
-		);
+			</button>
+		) as HTMLButtonElement;
 
-		return buttonRef.value!;
+		return button;
 	}
 
 	addActionGroup(groups: ActionGroupItem[], groupOptions: { cssClass?: string } = {}) {
