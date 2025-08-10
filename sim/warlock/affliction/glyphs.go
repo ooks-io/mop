@@ -6,7 +6,7 @@ import (
 	"github.com/wowsims/mop/sim/warlock"
 )
 
-func (affliction *AfflictionWarlock) registerGlpyhs() {
+func (affliction *AfflictionWarlock) registerGlyphs() {
 
 	if affliction.HasMajorGlyph(proto.WarlockMajorGlyph_GlyphOfUnstableAffliction) {
 		affliction.AddStaticMod(core.SpellModConfig{

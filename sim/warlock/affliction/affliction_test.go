@@ -58,7 +58,11 @@ func TestAffliction(t *testing.T) {
 			OtherGearSets: []core.GearSetCombo{
 				core.GetGearSet("../../../ui/warlock/affliction/gear_sets", "p1"),
 			},
-			Talents:          "231211",
+			Talents: "231211",
+			Glyphs: &proto.Glyphs{
+				Major1: int32(proto.WarlockMajorGlyph_GlyphOfSiphonLife),
+				Major2: int32(proto.WarlockMajorGlyph_GlyphOfUnstableAffliction),
+			},
 			Consumables:      fullConsumesSpec,
 			SpecOptions:      core.SpecOptionsCombo{Label: "Affliction Warlock", SpecOptions: defaultAfflictionWarlock},
 			OtherSpecOptions: []core.SpecOptionsCombo{},

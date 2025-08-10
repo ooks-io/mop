@@ -88,6 +88,9 @@ func (destruction *DestructionWarlock) registerImmolate() {
 				if result.DidCrit() {
 					destruction.BurningEmbers.Gain(sim, 1, dot.Spell.ActionID)
 				}
+				if destruction.SiphonLife != nil {
+					destruction.SiphonLife.Cast(sim, &destruction.Unit)
+				}
 			},
 		},
 
