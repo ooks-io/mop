@@ -15,7 +15,7 @@ import * as ArcaneInputs from './inputs';
 import * as Presets from './presets';
 import * as MageInputs from '../inputs';
 
-const hasteBreakpoints = MAGE_BREAKPOINTS.presets;
+const hasteBreakpoints = LIVING_BOMB_BREAKPOINTS.presets;
 
 const SPEC_CONFIG = registerSpecConfig(Spec.SpecArcaneMage, {
 	cssClass: 'arcane-mage-sim-ui',
