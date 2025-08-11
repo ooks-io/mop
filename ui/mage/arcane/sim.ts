@@ -10,12 +10,12 @@ import { Faction, IndividualBuffs, ItemSlot, PartyBuffs, PseudoStat, Race, Spec,
 import { StatCapType } from '../../core/proto/ui';
 import { DEFAULT_CASTER_GEM_STATS, StatCap, Stats, UnitStat } from '../../core/proto_utils/stats';
 import { formatToNumber } from '../../core/utils';
-import { DefaultDebuffs, DefaultRaidBuffs, MAGE_BREAKPOINTS, LIVING_BOMB_BREAKPOINTS } from '../presets';
+import { DefaultDebuffs, DefaultRaidBuffs, MAGE_BREAKPOINTS } from '../presets';
 import * as ArcaneInputs from './inputs';
 import * as Presets from './presets';
 import * as MageInputs from '../inputs';
 
-const hasteBreakpoints = LIVING_BOMB_BREAKPOINTS.presets;
+const hasteBreakpoints = MAGE_BREAKPOINTS.presets;
 
 const SPEC_CONFIG = registerSpecConfig(Spec.SpecArcaneMage, {
 	cssClass: 'arcane-mage-sim-ui',
@@ -55,15 +55,15 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecArcaneMage, {
 		softCapBreakpoints: (() => {
 			const hasteSoftCapConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatSpellHastePercent, {
 				breakpoints: [
-					LIVING_BOMB_BREAKPOINTS.presets.get('5-tick - Living Bomb')!,
-					LIVING_BOMB_BREAKPOINTS.presets.get('6-tick - Living Bomb')!,
-					LIVING_BOMB_BREAKPOINTS.presets.get('7-tick - Living Bomb')!,
-					LIVING_BOMB_BREAKPOINTS.presets.get('8-tick - Living Bomb')!,
-					LIVING_BOMB_BREAKPOINTS.presets.get('9-tick - Living Bomb')!,
-					LIVING_BOMB_BREAKPOINTS.presets.get('10-tick - Living Bomb')!,
+					hasteBreakpoints.get('5-tick - Living Bomb')!,
+					hasteBreakpoints.get('6-tick - Living Bomb')!,
+					hasteBreakpoints.get('7-tick - Living Bomb')!,
+					hasteBreakpoints.get('8-tick - Living Bomb')!,
+					hasteBreakpoints.get('9-tick - Living Bomb')!,
+					hasteBreakpoints.get('10-tick - Living Bomb')!,
 					// Higher ticks commented out as they may be unrealistic for most gear levels
-					// LIVING_BOMB_BREAKPOINTS.presets.get('11-tick - Living Bomb')!,
-					// LIVING_BOMB_BREAKPOINTS.presets.get('12-tick - Living Bomb')!,
+					// hasteBreakpoints.get('11-tick - Living Bomb')!,
+					// hasteBreakpoints.get('12-tick - Living Bomb')!,
 				],
 				capType: StatCapType.TypeThreshold,
 				postCapEPs: [0.6 * Mechanics.HASTE_RATING_PER_HASTE_PERCENT],
@@ -158,7 +158,7 @@ export class ArcaneMageSimUI extends IndividualSimUI<Spec.SpecArcaneMage> {
 		const statSelectionPresets = [
 			{
 				unitStat: UnitStat.fromPseudoStat(PseudoStat.PseudoStatSpellHastePercent),
-				presets: LIVING_BOMB_BREAKPOINTS.presets,
+				presets: hasteBreakpoints,
 			},
 		];
 
