@@ -40,11 +40,13 @@ func (shaman *Shaman) ApplyElementalTalents() {
 
 	// Elemental Fury
 	shaman.AddStaticMod(core.SpellModConfig{
-		SpellFlag:         SpellFlagShamanSpell,
-		Kind:              core.SpellMod_CritMultiplier_Flat,
-		FloatValue:        0.5,
-		ShouldApplyToPets: true,
+		SpellFlag:  SpellFlagShamanSpell,
+		Kind:       core.SpellMod_CritMultiplier_Flat,
+		FloatValue: 0.5,
 	})
+	// For fire elemental, the bonus from elemental fury is "inherited" before other effects like skull banner apply.
+	// It has a base 2.5 = 2+0.5 = 2*1.25 crit damage multiplier and 2.5*1.2 = 3 when skull banner is up (assuming primal elementalist)
+	shaman.FireElemental.PseudoStats.CritDamageMultiplier *= 1.25
 
 	//Spiritual Insight
 	shaman.AddStaticMod(core.SpellModConfig{
