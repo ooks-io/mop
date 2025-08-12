@@ -94,10 +94,10 @@ func (shaman *Shaman) ApplyElementalTalents() {
 		ProcChance:     1.0,
 		ClassSpellMask: SpellMaskEarthShock,
 		Callback:       core.CallbackOnApplyEffects,
-		ExtraCondition: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) bool {
-			return shaman.SelfBuffs.Shield == proto.ShamanShield_LightningShield
-		},
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if shaman.SelfBuffs.Shield != proto.ShamanShield_LightningShield || shaman.LightningShieldAura.GetStacks() <= 1 {
+				return
+			}
 			shaman.Fulmination.Cast(sim, result.Target)
 			shaman.LightningShieldAura.SetStacks(sim, 1)
 		},
