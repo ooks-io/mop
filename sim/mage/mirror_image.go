@@ -73,7 +73,7 @@ func (mage *Mage) NewMirrorImage() *MirrorImage {
 	}
 
 	mirrorImageBaseStats := stats.Stats{
-		stats.Mana: 27020, // Confirmed via ingame bars at 80
+		stats.Mana: 300000, // Confirmed via ingame bars at 90
 	}
 
 	mirrorImage := &MirrorImage{
@@ -256,7 +256,7 @@ func (mi *MirrorImage) registerArcaneBlastSpell() {
 
 	mi.arcaneChargesAura = mi.GetOrRegisterAura(core.Aura{
 		Label:     "Mirror Images: Arcane Charges Aura",
-		ActionID:  core.ActionID{SpellID: 36032}, //idk if it gets its own
+		ActionID:  core.ActionID{SpellID: 36032}, //player gets 50% mod, images get 25% mod found on this spellid
 		Duration:  time.Second * 10,
 		MaxStacks: 4,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
@@ -269,7 +269,7 @@ func (mi *MirrorImage) registerArcaneBlastSpell() {
 		},
 		OnStacksChange: func(aura *core.Aura, sim *core.Simulation, oldStacks int32, newStacks int32) {
 			stacks := float64(newStacks)
-			abDamageMod.UpdateFloatValue(0.5 * stacks * mi.mageOwner.T15_4PC_ArcaneChargeEffect)
+			abDamageMod.UpdateFloatValue(0.25 * stacks * mi.mageOwner.T15_4PC_ArcaneChargeEffect) //Images only gain 25% damage per charge
 			abCostMod.UpdateFloatValue(1.5 * stacks * mi.mageOwner.T15_4PC_ArcaneChargeEffect)
 		},
 	})
