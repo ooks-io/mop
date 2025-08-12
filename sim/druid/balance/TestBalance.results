@@ -529,7 +529,7 @@ dps_results: {
 dps_results: {
  key: "TestBalance-Settings-NightElf-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 88577.856
+  dps: 88578.89159
   tps: 82066.51427
   hps: 6000.34648
  }
@@ -673,7 +673,7 @@ dps_results: {
 dps_results: {
  key: "TestBalance-Settings-NightElf-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 137160.11761
+  dps: 137171.78855
   tps: 127860.38823
   hps: 7446.60199
  }
@@ -817,7 +817,7 @@ dps_results: {
 dps_results: {
  key: "TestBalance-Settings-Tauren-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 88562.4516
+  dps: 88563.48704
   tps: 82052.35786
   hps: 6108.96647
  }
@@ -961,7 +961,7 @@ dps_results: {
 dps_results: {
  key: "TestBalance-Settings-Tauren-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 137344.49896
+  dps: 137356.16843
   tps: 128039.41086
   hps: 7553.88285
  }
@@ -1105,7 +1105,7 @@ dps_results: {
 dps_results: {
  key: "TestBalance-Settings-Troll-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 91271.60925
+  dps: 91278.67336
   tps: 84541.33194
   hps: 5972.53302
  }
@@ -1249,7 +1249,7 @@ dps_results: {
 dps_results: {
  key: "TestBalance-Settings-Troll-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 139910.23582
+  dps: 139912.57295
   tps: 130693.51096
   hps: 7455.70594
  }
@@ -1393,7 +1393,7 @@ dps_results: {
 dps_results: {
  key: "TestBalance-Settings-Worgen-preraid-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 89522.77482
+  dps: 89526.73172
   tps: 82934.06318
   hps: 5994.74515
  }
@@ -1537,7 +1537,7 @@ dps_results: {
 dps_results: {
  key: "TestBalance-Settings-Worgen-t14-FoN + HotW-Default-standard-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 139550.72117
+  dps: 139562.20974
   tps: 130257.89705
   hps: 7467.14627
  }
