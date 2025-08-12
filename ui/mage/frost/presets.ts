@@ -30,12 +30,12 @@ export const ROTATION_PRESET_AOE = PresetUtils.makePresetAPLRotation('AOE', Fros
 export const P1_EP_PRESET = PresetUtils.makePresetEpWeights(
 	'P1',
 	Stats.fromMap({
-		[Stat.StatIntellect]: 1.23,
-		[Stat.StatSpellPower]: 1,
+		[Stat.StatIntellect]: 1.00,
+		[Stat.StatSpellPower]: 0.80,
 		[Stat.StatHitRating]: 1.15,
-		[Stat.StatCritRating]: 0.49,
-		[Stat.StatHasteRating]: 0.6,
-		[Stat.StatMasteryRating]: 0.47,
+		[Stat.StatCritRating]: 0.47,
+		[Stat.StatHasteRating]: 0.45,
+		[Stat.StatMasteryRating]: 0.39,
 	}),
 );
 

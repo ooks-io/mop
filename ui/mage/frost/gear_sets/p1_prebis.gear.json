@@ -1,6 +1,6 @@
 {
 	"items": [
-		{ "id": 77533, "gems": [76885, 77545, 77542], "upgradeStep": "UpgradeStepTwo" },
+		{ "id": 77533, "gems": [76885, 77545, 77542] },
 		{ "id": 81095, "reforging": 145 },
 		{ "id": 84917, "enchant": 4806, "gems": [76668], "reforging": 166 },
 		{ "id": 81084, "enchant": 4892 },
