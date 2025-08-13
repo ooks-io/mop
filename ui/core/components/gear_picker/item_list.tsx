@@ -158,17 +158,24 @@ export default class ItemList<T extends ItemListType> {
 				</div>
 				<div className="selector-modal-list-labels">
 					{(label === SelectorModalTabs.Items || label === SelectorModalTabs.Upgrades) && (
-						<h6 className="ilvl-label interactive" onclick={sortByIlvl}>ILvl</h6>
+						<h6 className="ilvl-label interactive" onclick={sortByIlvl}>
+							ILvl
+						</h6>
 					)}
 					<h6 className="item-label">
-						{
-							label === SelectorModalTabs.Items ? "Item" :
-							label === SelectorModalTabs.Enchants ? "Enchant" :
-							[SelectorModalTabs.Gem1, SelectorModalTabs.Gem2, SelectorModalTabs.Gem3].includes(label as SelectorModalTabs) ? "Gem" :
-							label === SelectorModalTabs.Reforging ? "Reforge" :
-							label === SelectorModalTabs.Upgrades ? "Upgrade" :
-							label === SelectorModalTabs.Tinkers ? "Tinker" : ""
-						}
+						{label === SelectorModalTabs.Items
+							? 'Item'
+							: label === SelectorModalTabs.Enchants
+								? 'Enchant'
+								: [SelectorModalTabs.Gem1, SelectorModalTabs.Gem2, SelectorModalTabs.Gem3].includes(label as SelectorModalTabs)
+									? 'Gem'
+									: label === SelectorModalTabs.Reforging
+										? 'Reforge'
+										: label === SelectorModalTabs.Upgrades
+											? 'Upgrade'
+											: label === SelectorModalTabs.Tinkers
+												? 'Tinker'
+												: ''}
 					</h6>
 					{label === SelectorModalTabs.Items && <h6 className="source-label">Source</h6>}
 					<h6 className="ep-label interactive" onclick={sortByEP}>
