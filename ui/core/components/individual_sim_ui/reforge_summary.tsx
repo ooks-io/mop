@@ -1,23 +1,27 @@
 import { Player } from '../../player.js';
 import { Stat } from '../../proto/common.js';
+import { IndividualSimSettings } from '../../proto/ui.js';
 import { shortSecondaryStatNames } from '../../proto_utils/names.js';
-import { SimUI } from '../../sim_ui.js';
 import { TypedEvent } from '../../typed_event.js';
 import { Component } from '../component.js';
 import { ContentBlock } from '../content_block.jsx';
+import { CopyButton } from '../copy_button';
+import { IndividualSimUI } from '../../individual_sim_ui.jsx';
 
 type ReforgeSummaryTotal = {
 	[key in Stat]?: number;
 };
 
 export class ReforgeSummary extends Component {
-	private readonly simUI: SimUI;
+	private readonly simUI: IndividualSimUI<any>;
 	private readonly player: Player<any>;
 
 	private readonly container: ContentBlock;
 
-	constructor(parent: HTMLElement, simUI: SimUI, player: Player<any>) {
+	constructor(parent: HTMLElement, simUI: IndividualSimUI<any>, player: Player<any>) {
 		super(parent, 'summary-table-root');
+		this.rootElem.classList.add('hide');
+
 		this.simUI = simUI;
 		this.player = player;
 
@@ -64,7 +68,33 @@ export class ReforgeSummary extends Component {
 				);
 			});
 
+			// Replace rows in body
 			this.container.bodyElement.replaceChildren(body);
+
+			// Add / replace footer action area with copy button
+			const existingFooter = this.container.bodyElement.querySelector('.reforge-summary-footer');
+			if (existingFooter) existingFooter.remove();
+
+			const footer = <div className="reforge-summary-footer mt-2"></div>;
+			const copyContainer = <div className="d-flex w-100 justify-content-end"></div>;
+			footer.appendChild(copyContainer);
+
+			new CopyButton(copyContainer as HTMLElement, {
+				extraCssClasses: ['btn-outline-primary'],
+				getContent: () => {
+					try {
+						// Lazy export so we always capture the most current state, matching optimizer button logic.
+						const proto = this.simUI.toProto();
+						const jsonObj = proto ? IndividualSimSettings.toJson(proto) : {};
+						return JSON.stringify(jsonObj);
+					} catch (_e) {
+						return '';
+					}
+				},
+				text: 'Copy to Reforge Lite',
+			});
+
+			this.container.bodyElement.appendChild(footer);
 
 			if (!this.container.headerElement) return;
 			const existingResetButton = this.container.headerElement.querySelector('.summary-table-reset-button');

@@ -1144,16 +1144,27 @@ func registerSkullBannerCD(agent Agent, numSkullBanners int32) {
 }
 
 func SkullBannerAura(character *Character, actionTag int32) *Aura {
+	for _, pet := range character.Pets {
+		if !pet.IsGuardian() {
+			SkullBannerAura(&pet.Character, actionTag)
+		}
+	}
+
 	return character.GetOrRegisterAura(Aura{
 		Label:    "Skull Banner",
 		Tag:      SkullBannerAuraTag,
 		ActionID: SkullBannerActionID.WithTag(actionTag),
 		Duration: SkullBannerDuration,
 
-		OnGain: func(_ *Aura, sim *Simulation) {
+		OnGain: func(aura *Aura, sim *Simulation) {
 			character.PseudoStats.CritDamageMultiplier *= 1.2
+			for _, pet := range character.Pets {
+				if pet.IsEnabled() && !pet.IsGuardian() {
+					pet.GetAura(aura.Label).Activate(sim)
+				}
+			}
 		},
-		OnExpire: func(_ *Aura, sim *Simulation) {
+		OnExpire: func(aura *Aura, sim *Simulation) {
 			character.PseudoStats.CritDamageMultiplier /= 1.2
 		},
 	})
