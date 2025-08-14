@@ -15,7 +15,7 @@ func (mage *Mage) registerFrostMastery() {
 	mage.Icicle = mage.RegisterSpell(core.SpellConfig{
 		ActionID:         core.ActionID{SpellID: 148022},
 		SpellSchool:      core.SpellSchoolFrost,
-		ProcMask:         core.ProcMaskSpellDamage,
+		ProcMask:         core.ProcMaskSpellDamageProc, // Use SpellDamageProc to prevent triggering StormLash
 		Flags:            core.SpellFlagAPL,
 		ClassSpellMask:   MageSpellIcicle,
 		MissileSpeed:     20,
