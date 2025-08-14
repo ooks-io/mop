@@ -12,7 +12,6 @@ func (arcane *ArcaneMage) registerArcanePowerCD() {
 	hasGlyph := arcane.HasMajorGlyph(proto.MageMajorGlyph_GlyphOfArcanePower)
 
 	arcanePowerDamageMod := arcane.AddDynamicMod(core.SpellModConfig{
-		ClassMask:  mage.MageSpellsAllDamaging,
 		FloatValue: 0.20,
 		Kind:       core.SpellMod_DamageDone_Pct,
 	})
