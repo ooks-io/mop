@@ -173,6 +173,15 @@ func (bear *GuardianDruid) Initialize() {
 	bear.ApplyPrimalFury()
 	bear.ApplyLeaderOfThePack()
 	bear.ApplyNurturingInstinct()
+	bear.registerSymbiosis()
+}
+
+func (bear *GuardianDruid) registerSymbiosis() {
+	if bear.Options.SymbiosisTarget == proto.Class_ClassDeathKnight {
+		bear.registerBoneShieldSpell()
+	} else if bear.Options.SymbiosisTarget == proto.Class_ClassMonk {
+		bear.registerElusiveBrewSpell()
+	}
 }
 
 func (bear *GuardianDruid) Reset(sim *core.Simulation) {

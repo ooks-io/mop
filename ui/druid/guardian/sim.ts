@@ -123,6 +123,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecGuardianDruid, {
 			OtherInputs.BurstWindow,
 			OtherInputs.HpPercentForDefensives,
 			OtherInputs.InFrontOfTarget,
+			DruidInputs.SymbiosisSelection,
 		],
 	},
 	encounterPicker: {
