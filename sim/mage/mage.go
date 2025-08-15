@@ -50,12 +50,13 @@ type Mage struct {
 	HeatingUp            *core.Aura
 	InstantPyroblastAura *core.Aura
 
+	ArcanePowerDamageMod *core.SpellMod
+
 	T15_4PC_ArcaneChargeEffect  float64
 	T15_4PC_FrostboltProcChance float64
 	Icicles                     []float64
 
 	// Item sets
-	T14_4pc *core.Aura
 	T16_4pc *core.Aura
 }
 
