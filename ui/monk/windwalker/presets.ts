@@ -23,8 +23,8 @@ export const P1_PREBIS_EP_PRESET = PresetUtils.makePresetEpWeights(
 		{
 			[Stat.StatAgility]: 1.0,
 			[Stat.StatHitRating]: 1.41,
-			[Stat.StatCritRating]: 0.46,
-			[Stat.StatHasteRating]: 0.57,
+			[Stat.StatCritRating]: 0.44,
+			[Stat.StatHasteRating]: 0.49,
 			[Stat.StatExpertiseRating]: 0.99	,
 			[Stat.StatMasteryRating]: 0.39,
 			[Stat.StatAttackPower]: 0.36,

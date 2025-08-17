@@ -60,7 +60,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWindwalkerMonk, {
 		// Default soft caps for the Reforge optimizer
 		softCapBreakpoints: (() => {
 			const hasteSoftCapConfig = StatCap.fromPseudoStat(PseudoStat.PseudoStatMeleeHastePercent, {
-				breakpoints: [28.02, 43.5],
+				breakpoints: [34.02, 43.5],
 				capType: StatCapType.TypeSoftCap,
 				postCapEPs: [
 					(Presets.P1_PREBIS_EP_PRESET.epWeights.getStat(Stat.StatCritRating) - 0.05) * Mechanics.HASTE_RATING_PER_HASTE_PERCENT,
