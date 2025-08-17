@@ -4,43 +4,21 @@ import { MonkMajorGlyph, MonkMinorGlyph, MonkOptions } from '../../core/proto/mo
 import { SavedTalents } from '../../core/proto/ui';
 import { Stats } from '../../core/proto_utils/stats';
 import DefaultApl from './apls/default.apl.json';
-import DefaultP1Bis2HGear from './gear_sets/p1_bis_2h.gear.json';
-import DefaultP1BisDWGear from './gear_sets/p1_bis_dw.gear.json';
-import DefaultP1Prebis2HGear from './gear_sets/p1_prebis_2h.gear.json';
-import DefaultP1PrebisDWGear from './gear_sets/p1_prebis_dw.gear.json';
+import DefaultP1BisGear from './gear_sets/p1_bis.gear.json';
+import DefaultP1PreHofGear from './gear_sets/p1_pre_hof.gear.json';
+import DefaultP1PreToesGear from './gear_sets/p1_pre_toes.gear.json';
+import DefaultP1PrebisGear from './gear_sets/p1_prebis.gear.json';
 
-export const P1_PREBIS_2H_GEAR_PRESET = PresetUtils.makePresetGear('Pre-BIS - 2H', DefaultP1Prebis2HGear);
-export const P1_PREBIS_DW_GEAR_PRESET = PresetUtils.makePresetGear('Pre-BIS - DW', DefaultP1PrebisDWGear);
-
-export const P1_BIS_2H_GEAR_PRESET = PresetUtils.makePresetGear('BIS - 2H', DefaultP1Bis2HGear);
-export const P1_BIS_DW_GEAR_PRESET = PresetUtils.makePresetGear('BIS - DW', DefaultP1BisDWGear);
+export const P1_PREBIS_GEAR_PRESET = PresetUtils.makePresetGear('Pre-BIS', DefaultP1PrebisGear);
+export const P1_PREHOF_GEAR_PRESET = PresetUtils.makePresetGear('Pre-HOF', DefaultP1PreHofGear);
+export const P1_PRETOES_GEAR_PRESET = PresetUtils.makePresetGear('Pre-TOES', DefaultP1PreToesGear);
+export const P1_BIS_GEAR_PRESET = PresetUtils.makePresetGear('BIS', DefaultP1BisGear);
 
 export const ROTATION_PRESET = PresetUtils.makePresetAPLRotation('Default', DefaultApl);
 
 // Preset options for EP weights
-export const P1_PREBIS_2H_EP_PRESET = PresetUtils.makePresetEpWeights(
-	'Default - 2H',
-	Stats.fromMap(
-		{
-			[Stat.StatAgility]: 1.0,
-			[Stat.StatHitRating]: 1.38,
-			[Stat.StatCritRating]: 0.46,
-			[Stat.StatHasteRating]: 0.54,
-			[Stat.StatExpertiseRating]: 1.22	,
-			[Stat.StatMasteryRating]: 0.38,
-			[Stat.StatAttackPower]: 0.36,
-		},
-		{
-			[PseudoStat.PseudoStatMainHandDps]: 3.04,
-			[PseudoStat.PseudoStatOffHandDps]: 0,
-			[PseudoStat.PseudoStatPhysicalHitPercent]: 469.62,
-		},
-	),
-);
-
-// Preset options for EP weights
-export const P1_PREBIS_DW_EP_PRESET = PresetUtils.makePresetEpWeights(
-	'Default - DW',
+export const P1_PREBIS_EP_PRESET = PresetUtils.makePresetEpWeights(
+	'Default',
 	Stats.fromMap(
 		{
 			[Stat.StatAgility]: 1.0,
