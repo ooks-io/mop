@@ -91,7 +91,9 @@ var StandardGlyphs = &proto.Glyphs{
 
 var PlayerOptionsDefault = &proto.Player_GuardianDruid{
 	GuardianDruid: &proto.GuardianDruid{
-		Options: &proto.GuardianDruid_Options{},
+		Options: &proto.GuardianDruid_Options{
+			SymbiosisTarget: proto.Class_ClassMonk,
+		},
 	},
 }
 var FullConsumesSpec = &proto.ConsumesSpec{
