@@ -138,7 +138,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecGuardianDruid, {
 		// Preset rotations that the user can quickly select.
 		rotations: [Presets.ROTATION_DEFAULT, Presets.ROTATION_HOTW],
 		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.PRERAID_PRESET],
+		gear: [Presets.PRERAID_PRESET, Presets.MSV_PRESET],
 		builds: [
 			Presets.PRESET_BUILD_GARAJAL,
 		],

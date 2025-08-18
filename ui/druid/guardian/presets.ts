@@ -8,6 +8,8 @@ import { SavedTalents } from '../../core/proto/ui.js';
 // keep them in a separate file.
 import PreraidGear from './gear_sets/preraid.gear.json';
 export const PRERAID_PRESET = PresetUtils.makePresetGear('Pre-MSV BiS', PreraidGear);
+import MsvGear from './gear_sets/msv.gear.json';
+export const MSV_PRESET = PresetUtils.makePresetGear('Pre-HoF BiS', MsvGear);
 import P1Gear from './gear_sets/p1.gear.json';
 export const P1_PRESET = PresetUtils.makePresetGear('P1/P2', P1Gear);
 import P2Gear from './gear_sets/p2.gear.json';
