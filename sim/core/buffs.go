@@ -1058,6 +1058,10 @@ func RallyingCryAuraArray(unit *Unit, actionTag int32) AuraArray {
 	actionID := RallyingCryActionID.WithTag(actionTag)
 
 	return unit.NewAllyAuraArray(func(allyUnit *Unit) *Aura {
+		if !allyUnit.HasHealthBar() {
+			return nil
+		}
+
 		healthMetrics := allyUnit.NewHealthMetrics(actionID)
 		var bonusHealth float64
 		return allyUnit.GetOrRegisterAura(Aura{

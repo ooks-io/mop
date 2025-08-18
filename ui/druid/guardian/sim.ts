@@ -141,6 +141,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecGuardianDruid, {
 		gear: [Presets.PRERAID_PRESET, Presets.MSV_PRESET],
 		builds: [
 			Presets.PRESET_BUILD_GARAJAL,
+			Presets.PRESET_BUILD_EMPRESS,
 		],
 	},
 

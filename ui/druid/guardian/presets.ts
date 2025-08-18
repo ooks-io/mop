@@ -31,8 +31,9 @@ import { Stats } from '../../core/proto_utils/stats';
 import DefaultApl from './apls/default.apl.json';
 import OffensiveHotwApl from './apls/offensiveHotw.apl.json';
 import EmpressApl from './apls/empress.apl.json';
-import DefaultBuild from './builds/garajal_default.build.json';
+import DefaultBuild from './builds/empress_default.build.json';
 import GarajalBuild from './builds/garajal_encounter_only.build.json';
+import EmpressBuild from './builds/empress_encounter_only.build.json';
 export const ROTATION_DEFAULT = PresetUtils.makePresetAPLRotation("Gara'jal Default", DefaultApl);
 export const ROTATION_HOTW = PresetUtils.makePresetAPLRotation("Gara'jal Offensive HotW", OffensiveHotwApl);
 export const ROTATION_EMPRESS = PresetUtils.makePresetAPLRotation("Empress Adds", EmpressApl);
@@ -133,3 +134,4 @@ export const OtherDefaults = {
 
 export const PRESET_BUILD_DEFAULT = PresetUtils.makePresetBuildFromJSON("Default", Spec.SpecGuardianDruid, DefaultBuild);
 export const PRESET_BUILD_GARAJAL = PresetUtils.makePresetBuildFromJSON("Gara'jal", Spec.SpecGuardianDruid, GarajalBuild);
+export const PRESET_BUILD_EMPRESS = PresetUtils.makePresetBuildFromJSON("Empress P2 Adds", Spec.SpecGuardianDruid, EmpressBuild);
