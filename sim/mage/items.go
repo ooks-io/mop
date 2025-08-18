@@ -34,7 +34,6 @@ var ItemSetRegaliaOfTheBurningScroll = core.NewItemSet(core.ItemSet{
 		// reduces the cooldown of Icy Veins by 50%, and reduces the cooldown of Combustion by 20%.
 		4: func(agent core.Agent, setBonusAura *core.Aura) {
 			mage := agent.(MageAgent).GetMage()
-			mage.T14_4pc = setBonusAura
 
 			setBonusAura.AttachSpellMod(core.SpellModConfig{
 				FloatValue: 0.5,
@@ -45,6 +44,19 @@ var ItemSetRegaliaOfTheBurningScroll = core.NewItemSet(core.ItemSet{
 				Kind:       core.SpellMod_Cooldown_Multiplier,
 				ClassMask:  MageSpellCombustion,
 			})
+
+			mage.OnSpellRegistered(func(spell *core.Spell) {
+				if !spell.Matches(MageSpellArcanePower) {
+					return
+				}
+
+				setBonusAura.ApplyOnGain(func(_ *core.Aura, _ *core.Simulation) {
+					mage.ArcanePowerDamageMod.UpdateFloatValue(mage.ArcanePowerDamageMod.GetFloatValue() + 0.1)
+				}).ApplyOnExpire(func(_ *core.Aura, _ *core.Simulation) {
+					mage.ArcanePowerDamageMod.UpdateFloatValue(mage.ArcanePowerDamageMod.GetFloatValue() - 0.1)
+				})
+			})
+
 			setBonusAura.ExposeToAPL(123101)
 		},
 	},
