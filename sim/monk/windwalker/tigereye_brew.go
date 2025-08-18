@@ -51,6 +51,7 @@ func (ww *WindwalkerMonk) registerTigereyeBrew() {
 			damageMultiplier = (1 + damagePerStack*float64(stacksToConsume))
 
 			ww.PseudoStats.DamageDealtMultiplier *= damageMultiplier
+			ww.SefController.UpdateCloneDamageMultiplier(damageMultiplier)
 
 			ww.TigereyeBrewStackAura.SetStacks(sim, ww.TigereyeBrewStackAura.GetStacks()-stacksToConsume)
 
@@ -64,6 +65,7 @@ func (ww *WindwalkerMonk) registerTigereyeBrew() {
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			ww.PseudoStats.DamageDealtMultiplier /= damageMultiplier
+			ww.SefController.UpdateCloneDamageMultiplier(1 / damageMultiplier)
 		},
 	}))
 
