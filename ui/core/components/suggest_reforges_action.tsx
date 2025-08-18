@@ -938,7 +938,12 @@ export class ReforgeOptimizer {
 		const baseStats = await this.updateGear(baseGear);
 
 		// Compute effective stat caps for just the Reforge contribution
-		const reforgeCaps = baseStats.computeStatCapsDelta(this.processedStatCaps);
+		let reforgeCaps = baseStats.computeStatCapsDelta(this.processedStatCaps);
+
+		if (this.player.getSpec() == Spec.SpecGuardianDruid) {
+			reforgeCaps = reforgeCaps.withPseudoStat(PseudoStat.PseudoStatMeleeHastePercent, reforgeCaps.getPseudoStat(PseudoStat.PseudoStatMeleeHastePercent) / 1.5);
+		}
+
 		if (isDevMode()) {
 			console.log('Stat caps for Reforge contribution:');
 			console.log(reforgeCaps);

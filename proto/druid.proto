@@ -144,6 +144,7 @@ message GuardianDruid {
 
   message Options {
     DruidOptions class_options = 1;
+    Class symbiosis_target = 2;
   }
   Options options = 3;
 }
