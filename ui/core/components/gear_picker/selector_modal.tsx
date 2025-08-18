@@ -188,22 +188,28 @@ export default class SelectorModal extends BaseModal {
 				id: sanitizeId(`${this.options.id}-${SelectorModalTabs.Enchants}`),
 				label: SelectorModalTabs.Enchants,
 				gearData,
-				itemData: eligibleEnchants.map(enchant => {
-					return {
-						item: enchant,
-						id: enchant.effectId,
-						actionId: enchant.itemId ? ActionId.fromItemId(enchant.itemId) : ActionId.fromSpellId(enchant.spellId),
-						name: enchant.name,
-						quality: enchant.quality,
-						phase: enchant.phase || 1,
-						ignoreEPFilter: true,
-						nameDescription: '',
-						onEquip: (eventID, enchant) => {
-							const equippedItem = gearData.getEquippedItem();
-							if (equippedItem) gearData.equipItem(eventID, equippedItem.withEnchant(enchant));
-						},
-					};
-				}),
+				itemData: eligibleEnchants
+					.sort((itemA, itemB) => {
+						if (itemA.effectId > itemB.effectId) return -1;
+						if (itemA.effectId < itemB.effectId) return 1;
+						return 0;
+					})
+					.map(enchant => {
+						return {
+							item: enchant,
+							id: enchant.effectId,
+							actionId: enchant.itemId ? ActionId.fromItemId(enchant.itemId) : ActionId.fromSpellId(enchant.spellId),
+							name: enchant.name,
+							quality: enchant.quality,
+							phase: enchant.phase || 1,
+							ignoreEPFilter: true,
+							nameDescription: '',
+							onEquip: (eventID, enchant) => {
+								const equippedItem = gearData.getEquippedItem();
+								if (equippedItem) gearData.equipItem(eventID, equippedItem.withEnchant(enchant));
+							},
+						};
+					}),
 				computeEP: (enchant: Enchant) => this.player.computeEnchantEP(enchant),
 				equippedToItemFn: (equippedItem: EquippedItem | null) => equippedItem?.enchant,
 				onRemove: (eventID: number) => {
@@ -218,22 +224,28 @@ export default class SelectorModal extends BaseModal {
 				id: sanitizeId(`${this.options.id}-${SelectorModalTabs.Tinkers}`),
 				label: SelectorModalTabs.Tinkers,
 				gearData,
-				itemData: eligibleTinkers.map(tinker => {
-					return {
-						item: tinker,
-						id: tinker.effectId,
-						actionId: tinker.itemId ? ActionId.fromItemId(tinker.itemId) : ActionId.fromSpellId(tinker.spellId),
-						name: tinker.name,
-						quality: tinker.quality,
-						phase: tinker.phase || 1,
-						ignoreEPFilter: true,
-						nameDescription: '',
-						onEquip: (eventID, tinker) => {
-							const equippedItem = gearData.getEquippedItem();
-							if (equippedItem) gearData.equipItem(eventID, equippedItem.withTinker(tinker));
-						},
-					};
-				}),
+				itemData: eligibleTinkers
+					.sort((itemA, itemB) => {
+						if (itemA.effectId > itemB.effectId) return -1;
+						if (itemA.effectId < itemB.effectId) return 1;
+						return 0;
+					})
+					.map(tinker => {
+						return {
+							item: tinker,
+							id: tinker.effectId,
+							actionId: tinker.itemId ? ActionId.fromItemId(tinker.itemId) : ActionId.fromSpellId(tinker.spellId),
+							name: tinker.name,
+							quality: tinker.quality,
+							phase: tinker.phase || 1,
+							ignoreEPFilter: true,
+							nameDescription: '',
+							onEquip: (eventID, tinker) => {
+								const equippedItem = gearData.getEquippedItem();
+								if (equippedItem) gearData.equipItem(eventID, equippedItem.withTinker(tinker));
+							},
+						};
+					}),
 				computeEP: (tinker: Enchant) => this.player.computeEnchantEP(tinker),
 				equippedToItemFn: (equippedItem: EquippedItem | null) => equippedItem?.tinker,
 				onRemove: (eventID: number) => {
@@ -684,8 +696,8 @@ export default class SelectorModal extends BaseModal {
 	}
 
 	private removeTabs(labelSubstring: string) {
-		const tabElems = [...this.tabsElem.querySelectorAll<HTMLElement>('.selector-modal-item-tab')].filter(
-			tab => tab.dataset?.label?.includes(labelSubstring),
+		const tabElems = [...this.tabsElem.querySelectorAll<HTMLElement>('.selector-modal-item-tab')].filter(tab =>
+			tab.dataset?.label?.includes(labelSubstring),
 		);
 
 		const contentElems = tabElems.map(tabElem => document.querySelector(tabElem.dataset.bsTarget!)).filter(tabElem => Boolean(tabElem));

@@ -172,7 +172,6 @@ func (mage *Mage) registerInvocation() {
 			mage.MultiplyManaRegenSpeed(sim, 1/0.5)
 		},
 	}).AttachSpellMod(core.SpellModConfig{
-		ClassMask:  MageSpellsAllDamaging,
 		FloatValue: 0.15,
 		Kind:       core.SpellMod_DamageDone_Pct,
 	})
@@ -197,7 +196,6 @@ func (mage *Mage) registerRuneOfPower() {
 	}).AttachSpellMod(core.SpellModConfig{
 		Kind:       core.SpellMod_DamageDone_Pct,
 		FloatValue: 0.15,
-		ClassMask:  MageSpellsAllDamaging,
 	})
 
 	mage.RegisterSpell(core.SpellConfig{

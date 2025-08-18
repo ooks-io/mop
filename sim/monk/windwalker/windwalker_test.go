@@ -20,11 +20,9 @@ func TestWindwalker(t *testing.T) {
 			Race:       proto.Race_RaceTroll,
 			OtherRaces: []proto.Race{proto.Race_RaceOrc},
 
-			GearSet: core.GetGearSet("../../../ui/monk/windwalker/gear_sets", "p1_bis_dw"),
+			GearSet: core.GetGearSet("../../../ui/monk/windwalker/gear_sets", "p1_bis"),
 			OtherGearSets: []core.GearSetCombo{
-				core.GetGearSet("../../../ui/monk/windwalker/gear_sets", "p1_bis_2h"),
-				core.GetGearSet("../../../ui/monk/windwalker/gear_sets", "p1_prebis_dw"),
-				core.GetGearSet("../../../ui/monk/windwalker/gear_sets", "p1_prebis_2h"),
+				core.GetGearSet("../../../ui/monk/windwalker/gear_sets", "p1_prebis"),
 			},
 			Talents: WindwalkerTalents,
 			OtherTalentSets: []core.TalentsCombo{

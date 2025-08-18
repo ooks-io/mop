@@ -31,20 +31,16 @@ func (monk *Monk) registerStormEarthAndFire() {
 			// as decreasing would mean disabling SEF
 			if newStacks > oldStacks {
 				monk.SefController.PickClone(sim, sefTarget)
-				monk.PseudoStats.DamageDealtMultiplier /= damageMultiplier[oldStacks]
-				monk.PseudoStats.DamageDealtMultiplier *= damageMultiplier[newStacks]
-				for _, pet := range monk.SefController.pets {
-					pet.PseudoStats.DamageDealtMultiplier /= damageMultiplier[oldStacks]
-					pet.PseudoStats.DamageDealtMultiplier *= damageMultiplier[newStacks]
-				}
+				newDamageMultiplier := (damageMultiplier[newStacks]) / (damageMultiplier[oldStacks])
+				monk.PseudoStats.DamageDealtMultiplier *= newDamageMultiplier
+				monk.SefController.UpdateCloneDamageMultiplier(newDamageMultiplier)
 				return
 			}
 
 			aura.Deactivate(sim)
-			monk.PseudoStats.DamageDealtMultiplier /= damageMultiplier[oldStacks]
-			for _, pet := range monk.SefController.pets {
-				pet.PseudoStats.DamageDealtMultiplier /= damageMultiplier[oldStacks]
-			}
+			newDamageMultiplier := 1 / damageMultiplier[oldStacks]
+			monk.PseudoStats.DamageDealtMultiplier *= newDamageMultiplier
+			monk.SefController.UpdateCloneDamageMultiplier(newDamageMultiplier)
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			sefTarget = nil
@@ -193,6 +189,12 @@ func (controller *StormEarthAndFireController) getInactiveClones() []*StormEarth
 	return controller.inactiveClones
 }
 
+func (controller *StormEarthAndFireController) UpdateCloneDamageMultiplier(multiplier float64) {
+	for _, pet := range controller.pets {
+		pet.PseudoStats.DamageDealtMultiplier *= multiplier
+	}
+}
+
 func (controller *StormEarthAndFireController) Reset(sim *core.Simulation) {
 	for _, pet := range controller.pets {
 		pet.Disable(sim)
@@ -328,6 +330,7 @@ func (sefClone *StormEarthAndFirePet) GetPet() *core.Pet {
 }
 
 func (sefClone *StormEarthAndFirePet) Reset(_ *core.Simulation) {
+	sefClone.PseudoStats.DamageDealtMultiplier = 1.0
 }
 
 func (sefClone *StormEarthAndFirePet) OnEncounterStart(_ *core.Simulation) {

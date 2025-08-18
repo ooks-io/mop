@@ -11,8 +11,7 @@ import (
 func (arcane *ArcaneMage) registerArcanePowerCD() {
 	hasGlyph := arcane.HasMajorGlyph(proto.MageMajorGlyph_GlyphOfArcanePower)
 
-	arcanePowerDamageMod := arcane.AddDynamicMod(core.SpellModConfig{
-		ClassMask:  mage.MageSpellsAllDamaging,
+	arcane.ArcanePowerDamageMod = arcane.AddDynamicMod(core.SpellModConfig{
 		FloatValue: 0.20,
 		Kind:       core.SpellMod_DamageDone_Pct,
 	})
@@ -29,11 +28,11 @@ func (arcane *ArcaneMage) registerArcanePowerCD() {
 		ActionID: actionID,
 		Duration: time.Second * 15,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			arcanePowerDamageMod.Activate()
+			arcane.ArcanePowerDamageMod.Activate()
 			arcanePowerCostMod.Activate()
 		},
 		OnExpire: func(_ *core.Aura, sim *core.Simulation) {
-			arcanePowerDamageMod.Deactivate()
+			arcane.ArcanePowerDamageMod.Deactivate()
 			arcanePowerCostMod.Deactivate()
 		},
 	})

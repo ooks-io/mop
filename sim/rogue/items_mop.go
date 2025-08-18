@@ -207,13 +207,6 @@ var Tier16 = core.NewItemSet(core.ItemSet{
 					ActionID:  core.ActionID{SpellID: 145249},
 					Duration:  time.Second * 5,
 					MaxStacks: 20,
-					OnGain: func(aura *core.Aura, sim *core.Simulation) {
-						aura.AddStack(sim)
-						aura.Activate(sim)
-					},
-					OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-						aura.SetStacks(sim, 0)
-					},
 					OnStacksChange: func(aura *core.Aura, sim *core.Simulation, oldStacks, newStacks int32) {
 						change := newStacks - oldStacks
 						aura.Unit.AddStatDynamic(sim, stats.MasteryRating, float64(250*change))
@@ -222,7 +215,7 @@ var Tier16 = core.NewItemSet(core.ItemSet{
 
 				setBonusAura.AttachProcTrigger(core.ProcTrigger{
 					Name:           "Rogue T16 4P Bonus",
-					Callback:       core.CallbackOnApplyEffects,
+					Callback:       core.CallbackOnCastComplete,
 					ClassSpellMask: RogueSpellVendetta,
 					Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 						aura.Activate(sim)
@@ -237,8 +230,8 @@ var Tier16 = core.NewItemSet(core.ItemSet{
 						return rogue.Vendetta.RelatedAuraArrays.AnyActive(result.Target)
 					},
 					Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+						aura.Activate(sim)
 						aura.AddStack(sim)
-						aura.Refresh(sim)
 					},
 				})
 			}

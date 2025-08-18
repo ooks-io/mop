@@ -48,7 +48,7 @@ var ItemSetRegaliaOfTheWitchDoctor = core.NewItemSet(core.ItemSet{
 				ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 					baseDamage := sim.RollWithLabel(32375, 37625, "Lighting Strike 2pT14")
 					nTargets := shaman.Env.ActiveTargetCount()
-					spell.CalcAoeDamage(sim, baseDamage / float64(nTargets), spell.OutcomeMagicHitAndCrit)
+					spell.CalcAoeDamage(sim, baseDamage/float64(nTargets), spell.OutcomeMagicHitAndCrit)
 
 					spell.WaitTravelTime(sim, func(sim *core.Simulation) {
 						spell.DealBatchedAoeDamage(sim)
@@ -72,12 +72,13 @@ var ItemSetRegaliaOfTheWitchDoctor = core.NewItemSet(core.ItemSet{
 			setBonusAura.AttachProcTrigger(core.ProcTrigger{
 				Name:           "Regalia of the Witch Doctor 4P",
 				Callback:       core.CallbackOnCastComplete,
-				ClassSpellMask: SpellMaskLavaBurst,
+				ClassSpellMask: SpellMaskLavaBurst | SpellMaskLavaBurstOverload,
 				Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-					shaman.Ascendance.CD.Reduce(time.Millisecond * 1500) //simc says 1.5s in a hotfix
+					//TODO simc says 1.5s, tooltip says 1s, SpellEffect in the db is a dummy. Maybe the tooltip can't show decimals. I guess we need to wait for the bonus to be available to be sure.
+					shaman.Ascendance.CD.Reduce(time.Millisecond * 1500)
 					shaman.UpdateMajorCooldowns()
 				},
-			})
+			}).ExposeToAPL(138144)
 		},
 	},
 })
