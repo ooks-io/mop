@@ -1,7 +1,7 @@
 import { Encounter } from '../../core/encounter';
 import * as PresetUtils from '../../core/preset_utils';
 import { ConsumesSpec, Glyphs, Profession, PseudoStat, Spec, Stat } from '../../core/proto/common';
-import { BrewmasterMonk_Options as BrewmasterMonkOptions, MonkMajorGlyph, MonkMinorGlyph, MonkStance } from '../../core/proto/monk';
+import { BrewmasterMonk_Options as BrewmasterMonkOptions, MonkMajorGlyph, MonkMinorGlyph } from '../../core/proto/monk';
 import { SavedTalents } from '../../core/proto/ui';
 import { Stats } from '../../core/proto_utils/stats';
 import DefaultApl from './apls/default.apl.json';
@@ -12,7 +12,6 @@ import P1BIS2HGear from './gear_sets/p1_bis_2h.gear.json';
 import P1BISDWGear from './gear_sets/p1_bis_dw.gear.json';
 import P1BISTierless2HGear from './gear_sets/p1_bis_tierless_2h.gear.json';
 import P1BISTierlessDWGear from './gear_sets/p1_bis_tierless_dw.gear.json';
-import P1PreBISRealisticGear from './gear_sets/p1_prebis_realistic.gear.json';
 import P1PreBISGear from './gear_sets/p1_prebis.gear.json';
 
 // Preset options for this spec.
@@ -20,7 +19,6 @@ import P1PreBISGear from './gear_sets/p1_prebis.gear.json';
 // keep them in a separate file.
 
 export const P1_PREBIS_GEAR_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS', P1PreBISGear);
-export const P1_PREBIS_REALISTIC_GEAR_PRESET = PresetUtils.makePresetGear('P1 - Pre-BIS (Realistic)', P1PreBISRealisticGear);
 
 export const P1_BIS_DW_GEAR_PRESET = PresetUtils.makePresetGear('P1 - BIS DW', P1BISDWGear);
 export const P1_BIS_2H_GEAR_PRESET = PresetUtils.makePresetGear('P1 - BIS 2H', P1BIS2HGear);
