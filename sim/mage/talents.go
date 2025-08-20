@@ -151,7 +151,7 @@ func (mage *Mage) registerInvocation() {
 
 	mage.AddStaticMod(core.SpellModConfig{
 		ClassMask:  MageSpellEvocation,
-		FloatValue: -1,
+		FloatValue: 0.5,
 		Kind:       core.SpellMod_Cooldown_Multiplier,
 	})
 
