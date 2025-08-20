@@ -25,9 +25,9 @@ export const P1_UNHOLY_EP_PRESET = PresetUtils.makePresetEpWeights(
 			[Stat.StatStrength]: 1.0,
 			[Stat.StatHitRating]: 0.73,
 			[Stat.StatExpertiseRating]: 0.73,
-			[Stat.StatCritRating]: 0.46,
-			[Stat.StatHasteRating]: 0.47,
-			[Stat.StatMasteryRating]: 0.41,
+			[Stat.StatCritRating]: 0.47,
+			[Stat.StatHasteRating]: 0.43,
+			[Stat.StatMasteryRating]: 0.40,
 			[Stat.StatAttackPower]: 0.3,
 		},
 		{
