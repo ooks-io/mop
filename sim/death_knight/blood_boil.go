@@ -53,7 +53,10 @@ func (dk *DeathKnight) registerBloodBoil() {
 			}
 
 			if hasReaping {
-				spell.SpendRefundableCostAndConvertBloodRune(sim, true)
+				// In terms of keeping Death runes Death through Reaping, abilities using Blood runes look at both Blood and Frost slots
+				// when deciding if they should be converted back to their defaults.
+				// Spending an Frost (Death) rune on BB keeps it as a Death rune, but an Unholy (Death) rune gets converted back to Unholy.
+				spell.SpendRefundableCostAndConvertBloodOrFrostRune(sim, true)
 			}
 
 			if anyHit {
