@@ -20,7 +20,7 @@ func (bdk *BloodDeathKnight) registerScarletFever() {
 	var lastDiseaseTarget *core.Unit
 	core.MakePermanent(bdk.GetOrRegisterAura(core.Aura{
 		Label:    "Scarlet Fever" + bdk.Label,
-		ActionID: core.ActionID{SpellID: 51160},
+		ActionID: core.ActionID{SpellID: 81132},
 	})).AttachProcTrigger(core.ProcTrigger{
 		Callback:       core.CallbackOnSpellHitDealt,
 		ClassSpellMask: death_knight.DeathKnightSpellBloodBoil,

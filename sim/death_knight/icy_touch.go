@@ -51,7 +51,10 @@ func (dk *DeathKnight) registerIcyTouch() {
 			result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeMagicHitAndCrit)
 
 			if hasReaping {
-				spell.SpendRefundableCostAndConvertFrostRune(sim, result.Landed())
+				// In terms of keeping Death runes Death through Reaping, abilities using Frost runes look at both Frost and Unholy slots
+				// when deciding if they should be converted back to their defaults.
+				// Spending an Unholy (Death) rune on IT keeps it as a Death rune, but a Blood (Death) rune gets converted back to Blood.
+				spell.SpendRefundableCostAndConvertFrostOrUnholyRune(sim, result.Landed())
 			} else {
 				spell.SpendRefundableCost(sim, result)
 			}
