@@ -1979,8 +1979,8 @@ dps_results: {
 dps_results: {
  key: "TestRetribution-AllItems-SynapseSprings(MarkII)-4898"
  value: {
-  dps: 158587.05653
-  tps: 149324.77905
+  dps: 158824.37221
+  tps: 149610.29221
  }
 }
 dps_results: {
@@ -2350,362 +2350,362 @@ dps_results: {
 dps_results: {
  key: "TestRetribution-Average-Default"
  value: {
-  dps: 159357.11774
-  tps: 150042.7756
+  dps: 159489.0343
+  tps: 150211.22496
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Insight-default-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 475797.02487
-  tps: 474494.73424
-  hps: 10957.7576
+  dps: 476721.62261
+  tps: 475472.94002
+  hps: 10984.21177
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Insight-default-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 139198.75402
-  tps: 129904.02133
-  hps: 12243.53123
+  dps: 139374.76976
+  tps: 130065.07805
+  hps: 12251.27775
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Insight-default-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 208256.34191
-  tps: 178904.28656
-  hps: 14959.70372
+  dps: 208542.3622
+  tps: 179367.11306
+  hps: 14993.07623
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Insight-default-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 342159.49728
-  tps: 349683.7648
-  hps: 7767.14162
+  dps: 343065.02866
+  tps: 350623.13819
+  hps: 7791.17342
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Insight-default-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 93980.51711
-  tps: 89889.49662
-  hps: 8804.79824
+  dps: 94399.00365
+  tps: 90304.56177
+  hps: 8806.8435
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Insight-default-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 119395.12612
-  tps: 107817.38897
-  hps: 8989.21821
+  dps: 120326.09577
+  tps: 108712.3425
+  hps: 9015.88881
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Justice-default-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 480700.86232
-  tps: 479275.43565
+  dps: 482193.09379
+  tps: 480813.77782
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Justice-default-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 150626.31915
-  tps: 141223.56028
+  dps: 150840.88608
+  tps: 141508.8232
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Justice-default-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 221903.2621
-  tps: 192416.25085
+  dps: 222392.08182
+  tps: 193081.65208
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Justice-default-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 344030.12837
-  tps: 351596.44097
+  dps: 344833.19718
+  tps: 352400.29977
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Justice-default-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 103156.01698
-  tps: 99015.1069
+  dps: 103694.57413
+  tps: 99537.71695
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Justice-default-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 128445.89764
-  tps: 116611.55795
+  dps: 129360.56439
+  tps: 117526.86864
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Righteousness-default-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 578896.41539
-  tps: 577598.31859
+  dps: 580240.53344
+  tps: 578946.32377
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Righteousness-default-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 145368.26193
-  tps: 136063.6925
+  dps: 145477.27846
+  tps: 136206.51229
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Righteousness-default-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 214064.11604
-  tps: 184739.79582
+  dps: 214496.53755
+  tps: 185338.71866
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Righteousness-default-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 418444.02552
-  tps: 426042.73073
+  dps: 419379.43221
+  tps: 426949.7058
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Righteousness-default-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 98045.19614
-  tps: 93923.2584
+  dps: 98788.70187
+  tps: 94644.00064
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Righteousness-default-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 123999.89079
-  tps: 112225.59242
+  dps: 124852.44589
+  tps: 113077.0974
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Truth-default-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 488675.14438
-  tps: 487254.55631
+  dps: 490097.69255
+  tps: 488668.3439
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Truth-default-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 159427.17148
-  tps: 150105.44601
+  dps: 159665.05156
+  tps: 150391.53572
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Truth-default-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 232132.82715
-  tps: 202821.40702
+  dps: 232506.56975
+  tps: 203413.17705
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Truth-default-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 349624.60626
-  tps: 357131.24554
+  dps: 350456.42064
+  tps: 357984.53073
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Truth-default-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 107880.42208
-  tps: 103688.3806
+  dps: 108352.14681
+  tps: 104158.61834
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-p1-Seal of Truth-default-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 133402.8963
-  tps: 121598.16414
+  dps: 134343.29106
+  tps: 122508.38778
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Insight-default-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 284839.27335
-  tps: 285088.26434
-  hps: 7229.66377
+  dps: 284968.61106
+  tps: 285135.15473
+  hps: 7171.85216
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Insight-default-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 87468.69123
-  tps: 80576.097
-  hps: 7733.6478
+  dps: 87022.02114
+  tps: 80038.0479
+  hps: 7689.49496
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Insight-default-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 143820.31121
-  tps: 121555.95921
-  hps: 9980.55542
+  dps: 143520.24339
+  tps: 121024.13187
+  hps: 9871.38297
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Insight-default-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 199870.31109
-  tps: 207846.83823
-  hps: 4832.1698
+  dps: 200495.32223
+  tps: 208501.39083
+  hps: 4787.98144
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Insight-default-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 55536.572
-  tps: 52715.24292
-  hps: 5333.27609
+  dps: 55263.93138
+  tps: 52394.61183
+  hps: 5332.80847
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Insight-default-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 72490.27919
-  tps: 64415.50285
-  hps: 5380.31103
+  dps: 71639.91731
+  tps: 63601.62844
+  hps: 5386.72679
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Justice-default-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 291176.0743
-  tps: 291181.94707
+  dps: 290986.08233
+  tps: 290845.28684
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Justice-default-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 94441.385
-  tps: 87574.86781
+  dps: 93582.87348
+  tps: 86652.05804
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Justice-default-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 151337.32665
-  tps: 128955.26375
+  dps: 150753.42064
+  tps: 128136.58473
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Justice-default-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 204686.8736
-  tps: 212542.24507
+  dps: 204193.51501
+  tps: 212013.66552
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Justice-default-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 60435.6199
-  tps: 57658.25228
+  dps: 60240.12534
+  tps: 57424.73124
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Justice-default-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 76518.09183
-  tps: 68491.05328
+  dps: 75862.56681
+  tps: 67862.29278
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Righteousness-default-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 350996.08252
-  tps: 351027.41305
+  dps: 351059.47498
+  tps: 350942.21281
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Righteousness-default-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 90423.8242
-  tps: 83564.11986
+  dps: 90123.6195
+  tps: 83200.0914
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Righteousness-default-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 146911.98887
-  tps: 124535.67165
+  dps: 146602.4466
+  tps: 123991.35637
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Righteousness-default-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 248683.92625
-  tps: 256568.30471
+  dps: 248106.63757
+  tps: 255954.74237
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Righteousness-default-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 57784.2145
-  tps: 55010.43605
+  dps: 57508.43115
+  tps: 54697.64767
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Righteousness-default-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 74707.74325
-  tps: 66680.95459
+  dps: 73698.24241
+  tps: 65698.21828
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Truth-default-FullBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 296883.36182
-  tps: 296854.87652
+  dps: 296872.64872
+  tps: 296690.1264
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Truth-default-FullBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 100345.76451
-  tps: 93423.06745
+  dps: 99949.30404
+  tps: 92943.37616
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Truth-default-FullBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 160726.43496
-  tps: 138888.46101
+  dps: 160324.01685
+  tps: 138276.69071
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Truth-default-NoBuffs-0.0yards-LongMultiTarget"
  value: {
-  dps: 208606.13372
-  tps: 216364.54606
+  dps: 208127.88632
+  tps: 215828.72085
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Truth-default-NoBuffs-0.0yards-LongSingleTarget"
  value: {
-  dps: 64395.93501
-  tps: 61523.30333
+  dps: 64023.65823
+  tps: 61134.04369
  }
 }
 dps_results: {
  key: "TestRetribution-Settings-BloodElf-preraid-Seal of Truth-default-NoBuffs-0.0yards-ShortSingleTarget"
  value: {
-  dps: 80581.23133
-  tps: 72316.12986
+  dps: 79585.75081
+  tps: 71357.40216
  }
 }
 dps_results: {
  key: "TestRetribution-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 152482.26518
-  tps: 144063.3698
+  dps: 152474.74752
+  tps: 144082.53018
  }
 }

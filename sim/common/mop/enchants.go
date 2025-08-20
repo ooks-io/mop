@@ -65,7 +65,7 @@ func init() {
 	// Permanently enchants a melee weapon to sometimes increase your Intellect by 0 when healing or dealing
 	// damage with spells. If less than 25% of your mana remains when the effect is triggered, your Spirit will
 	// also increase by 0.
-	newJadeSpiritEnchant := func(name string, effectId int32, procEffectId int32, buffEffectId int32, icd time.Duration) {
+	newJadeSpiritEnchant := func(name string, effectId int32, procEffectId int32, buffEffectId int32) {
 		core.NewEnchantEffect(effectId, func(agent core.Agent, _ proto.ItemLevelState) {
 			character := agent.GetCharacter()
 			duration := time.Second * 12
@@ -88,7 +88,7 @@ func init() {
 				Callback: core.CallbackOnSpellHitDealt | core.CallbackOnPeriodicDamageDealt | core.CallbackOnHealDealt | core.CallbackOnPeriodicHealDealt,
 				Harmful:  true,
 				ActionID: core.ActionID{SpellID: procEffectId},
-				ICD:      icd,
+				ICD:      3 * time.Second,
 				DPM: character.NewRPPMProcManager(
 					4442,
 					true,
@@ -110,9 +110,8 @@ func init() {
 		})
 	}
 
-	newJadeSpiritEnchant("Jade Spirit", 4442, 120033, 104993, 3*time.Second)
-	// TODO: Currently the PVP variant has no ICD, TBD if this is intended.
-	newJadeSpiritEnchant("Spirit of Conquest", 5124, 142536, 142535, 0)
+	newJadeSpiritEnchant("Jade Spirit", 4442, 120033, 104993)
+	newJadeSpiritEnchant("Spirit of Conquest", 5124, 142536, 142535)
 
 	// Permanently enchants a melee weapon to sometimes increase your Strength or Agility by 0 when dealing melee
 	// damage. Your highest stat is always chosen.

@@ -46,6 +46,7 @@ func (uhdk *UnholyDeathKnight) registerFesteringStrike() {
 
 			result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
 
+			// TODO: Handle reaping correctly if using Unholy (Death) runes, research needed
 			spell.SpendRefundableCostAndConvertBloodOrFrostRune(sim, result.Landed())
 
 			if result.Landed() {

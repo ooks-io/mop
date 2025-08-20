@@ -26,7 +26,7 @@ func (dk *DeathKnight) registerBloodBoil() {
 
 		RuneCost: core.RuneCostOptions{
 			BloodRuneCost: 1,
-			// Not actually refundable, but setting this to `true` if specced into blood
+			// Not actually refundable, but setting this to `true` if specced into unholy
 			// makes the default SpendCost function skip handling the rune cost and
 			// lets us manually spend it with death rune conversion in ApplyEffects.
 			Refundable: hasReaping,
@@ -53,7 +53,10 @@ func (dk *DeathKnight) registerBloodBoil() {
 			}
 
 			if hasReaping {
-				spell.SpendRefundableCostAndConvertBloodRune(sim, true)
+				// In terms of keeping Death runes Death through Reaping, abilities using Blood runes look at both Blood and Frost slots
+				// when deciding if they should be converted back to their defaults.
+				// Spending an Frost (Death) rune on BB keeps it as a Death rune, but an Unholy (Death) rune gets converted back to Unholy.
+				spell.SpendRefundableCostAndConvertBloodOrFrostRune(sim, true)
 			}
 
 			if anyHit {
