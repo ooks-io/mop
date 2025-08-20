@@ -26,7 +26,7 @@ func (dk *DeathKnight) registerBloodBoil() {
 
 		RuneCost: core.RuneCostOptions{
 			BloodRuneCost: 1,
-			// Not actually refundable, but setting this to `true` if specced into blood
+			// Not actually refundable, but setting this to `true` if specced into unholy
 			// makes the default SpendCost function skip handling the rune cost and
 			// lets us manually spend it with death rune conversion in ApplyEffects.
 			Refundable: hasReaping,

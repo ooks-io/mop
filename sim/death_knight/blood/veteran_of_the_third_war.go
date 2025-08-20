@@ -8,8 +8,9 @@ import (
 // Increases your total Stamina by 9% and your chance to dodge by 2%.
 func (bdk *BloodDeathKnight) registerVeteranOfTheThirdWar() {
 	core.MakePermanent(bdk.RegisterAura(core.Aura{
-		Label:    "Veteran of the Third War" + bdk.Label,
-		ActionID: core.ActionID{SpellID: 50029},
+		Label:      "Veteran of the Third War" + bdk.Label,
+		ActionID:   core.ActionID{SpellID: 50029},
+		BuildPhase: core.CharacterBuildPhaseTalents,
 	})).AttachMultiplicativePseudoStatBuff(
 		&bdk.PseudoStats.BaseDodgeChance, 0.02,
 	).AttachStatDependency(
